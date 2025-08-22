@@ -40,16 +40,7 @@ export default function QuizMode({
 
     const [rightNums, setRightNums] = useState<number>(0);
     const [wrongNums, setWrongNums] = useState<number>(0);
-    const [wrongVocab, setWrongVocab] = useState<[string, string][]>(
-        [
-            ["hello", "he"],
-            ["hello", "he"],
-            ["hello", "he"],
-            ["hello", "he"],
-            ["hello", "he"],
-            ["hello", "he"]
-        ]
-    );
+    const [wrongVocab, setWrongVocab] = useState<[string, string][]>([]);
 
     const [inProgress, setInProgress] = useState<boolean>(true);
 
@@ -215,7 +206,7 @@ export default function QuizMode({
 
     }, [curCard, changeSide])
 
-    if (true || !inProgress || curCardIndex >= currentSet.vocab.length) {
+    if (!inProgress || curCardIndex >= currentSet.vocab.length) {
         return <div className="w-full h-full flex flex-col items-center justify-center">
             <Card className="w-full h-full flex flex-row relative px-10 py-6 mb-8">
                 <div className="flex flex-col gap-3 w-1/2 h-full flex-col ">

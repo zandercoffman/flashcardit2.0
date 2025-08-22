@@ -1,11 +1,6 @@
-import Dashboard from "../dashboard/page"
+import { type Metadata } from 'next';
+import DashboardPage from '../dashboard/page';
 
-interface PageProps {
-    params: {
-      id: string;
-    };
-  }
-
-export default function PageID({params}: PageProps) {
-    return <Dashboard defaultImportedSetID={params.id}/>
+export default function Page({ params }: { params: { id: string } }) {
+  return <DashboardPage defaultImportedSetID={params.id} />;
 }
