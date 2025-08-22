@@ -30,7 +30,7 @@ interface Set {
 }
 
 
-export default function Page({
+export default function Dashboard({
   defaultImportedSetID //For example, will give a link such as '110ec58a-a0f2-4ac4-8393-c866d813b8d1'
 }: {
   defaultImportedSetID?: string

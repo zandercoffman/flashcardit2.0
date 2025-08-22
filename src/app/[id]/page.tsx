@@ -1,4 +1,4 @@
-import Page from "../dashboard/page"
+import Dashboard from "../dashboard/page"
 
 interface PageProps {
     params: {
@@ -7,5 +7,5 @@ interface PageProps {
   }
 
 export default function PageID({params}: PageProps) {
-    return <Page defaultImportedSetID={params.id}/>
+    return <Dashboard defaultImportedSetID={params.id}/>
 }
