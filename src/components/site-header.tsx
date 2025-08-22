@@ -2,9 +2,9 @@ import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { ModeToggle } from "./mode-toggle"
-type mode = "normal" | "quiz" | null;
+type mode = "normal" | "quiz" | "speakit" | "picturematch" | null;
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { BookCheck, BookOpen, Megaphone, Milestone, Volume2 } from "lucide-react";
+import { AudioWaveform, BookCheck, BookOpen, Image, Megaphone, Milestone, PencilLine, Settings2, Volume, Volume2 } from "lucide-react";
 
 
 import { VolumeX } from "lucide-react"
@@ -32,6 +32,18 @@ import {
 } from "@/components/ui/select"
 import { useEffect, useState } from "react";
 import { languages, Language } from "@/app/dashboard/languages";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Switch } from "./ui/switch";
+import { ComboboxDemo } from "./pages/compOfPages/combobox";
+import { TTSSettings } from "./pages/compOfPages/TTSSettings";
 
 export function SiteHeader({
   currentHeader,
@@ -49,6 +61,23 @@ export function SiteHeader({
 
   const [thisMode, setThisMode] = useState<mode>(currentMode);
   const [useTTS, willSetSETTTS] = useState<boolean>(false);
+
+  const [voices, setVoices] = useState<any>([]);
+
+  useEffect(() => {
+    const loadVoices = () => {
+      const synthVoices = window.speechSynthesis.getVoices();
+      setVoices(synthVoices);
+    };
+
+    // Some browsers might not have voices loaded immediately
+    if (typeof window !== 'undefined') {
+      if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = loadVoices;
+      }
+      loadVoices();
+    }
+  }, []);
 
   useEffect(() => {
     setThisMode(currentMode);
@@ -68,6 +97,7 @@ export function SiteHeader({
                 <SelectContent>
                   <SelectGroup >
                     <SelectLabel>Modes</SelectLabel>
+
                     <SelectItem value="normal" >
                       <div className="flex justify-start items-center gap-4 ">
                         <BookOpen className="size-4 lg:size-6" />
@@ -86,6 +116,35 @@ export function SiteHeader({
                       </div>
                     </SelectItem>
 
+                    <SelectItem value="speakit">
+                      <div className="flex justify-start items-center gap-4 ">
+                        <AudioWaveform className="size-4 lg:size-6" />
+                        <div className=" w-full">
+                          <h4 className="text-sm font-semibold">Speak It</h4>
+                        </div>
+                      </div>
+                    </SelectItem>
+
+                    <SelectItem value="picturematch">
+                      <div className="flex justify-start items-center gap-4 ">
+                        <Image className="size-4 lg:size-6" />
+                        <div className=" w-full">
+                          <h4 className="text-sm font-semibold">Picture Match</h4>
+                        </div>
+                      </div>
+                    </SelectItem>
+
+                    {/**
+                     * <SelectItem value="sentencecreator">
+                      <div className="flex justify-start items-center gap-4 ">
+                        <PencilLine className="size-4 lg:size-6" />
+                        <div className=" w-full">
+                          <h4 className="text-sm font-semibold">Sentence Creator</h4>
+                        </div>
+                      </div>
+                    </SelectItem>
+                     */}
+
 
                   </SelectGroup>
                 </SelectContent>
@@ -96,101 +155,23 @@ export function SiteHeader({
                   sessionStorage.setItem("ttsEnabled", JSON.stringify(value));
                 }
               }}>
-                {!useTTS ?
-                  <div className="flex justify-start items-center gap-4 ">
-                    <VolumeX className="size-4 lg:size-6" />
-                  </div> :
-                  <HoverCard>
-                    <HoverCardTrigger asChild>
-                      <div className="flex justify-start items-center gap-4 ">
-                        <Volume2 className="size-4 lg:size-6" />
-                      </div>
-                    </HoverCardTrigger>
-                    <HoverCardContent className="w-80 mt-4 h-[80vh] flex flex-col gap-4 ">
-                      <div className="flex justify-between gap-4">
-                        <Megaphone className="size-12" />
-                        <div className="space-y-1">
-                          <Select onValueChange={(value) => {
-                            if (typeof window !== null) {
-                              sessionStorage.setItem("Voice1", `${value}`)
-                            }
-                          }}>
-                            <SelectTrigger className="w-[180px]">
-                              <SelectValue placeholder="Select a voice" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectGroup>
-                                <SelectLabel>Voices</SelectLabel>
-                                <SelectItem value="en-US">Google US English - en-US</SelectItem>
-                                <SelectItem value="en-GB">Google UK English Female - en-GB</SelectItem>
-                                <SelectItem value="es-ES">Google español - es-ES</SelectItem>
-                                <SelectItem value="es-US">Google español de Estados Unidos - es-US</SelectItem>
-                                <SelectItem value="de-DE">Google Deutsch - de-DE</SelectItem>
-                                <SelectItem value="fr-FR">Google français - fr-FR</SelectItem>
-                                <SelectItem value="hi-IN">Google हिन्दी - hi-IN</SelectItem>
-                                <SelectItem value="id-ID">Google Bahasa Indonesia - id-ID</SelectItem>
-                                <SelectItem value="it-IT">Google italiano - it-IT</SelectItem>
-                                <SelectItem value="ja-JP">Google 日本語 - ja-JP</SelectItem>
-                                <SelectItem value="ko-KR">Google 한국의 - ko-KR</SelectItem>
-                                <SelectItem value="nl-NL">Google Nederlands - nl-NL</SelectItem>
-                                <SelectItem value="pl-PL">Google polski - pl-PL</SelectItem>
-                                <SelectItem value="pt-BR">Google português do Brasil - pt-BR</SelectItem>
-                                <SelectItem value="ru-RU">Google русский - ru-RU</SelectItem>
-                                <SelectItem value="zh-CN">Google 普通话（中国大陆） - zh-CN</SelectItem>
-                                <SelectItem value="zh-HK">Google 粵語（香港） - zh-HK</SelectItem>
-                                <SelectItem value="zh-TW">Google 國語（臺灣） - zh-TW</SelectItem>
-                              </SelectGroup>
+                <Dialog>
+                  <DialogTrigger>
+                    <Settings2 className="size-4 lg:size-6" />
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogTitle>Settings</DialogTitle>
+                    <div className="flex flex-col gap-2 mt-2">
 
-                            </SelectContent>
-                          </Select>
-                          <div className="text-muted-foreground text-xs">
-                            This will be the voice for the <span className="text-white font-bold">first</span> side of the card.
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex justify-between gap-4">
-                        <Megaphone className="size-12" />
-                        <div className="space-y-1">
-                          <Select onValueChange={(value) => {
-                            if (typeof window !== null) {
-                              sessionStorage.setItem("Voice2", `${value}`)
-                            }
-                          }}>
-                            <SelectTrigger className="w-[180px]">
-                              <SelectValue placeholder="Select a voice" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectGroup>
-                                <SelectLabel>Voices</SelectLabel>
-                                <SelectItem value="en-US">Google US English - en-US</SelectItem>
-                                <SelectItem value="en-GB">Google UK English Female - en-GB</SelectItem>
-                                <SelectItem value="es-ES">Google español - es-ES</SelectItem>
-                                <SelectItem value="es-US">Google español de Estados Unidos - es-US</SelectItem>
-                                <SelectItem value="de-DE">Google Deutsch - de-DE</SelectItem>
-                                <SelectItem value="fr-FR">Google français - fr-FR</SelectItem>
-                                <SelectItem value="hi-IN">Google हिन्दी - hi-IN</SelectItem>
-                                <SelectItem value="id-ID">Google Bahasa Indonesia - id-ID</SelectItem>
-                                <SelectItem value="it-IT">Google italiano - it-IT</SelectItem>
-                                <SelectItem value="ja-JP">Google 日本語 - ja-JP</SelectItem>
-                                <SelectItem value="ko-KR">Google 한국의 - ko-KR</SelectItem>
-                                <SelectItem value="nl-NL">Google Nederlands - nl-NL</SelectItem>
-                                <SelectItem value="pl-PL">Google polski - pl-PL</SelectItem>
-                                <SelectItem value="pt-BR">Google português do Brasil - pt-BR</SelectItem>
-                                <SelectItem value="ru-RU">Google русский - ru-RU</SelectItem>
-                                <SelectItem value="zh-CN">Google 普通话（中国大陆） - zh-CN</SelectItem>
-                                <SelectItem value="zh-HK">Google 粵語（香港） - zh-HK</SelectItem>
-                                <SelectItem value="zh-TW">Google 國語（臺灣） - zh-TW</SelectItem>
-                              </SelectGroup>
+                      <TTSSettings
+                        ttsEnabledKey="ttsEnabled"
+                        firstVoiceKey="firstVoice"
+                        secondVoiceKey="secondVoice"
+                      />
 
-                            </SelectContent>
-                          </Select>
-                          <div className="text-muted-foreground text-xs">
-                            This will be the voice for the <span className="text-white font-bold">second</span> side of the card.
-                          </div>
-                        </div>
-                      </div>
-                    </HoverCardContent>
-                  </HoverCard>}
+                    </div>
+                  </DialogContent>
+                </Dialog>
 
               </Toggle>
             </div>

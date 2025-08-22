@@ -47,7 +47,7 @@ import {
 } from "@/components/ui/hover-card"
 import HomePage from "@/components/pages/home"
 import HelperPage from "@/components/pages/helper"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 type PageData = {
   title: string;
@@ -152,6 +152,7 @@ var thisdata = {
 export function AppSidebar({ ...props }: any) {
   const sets = props.pastSets;
   const [data, setData] = useState(thisdata);
+
   useEffect(() => {
     var copy = data;
     copy.documents = [
@@ -212,6 +213,7 @@ export function AppSidebar({ ...props }: any) {
       <SidebarContent>
         <NavMain items={data.navMain as PageData[]}
           setcurpage={props.setcurpage}
+          dashRef={props.dashRef}
           setCurrentHeader={props.setCurrentHeader} />
         <NavDocuments items={data.documents as Set[]}
           setSeled={props.setSeled}
@@ -219,9 +221,6 @@ export function AppSidebar({ ...props }: any) {
           setCurrentHeader={props.setCurrentHeader}/>
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
-      <SidebarFooter>
-        <NavUser user={data.user} />
-      </SidebarFooter>
     </Sidebar>
   )
 }

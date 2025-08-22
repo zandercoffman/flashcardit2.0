@@ -16,7 +16,8 @@ import Upload from "./pages/upload"
 export function NavMain({
   items,
   setcurpage,
-  setCurrentHeader
+  setCurrentHeader,
+  dashRef
 }: {
   items: {
     title: string
@@ -24,7 +25,8 @@ export function NavMain({
     icon: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>;
   }[],
   setcurpage: Function,
-  setCurrentHeader: Function
+  setCurrentHeader: Function,
+  dashRef: any
 }) {
   return (
     <SidebarGroup>
@@ -34,6 +36,10 @@ export function NavMain({
             <SidebarMenuButton
               tooltip="Quick Create"
               className="bg-primary w-[60%] text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground duration-200 ease-linear"
+              onClick={() => {
+                setcurpage("quickcreate");
+                setCurrentHeader("Quick Create");
+              }}
             >
               <IconCirclePlusFilled />
               <span className="!text-right">Quick Create</span>
@@ -62,7 +68,7 @@ export function NavMain({
         </SidebarMenu>
         <SidebarMenu>
           {items.map((item) => (
-            <SidebarMenuItem key={item.title}>
+            <SidebarMenuItem key={item.title} ref={item.title === "Dashboard" ? dashRef : null}>
               <SidebarMenuButton tooltip={item.title} onClick={() => {
                 setcurpage(item.title.toLowerCase());
                 setCurrentHeader(item.title);

@@ -10,15 +10,16 @@ import {
   SidebarProvider,
 } from "@/components/ui/sidebar"
 
-import { data } from "./vocab"
 import HomePage from "../../components/pages/home"
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import MainSet from "@/components/set/MainSet"
 import Upload from "@/components/pages/upload"
 import HelperPage from "@/components/pages/helper"
 import { toast } from "sonner"
+import QuickCreate from "@/components/pages/QuickCreate"
+import { AllSets } from "@/lib/AllSets"
 
-type mode = "normal" | "quiz" | null;
+type mode = "normal" | "quiz" | "speakit" | "picturematch" | null;
 type page = "helper" | "dashboard" | "set" | "upload";
 
 interface Set {
@@ -28,19 +29,24 @@ interface Set {
 }
 
 
-export default function Page() {
-
+export default function Page({
+  defaultImportedSetID //For example, will give a link such as '110ec58a-a0f2-4ac4-8393-c866d813b8d1'
+}: {
+  defaultImportedSetID?: string
+}) {
   const [CurrentPage, setcurpage] = useState<page>("dashboard");
   const [currentHeader, setCurrentHeader] = useState<string>("Dashboard");
 
-  
+
 
   const [currentMode, setCurrentMode] = useState<mode>("normal");
 
   const [selected, setSeled] = useState<number | null>(null);
-  const [pastSets, setPastSets] = useState<Set[]>([data as Set]);
+  const [pastSets, setPastSets] = useState<Set[]>([]);
 
   const [ttsEnabled, setTTSEnabled] = useState<boolean>(false);
+
+  const dashboardRef = useRef<HTMLButtonElement>(null);
 
   const getRidOfSet = (index: number) => {
     setSeled(null);
@@ -50,13 +56,55 @@ export default function Page() {
     }, 100);
   }
 
-  const addSet = (newSet: Set) => {
-    setPastSets(prevSets => [...prevSets, newSet]);
-    toast(`${newSet.title} has been successfully been added to your vocab list!`)
-  }
+  const addSet = (newSet: Set): Promise<number> => {
+    return new Promise(resolve => {
+      setPastSets(prevSets => {
+        const updatedSets = [...prevSets, newSet];
+        resolve(updatedSets.length - 1); // return new index
+        return updatedSets;
+      });
+
+      toast(`${newSet.title} has been successfully been added to your vocab list!`);
+      if (dashboardRef?.current) {
+        dashboardRef.current.click();
+      }
+    });
+  };
+
+
 
   useEffect(() => {
-    if (CurrentPage == "set")
+    const process = async () => {
+      const foundSet = AllSets.find(set => set.id === defaultImportedSetID);
+      if (foundSet) {
+        const newIndex = await addSet(foundSet.set);
+        
+
+        toast.success(`Successfully found ${foundSet.set.title}. Happy Studying! (PS. I know you will do well!)`);
+        setcurpage("set");
+        setCurrentHeader(foundSet.set.title);
+        setCurrentMode("normal");
+        setSeled(newIndex); // wait until set is added to pastSets
+
+      }
+    };
+
+    process();
+  }, [AllSets]);
+
+  useEffect(() => {
+    if (pastSets.length > 0) {
+      const lastIndex = pastSets.length - 1;
+  
+      setcurpage("set");
+      setCurrentHeader(pastSets[lastIndex].title);
+      setCurrentMode("normal");
+      setSeled(lastIndex);
+    }
+  }, [pastSets]);
+
+  useEffect(() => {
+    if (selected != null && CurrentPage == "set")
       setSeled(null)
   }, [CurrentPage])
 
@@ -74,6 +122,7 @@ export default function Page() {
         setcurpage={setcurpage}
         setCurrentHeader={setCurrentHeader}
         pastSets={pastSets}
+        dashRef={dashboardRef}
         setSeled={setSeled} />
       <SidebarInset>
         <SiteHeader
@@ -114,11 +163,13 @@ function MainScreen({
     <div className="flex flex-1 flex-col p-5">
       {CurrentPage === "set" ? (
         <MainSet mode={currentMode} currentSet={pastSets[selected || 0]} />
-      ) : CurrentPage === "upload" ? <Upload addSet={addSet}/> : 
-      CurrentPage === "helper" ? <HelperPage/> : 
-      CurrentPage === "dashboard" ? <HomePage/> : <></> }
+      ) : CurrentPage === "upload" ? <Upload addSet={addSet} /> :
+        CurrentPage === "helper" ? <HelperPage /> :
+          CurrentPage === "dashboard" ? <HomePage /> :
+            CurrentPage === "quickcreate" ? <QuickCreate /> : <></>}
 
 
     </div>
   );
 }
+

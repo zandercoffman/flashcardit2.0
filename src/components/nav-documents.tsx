@@ -40,25 +40,31 @@ interface Set {
 }
 import { saveAs } from 'file-saver';
 import { toast } from "sonner"
+import { useEffect, useState } from "react";
 
 export function NavDocuments({
   items,
   setSeled,
   setcurpage,
-  setCurrentHeader
+  setCurrentHeader,
 }: {
   items: Set[],
   setSeled: Function,
   setcurpage: Function,
-  setCurrentHeader: Function
+  setCurrentHeader: Function,
 }) {
   const { isMobile } = useSidebar()
+  const [theseItems, useTheseItems] = useState<Set[]>(items);
+
+  useEffect(() => {
+    useTheseItems(items)
+  }, [items])
 
   return (
-    <SidebarGroup className="group-data-[collapsible=icon]:hidden">
+    <SidebarGroup className="group-data-[collapsible=icon]:hidden" >
       <SidebarGroupLabel>Sets</SidebarGroupLabel>
       <SidebarMenu>
-        {items.map((item, index) => (
+        {theseItems.map((item, index) => (
           <SidebarMenuItem key={`${item.title}-${index}`}>
             <SidebarMenuButton asChild onClick={() => {
               setSeled(index)
