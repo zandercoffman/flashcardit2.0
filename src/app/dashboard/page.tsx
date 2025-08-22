@@ -23,6 +23,10 @@ import { AllSets } from "@/lib/AllSets"
 type mode = "normal" | "quiz" | "speakit" | "picturematch" | null;
 type page = "helper" | "dashboard" | "set" | "upload";
 
+interface DashboardPageProps {
+  defaultImportedSetID: string;
+}
+
 interface Set {
   title: string;
   vocab: [string, string][]; // Array of tuples with two strings
@@ -30,11 +34,7 @@ interface Set {
 }
 
 
-export default function Dashboard({
-  defaultImportedSetID //For example, will give a link such as '110ec58a-a0f2-4ac4-8393-c866d813b8d1'
-}: {
-  defaultImportedSetID?: string
-}) {
+export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) {
   const [CurrentPage, setcurpage] = useState<page>("dashboard");
   const [currentHeader, setCurrentHeader] = useState<string>("Dashboard");
 
