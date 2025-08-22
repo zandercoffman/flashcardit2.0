@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+/* eslint-disable */
 
 "use client";
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card";

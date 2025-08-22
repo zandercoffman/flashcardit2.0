@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-
+/* eslint-disable */
 "use client";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";

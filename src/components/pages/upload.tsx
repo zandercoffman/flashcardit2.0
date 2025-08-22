@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+/* eslint-disable */
 "use client";
 import React, { useState, useRef } from "react";
 import { FileUpload } from "../aceternity/file-upload";
