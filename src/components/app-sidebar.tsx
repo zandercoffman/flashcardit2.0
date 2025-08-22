@@ -51,7 +51,7 @@ import { useEffect, useRef, useState } from "react"
 
 type PageData = {
   title: string;
-  page: React.FC<any>;
+  page: React.FC;
   icon: LucideIcon;
 };
 

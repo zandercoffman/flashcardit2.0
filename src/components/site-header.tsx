@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
@@ -54,7 +56,7 @@ export function SiteHeader({
 }: {
   currentHeader: string,
   currentMode: mode,
-  currentPage: any | "set"
+  currentPage: string | "set"
   setTTSEnabled: Function
   setCurrentMode: (value: string) => void
 }) {
