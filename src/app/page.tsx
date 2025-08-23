@@ -1,10 +1,176 @@
+/* eslint-disable */
 "use client"
 
-import Image from "next/image";
-import Dashboard from "./dashboard/dashboard";
+import { AppSidebar } from "@/components/app-sidebar"
+import { ChartAreaInteractive } from "@/components/chart-area-interactive"
+import { DataTable } from "@/components/data-table"
+import { SectionCards } from "@/components/section-cards"
+import { SiteHeader } from "@/components/site-header"
+import {
+  SidebarInset,
+  SidebarProvider,
+} from "@/components/ui/sidebar"
 
-export default function Home() {
+import HomePage from "@/components/pages/home"
+import React, { useState, useEffect, useRef } from "react"
+import MainSet from "@/components/set/MainSet"
+import Upload from "@/components/pages/upload"
+import HelperPage from "@/components/pages/helper"
+import { toast } from "sonner"
+import QuickCreate from "@/components/pages/QuickCreate"
+import { AllSets } from "@/lib/AllSets"
+
+type mode = "normal" | "quiz" | "speakit" | "picturematch" | null;
+type page = "helper" | "dashboard" | "set" | "upload";
+
+interface DashboardPageProps {
+  defaultImportedSetID: string;
+}
+
+interface Set {
+  title: string;
+  vocab: [string, string][]; // Array of tuples with two strings
+  extraInfo?: Array<string>
+}
+
+
+export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) {
+  const [CurrentPage, setcurpage] = useState<page>("dashboard");
+  const [currentHeader, setCurrentHeader] = useState<string>("Dashboard");
+
+
+
+  const [currentMode, setCurrentMode] = useState<mode>("normal");
+
+  const [selected, setSeled] = useState<number | null>(null);
+  const [pastSets, setPastSets] = useState<Set[]>([]);
+
+  const [ttsEnabled, setTTSEnabled] = useState<boolean>(false);
+
+  const dashboardRef = useRef<HTMLButtonElement>(null);
+
+  const getRidOfSet = (index: number) => {
+    setSeled(null);
+
+    setTimeout(() => {
+      setPastSets(prevSets => prevSets.filter((_, i) => i !== index));
+    }, 100);
+  }
+
+  const addSet = (newSet: Set): Promise<number> => {
+    return new Promise(resolve => {
+      setPastSets(prevSets => {
+        const updatedSets = [...prevSets, newSet];
+        resolve(updatedSets.length - 1); // return new index
+        return updatedSets;
+      });
+
+      toast(`${newSet.title} has been successfully been added to your vocab list!`);
+      if (dashboardRef?.current) {
+        dashboardRef.current.click();
+      }
+    });
+  };
+
+
+
+  useEffect(() => {
+    const process = async () => {
+      const foundSet = AllSets.find(set => set.id === defaultImportedSetID);
+      if (foundSet) {
+        const newIndex = await addSet(foundSet.set);
+        
+
+        toast.success(`Successfully found ${foundSet.set.title}. Happy Studying! (PS. I know you will do well!)`);
+        setcurpage("set");
+        setCurrentHeader(foundSet.set.title);
+        setCurrentMode("normal");
+        setSeled(newIndex); // wait until set is added to pastSets
+
+      }
+    };
+
+    process();
+  }, [AllSets]);
+
+  useEffect(() => {
+    if (pastSets.length > 0) {
+      const lastIndex = pastSets.length - 1;
+  
+      setcurpage("set");
+      setCurrentHeader(pastSets[lastIndex].title);
+      setCurrentMode("normal");
+      setSeled(lastIndex);
+    }
+  }, [pastSets]);
+
+  useEffect(() => {
+    if (selected != null && CurrentPage == "set")
+      setSeled(null)
+  }, [CurrentPage])
+
   return (
-    <Dashboard defaultImportedSetID=""/>
+    <SidebarProvider
+      style={
+        {
+          "--sidebar-width": "calc(var(--spacing) * 72)",
+          "--header-height": "calc(var(--spacing) * 12)",
+        } as React.CSSProperties
+      }
+    >
+      <AppSidebar
+        variant="inset"
+        setcurpage={setcurpage}
+        setCurrentHeader={setCurrentHeader}
+        pastSets={pastSets}
+        dashRef={dashboardRef}
+        setSeled={setSeled} />
+      <SidebarInset>
+        <SiteHeader
+          currentHeader={currentHeader} currentPage={CurrentPage} setTTSEnabled={setTTSEnabled}
+          currentMode={currentMode} setCurrentMode={function (value: string): void {
+            setCurrentMode(value as mode)
+          }} />
+        <div className="flex flex-1 flex-col p-5">
+          <MainScreen
+            selected={selected}
+            CurrentPage={CurrentPage}
+            pastSets={pastSets}
+            currentMode={currentMode}
+            addSet={addSet}
+          />
+
+        </div>
+
+      </SidebarInset>
+    </SidebarProvider>
+  )
+}
+
+function MainScreen({
+  selected,
+  CurrentPage,
+  pastSets,
+  currentMode,
+  addSet
+}: {
+  selected: number | null;
+  CurrentPage: page;
+  pastSets: Set[];
+  currentMode: mode;
+  addSet: Function;
+}) {
+  return (
+    <div className="flex flex-1 flex-col p-5">
+      {CurrentPage === "set" ? (
+        <MainSet mode={currentMode} currentSet={pastSets[selected || 0]} />
+      ) : CurrentPage === "upload" ? <Upload addSet={addSet} /> :
+        CurrentPage === "helper" ? <HelperPage /> :
+          CurrentPage === "dashboard" ? <HomePage /> :
+            CurrentPage === "quickcreate" ? <QuickCreate /> : <></>}
+
+
+    </div>
   );
 }
+

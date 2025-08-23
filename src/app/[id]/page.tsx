@@ -1,18 +1,12 @@
-/* eslint-disable */
-
-import DashboardPage from "../dashboard/dashboard";
+import Dashboard from "../page";
 
 interface PageProps {
   params: {
-    id: Promise<string>;
-  };
-  searchParams?: {
-    [key: string]: string | string[] | undefined;
+    id: string;
   };
 }
 
-export default async function Page({ params, searchParams }: PageProps) {
+export default function Page({ params }: PageProps) {
   // You can use searchParams here if needed, or just ignore it for now
-  const resolvedId = await params.id; // Await the promise
-  return <DashboardPage defaultImportedSetID={resolvedId} />;
+  return <Dashboard defaultImportedSetID={params.id} />;
 }
