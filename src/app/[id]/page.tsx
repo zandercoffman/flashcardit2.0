@@ -1,4 +1,4 @@
-import DashboardPage from "../dashboard/page";
+import DashboardPage from "../dashboard/dashboard";
 
 interface PageProps {
   params: {
