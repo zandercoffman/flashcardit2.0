@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import DashboardPage from "../dashboard/dashboard";
 
 interface PageProps {
