@@ -1,10 +1,10 @@
 "use client"
 
 import Image from "next/image";
-import Page from "./dashboard/dashboard";
+import Dashboard from "./dashboard/dashboard";
 
 export default function Home() {
   return (
-    <Page defaultImportedSetID=""/>
+    <Dashboard defaultImportedSetID=""/>
   );
 }
