@@ -76,22 +76,23 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
 
   useEffect(() => {
     const process = async () => {
-      const foundSet = AllSets.find(set => set.id === defaultImportedSetID);
-      if (foundSet) {
-        const newIndex = await addSet(foundSet.set);
-        
+ if (defaultImportedSetID) {
+ setTimeout(async () => {
+ const foundSet = AllSets.find(set => set.id === defaultImportedSetID);
+ if (foundSet) {
+ const newIndex = await addSet(foundSet.set);
+ toast.success(`Successfully found ${foundSet.set.title}. Happy Studying! (PS. I know you will do well!)`);
+ setcurpage("set");
+ setCurrentHeader(foundSet.set.title);
+ setCurrentMode("normal");
+ setSeled(newIndex); // wait until set is added to pastSets
+ }
+ }, 100); // Small delay
+ }
 
-        toast.success(`Successfully found ${foundSet.set.title}. Happy Studying! (PS. I know you will do well!)`);
-        setcurpage("set");
-        setCurrentHeader(foundSet.set.title);
-        setCurrentMode("normal");
-        setSeled(newIndex); // wait until set is added to pastSets
-
-      }
     };
-
     process();
-  }, [AllSets]);
+  }, [defaultImportedSetID, AllSets]); // Add defaultImportedSetID to the dependency array
 
   useEffect(() => {
     if (pastSets.length > 0) {

@@ -3,6 +3,10 @@ import Dashboard from "../page";
 interface PageProps {
   params: {
     id: string;
+    then: Promise<unknown>['then'];
+    catch: Promise<unknown>['catch'];
+    finally: Promise<unknown>['finally'];
+    [Symbol.toStringTag]: Promise<unknown>[typeof Symbol.toStringTag];
   };
 }
 
