@@ -36,6 +36,7 @@ import { toast } from "sonner"
 import SetAI from "./setAI/setAI"
 import Loader from "../loader"
 import { encrypt, decrypt } from "@/lib/ED";
+import { GoogleGenAI } from "@google/genai"
 
 interface Set {
     title: string;
@@ -50,7 +51,7 @@ export default function QuickCreate({
     const [mode, setMode] = useState<null | "ai" | "manual">(null)
 
     const [isLoading, setIsLoading] = useState<[boolean, string]>([false, "Creating your Flashcard Set..."]);
-    const [apiKey, setApiKey] = useState<{ encrypted: string, iv: string, tag: string} | boolean>(false);
+    const [apiKey, setApiKey] = useState<{ encrypted: string, iv: string, tag: string } | boolean>(false);
 
     const [isLoadingAPI, setIsLoadingAPI] = useState<boolean>(false);
 
@@ -93,55 +94,70 @@ export default function QuickCreate({
     })
 
     async function onSubmitAI(values: z.infer<typeof AIFormSchema>) {
-        if (apiKey === false) return toast.error("No API key provided");
-    
+        if (typeof apiKey === "boolean") return toast.error("No API key provided");
+
         setIsLoading([true, "Generating your set..."]);
         setIsLoadingAPI(true)
         try {
-          const res = await fetch("/api/generate-flashcards", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ ...values, apiKey }),
-          });
-    
-          const data = await res.json();
-          if (!res.ok) {
-            toast.error(data.error || "Failed to generate flashcards");
-            return;
-          }
-    
-          addSet(data.set);
-          toast.success("Flashcards generated!");
+            const decrypted = decrypt(apiKey.encrypted, apiKey.iv, apiKey.tag);
+            const ai = new GoogleGenAI({ apiKey: decrypted });
+
+            const prompt = `Create a set of flashcards in JSON format...
+        Subject: ${values.subject}
+        Question Type: ${values.questionType}
+        Difficulty: ${values.difficulty}
+        Number of cards: ${values.numberOfCards}
+        Additional Notes: ${values.additionalNotes}
+        
+        Return ONLY JSON in this structure. Do not have any new lines, any formatting, give it all in one line:
+        {
+          "title": "Example Set",
+          "vocab": [["Question 1", "Answer 1"], ["Question 2", "Answer 2"]]
+        }`;
+
+            const response = await ai.models.generateContent({
+                model: "gemini-2.5-flash",
+                contents: prompt
+            })
+            const text = response.text || "";
+            const firstBracket = text.indexOf("{")
+            const lastBracker = text.indexOf("{")
+
+            const fullText = text.substring(firstBracket, lastBracker).trim();
+
+
+            addSet(JSON.parse(fullText) as Set);
+            toast.success("Flashcards generated!");
         } catch (err) {
-          toast.error("Network error");
-          console.error(err);
+            toast.error("Network error");
+            console.error(err);
         } finally {
-          setIsLoading([false, ""]);
-          setIsLoadingAPI(false);
+            setIsLoading([false, ""]);
+            setIsLoadingAPI(false);
         }
-      }
+    }
 
     useEffect(() => {
         const keyString = localStorage.getItem("aiKey");
-        setApiKey(keyString ? true : false);
-      }, []);
+        setApiKey(keyString ? JSON.parse(keyString) : false);
+    }, []);
 
-      async function saveKey(key: string) {
+    async function saveKey(key: string) {
         if (!key) return;
-      
+
         try {
-          const encrypted = encrypt(key); // { encrypted, iv, tag }
-          
-          // Save locally
-          localStorage.setItem("aiKey", JSON.stringify(encrypted));
-          
-          // Update state
-          setApiKey(encrypted);
+            const encrypted = encrypt(key); // { encrypted, iv, tag }
+
+            // Save locally
+            localStorage.setItem("aiKey", JSON.stringify(encrypted));
+
+            // Update state
+            setApiKey(encrypted);
         } catch (err) {
-          console.error("Error saving key:", err);
+            console.error("Error saving key:", err);
         }
-      }
-      
+    }
+
 
     if (isLoadingAPI) {
         return <Loader />
