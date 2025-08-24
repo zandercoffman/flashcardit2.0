@@ -123,7 +123,7 @@ export default function QuickCreate({
             const firstBracket = text.indexOf("{")
             const lastBracket = text.lastIndexOf("}")
 
-            const fullText = text.substring(firstBracket, lastBracket).trim();
+            const fullText = text.substring(firstBracket, lastBracket + 1).trim();
 
 
             addSet(JSON.parse(fullText) as Set);
