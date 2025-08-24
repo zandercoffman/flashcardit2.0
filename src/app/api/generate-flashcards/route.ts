@@ -1,6 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 import { NextResponse } from "next/server";
 import crypto from "crypto";
+import { fi } from "date-fns/locale";
 
 // Ensure Node.js runtime so 'crypto' is available
 export const runtime = "nodejs";
@@ -48,7 +49,7 @@ Difficulty: ${difficulty}
 Number of cards: ${numberOfCards}
 Additional Notes: ${additionalNotes}
 
-Return ONLY JSON in this structure:
+Return ONLY JSON in this structure. Do not have any new lines, any formatting, give it all in one line:
 {
   "title": "Example Set",
   "vocab": [["Question 1", "Answer 1"], ["Question 2", "Answer 2"]]
@@ -59,10 +60,14 @@ Return ONLY JSON in this structure:
       contents: prompt
     })
     const text = response.text || "";
+    const firstBracket = text.indexOf("{")
+    const lastBracker = text.indexOf("{")
+
+    let fullText = text.substring(firstBracket, lastBracker)
 
     let set: Set;
     try {
-      set = JSON.parse(text);
+      set = JSON.parse(fullText);
     } catch (jsonError) {
       return NextResponse.json({ error: "Failed to parse AI response as JSON.", rawText: text }, { status: 500 });
     }
