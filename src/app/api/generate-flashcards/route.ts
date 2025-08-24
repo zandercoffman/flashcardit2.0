@@ -63,7 +63,7 @@ Return ONLY JSON in this structure. Do not have any new lines, any formatting, g
     const firstBracket = text.indexOf("{")
     const lastBracker = text.indexOf("{")
 
-    let fullText = text.substring(firstBracket, lastBracker).trim();
+    const fullText = text.substring(firstBracket, lastBracker).trim();
 
     let set: Set;
     try {
