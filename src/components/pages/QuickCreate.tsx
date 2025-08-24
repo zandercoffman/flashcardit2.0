@@ -31,22 +31,33 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Input as FileInput } from "@/components/ui/input"
+import { GoogleGenerativeAI } from "@google/generative-ai"
 import { toast } from "sonner"
 import SetAI from "./setAI/setAI"
 import Loader from "../loader"
+import { encrypt, decrypt } from "@/lib/ED";
 
-export default function QuickCreate() {
+interface Set {
+    title: string;
+    vocab: [string, string][];
+}
+
+export default function QuickCreate({
+    addSet
+}: {
+    addSet: Function
+}) {
     const [mode, setMode] = useState<null | "ai" | "manual">(null)
 
     const [isLoading, setIsLoading] = useState<[boolean, string]>([false, "Creating your Flashcard Set..."]);
-    const [apiKey, setApiKey] = useState<string | null>(null);
+    const [apiKey, setApiKey] = useState<{ encrypted: string, iv: string, tag: string} | boolean>(false);
 
-    const [isLoadingAPI, setIsLoadingAPI] = useState<boolean>(true);
-
-   
+    const [isLoadingAPI, setIsLoadingAPI] = useState<boolean>(false);
 
 
-    if (isLoading[0]) {
+
+
+    if (isLoadingAPI) {
         return <div className="w-full h-full flex flex-col gap-10 items-center justify-center">
             <svg width="100" height="100" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" rx="1" width="10" height="10"><animate id="spinner_c7A9" begin="0;spinner_23zP.end" attributeName="x" dur="0.2s" values="1;13" fill="freeze" /><animate id="spinner_Acnw" begin="spinner_ZmWi.end" attributeName="y" dur="0.2s" values="1;13" fill="freeze" /><animate id="spinner_iIcm" begin="spinner_zfQN.end" attributeName="x" dur="0.2s" values="13;1" fill="freeze" /><animate id="spinner_WX4U" begin="spinner_rRAc.end" attributeName="y" dur="0.2s" values="13;1" fill="freeze" /></rect><rect x="1" y="13" rx="1" width="10" height="10"><animate id="spinner_YLx7" begin="spinner_c7A9.end" attributeName="y" dur="0.2s" values="13;1" fill="freeze" /><animate id="spinner_vwnJ" begin="spinner_Acnw.end" attributeName="x" dur="0.2s" values="1;13" fill="freeze" /><animate id="spinner_KQuy" begin="spinner_iIcm.end" attributeName="y" dur="0.2s" values="1;13" fill="freeze" /><animate id="spinner_arKy" begin="spinner_WX4U.end" attributeName="x" dur="0.2s" values="13;1" fill="freeze" /></rect><rect x="13" y="13" rx="1" width="10" height="10"><animate id="spinner_ZmWi" begin="spinner_YLx7.end" attributeName="x" dur="0.2s" values="13;1" fill="freeze" /><animate id="spinner_zfQN" begin="spinner_vwnJ.end" attributeName="y" dur="0.2s" values="13;1" fill="freeze" /><animate id="spinner_rRAc" begin="spinner_KQuy.end" attributeName="x" dur="0.2s" values="1;13" fill="freeze" /><animate id="spinner_23zP" begin="spinner_arKy.end" attributeName="y" dur="0.2s" values="1;13" fill="freeze" /></rect></svg>
             <h1 className="scroll-m-20 text-center text-4xl font-bold tracking-tight text-balance">
@@ -55,9 +66,9 @@ export default function QuickCreate() {
         </div>
     }
 
-    
 
-   
+
+
 
     const AIFormSchema = z.object({
         files: z
@@ -81,32 +92,71 @@ export default function QuickCreate() {
         },
     })
 
-    function onSubmitAI(values: z.infer<typeof AIFormSchema>) {
-        toast(JSON.stringify(values, null, 2))
-
-        values.files.map((file: File, idx: number) => (
-            toast(file.name)
-        ))
-    }
-
+    async function onSubmitAI(values: z.infer<typeof AIFormSchema>) {
+        if (apiKey === false) return toast.error("No API key provided");
+    
+        setIsLoading([true, "Generating your set..."]);
+        setIsLoadingAPI(true)
+        try {
+          const res = await fetch("/api/generate-flashcards", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ ...values, apiKey }),
+          });
+    
+          const data = await res.json();
+          if (!res.ok) {
+            toast.error(data.error || "Failed to generate flashcards");
+            return;
+          }
+    
+          addSet(data.set);
+          toast.success("Flashcards generated!");
+        } catch (err) {
+          toast.error("Network error");
+          console.error(err);
+        } finally {
+          setIsLoading([false, ""]);
+          setIsLoadingAPI(false);
+        }
+      }
 
     useEffect(() => {
-        const doStuff = () => {
-            let variable = localStorage.getItem("apiKey");
-            if (variable) {
-                setApiKey(variable);
-            }
+        const keyString = localStorage.getItem("aiKey");
+        setApiKey(keyString ? true : false);
+      }, []);
 
-            setIsLoadingAPI(false);
+      async function saveKey(key: string) {
+        if (!key) return;
+      
+        try {
+          const response = await fetch("/api/keys/encrypt", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ rawKey: key }),
+          });
+      
+          if (!response.ok) {
+            throw new Error("Failed to encrypt key");
+          }
+      
+          const encrypted = await response.json(); // { encrypted, iv, tag }
+          
+          // Save locally
+          localStorage.setItem("aiKey", JSON.stringify(encrypted));
+          
+          // Update state
+          setApiKey(encrypted);
+        } catch (err) {
+          console.error("Error saving key:", err);
         }
-
-        doStuff();
-    }, [])
+      }
+      
 
     if (isLoadingAPI) {
-        return <Loader/>
+        return <Loader />
     }
-    
+
 
     if (mode === "ai") return (
         <Card className="w-full h-full p-4 py-10 flex flex-row gap-2">
@@ -114,14 +164,14 @@ export default function QuickCreate() {
                 <CardTitle>AI-Generated Set</CardTitle>
                 <CardDescription>
                     {
-                        typeof apiKey == "string" ? "Provide your inputs below to let the AI generate flashcards.\nIf you have unformatted or plain text (like raw notes or copied material), please place that in the “Additional Notes” section." : "To continue, you’ll need to supply an API key. If you have a referral code instead, you can enter that as well."
+                        apiKey === false ? "Provide your inputs below to let the AI generate flashcards.\nIf you have unformatted or plain text (like raw notes or copied material), please place that in the “Additional Notes” section." : "To continue, you’ll need to supply an API key. If you have a referral code instead, you can enter that as well."
                     }
                 </CardDescription>
             </CardHeader>
             <CardContent className="w-2/3">
                 {
-                    typeof apiKey !== "string" ? <>
-                        <SetAI setAPIKey={setApiKey}/>
+                    apiKey === false ? <>
+                        <SetAI setAPIKey={saveKey} />
                     </> : <Form {...AIForm}>
                         <form onSubmit={AIForm.handleSubmit(onSubmitAI)} className="space-y-6">
                             <div className="flex flex-row gap-6">

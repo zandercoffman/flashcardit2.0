@@ -168,7 +168,7 @@ function MainScreen({
       ) : CurrentPage === "upload" ? <Upload addSet={addSet} /> :
         CurrentPage === "helper" ? <HelperPage /> :
           CurrentPage === "dashboard" ? <HomePage /> :
-            CurrentPage === "quickcreate" ? <QuickCreate /> : <></>}
+            CurrentPage === "quickcreate" ? <QuickCreate addSet={addSet}/> : <></>}
 
 
     </div>

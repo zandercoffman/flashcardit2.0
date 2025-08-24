@@ -7,7 +7,7 @@ interface AllSetsInterface { id: string, set: Set }
 
 export const AllSets: AllSetsInterface[] = [
     {
-        id: "tema-1-las-familias-y-las-comunidades",
+        id: "ap-tema-1-las-familias-y-las-comunidades",
         set: {
             title: "Tema 1 - Las familias y las comunidades",
             vocab: [
@@ -251,7 +251,7 @@ export const AllSets: AllSetsInterface[] = [
         }
     },
     {
-        id: "tema-2-vocabulario",
+        id: "ap-tema-2-vocabulario",
         set: {
             title: "Tema 2 Vocabulario",
             vocab: [
