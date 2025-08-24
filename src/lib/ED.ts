@@ -3,7 +3,7 @@ import crypto from "crypto";
 export function encrypt(text: string) {
   if (!text) throw new Error("Text is required for encryption");
 
-  const masterKey = VtB2cuzJMMyglrU92SflDJuQTOkSCYGGzSieOTBi81Q;
+  const masterKey = "VtB2cuzJMMyglrU92SflDJuQTOkSCYGGzSieOTBi81Q";
   if (!masterKey) throw new Error("MASTER_KEY is not defined");
 
   const secret = crypto.createHash("sha256").update(masterKey).digest();
@@ -18,7 +18,7 @@ export function encrypt(text: string) {
 }
 
 export function decrypt(encrypted: string, ivHex: string, tagHex: string) {
-  const masterKey = VtB2cuzJMMyglrU92SflDJuQTOkSCYGGzSieOTBi81Q;
+  const masterKey = "VtB2cuzJMMyglrU92SflDJuQTOkSCYGGzSieOTBi81Q";
   if (!masterKey) throw new Error("MASTER_KEY is not defined");
 
   const secret = crypto.createHash("sha256").update(masterKey).digest();

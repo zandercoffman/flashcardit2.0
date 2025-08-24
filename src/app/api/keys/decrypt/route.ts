@@ -11,7 +11,7 @@ function decrypt(encrypted: string, ivHex: string, tagHex: string) {
     throw new Error("encrypted, iv, and tag are required");
   }
 
-  const masterKey = VtB2cuzJMMyglrU92SflDJuQTOkSCYGGzSieOTBi81Q;
+  const masterKey = "VtB2cuzJMMyglrU92SflDJuQTOkSCYGGzSieOTBi81Q";
   if (!masterKey) throw new Error("MASTER_KEY is not defined on server");
 
   // Derive the 32-byte key from MASTER_KEY

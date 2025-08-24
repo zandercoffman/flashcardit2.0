@@ -9,7 +9,7 @@ export const runtime = "nodejs";
 function encrypt(text: string) {
   if (!text) throw new Error("Text is required");
 
-  const masterKey = VtB2cuzJMMyglrU92SflDJuQTOkSCYGGzSieOTBi81Q;
+  const masterKey = "VtB2cuzJMMyglrU92SflDJuQTOkSCYGGzSieOTBi81Q";
   if (!masterKey) throw new Error("MASTER_KEY is not defined on server");
 
   // Derive a 32-byte key from MASTER_KEY using SHA-256
