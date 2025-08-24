@@ -130,17 +130,7 @@ export default function QuickCreate({
         if (!key) return;
       
         try {
-          const response = await fetch("/api/keys/encrypt", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ rawKey: key }),
-          });
-      
-          if (!response.ok) {
-            throw new Error("Failed to encrypt key");
-          }
-      
-          const encrypted = await response.json(); // { encrypted, iv, tag }
+          const encrypted = encrypt(key); // { encrypted, iv, tag }
           
           // Save locally
           localStorage.setItem("aiKey", JSON.stringify(encrypted));
