@@ -36,7 +36,11 @@ import { toast } from "sonner"
 import SetAI from "./setAI/setAI"
 import Loader from "../loader"
 import { encrypt, decrypt } from "@/lib/ED";
-import { GoogleGenAI } from "@google/genai"
+import {
+    GoogleGenAI,
+    createUserContent,
+    createPartFromUri,
+  } from "@google/genai";
 
 interface Set {
     title: string;
@@ -54,22 +58,6 @@ export default function QuickCreate({
     const [apiKey, setApiKey] = useState<{ encrypted: string, iv: string, tag: string } | boolean>(false);
 
     const [isLoadingAPI, setIsLoadingAPI] = useState<boolean>(false);
-
-
-
-
-    if (isLoadingAPI) {
-        return <div className="w-full h-full flex flex-col gap-10 items-center justify-center">
-            <svg width="100" height="100" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" rx="1" width="10" height="10"><animate id="spinner_c7A9" begin="0;spinner_23zP.end" attributeName="x" dur="0.2s" values="1;13" fill="freeze" /><animate id="spinner_Acnw" begin="spinner_ZmWi.end" attributeName="y" dur="0.2s" values="1;13" fill="freeze" /><animate id="spinner_iIcm" begin="spinner_zfQN.end" attributeName="x" dur="0.2s" values="13;1" fill="freeze" /><animate id="spinner_WX4U" begin="spinner_rRAc.end" attributeName="y" dur="0.2s" values="13;1" fill="freeze" /></rect><rect x="1" y="13" rx="1" width="10" height="10"><animate id="spinner_YLx7" begin="spinner_c7A9.end" attributeName="y" dur="0.2s" values="13;1" fill="freeze" /><animate id="spinner_vwnJ" begin="spinner_Acnw.end" attributeName="x" dur="0.2s" values="1;13" fill="freeze" /><animate id="spinner_KQuy" begin="spinner_iIcm.end" attributeName="y" dur="0.2s" values="1;13" fill="freeze" /><animate id="spinner_arKy" begin="spinner_WX4U.end" attributeName="x" dur="0.2s" values="13;1" fill="freeze" /></rect><rect x="13" y="13" rx="1" width="10" height="10"><animate id="spinner_ZmWi" begin="spinner_YLx7.end" attributeName="x" dur="0.2s" values="13;1" fill="freeze" /><animate id="spinner_zfQN" begin="spinner_vwnJ.end" attributeName="y" dur="0.2s" values="13;1" fill="freeze" /><animate id="spinner_rRAc" begin="spinner_KQuy.end" attributeName="x" dur="0.2s" values="1;13" fill="freeze" /><animate id="spinner_23zP" begin="spinner_arKy.end" attributeName="y" dur="0.2s" values="1;13" fill="freeze" /></rect></svg>
-            <h1 className="scroll-m-20 text-center text-4xl font-bold tracking-tight text-balance">
-                {isLoading[1]}
-            </h1>
-        </div>
-    }
-
-
-
-
 
     const AIFormSchema = z.object({
         files: z
@@ -95,48 +83,82 @@ export default function QuickCreate({
 
     async function onSubmitAI(values: z.infer<typeof AIFormSchema>) {
         if (typeof apiKey === "boolean") return toast.error("No API key provided");
-
         setIsLoading([true, "Generating your set..."]);
-        setIsLoadingAPI(true)
+
         try {
             const decrypted = decrypt(apiKey.encrypted, apiKey.iv, apiKey.tag);
             const ai = new GoogleGenAI({ apiKey: decrypted });
 
+            // Start building prompt
             const prompt = `Create a set of flashcards in JSON format...
-        Subject: ${values.subject}
-        Question Type: ${values.questionType}
-        Difficulty: ${values.difficulty}
-        Number of cards: ${values.numberOfCards}
-        Additional Notes: ${values.additionalNotes}
-        
-        Return ONLY JSON in this structure. Do not have any new lines, any formatting, give it all in one line:
-        {
-          "title": "Example Set",
-          "vocab": [["Question 1", "Answer 1"], ["Question 2", "Answer 2"]]
-        }`;
+            Subject: ${values.subject}
+            Question Type: ${values.questionType}
+            Difficulty: ${values.difficulty}
+            Number of cards: ${values.numberOfCards}
+            Additional Notes: ${values.additionalNotes}
+            
+            Return ONLY JSON in this structure. Do not have any new lines, any formatting, give it all in one line:
+            {
+              "title": "Example Set",
+              "vocab": [["Question 1", "Answer 1"], ["Question 2", "Answer 2"]]
+            }`;
 
-            const response = await ai.models.generateContent({
-                model: "gemini-2.5-flash",
-                contents: prompt
-            })
+            // Upload files if present
+            let uploaded = null;
+            if (values.files && values.files.length == 0) {
+                const blob = new Blob([await values.files[0].arrayBuffer()], { type: values.files[0].type || "application/octet-stream" });
+                uploaded = await ai.files.upload({
+                    file: blob,
+                    config: { mimeType: values.files[0].type }
+                });
+            }
+
+            let response;
+            if (uploaded !== null) {
+                response = await ai.models.generateContent({
+                    model: "gemini-2.5-flash",
+                    contents: createUserContent([
+                        createPartFromUri(uploaded.uri!, uploaded.mimeType!),
+                        prompt
+                    ])
+                });
+            } else {
+                response = await ai.models.generateContent({
+                    model: "gemini-2.5-flash",
+                    contents: prompt
+                });
+            }
+
+
+
             const text = response.text || "";
-            console.log("Raw AI response:", text); // Add this line
-            const firstBracket = text.indexOf("{");
-            const lastBracket = text.lastIndexOf("}");
-        
-            const fullText = text.substring(firstBracket, lastBracket + 1).trim();
-            console.log("Extracted JSON text:", fullText); // Add this line
-        
-            addSet(JSON.parse(fullText) as Set);
+            console.log("Raw AI response:", text);
 
-            addSet(JSON.parse(fullText) as Set);
-            toast.success("Flashcards generated!");
-        } catch (err) {
-            toast.error("Network error");
-            console.error(err);
-        } finally {
+            const jsonMatch = text.match(/\{.*\}/s);
+            if (jsonMatch && jsonMatch[0]) {
+                const fullText = jsonMatch[0].trim();
+                console.log("Extracted JSON text:", fullText);
+
+                try {
+                    addSet(JSON.parse(fullText) as Set);
+                    toast.success("Flashcards generated!");
+                } catch (err) {
+                    toast.error("Failed to parse AI response.");
+                    console.error("Parsing error:", err);
+                }
+            } else {
+                toast.error("Could not find JSON in AI response.");
+                console.error("No JSON found in response:", text);
+            }
+
             setIsLoading([false, ""]);
-            setIsLoadingAPI(false);
+        } catch (err) {
+            setIsLoading([false, ""]);
+            toast.error("Something went wrong.");
+            console.error(err);
+        }
+        finally {
+            setIsLoading([false, ""]);
         }
     }
 
@@ -161,11 +183,14 @@ export default function QuickCreate({
         }
     }
 
-
     if (isLoadingAPI) {
-        return <Loader />
+        return <div className="w-full h-full flex flex-col gap-10 items-center justify-center">
+            <svg width="100" height="100" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" rx="1" width="10" height="10"><animate id="spinner_c7A9" begin="0;spinner_23zP.end" attributeName="x" dur="0.2s" values="1;13" fill="freeze" /><animate id="spinner_Acnw" begin="spinner_ZmWi.end" attributeName="y" dur="0.2s" values="1;13" fill="freeze" /><animate id="spinner_iIcm" begin="spinner_zfQN.end" attributeName="x" dur="0.2s" values="13;1" fill="freeze" /><animate id="spinner_WX4U" begin="spinner_rRAc.end" attributeName="y" dur="0.2s" values="13;1" fill="freeze" /></rect><rect x="1" y="13" rx="1" width="10" height="10"><animate id="spinner_YLx7" begin="spinner_c7A9.end" attributeName="y" dur="0.2s" values="13;1" fill="freeze" /><animate id="spinner_vwnJ" begin="spinner_Acnw.end" attributeName="x" dur="0.2s" values="1;13" fill="freeze" /><animate id="spinner_KQuy" begin="spinner_iIcm.end" attributeName="y" dur="0.2s" values="1;13" fill="freeze" /><animate id="spinner_arKy" begin="spinner_WX4U.end" attributeName="x" dur="0.2s" values="13;1" fill="freeze" /></rect><rect x="13" y="13" rx="1" width="10" height="10"><animate id="spinner_ZmWi" begin="spinner_YLx7.end" attributeName="x" dur="0.2s" values="13;1" fill="freeze" /><animate id="spinner_zfQN" begin="spinner_vwnJ.end" attributeName="y" dur="0.2s" values="13;1" fill="freeze" /><animate id="spinner_rRAc" begin="spinner_KQuy.end" attributeName="x" dur="0.2s" values="1;13" fill="freeze" /><animate id="spinner_23zP" begin="spinner_arKy.end" attributeName="y" dur="0.2s" values="1;13" fill="freeze" /></rect></svg>
+            <h1 className="scroll-m-20 text-center text-4xl font-bold tracking-tight text-balance">
+                {isLoading[1]}
+            </h1>
+        </div>
     }
-
 
     if (mode === "ai") return (
         <Card className="w-full h-full p-4 py-10 flex flex-row gap-2">
