@@ -120,11 +120,14 @@ export default function QuickCreate({
                 contents: prompt
             })
             const text = response.text || "";
-            const firstBracket = text.indexOf("{")
-            const lastBracket = text.lastIndexOf("}")
-
+            console.log("Raw AI response:", text); // Add this line
+            const firstBracket = text.indexOf("{");
+            const lastBracket = text.lastIndexOf("}");
+        
             const fullText = text.substring(firstBracket, lastBracket + 1).trim();
-
+            console.log("Extracted JSON text:", fullText); // Add this line
+        
+            addSet(JSON.parse(fullText) as Set);
 
             addSet(JSON.parse(fullText) as Set);
             toast.success("Flashcards generated!");
