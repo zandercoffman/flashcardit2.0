@@ -59,15 +59,11 @@ Return ONLY JSON in this structure. Do not have any new lines, any formatting, g
       model: "gemini-2.5-flash",
       contents: prompt
     })
-    const text = response.text || "";
-    const firstBracket = text.indexOf("{")
-    const lastBracker = text.indexOf("{")
-
-    let fullText = text.substring(firstBracket, lastBracker)
+    const text = response.text?.replace(/^```json\s*|```$/g, "").trim() || "";
 
     let set: Set;
     try {
-      set = JSON.parse(fullText);
+      set = JSON.parse(text);
     } catch (jsonError) {
       return NextResponse.json({ error: "Failed to parse AI response as JSON.", rawText: text }, { status: 500 });
     }
