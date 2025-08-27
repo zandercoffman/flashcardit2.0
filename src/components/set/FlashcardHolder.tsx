@@ -106,12 +106,12 @@ export default function FlashcardHolder({
 
     //<CardStack items={CARDS}/> 
 
-    return <div className="mx-auto my-auto flex flex-col w-[80vw] lg:max-w-2xl relative p-4">
+    return <div className="mx-auto my-auto flex flex-col w-[85vw] md:max-w-2xl relative md:p-4">
         <NavigationMenuFlashcardSet current={current} total={count} set={set}/>
         <div className="">
 
             <Carousel
-                className="relative h-[100%] overflow-hidden z-[3]"
+                className="relative h-[100%]  z-[3]"
                 setApi={setApi}
                 opts={{
                     align: "start",
@@ -123,7 +123,7 @@ export default function FlashcardHolder({
                     {
                         set.vocab.map((vocab: [string, string]) => {
                             return <>
-                                <CarouselItem className="flex-shrink-0 w-full md:w-96 p-2">
+                                <CarouselItem className="flex-shrink-0 w-full md:w-96 p-2 mb-10 md:mb-0">
                                     <FlashCard front={vocab[0]} back={vocab[1]} setIsFlippedS={setIsFlippedS} />
                                 </CarouselItem>
                             </>
@@ -132,10 +132,10 @@ export default function FlashcardHolder({
 
                 </CarouselContent>
                 <CarouselPrevious
-                    className={"absolute left-0 top-32 lg:top-1/2 transform -translate-y-1/2"}
+                    className={"absolute left-15 md:left-0 md:top-32 top-full lg:top-1/2 transform md:-translate-y-1/2"}
                 />
                 <CarouselNext
-                    className={"absolute right-0 top-32 lg:top-1/2 transform -translate-y-1/2"}
+                    className={"absolute right-15 md:right-0 md:top-32 top-full lg:top-1/2 transform md:-translate-y-1/2"}
                 />
             </Carousel>
 

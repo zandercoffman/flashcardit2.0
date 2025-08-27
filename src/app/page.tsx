@@ -38,7 +38,18 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
   const [CurrentPage, setcurpage] = useState<page>("dashboard");
   const [currentHeader, setCurrentHeader] = useState<string>("Dashboard");
 
-
+  function formatPageName(page: string) {
+    const pageMap = {
+      set: "Set",
+      upload: "Upload",
+      helper: "Helper",
+      dashboard: "Dashboard",
+      quickcreate: "Quick Create",
+    };
+  
+    return pageMap[page as keyof typeof pageMap] || page;
+  }  
+  
 
   const [currentMode, setCurrentMode] = useState<mode>("normal");
 
@@ -76,19 +87,19 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
 
   useEffect(() => {
     const process = async () => {
- if (defaultImportedSetID) {
- setTimeout(async () => {
- const foundSet = AllSets.find(set => set.id === defaultImportedSetID);
- if (foundSet) {
- const newIndex = await addSet(foundSet.set);
- toast.success(`Successfully found ${foundSet.set.title}. Happy Studying! (PS. I know you will do well!)`);
- setcurpage("set");
- setCurrentHeader(foundSet.set.title);
- setCurrentMode("normal");
- setSeled(newIndex); // wait until set is added to pastSets
- }
- }, 100); // Small delay
- }
+      if (defaultImportedSetID) {
+        setTimeout(async () => {
+          const foundSet = AllSets.find(set => set.id === defaultImportedSetID);
+          if (foundSet) {
+            const newIndex = await addSet(foundSet.set);
+            toast.success(`Successfully found ${foundSet.set.title}. Happy Studying! (PS. I know you will do well!)`);
+            setcurpage("set");
+            setCurrentHeader(foundSet.set.title);
+            setCurrentMode("normal");
+            setSeled(newIndex); // wait until set is added to pastSets
+          }
+        }, 100); // Small delay
+      }
 
     };
     process();
@@ -97,7 +108,7 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
   useEffect(() => {
     if (pastSets.length > 0) {
       const lastIndex = pastSets.length - 1;
-  
+
       setcurpage("set");
       setCurrentHeader(pastSets[lastIndex].title);
       setCurrentMode("normal");
@@ -106,6 +117,7 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
   }, [pastSets]);
 
   useEffect(() => {
+    document.title = formatPageName(CurrentPage) || "Page";
     if (selected != null && CurrentPage == "set")
       setSeled(null)
   }, [CurrentPage])
@@ -132,7 +144,7 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
           currentMode={currentMode} setCurrentMode={function (value: string): void {
             setCurrentMode(value as mode)
           }} />
-        <div className="flex flex-1 flex-col p-5">
+        <div className="flex flex-1 flex-col md:p-5">
           <MainScreen
             selected={selected}
             CurrentPage={CurrentPage}
@@ -162,13 +174,13 @@ function MainScreen({
   addSet: Function;
 }) {
   return (
-    <div className="flex flex-1 flex-col p-5">
+    <div className="flex flex-1 flex-col md:p-5 pt-5">
       {CurrentPage === "set" ? (
         <MainSet mode={currentMode} currentSet={pastSets[selected || 0]} />
       ) : CurrentPage === "upload" ? <Upload addSet={addSet} /> :
         CurrentPage === "helper" ? <HelperPage /> :
           CurrentPage === "dashboard" ? <HomePage /> :
-            CurrentPage === "quickcreate" ? <QuickCreate addSet={addSet}/> : <></>}
+            CurrentPage === "quickcreate" ? <QuickCreate addSet={addSet} /> : <></>}
 
 
     </div>

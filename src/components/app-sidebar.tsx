@@ -170,7 +170,7 @@ export function AppSidebar({ ...props }: any) {
 
   return (
     <Sidebar collapsible="offcanvas" variant={props.variant}>
-      <SidebarHeader>
+      <SidebarHeader className="my-4 mx-auto md:my-0 md:mx-0">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
@@ -184,8 +184,8 @@ export function AppSidebar({ ...props }: any) {
                   
                   "
                     className="flex flex-row gap-2 align-center items-center w-min">
-                    <BookOpenText className="!size-5" />
-                    <span className="text-base font-semibold">Flashcard/It</span>
+                    <BookOpenText className=" text-3xl md:text-base" />
+                    <span className="text-2xl md:text-base font-semibold">Flashcard/It</span>
                   </a>
 
                 </HoverCardTrigger>
@@ -211,7 +211,7 @@ export function AppSidebar({ ...props }: any) {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="mx-2 my-2 md:mx-0 md:my-0">
         <NavMain items={data.navMain as PageData[]}
           setcurpage={props.setcurpage}
           dashRef={props.dashRef}

@@ -34,7 +34,7 @@ export function QuizSetup({ onStartQuiz }: QuizSetupProps) {
 
   return (
     <div className="flex-1 flex flex-col w-full">
-      <Card className="w-[70vw] p-8 mb-8 flex flex-col lg:flex-row">
+      <Card className="w-[90vw] mx-auto md:w-[70vw] p-8 mb-8 flex flex-col lg:flex-row">
         <div className="flex flex-col w-full lg:w-1/2">
           <div className="text-center mb-8">
             <BookOpenCheck className="w-12 h-12 text-primary mx-auto mb-4" />

@@ -11,6 +11,8 @@ export default function StudyMode({
     currentSet: Set,
 }) {
     return <>
+    
+    
         <FlashcardHolder set={currentSet} />
     </>
 }

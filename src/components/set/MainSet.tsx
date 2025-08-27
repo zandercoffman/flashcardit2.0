@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react";
 import PictureMatch from "../modes/PictureMatch";
 import SpeakIt from "../modes/SpeakIt";
 import QuizMode from "./QuizMode";
@@ -19,6 +20,10 @@ export default function MainSet({
     mode: mode,
     currentSet: Set,
 }) {
+    useEffect(() => {
+        document.title = currentSet.title || "Set";
+    }, [currentSet])
+
     switch (mode) {
         case "normal":
             return <StudyMode currentSet={currentSet}/>

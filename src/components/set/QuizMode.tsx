@@ -208,8 +208,8 @@ export default function QuizMode({
 
     if (!inProgress || curCardIndex >= currentSet.vocab.length) {
         return <div className="w-full h-full flex flex-col items-center justify-center">
-            <Card className="w-full h-full flex flex-row relative px-10 py-6 mb-8">
-                <div className="flex flex-col gap-3 w-1/2 h-full flex-col ">
+            <Card className="w-full h-full flex flex-row relative md:px-10 py-6 mb-8">
+                <div className="flex flex-col gap-3 w-full md:w-1/2 h-full flex-col ">
                     <div className="flex gap-3 mb-6">
                         <div className="p-2 rounded-xl w-20 h-20 flex justify-center items-center bg-blue-500/10">
                             <Trophy className="w-12  h-12 text-blue-500" />
@@ -301,13 +301,13 @@ export default function QuizMode({
                             <Progress
                                 value={((curCardIndex + 1) / currentSet.vocab.length) * 100}
                                 max={100}
-                                className="w-[10vw]"
+                                className="w-[75vw] md:w-[10vw]"
                             />
                             <span className="font-bold">
                                 {(((curCardIndex + 1) / currentSet.vocab.length) * 100).toFixed(0)}
                             </span>%
                         </div>
-                        <div className="flex flex-row gap-8">
+                        <div className="flex flex-row mx-auto md:mx-0 gap-8">
                             {
                                 quizSettings.streakMode && <div className="flex flex-row font-bold gap-2 items-center justify-center">
                                     <Flame className="size-8 text-orange-500" />
@@ -330,10 +330,10 @@ export default function QuizMode({
                         </div>
                     </div>
                     {/**Other thing */}
-                    <div className="w-[90vw] md:w-[35vw] md:h-[70vh] flex flex-col gap-10 items-center justify-between mx-auto ">
+                    <div className="w-[90vw] md:w-[35vw] md:h-[70vh] flex flex-col gap-6 md:gap-10 items-center justify-between mx-auto ">
                         {/** This is for the current card and what it is at the current moment */}
 
-                        <Card className="w-full h-80 flex flex-row relative items-center justify-center mb-8">
+                        <Card className="w-full h-50 md:h-80 flex flex-col md:flex-row relative items-center justify-center mb-8 mt-[15vh] p-4">
                             <Tooltip>
                                 <TooltipTrigger>
                                     <Button className="cursor-pointer !bg-transparent hover:!bg-transparent dark:text-white text-black !shadow-none"
@@ -350,17 +350,17 @@ export default function QuizMode({
 
                             <div className="text-center">
                                 <BlurFade delay={0.25}>
-                                    <h2 className=" font-bold text-4xl mb-4">{curCard[changeSide ? 1 : 0]}</h2>
+                                    <h2 className=" font-bold text-2xl md:text-4xl mb-4">{curCard[changeSide ? 1 : 0]}</h2>
                                     <p className="text-muted-foreground text-sm">Choose the correct translation/matching piece.</p>
 
                                 </BlurFade>
                             </div>
                         </Card>
 
-                        <div className="grid grid-cols-2 grid-rows-2 gap-4 w-[90vw] md:w-[50vw] h-64 ">
+                        <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-1 md:grid-rows-2 gap-4 w-[90vw] md:w-[50vw] h-64 ">
                             {
                                 chooseableOptions?.map((option, index) => (
-                                    <Button className="w-full h-[11vh] cursor-pointer transition-all duration-200 hover:shadow-xl"
+                                    <Button className="w-full h-full md:h-[11vh] cursor-pointer transition-all duration-200 hover:shadow-xl"
                                         onClick={() => {
                                             let arr = [...selectedButtons] as [boolean | null, boolean | null, boolean | null, boolean | null];// <-- create a shallow copy
                                             arr[index] = true;

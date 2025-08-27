@@ -21,11 +21,11 @@ const Flashcard = ({
 
     return (
         <div
-            className="w-full perspective-[2000px] font-semibold"
+            className="w-[80vw] mx-auto md:mx-0 md:w-full perspective-[2000px] font-semibold"
             onClick={handleFlip}
         >
             <motion.div
-                className={`h-[300px] lg:w-[400px] w-[260px] mx-auto cursor-pointer relative ${isFlipped ? 'rotate-y-180' : ''}`}
+                className={`h-[300px] w-full lg:w-[400px] w-[260px] mx-auto cursor-pointer relative ${isFlipped ? 'rotate-y-180' : ''}`}
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
                 transition={{ duration: 0.6 }}
                 style={{ transformStyle: 'preserve-3d' }}

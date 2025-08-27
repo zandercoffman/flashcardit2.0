@@ -1,3 +1,14 @@
+## Blueprint: File Upload and Study Flow
+
+### Current State
+
+The application includes a file upload component (`src/components/aceternity/file-upload.tsx`) and a button to start studying that appears when files are uploaded (`src/components/pages/upload.tsx`).
+
+### Plan
+
+Move the JSON upload and text input functionality from `src/components/aceternity/file-upload.tsx` to `src/components/pages/upload.tsx`.
+
+
 ## Blueprint: Refactor Sidebar
 
 ### Current Plan

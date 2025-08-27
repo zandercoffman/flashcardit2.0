@@ -5,7 +5,7 @@ import { SidebarTrigger } from "@/components/ui/sidebar"
 import { ModeToggle } from "./mode-toggle"
 type mode = "normal" | "quiz" | "speakit" | "picturematch" | null;
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { AudioWaveform, BookCheck, BookOpen, Image, Megaphone, Milestone, PencilLine, Settings2, Volume, Volume2 } from "lucide-react";
+import { AudioWaveform, BookCheck, BookOpen, Image, Megaphone, Milestone, PencilLine, Settings, Settings2, Volume, Volume2 } from "lucide-react";
 
 
 import { VolumeX } from "lucide-react"
@@ -45,6 +45,16 @@ import {
 import { Switch } from "./ui/switch";
 import { ComboboxDemo } from "./pages/compOfPages/combobox";
 import { TTSSettings } from "./pages/compOfPages/TTSSettings";
+import { useMobile } from "@/lib/useMobile";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
 
 export function SiteHeader({
   currentHeader,
@@ -84,58 +94,70 @@ export function SiteHeader({
     setThisMode(currentMode);
   }, [currentMode])
 
+  const isMobile = useMobile();
+
   return (
     <header className="flex h-(--header-height) shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)">
-      <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
-        <SidebarTrigger className="-ml-1" />
+      <div className="flex w-full items-center px-4 lg:gap-2 lg:px-6">
+        <SidebarTrigger className="-ml-1 text-lg" />
         {
           currentPage == "set" && <>
-            <div className="flex flex-row gap-2 ">
-              <Select value={currentMode || "normal"} onValueChange={setCurrentMode}>
-                <SelectTrigger className="w-[150px]">
-                  <SelectValue placeholder="Select a mode" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup >
-                    <SelectLabel>Modes</SelectLabel>
+            {
+              isMobile ? <>
+                <NavigationMenu>
+                  <NavigationMenuList>
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger>
+                        <Settings/>
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <div className="flex flex-col gap-2 ">
+                          <p>Current Mode</p>
+                          <Select value={currentMode || "normal"} onValueChange={setCurrentMode}>
+                            <SelectTrigger className="w-[150px]">
+                              <SelectValue placeholder="Select a mode" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectGroup >
+                                <SelectLabel>Modes</SelectLabel>
 
-                    <SelectItem value="normal" >
-                      <div className="flex justify-start items-center gap-4 ">
-                        <BookOpen className="size-4 lg:size-6" />
-                        <div className=" w-full">
-                          <h4 className="text-sm font-semibold">Study</h4>
-                        </div>
-                      </div>
-                    </SelectItem>
+                                <SelectItem value="normal" >
+                                  <div className="flex justify-start items-center gap-4 ">
+                                    <BookOpen className="size-4 lg:size-6" />
+                                    <div className=" w-full">
+                                      <h4 className="text-xl md:text-base font-semibold">Study</h4>
+                                    </div>
+                                  </div>
+                                </SelectItem>
 
-                    <SelectItem value="quiz">
-                      <div className="flex justify-start items-center gap-4 ">
-                        <BookCheck className="size-4 lg:size-6" />
-                        <div className=" w-full">
-                          <h4 className="text-sm font-semibold">Quiz</h4>
-                        </div>
-                      </div>
-                    </SelectItem>
+                                <SelectItem value="quiz">
+                                  <div className="flex justify-start items-center gap-4 ">
+                                    <BookCheck className="size-4 lg:size-6" />
+                                    <div className=" w-full">
+                                      <h4 className="text-xl md:text-base font-semibold">Quiz</h4>
+                                    </div>
+                                  </div>
+                                </SelectItem>
 
-                    <SelectItem value="speakit">
-                      <div className="flex justify-start items-center gap-4 ">
-                        <AudioWaveform className="size-4 lg:size-6" />
-                        <div className=" w-full">
-                          <h4 className="text-sm font-semibold">Speak It</h4>
-                        </div>
-                      </div>
-                    </SelectItem>
+                                <SelectItem value="speakit">
+                                  <div className="flex justify-start items-center gap-4 ">
+                                    <AudioWaveform className="size-4 lg:size-6" />
+                                    <div className=" w-full">
+                                      <h4 className="text-xl md:text-base font-semibold">Speak It</h4>
+                                    </div>
+                                  </div>
+                                </SelectItem>
 
-                    <SelectItem value="picturematch">
-                      <div className="flex justify-start items-center gap-4 ">
-                        <Image className="size-4 lg:size-6" />
-                        <div className=" w-full">
-                          <h4 className="text-sm font-semibold">Picture Match</h4>
-                        </div>
-                      </div>
-                    </SelectItem>
+                                <SelectItem value="picturematch">
+                                  <div className="flex justify-start items-center gap-4 ">
+                                    <Image className="size-4 lg:size-6" />
+                                    <div className=" w-full">
+                                      <h4 className="text-xl md:text-base font-semibold">Picture Match</h4>
+                                    </div>
+                                  </div>
+                                </SelectItem>
 
-                    {/**
+                                {/**
                      * <SelectItem value="sentencecreator">
                       <div className="flex justify-start items-center gap-4 ">
                         <PencilLine className="size-4 lg:size-6" />
@@ -147,42 +169,135 @@ export function SiteHeader({
                      */}
 
 
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-              <Toggle aria-label="Toggle italic" pressed={useTTS} onPressedChange={(value: boolean) => {
-                willSetSETTTS(value);
-                if (typeof window !== "undefined") {
-                  sessionStorage.setItem("ttsEnabled", JSON.stringify(value));
-                }
-              }}>
-                <Dialog>
-                  <DialogTrigger>
-                    <Settings2 className="size-4 lg:size-6" />
-                  </DialogTrigger>
-                  <DialogContent>
-                    <DialogTitle>Settings</DialogTitle>
-                    <div className="flex flex-col gap-2 mt-2">
+                              </SelectGroup>
+                            </SelectContent>
+                          </Select>
+                          <Toggle aria-label="Toggle italic" pressed={useTTS} onPressedChange={(value: boolean) => {
+                            willSetSETTTS(value);
+                            if (typeof window !== "undefined") {
+                              sessionStorage.setItem("ttsEnabled", JSON.stringify(value));
+                            }
+                          }}>
+                            <Dialog>
+                              <DialogTrigger>
+                                <Settings2 className="size-4 lg:size-6" />
+                              </DialogTrigger>
+                              <DialogContent>
+                                <DialogTitle>Settings</DialogTitle>
+                                <div className="flex flex-col gap-2 mt-2">
 
-                      <TTSSettings
-                        ttsEnabledKey="ttsEnabled"
-                        firstVoiceKey="firstVoice"
-                        secondVoiceKey="secondVoice"
-                      />
+                                  <TTSSettings
+                                    ttsEnabledKey="ttsEnabled"
+                                    firstVoiceKey="firstVoice"
+                                    secondVoiceKey="secondVoice"
+                                  />
 
-                    </div>
-                  </DialogContent>
-                </Dialog>
+                                </div>
+                              </DialogContent>
+                            </Dialog>
 
-              </Toggle>
-            </div>
+                          </Toggle>
+                        </div>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  </NavigationMenuList>
+                </NavigationMenu>
+              </> : <>
+                <div className="flex flex-row gap-2 ">
+                  <Select value={currentMode || "normal"} onValueChange={setCurrentMode}>
+                    <SelectTrigger className="w-[150px]">
+                      <SelectValue placeholder="Select a mode" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup >
+                        <SelectLabel>Modes</SelectLabel>
+
+                        <SelectItem value="normal" >
+                          <div className="flex justify-start items-center gap-4 ">
+                            <BookOpen className="size-4 lg:size-6" />
+                            <div className=" w-full">
+                              <h4 className="text-xl md:text-base font-semibold">Study</h4>
+                            </div>
+                          </div>
+                        </SelectItem>
+
+                        <SelectItem value="quiz">
+                          <div className="flex justify-start items-center gap-4 ">
+                            <BookCheck className="size-4 lg:size-6" />
+                            <div className=" w-full">
+                              <h4 className="text-xl md:text-base font-semibold">Quiz</h4>
+                            </div>
+                          </div>
+                        </SelectItem>
+
+                        <SelectItem value="speakit">
+                          <div className="flex justify-start items-center gap-4 ">
+                            <AudioWaveform className="size-4 lg:size-6" />
+                            <div className=" w-full">
+                              <h4 className="text-xl md:text-base font-semibold">Speak It</h4>
+                            </div>
+                          </div>
+                        </SelectItem>
+
+                        <SelectItem value="picturematch">
+                          <div className="flex justify-start items-center gap-4 ">
+                            <Image className="size-4 lg:size-6" />
+                            <div className=" w-full">
+                              <h4 className="text-xl md:text-base font-semibold">Picture Match</h4>
+                            </div>
+                          </div>
+                        </SelectItem>
+
+                        {/**
+                     * <SelectItem value="sentencecreator">
+                      <div className="flex justify-start items-center gap-4 ">
+                        <PencilLine className="size-4 lg:size-6" />
+                        <div className=" w-full">
+                          <h4 className="text-sm font-semibold">Sentence Creator</h4>
+                        </div>
+                      </div>
+                    </SelectItem>
+                     */}
+
+
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                  <Toggle aria-label="Toggle italic" pressed={useTTS} onPressedChange={(value: boolean) => {
+                    willSetSETTTS(value);
+                    if (typeof window !== "undefined") {
+                      sessionStorage.setItem("ttsEnabled", JSON.stringify(value));
+                    }
+                  }}>
+                    <Dialog>
+                      <DialogTrigger>
+                        <Settings2 className="size-4 lg:size-6" />
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogTitle>Settings</DialogTitle>
+                        <div className="flex flex-col gap-2 mt-2">
+
+                          <TTSSettings
+                            ttsEnabledKey="ttsEnabled"
+                            firstVoiceKey="firstVoice"
+                            secondVoiceKey="secondVoice"
+                          />
+
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+
+                  </Toggle>
+                </div>
+              </>
+            }
           </>
         }
         <Separator
           orientation="vertical"
           className="mx-2 data-[orientation=vertical]:h-4"
         />
-        <h1 className="text-base font-medium">{currentHeader}</h1>
+        <h1 className="text-base text-center md:text-left  md:mx-0 font-medium">{currentHeader}</h1>
 
         <div className="ml-auto flex items-center gap-2">
           <ModeToggle />
