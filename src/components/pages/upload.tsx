@@ -17,14 +17,20 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { HelpCircle, Copy, CheckCircle2, AlertCircle, Info } from "lucide-react"
 import { toast } from "sonner"
 
+
+interface Set {
+  title: string;
+  vocab: [string, string][]; 
+}
+
 export default function Upload({
   addSet,
 }: {
-  addSet: Function
+  addSet: (set: Set) -> void
 }) {
   const [files, setFiles] = useState<File[]>([])
   const [uploadedFiles, setUploadedFiles] = useState<{ name: string; vocab: [string, string][] }[]>([])
-  const codeBlockRef = useRef<any>(null) // Ref to control CodeBlock's scroll
+  const codeBlockRef = useRef<HTMLElement>(null) // Ref to control CodeBlock's scroll
   const [isScrolling, setIsScrolling] = useState(false) // NEW: Track if scrolling is active
 
   const [jsonInput, setJsonInput] = useState("")
