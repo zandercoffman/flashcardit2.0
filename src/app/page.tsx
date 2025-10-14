@@ -171,7 +171,7 @@ function MainScreen({
   CurrentPage: page;
   pastSets: Set[];
   currentMode: mode;
-  addSet: Function;
+  addSet: (set: Set) => Promise<number>;
 }) {
   return (
     <div className="flex flex-1 flex-col md:p-5 pt-5">
