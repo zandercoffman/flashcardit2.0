@@ -152,7 +152,7 @@ export default function Upload({
   // Function to trigger scrolling of the CodeBlock
   const handleScrollDown = () => {
     if (codeBlockRef.current) {
-      codeBlockRef.current.scrollToNext()
+      codeBlockRef.current.scrollTo()
     }
   }
 
