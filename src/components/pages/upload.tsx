@@ -157,7 +157,11 @@ export default function Upload({
   }
 
   return (
-    <Tabs
+    <></>
+  )
+}
+
+/*<Tabs
       defaultValue="upload"
       className="w-[70vw] flex flex-col justify-center items-center mx-auto min-h-96 rounded-lg"
     >
@@ -279,6 +283,4 @@ export default function Upload({
           )}
         </div>
       </TabsContent>
-    </Tabs>
-  )
-}
+    </Tabs>*/
