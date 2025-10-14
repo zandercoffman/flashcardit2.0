@@ -185,7 +185,7 @@ export default function Upload({
       </TabsContent>
 
       <TabsContent value="text" className=" flex flex-cold md:flex-row gap-6  mx-auto p-6 space-y-6">
-        {/* Tutorial Section */}
+
         <Card className="border-blue-200 bg-blue-50 dark:bg-blue-950 dark:border-blue-800 w-full md:w-1/2">
           <CardHeader className="pb-3">
             <CardTitle className="flex items-center gap-2 text-blue-700 dark:text-blue-300">
@@ -238,7 +238,6 @@ export default function Upload({
         </Card>
 
         <div className="flex flex-col gap-4 w-full md:w-1/2">
-          {/* JSON Input Section */}
           <div className="">
             <div className="flex items-center justify-between">
               <label htmlFor="json-input" className="text-sm font-medium">
@@ -257,7 +256,6 @@ export default function Upload({
               className="max-h-[200px] font-mono text-sm"
             />
 
-            {/* Validation Feedback */}
             {jsonError && (
               <Alert variant="destructive">
                 <AlertCircle className="h-4 w-4" />
@@ -275,7 +273,6 @@ export default function Upload({
             )}
           </div>
 
-          {/* Action Button */}
           {isValidJson && parsedSet && (
             <Button onClick={addJsonSetToStudy} className="w-full">
               Start Studying "{parsedSet.title}"
