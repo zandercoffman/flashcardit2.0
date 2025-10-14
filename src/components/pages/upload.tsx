@@ -26,7 +26,7 @@ interface Set {
 export default function Upload({
   addSet,
 }: {
-  addSet: (set: Set) => void
+  addSet: (set: Set) => Promise<number>
 }) {
   const [files, setFiles] = useState<File[]>([])
   const [uploadedFiles, setUploadedFiles] = useState<{ name: string; vocab: [string, string][] }[]>([])
