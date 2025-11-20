@@ -2,108 +2,102 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react"
-import {
-    HoverCard,
-    HoverCardContent,
-    HoverCardTrigger,
-} from "@/components/ui/hover-card"
-import {
-    Table,
-    TableBody,
-    TableCaption,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
-import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-    navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+import { List, X } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { NavigationMenuLink } from "@/components/ui/navigation-menu"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { Separator } from "@/components/ui/separator"
 
 interface Set {
-    title: string;
-    vocab: [string, string][]; // Array of tuples with two strings
+  title: string
+  vocab: [string, string][] // Array of tuples with two strings
 }
-
-
-const components: { title: string; href: string; description: string }[] = [
-    {
-        title: "Alert Dialog",
-        href: "/docs/primitives/alert-dialog",
-        description:
-            "A modal dialog that interrupts the user with important content and expects a response.",
-    }
-]
 
 export default function NavigationMenuFlashcardSet({
-    current,
-    total,
-    set
+  current,
+  total,
+  set,
+  onWordClick,
 }: {
-    current: number,
-    total: number,
-    set: Set
+  current: number
+  total: number
+  set: Set
+  onWordClick?: (index: number) => void
 }) {
-    return (
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-[-20px]">
-            <HoverCard>
-                <HoverCardTrigger>{current}/{total}</HoverCardTrigger>
-                <HoverCardContent side="top" className="w-[380px] h-[70vh]">
-                    <ScrollArea className="w-[365px] h-[65vh]">
-                        <Table>
-                            <TableCaption>{set.title}</TableCaption>
-                            <TableHeader>
-                                <TableRow>
-                                    <TableHead>Word 1</TableHead>
-                                    <TableHead >Word 2</TableHead>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                {
-                                    set.vocab.map((word, index) => {
-                                        return (
-                                            <TableRow key={index}>
-                                                <TableCell>{word[0]}</TableCell>
-                                                <TableCell>{word[1]}</TableCell>
-                                            </TableRow>
-                                        )
-                                    })
-                                }
-                            </TableBody>
-                        </Table>
-                    </ScrollArea>
+  const [showWordList, setShowWordList] = React.useState(false)
 
-                </HoverCardContent>
-            </HoverCard>
+  return (
+    <>
+      <div className="absolute flex flex-row gap-2 bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-[-20px]">
+        <h3 className="my-auto">{current}/{total}</h3>
+        <Separator orientation="vertical"/>
+        <Button variant="outline" size="sm" onClick={() => setShowWordList(!showWordList)} className="gap-2">
+          <List className="h-4 w-4" />
+          {showWordList ? "Hide" : "Show"} All Words ({total})
+        </Button>
+      </div>
+
+      {showWordList && (
+        <div className="fixed inset-0 bg-black/20 z-40 backdrop-blur-sm" onClick={() => setShowWordList(false)} />
+      )}
+
+      <div
+        className={`w-[32vw] fixed right-0 top-0 bg-background border-l shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${
+          showWordList ? "translate-x-0 " : "translate-x-full"
+        }`}
+      >
+        <div className="flex flex-col h-full">
+          <div className="flex items-center justify-between p-4 border-b">
+            <h3 className="font-semibold text-lg">All Words ({total})</h3>
+            <Button variant="ghost" size="icon" onClick={() => setShowWordList(false)}>
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
+
+          <div className="flex-1 p-4">
+            <p className="text-md dark:text-gray-300 text-center mb-4">Tap a word to jump to it.</p>
+            <ScrollArea className="space-y-2 h-[80vh]">
+              {set.vocab.map((word, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    onWordClick?.(index)
+                    setShowWordList(false)
+                  }}
+                  className={`w-full cursor-pointer text-left p-3 rounded-lg border transition-colors ${
+                    index === current - 1 ? "bg-primary/10 border-primary" : "hover:bg-muted border-transparent"
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-sm text-muted-foreground">#{index + 1}</span>
+                    {index === current - 1 && (
+                      <span className="text-xs bg-primary text-primary-foreground px-2 py-0.5 rounded">Current</span>
+                    )}
+                  </div>
+                  <div className="mt-1 font-medium">
+                    {word[0]} - {word[1]}
+                  </div>
+                </button>
+              ))}
+            </ScrollArea>
+          </div>
         </div>
-    );
+      </div>
+    </>
+  )
 }
 
-
-function ListItem({
-    title,
-    children,
-    href,
-    ...props
-}: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
-    return (
-        <li {...props}>
-            <NavigationMenuLink asChild>
-                <Link href={href}>
-                    <div className="text-sm leading-none font-medium">{title}</div>
-                    <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-                        {children}
-                    </p>
-                </Link>
-            </NavigationMenuLink>
-        </li>
-    )
+function ListItem({ title, children, href, ...props }: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
+  return (
+    <li {...props}>
+      <NavigationMenuLink asChild>
+        <Link href={href}>
+          <div className="text-sm leading-none font-medium">{title}</div>
+          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">{children}</p>
+        </Link>
+      </NavigationMenuLink>
+    </li>
+  )
 }

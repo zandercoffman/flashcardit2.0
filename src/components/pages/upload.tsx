@@ -1,62 +1,85 @@
 "use client"
-import { useState, useRef } from "react"
+import { useState } from "react"
 import { FileUpload } from "../aceternity/file-upload"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "../ui/button"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { HelpCircle, Copy, CheckCircle2, AlertCircle, Info } from "lucide-react"
+import { Copy, CheckCircle2, AlertCircle, Sparkles, FileJson, UploadIcon } from "lucide-react"
 import { toast } from "sonner"
-
+import { ScrollArea } from "../ui/scroll-area"
 
 interface Set {
-  title: string;
-  vocab: [string, string][]; 
+  title: string
+  vocab: [string, string][]
 }
 
 export default function Upload({
   addSet,
 }: {
-  addSet: (set: Set) => Promise<number>
+  addSet: (set: Set, isAutomatic: boolean) => Promise<number>
 }) {
   const [files, setFiles] = useState<File[]>([])
   const [uploadedFiles, setUploadedFiles] = useState<{ name: string; vocab: [string, string][] }[]>([])
-  const codeBlockRef = useRef<HTMLElement>(null) // Ref to control CodeBlock's scroll
-  const [isScrolling, setIsScrolling] = useState(false) // NEW: Track if scrolling is active
 
   const [jsonInput, setJsonInput] = useState("")
   const [jsonError, setJsonError] = useState("")
   const [isValidJson, setIsValidJson] = useState(false)
   const [parsedSet, setParsedSet] = useState<{ title: string; vocab: [string, string][] } | null>(null)
 
+  // AI Prompt from your text file
+  const AI_PROMPT = `Make me a flashcard set based on the text or files I provide.
+Follow this exact TypeScript structure:
+
+interface Set {
+  title: string;
+  vocab: [string, string][];
+}
+
+interface AllSetsInterface {
+  id: string;
+  set: Set;
+}
+
+Instructions:
+1. Read the content I give you.
+2. Identify the key terms and their definitions.
+3. Create a title based on the topic.
+4. Put every flashcard as a tuple in the vocab array: [term, definition].
+5. Return a single JSON object that matches AllSetsInterface exactly.
+6. The id should be a short unique string.
+
+Output only the JSON. No explanations, no commentary, no formatting outside of the JSON.`
+
   // Handling multiple file uploads
   const handleFileUpload = (theseFiles: File[]) => {
     setFiles(theseFiles)
+    setUploadedFiles([]) // Clear previous uploads
 
     theseFiles.forEach((file) => {
       const reader = new FileReader()
 
       reader.onload = () => {
         try {
-          // Parse the content as JSON
           const parsedContent = JSON.parse(reader.result as string)
 
-          // Add the file name and its vocab to the uploadedFiles state
+          // Validate the structure
+          if (!parsedContent.set || !parsedContent.set.title || !Array.isArray(parsedContent.set.vocab)) {
+            throw new Error("Invalid file structure")
+          }
+
           setUploadedFiles((prevState) => [
             ...prevState,
-            { name: parsedContent?.title || "Default Vocab Set", vocab: parsedContent?.vocab || [] },
+            {
+              name: parsedContent.set.title || "Flashcard Set",
+              vocab: parsedContent.set.vocab || [],
+            },
           ])
+
+          toast.success(`Loaded: ${parsedContent.set.title}`)
         } catch (error) {
-          console.error("Error parsing JSON:", error)
+          toast.error(`Error parsing ${file.name}: ${error instanceof Error ? error.message : "Invalid JSON"}`)
         }
       }
 
@@ -75,18 +98,24 @@ export default function Upload({
     try {
       const parsed = JSON.parse(input)
 
+      // Check if it matches AllSetsInterface (with set property)
+      let setData = parsed
+      if (parsed.set) {
+        setData = parsed.set
+      }
+
       // Validate structure
-      if (!parsed.title || typeof parsed.title !== "string") {
+      if (!setData.title || typeof setData.title !== "string") {
         throw new Error("Missing or invalid 'title' field (must be a string)")
       }
 
-      if (!Array.isArray(parsed.vocab)) {
+      if (!Array.isArray(setData.vocab)) {
         throw new Error("Missing or invalid 'vocab' field (must be an array)")
       }
 
       // Validate vocab array structure
-      for (let i = 0; i < parsed.vocab.length; i++) {
-        const item = parsed.vocab[i]
+      for (let i = 0; i < setData.vocab.length; i++) {
+        const item = setData.vocab[i]
         if (!Array.isArray(item) || item.length !== 2 || typeof item[0] !== "string" || typeof item[1] !== "string") {
           throw new Error(`Invalid vocab item at index ${i} (must be [string, string])`)
         }
@@ -94,7 +123,7 @@ export default function Upload({
 
       setJsonError("")
       setIsValidJson(true)
-      setParsedSet(parsed)
+      setParsedSet(setData)
     } catch (error) {
       setJsonError(error instanceof Error ? error.message : "Invalid JSON format")
       setIsValidJson(false)
@@ -108,34 +137,13 @@ export default function Upload({
   }
 
   const copyPromptToClipboard = () => {
-    const prompt = `Based on this content above/below, I want you to generate me a flashcard set which will be JSON text in the interface of interface Set {
-  title: string;
-  vocab: [string, string][];
-}`
-    navigator.clipboard.writeText(prompt)
-    toast.success("Prompt copied to clipboard!")
-  }
-
-  const loadExample = () => {
-    const example = {
-      title: "Spanish Basics",
-      vocab: [
-        ["hello", "hola"],
-        ["goodbye", "adiós"],
-        ["thank you", "gracias"],
-        ["please", "por favor"],
-        ["yes", "sí"],
-        ["no", "no"],
-      ],
-    }
-    const exampleJson = JSON.stringify(example, null, 2)
-    setJsonInput(exampleJson)
-    validateJson(exampleJson)
+    navigator.clipboard.writeText(AI_PROMPT)
+    toast.success("Prompt copied! Paste it into ChatGPT, Claude, or any AI assistant.")
   }
 
   const addJsonSetToStudy = () => {
     if (parsedSet) {
-      addSet(parsedSet)
+      addSet(parsedSet, false)
       toast.success("Flashcard set added successfully!")
       setJsonInput("")
       setJsonError("")
@@ -144,146 +152,164 @@ export default function Upload({
     }
   }
 
-  // Prepare combined output for display
-  const combinedVocab = uploadedFiles.reduce((acc, file) => [...acc, ...file.vocab], [] as [string, string][])
-
-  const combinedFileName = "Combined Files"
-
-  // Function to trigger scrolling of the CodeBlock
-  const handleScrollDown = () => {
-    if (codeBlockRef.current) {
-      codeBlockRef.current.scrollTo()
-    }
-  }
-
-  const addFilesToNew = () => {
+  const addFilesToStudy = () => {
     uploadedFiles.forEach((file) => {
-      addSet({ title: file.name, vocab: file.vocab })
+      addSet({ title: file.name, vocab: file.vocab }, true)
     })
+    toast.success(`Added ${uploadedFiles.length} flashcard set(s)!`)
+    setUploadedFiles([])
+    setFiles([])
   }
 
   return (
-    <></>
+    <div className="w-full max-w-5xl h-[75vh] mx-auto p-6 overflow-hidden">
+      <Tabs defaultValue="ai" className="w-full">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="ai" className="flex items-center gap-2">
+            <Sparkles className="h-4 w-4" />
+            Generate with AI
+          </TabsTrigger>
+          <TabsTrigger value="upload" className="flex items-center gap-2">
+            <UploadIcon className="h-4 w-4" />
+            Upload JSON File
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="ai" className="space-y-6">
+          <ScrollArea className="h-[70vh] flex flex-col gap-2 rounded-xl">
+            <Card className="border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950 dark:border-blue-800">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-blue-700 dark:text-blue-300">
+                  <Sparkles className="h-5 w-5" />
+                  Generate Flashcards with AI
+                </CardTitle>
+                <CardDescription className="text-blue-600 dark:text-blue-400">
+                  Use ChatGPT, Claude, or any AI assistant to automatically create flashcards from your study materials
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <h3 className="font-semibold text-sm text-blue-900 dark:text-blue-200">
+                    Step 1: Copy the prompt below
+                  </h3>
+                  <div className="bg-white dark:bg-gray-900 p-4 rounded-md border border-blue-200 dark:border-blue-700 relative">
+                    <pre className="text-xs text-gray-700 dark:text-gray-300 whitespace-pre-wrap font-mono leading-relaxed">
+                      {AI_PROMPT}
+                    </pre>
+                  </div>
+                  <Button onClick={copyPromptToClipboard} variant="default" size="sm" className="w-full">
+                    <Copy className="h-4 w-4 mr-2" />
+                    Copy Prompt to Clipboard
+                  </Button>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="font-semibold text-sm text-blue-900 dark:text-blue-200">Step 2: Paste into AI</h3>
+                  <p className="text-xs text-blue-700 dark:text-blue-300">
+                    Open ChatGPT, Claude, or your favorite AI assistant. Paste the prompt along with your study content
+                    (notes, textbook pages, articles, etc.)
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="font-semibold text-sm text-blue-900 dark:text-blue-200">
+                    Step 3: Paste the AI output HERE ⬇️
+                  </h3>
+                  <Textarea
+                    placeholder="Paste the JSON output from the AI here..."
+                    value={jsonInput}
+                    onChange={(e) => handleJsonInputChange(e.target.value)}
+                    className="min-h-[200px] font-mono text-sm"
+                  />
+
+                  {jsonError && (
+                    <Alert variant="destructive" className="mt-2">
+                      <AlertCircle className="h-4 w-4" />
+                      <AlertDescription>{jsonError}</AlertDescription>
+                    </Alert>
+                  )}
+
+                  {isValidJson && parsedSet && (
+                    <Alert className="border-green-200 bg-green-50 dark:bg-green-950 mt-2">
+                      <CheckCircle2 className="h-4 w-4 text-green-600" />
+                      <AlertDescription className="text-green-700 dark:text-green-300">
+                        ✓ Valid JSON! Found "{parsedSet.title}" with {parsedSet.vocab.length} flashcard(s)
+                      </AlertDescription>
+                    </Alert>
+                  )}
+                </div>
+
+                {isValidJson && parsedSet && (
+                  <Button onClick={addJsonSetToStudy} className="w-full" size="lg">
+                    <CheckCircle2 className="h-4 w-4 mr-2" />
+                    Start Studying "{parsedSet.title}"
+                  </Button>
+                )}
+              </CardContent>
+            </Card>
+
+            <Card className="border-gray-200 dark:border-gray-700">
+              <CardHeader>
+                <CardTitle className="text-sm">Example Output</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <pre className="bg-gray-100 dark:bg-gray-800 p-3 rounded text-xs overflow-x-auto">
+                  {`{
+  "id": "span101",
+  "set": {
+    "title": "Spanish Basics",
+    "vocab": [
+      ["hello", "hola"],
+      ["goodbye", "adiós"],
+      ["thank you", "gracias"],
+      ["please", "por favor"]
+    ]
+  }
+}`}
+                </pre>
+              </CardContent>
+            </Card>
+          </ScrollArea>
+        </TabsContent>
+
+        <TabsContent value="upload" className="space-y-6 h-full rounded-xl">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <FileJson className="h-5 w-5" />
+                Upload JSON Files
+              </CardTitle>
+              <CardDescription>Upload flashcard sets that you've previously generated or downloaded</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <FileUpload onChange={handleFileUpload} />
+
+              {uploadedFiles.length > 0 && (
+                <div className="space-y-3">
+                  <Alert className="border-green-200 bg-green-50 dark:bg-green-950">
+                    <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    <AlertDescription className="text-green-700 dark:text-green-300">
+                      Successfully loaded {uploadedFiles.length} flashcard set(s):
+                      <ul className="list-disc list-inside mt-2">
+                        {uploadedFiles.map((file, idx) => (
+                          <li key={idx}>
+                            {file.name} ({file.vocab.length} cards)
+                          </li>
+                        ))}
+                      </ul>
+                    </AlertDescription>
+                  </Alert>
+
+                  <Button onClick={addFilesToStudy} className="w-full" size="lg">
+                    <CheckCircle2 className="h-4 w-4 mr-2" />
+                    Start Studying All Sets
+                  </Button>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
+    </div>
   )
 }
-
-/*<Tabs
-      defaultValue="upload"
-      className="w-[70vw] flex flex-col justify-center items-center mx-auto min-h-96 rounded-lg"
-    >
-      <TabsList>
-        <TabsTrigger value="upload">Upload File</TabsTrigger>
-        <TabsTrigger value="text">Input Text</TabsTrigger>
-      </TabsList>
-      <TabsContent value="upload" className="flex flex-col gap-2">
-        <FileUpload onChange={handleFileUpload} />
-        {uploadedFiles.length > 0 && (
-          <Button
-            variant="outline"
-            className="w-[60%] mx-auto bg-transparent"
-            onClick={() => {
-              addFilesToNew()
-            }}
-          >
-            Start Studying
-          </Button>
-        )}
-      </TabsContent>
-
-      <TabsContent value="text" className=" flex flex-cold md:flex-row gap-6  mx-auto p-6 space-y-6">
-
-        <Card className="border-blue-200 bg-blue-50 dark:bg-blue-950 dark:border-blue-800 w-full md:w-1/2">
-          <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-blue-700 dark:text-blue-300">
-              <Info className="h-5 w-5" />
-              How to Use AI to Generate Your Flashcards
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <CardDescription className="text-blue-600 dark:text-blue-400">
-              Copy the prompt below and paste it into any AI assistant (ChatGPT, Claude, etc.) along with your study
-              content:
-            </CardDescription>
-            <div className="bg-white dark:bg-gray-900 p-3 rounded-md border">
-              <code className="text-sm text-gray-700 dark:text-gray-300">
-                "Based on this content above/below, I want you to generate me a flashcard set which will be JSON text in
-                the interface of interface Set &#123; title: string; vocab: [string, string][]; &#125;"
-              </code>
-            </div>
-            <div className="flex gap-2">
-              <Button onClick={copyPromptToClipboard} variant="outline" size="sm">
-                <Copy className="h-4 w-4 mr-2" />
-                Copy Prompt
-              </Button>
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button variant="outline" size="sm">
-                    <HelpCircle className="h-4 w-4 mr-2" />
-                    See Example
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="max-w-md">
-                  <DialogHeader>
-                    <DialogTitle>Example JSON Format</DialogTitle>
-                    <DialogDescription>Here's what the AI should generate for you:</DialogDescription>
-                  </DialogHeader>
-                  <pre className="bg-gray-100 dark:bg-gray-800 p-3 rounded text-sm overflow-x-auto">
-                    {`{
-  "title": "Spanish Basics",
-  "vocab": [
-    ["hello", "hola"],
-    ["goodbye", "adiós"],
-    ["thank you", "gracias"]
-  ]
-}`}
-                  </pre>
-                </DialogContent>
-              </Dialog>
-            </div>
-          </CardContent>
-        </Card>
-
-        <div className="flex flex-col gap-4 w-full md:w-1/2">
-          <div className="">
-            <div className="flex items-center justify-between">
-              <label htmlFor="json-input" className="text-sm font-medium">
-                Paste Your JSON Here
-              </label>
-              <Button onClick={loadExample} variant="ghost" size="sm">
-                Load Example
-              </Button>
-            </div>
-
-            <Textarea
-              id="json-input"
-              placeholder="Paste your JSON flashcard set here..."
-              value={jsonInput}
-              onChange={(e) => handleJsonInputChange(e.target.value)}
-              className="max-h-[200px] font-mono text-sm"
-            />
-
-            {jsonError && (
-              <Alert variant="destructive">
-                <AlertCircle className="h-4 w-4" />
-                <AlertDescription>{jsonError}</AlertDescription>
-              </Alert>
-            )}
-
-            {isValidJson && parsedSet && (
-              <Alert className="border-green-200 bg-green-50 dark:bg-green-950">
-                <CheckCircle2 className="h-4 w-4 text-green-600" />
-                <AlertDescription className="text-green-700 dark:text-green-300">
-                  Valid JSON! Found "{parsedSet.title}" with {parsedSet.vocab.length} flashcards.
-                </AlertDescription>
-              </Alert>
-            )}
-          </div>
-
-          {isValidJson && parsedSet && (
-            <Button onClick={addJsonSetToStudy} className="w-full">
-              Start Studying "{parsedSet.title}"
-            </Button>
-          )}
-        </div>
-      </TabsContent>
-    </Tabs>*/

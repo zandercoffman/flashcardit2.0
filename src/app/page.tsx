@@ -29,10 +29,10 @@ interface DashboardPageProps {
 
 interface Set {
   title: string;
-  vocab: [string, string][]; // Array of tuples with two strings
-  extraInfo?: Array<string>
+  vocab: [string, string][];
 }
 
+interface AllSetsInterface { id: string, set: Set }
 
 export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) {
   const [CurrentPage, setcurpage] = useState<page>("dashboard");
@@ -68,7 +68,34 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
     }, 100);
   }
 
-  const addSet = (newSet: Set): Promise<number> => {
+  const addSet = (newSet: Set, isAutomatic: boolean = false): Promise<number> => {
+
+    //Going to add this set to localStorage if it not is in it already
+    const addToLocalStorage = async () => {
+      const existingSets = JSON.parse(localStorage.getItem("sets") || "[]") as AllSetsInterface[];
+      if (!existingSets) {
+        //Setup localStoragea
+        localStorage.setItem("sets", JSON.stringify([newSet]));
+      } else { //Add to here if there is already the set in the existingSets, don't add it, otherwise add it
+        const foundSet = existingSets.find(set => set.set.title === newSet.title);
+        if (!foundSet) {
+          existingSets.push({ id: crypto.randomUUID(), set: newSet } as AllSetsInterface);
+          localStorage.setItem("sets", JSON.stringify(existingSets));
+        } else {
+          toast.error(`${newSet.title} is already in your vocab list!`);
+        }
+
+      }
+      //Then, reset localStorage at sets to existingSets once again
+      localStorage.setItem("sets", JSON.stringify(existingSets));
+      
+    }
+
+    if (!isAutomatic) {
+      addToLocalStorage();
+    }
+
+
     return new Promise(resolve => {
       setPastSets(prevSets => {
         const updatedSets = [...prevSets, newSet];
@@ -80,18 +107,24 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
       if (dashboardRef?.current) {
         dashboardRef.current.click();
       }
+
     });
   };
 
-
+  useEffect(() => {
+    const existingSets = JSON.parse(localStorage.getItem("sets") || "[]") as AllSetsInterface[];
+    if (existingSets) {
+      setPastSets(existingSets.map(set => set.set));
+    }
+  }, [])
 
   useEffect(() => {
     const process = async () => {
       if (defaultImportedSetID) {
         setTimeout(async () => {
           const foundSet = AllSets.find(set => set.id === defaultImportedSetID);
-          if (foundSet) {
-            const newIndex = await addSet(foundSet.set);
+          if (foundSet && !(window.location.pathname == "/")) {
+            const newIndex = await addSet(foundSet.set, false);
             toast.success(`Successfully found ${foundSet.set.title}. Happy Studying! (PS. I know you will do well!)`);
             setcurpage("set");
             setCurrentHeader(foundSet.set.title);
@@ -106,13 +139,16 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
   }, [defaultImportedSetID, AllSets]); // Add defaultImportedSetID to the dependency array
 
   useEffect(() => {
-    if (pastSets.length > 0) {
+    if (pastSets.length > 0 && typeof window !== null) {
       const lastIndex = pastSets.length - 1;
 
       setcurpage("set");
       setCurrentHeader(pastSets[lastIndex].title);
       setCurrentMode("normal");
-      setSeled(lastIndex);
+      if (!(window.location.pathname == "/")) {
+         setSeled(lastIndex);
+      }
+     
     }
   }, [pastSets]);
 
@@ -121,6 +157,8 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
     if (selected != null && CurrentPage == "set")
       setSeled(null)
   }, [CurrentPage])
+
+  
 
   return (
     <SidebarProvider
@@ -171,7 +209,7 @@ function MainScreen({
   CurrentPage: page;
   pastSets: Set[];
   currentMode: mode;
-  addSet: (set: Set) => Promise<number>;
+  addSet: (set: Set, isAutomatic: boolean) => Promise<number>;
 }) {
   return (
     <div className="flex flex-1 flex-col md:p-5 pt-5">
@@ -179,7 +217,7 @@ function MainScreen({
         <MainSet mode={currentMode} currentSet={pastSets[selected || 0]} />
       ) : CurrentPage === "upload" ? <Upload addSet={addSet} /> :
         CurrentPage === "helper" ? <HelperPage /> :
-          CurrentPage === "dashboard" ? <HomePage /> :
+          CurrentPage === "dashboard" ? <HomePage allSets={pastSets} addSet={addSet}/> :
             CurrentPage === "quickcreate" ? <QuickCreate addSet={addSet} /> : <></>}
 
 

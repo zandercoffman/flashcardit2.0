@@ -131,19 +131,9 @@ var thisdata = {
   ],
   navSecondary: [
     {
-      title: "Settings",
-      url: "#",
-      icon: IconSettings,
-    },
-    {
-      title: "Get Help",
-      url: "#",
-      icon: IconHelp,
-    },
-    {
-      title: "Search",
-      url: "#",
-      icon: IconSearch,
+      title: "Zander Coffman's Webpage",
+      url: "https://zandercoffman.vercel.app",
+      icon: IconUsers
     },
   ],
   documents: [] as Set[],

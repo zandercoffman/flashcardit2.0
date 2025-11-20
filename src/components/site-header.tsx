@@ -205,10 +205,10 @@ export function SiteHeader({
               </> : <>
                 <div className="flex flex-row gap-2 ">
                   <Select value={currentMode || "normal"} onValueChange={setCurrentMode}>
-                    <SelectTrigger className="w-[150px]">
+                    <SelectTrigger className="w-[150px] rounded-2xl">
                       <SelectValue placeholder="Select a mode" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="rounded-3xl mt-2 px-2">
                       <SelectGroup >
                         <SelectLabel>Modes</SelectLabel>
 

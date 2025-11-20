@@ -11,8 +11,9 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { LucideIcon, LucideProps } from "lucide-react"
+import { LucideIcon, LucideProps, Search } from "lucide-react"
 import Upload from "./pages/upload"
+import { SearchBar } from "./pages/compOfPages/SearchBar"
 
 export function NavMain({
   items,
@@ -33,21 +34,11 @@ export function NavMain({
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
         <SidebarMenu className=" font-semibold">
-          <SidebarMenuItem className="flex flex-col md:flex-row items-center gap-2">
-            <SidebarMenuButton
-              tooltip="Quick Create"
-              className="bg-primary text-xl pl-4 md:pl-2 md:text-sm md:w-[60%] h-[120%] rounded-full md:rounded-lg md:h-min text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground duration-200 ease-linear"
-              onClick={() => {
-                setcurpage("quickcreate");
-                setCurrentHeader("Quick Create");
-              }}
-            >
-              <IconCirclePlusFilled className="text-3xl md:text-base" />
-              <span className="!text-right">Quick Create</span>
-            </SidebarMenuButton>
+          <SidebarMenuItem className="flex flex-col md:flex-row items-center align-center gap-2">
+            <SearchBar/>
             <SidebarMenuButton
               tooltip="Upload"
-              className="w-full text-xl pl-4 md:pl-2 md:text-sm md:w-[40%] h-[120%] rounded-full md:rounded-lg md:h-min 
+              className="shadow-xl w-full text-xl pl-4 md:pl-2 md:text-sm md:w-[40%] h-[120%] rounded-3xl  md:rounded-lg md:h-min 
              bg-white text-black 
              hover:bg-gray-100 hover:text-black 
              active:bg-gray-200 active:text-black 
@@ -71,7 +62,7 @@ export function NavMain({
           {items.map((item) => (
             <SidebarMenuItem key={item.title} ref={item.title === "Dashboard" ? dashRef : null}>
               <SidebarMenuButton tooltip={item.title} 
-                className="text-lg md:text-base "
+                className="text-sm "
               onClick={() => {
                 setcurpage(item.title.toLowerCase());
                 setCurrentHeader(item.title);
