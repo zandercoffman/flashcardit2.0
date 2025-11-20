@@ -242,7 +242,7 @@ Output only the JSON. No explanations, no commentary, no formatting outside of t
                 {isValidJson && parsedSet && (
                   <Button onClick={addJsonSetToStudy} className="w-full" size="lg">
                     <CheckCircle2 className="h-4 w-4 mr-2" />
-                    Start Studying "{parsedSet.title}"
+                    Start Studying &quot;{parsedSet.title}&quot;
                   </Button>
                 )}
               </CardContent>
@@ -279,7 +279,7 @@ Output only the JSON. No explanations, no commentary, no formatting outside of t
                 <FileJson className="h-5 w-5" />
                 Upload JSON Files
               </CardTitle>
-              <CardDescription>Upload flashcard sets that you've previously generated or downloaded</CardDescription>
+              <CardDescription>Upload flashcard sets that you&apos;ve previously generated or downloaded</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <FileUpload onChange={handleFileUpload} />
