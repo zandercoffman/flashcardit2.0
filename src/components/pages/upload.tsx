@@ -233,7 +233,7 @@ Output only the JSON. No explanations, no commentary, no formatting outside of t
                     <Alert className="border-green-200 bg-green-50 dark:bg-green-950 mt-2">
                       <CheckCircle2 className="h-4 w-4 text-green-600" />
                       <AlertDescription className="text-green-700 dark:text-green-300">
-                        ✓ Valid JSON! Found "{parsedSet.title}" with {parsedSet.vocab.length} flashcard(s)
+                        ✓ Valid JSON! Found &quot;{parsedSet.title}&quot; with {parsedSet.vocab.length} flashcard(s)
                       </AlertDescription>
                     </Alert>
                   )}
