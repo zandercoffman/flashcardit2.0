@@ -465,7 +465,7 @@ export function TeamCard({
       className="w-[200px] transition-all duration-300"
       style={
         isActive
-          ? { borderWidth: "3px", borderColor: `hsl(var(--${teamColor}))` }
+          ? { borderWidth: "3px", borderColor: "#FF0000" }
           : { borderWidth: "2px" }
       }
     >
@@ -487,8 +487,8 @@ export function TeamCard({
             className="w-6 h-6"
             style={
               isActive
-                ? { color: `hsl(var(--${teamColor}))` }
-                : { color: "hsl(var(--muted-foreground))" }
+                ? { color: `#FF0000` }
+                : { color: "#0000FF" }
             }
           />
 
