@@ -92,7 +92,7 @@ export default function HelperPage() {
                 <ul className="list-disc list-inside space-y-2">
                     <li><strong>Mix it up:</strong> Switch between different study modes to keep things interesting.</li>
                     <li><strong>Consistency is key:</strong> Our FSRS algorithm works best when you study regularly.</li>
-                    <li><strong>Practice makes perfect:</strong> Use the "Speak It" mode to improve pronunciation and recall.</li>
+                    <li><strong>Practice makes perfect:</strong> Use the &quot;Speak It&quot; mode to improve pronunciation and recall.</li>
                 </ul>
             </CardContent>
           </Card>
