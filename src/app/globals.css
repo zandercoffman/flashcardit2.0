@@ -3,6 +3,29 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@keyframes flash {
+  0% { background-color: #000; color: #ff0000; }
+  50% { background-color: #ff0000; color: #000; }
+  100% { background-color: #000; color: #ff0000; }
+}
+
+.flash-bomba {
+  animation: flash 1.5s infinite;
+}
+
+/* CSS */
+.daypicker-spacing .rdp-day {
+  margin-right: 3px; /* adjust horizontal spacing */
+  margin-bottom: 3px; /* optional vertical spacing */
+}
+
+/* Optional: remove last margin of row */
+.daypicker-spacing .rdp-row > .rdp-day:last-child {
+  margin-right: 0;
+}
+
+
+
 @theme inline {
   --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
  

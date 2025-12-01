@@ -1,7 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
 import { NextResponse } from "next/server";
 import crypto from "crypto";
-import { fi } from "date-fns/locale";
 
 // Ensure Node.js runtime so 'crypto' is available
 export const runtime = "nodejs";
@@ -60,15 +59,15 @@ Return ONLY JSON in this structure. Do not have any new lines, any formatting, g
       contents: prompt
     })
     const text = response.text || "";
-    const firstBracket = text.indexOf("{")
-    const lastBracker = text.indexOf("{")
+    const firstBracket = text.indexOf("{");
+    const lastBracket = text.lastIndexOf("}") + 1;
 
-    const fullText = text.substring(firstBracket, lastBracker).trim();
+    const fullText = text.substring(firstBracket, lastBracket).trim();
 
     let set: Set;
     try {
       set = JSON.parse(fullText);
-    } catch (jsonError) {
+    } catch {
       return NextResponse.json({ error: "Failed to parse AI response as JSON.", rawText: text }, { status: 500 });
     }
 

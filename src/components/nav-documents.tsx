@@ -42,6 +42,7 @@ interface Set {
 import { saveAs } from 'file-saver';
 import { toast } from "sonner"
 import { useEffect, useState } from "react";
+import { BlurFade } from "./ui/blur-fade";
 
 export function NavDocuments({
   items,
@@ -72,7 +73,9 @@ export function NavDocuments({
               setcurpage("set")
               setCurrentHeader(item.title)
             }}>
-              <span className="whitespace-nowrap">{item.title}</span>
+              <BlurFade delay={0.2 + (0.06 * index)}>
+                <span className="whitespace-nowrap">{item.title}</span>
+              </BlurFade>
             </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

@@ -5,7 +5,7 @@ import { SidebarTrigger } from "@/components/ui/sidebar"
 import { ModeToggle } from "./mode-toggle"
 type mode = "normal" | "quiz" | "speakit" | "picturematch" | null;
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { AudioWaveform, BookCheck, BookOpen, Image, Megaphone, Milestone, PencilLine, Settings, Settings2, Volume, Volume2 } from "lucide-react";
+import { AudioWaveform, Bomb, BookCheck, BookOpen, Image, LandPlot, Megaphone, Milestone, PencilLine, Settings, Settings2, Volume, Volume2 } from "lucide-react";
 
 
 import { VolumeX } from "lucide-react"
@@ -205,7 +205,7 @@ export function SiteHeader({
               </> : <>
                 <div className="flex flex-row gap-2 ">
                   <Select value={currentMode || "normal"} onValueChange={setCurrentMode}>
-                    <SelectTrigger className="w-[150px] rounded-2xl">
+                    <SelectTrigger className="w-[170px] rounded-2xl">
                       <SelectValue placeholder="Select a mode" />
                     </SelectTrigger>
                     <SelectContent className="rounded-3xl mt-2 px-2">
@@ -217,6 +217,15 @@ export function SiteHeader({
                             <BookOpen className="size-4 lg:size-6" />
                             <div className=" w-full">
                               <h4 className="text-xl md:text-base font-semibold">Study</h4>
+                            </div>
+                          </div>
+                        </SelectItem>
+
+                        <SelectItem value="studyplan">
+                          <div className="flex justify-start items-center gap-4 ">
+                            <LandPlot className="size-4 lg:size-6" />
+                            <div className=" w-full">
+                              <h4 className="text-xl md:text-base font-semibold">Study Path</h4>
                             </div>
                           </div>
                         </SelectItem>
@@ -239,14 +248,16 @@ export function SiteHeader({
                           </div>
                         </SelectItem>
 
-                        <SelectItem value="picturematch">
+                        <SelectItem value="bomba">
                           <div className="flex justify-start items-center gap-4 ">
-                            <Image className="size-4 lg:size-6" />
+                            <Bomb className="size-4 lg:size-6" />
                             <div className=" w-full">
-                              <h4 className="text-xl md:text-base font-semibold">Picture Match</h4>
+                              <h4 className="text-xl md:text-base font-semibold">Bomba</h4>
                             </div>
                           </div>
                         </SelectItem>
+
+                        
 
                         {/**
                      * <SelectItem value="sentencecreator">

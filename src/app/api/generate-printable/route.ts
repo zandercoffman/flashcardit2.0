@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
         };
 
         // Loop through the vocab array and add each pair to the page
-        body.vocab.forEach(([word, description], index) => {
+        body.vocab.forEach(([word, description]) => {
             // Check if the current position will overflow
             if (yPosition - fontSize - lineMargin - verticalMargin < verticalMargin) {
                 // If it overflows, create a new page and reset yPosition
@@ -83,7 +83,6 @@ export async function POST(req: NextRequest) {
             const descriptionFontSize = description.length > 50 ? 16 : fontSize;
 
             // Split the description into lines if it's too wide
-            const wordWidth = getTextWidth(word, wordFontSize);
             const descriptionLines = splitTextIntoLines(description, width / 2 - leftRightPadding, descriptionFontSize);
 
             // Calculate x positions for text

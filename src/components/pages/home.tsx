@@ -4,6 +4,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription }
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { AllSets } from "@/lib/AllSets"
 import { Plus } from "lucide-react"
+import { Skeleton } from "@/components/ui/skeleton"
 
 interface Set {
     title: string
@@ -12,7 +13,7 @@ interface Set {
 
 interface AllSetsInterface { id: string; set: Set }
 
-export default function HomePage({ allSets, addSet }: { allSets: Set[], addSet: (set: Set, isAutomatic: boolean) => Promise<number> }) {
+export default function HomePage({ allSets, addSet }: { allSets: Set[] | undefined, addSet: (set: Set, isAutomatic: boolean) => Promise<number> }) {
     return (
         <div className="flex flex-col gap-4">
             <section className="mb-12">
@@ -25,9 +26,24 @@ export default function HomePage({ allSets, addSet }: { allSets: Set[], addSet: 
                 <h1 className="text-3xl font-semibold">Current Sets</h1>
                 <ScrollArea className="w-[68vw] h-60">
                     <div className="flex flex-row gap-4 w-max">
-                        {allSets.map((set, index) => (
-                            <Showcase key={index} set={set} />
-                        ))}
+                        {
+                            allSets === undefined ? (
+                                <>
+                                    <ShowcaseSkeleton />
+                                    <ShowcaseSkeleton />
+                                    <ShowcaseSkeleton />
+                                    <ShowcaseSkeleton />
+                                </>
+                            ) : allSets.length > 0 ? (
+                                allSets.map((set, index) => (
+                                    <Showcase key={index} set={set} />
+                                ))
+                            ) : (
+                                <div className="flex items-center justify-center w-[68vw] h-48">
+                                    <p className="text-gray-500">You don&apos;t have any sets yet. Add one from below!</p>
+                                </div>
+                            )
+                        }
                     </div>
                     <ScrollBar orientation="horizontal" />
                 </ScrollArea>
@@ -71,4 +87,16 @@ function Showcase({ set, id, addSet }: { set: Set, id?: string, addSet?: (set: S
             }
         </Card>
     )
+}
+
+function ShowcaseSkeleton() {
+    return (
+        <Card className="w-60 h-46 rounded-3xl flex-shrink-0">
+            <CardHeader>
+                <Skeleton className="h-7 w-3/4" />
+            </CardHeader>
+            <CardContent>
+            </CardContent>
+        </Card>
+    );
 }

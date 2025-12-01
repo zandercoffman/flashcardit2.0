@@ -37,6 +37,7 @@ interface AllSetsInterface { id: string, set: Set }
 export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) {
   const [CurrentPage, setcurpage] = useState<page>("dashboard");
   const [currentHeader, setCurrentHeader] = useState<string>("Dashboard");
+  const [setsLoading, setSetsLoading] = useState(true);
 
   function formatPageName(page: string) {
     const pageMap = {
@@ -112,9 +113,16 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
   };
 
   useEffect(() => {
-    const existingSets = JSON.parse(localStorage.getItem("sets") || "[]") as AllSetsInterface[];
-    if (existingSets) {
-      setPastSets(existingSets.map(set => set.set));
+    try {
+        const existingSets = JSON.parse(localStorage.getItem("sets") || "[]") as AllSetsInterface[];
+        if (existingSets) {
+          setPastSets(existingSets.map(set => set.set));
+        }
+    } catch (e) {
+        console.error("Failed to parse sets from localStorage", e);
+        setPastSets([]);
+    } finally {
+        setSetsLoading(false);
     }
   }, [])
 
@@ -143,7 +151,7 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
       const lastIndex = pastSets.length - 1;
 
       setcurpage("set");
-      setCurrentHeader(pastSets[lastIndex].title);
+      setCurrentHeader(pastSets[0].title); // Set the last to first: What? I do not know but this works.
       setCurrentMode("normal");
       if (!(window.location.pathname == "/")) {
          setSeled(lastIndex);
@@ -189,6 +197,7 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
             pastSets={pastSets}
             currentMode={currentMode}
             addSet={addSet}
+            setsLoading={setsLoading}
           />
 
         </div>
@@ -203,13 +212,15 @@ function MainScreen({
   CurrentPage,
   pastSets,
   currentMode,
-  addSet
+  addSet,
+  setsLoading
 }: {
   selected: number | null;
   CurrentPage: page;
   pastSets: Set[];
   currentMode: mode;
   addSet: (set: Set, isAutomatic: boolean) => Promise<number>;
+  setsLoading: boolean;
 }) {
   return (
     <div className="flex flex-1 flex-col md:p-5 pt-5">
@@ -217,11 +228,10 @@ function MainScreen({
         <MainSet mode={currentMode} currentSet={pastSets[selected || 0]} />
       ) : CurrentPage === "upload" ? <Upload addSet={addSet} /> :
         CurrentPage === "helper" ? <HelperPage /> :
-          CurrentPage === "dashboard" ? <HomePage allSets={pastSets} addSet={addSet}/> :
+          CurrentPage === "dashboard" ? <HomePage allSets={setsLoading ? undefined : pastSets} addSet={addSet}/> :
             CurrentPage === "quickcreate" ? <QuickCreate addSet={addSet} /> : <></>}
 
 
     </div>
   );
 }
-
