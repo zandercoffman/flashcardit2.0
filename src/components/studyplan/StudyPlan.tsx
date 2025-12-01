@@ -26,7 +26,7 @@ export default function StudyPlan({ currentSet }: { currentSet: Set }) {
   const [error, setError] = useState("")
   const timeRef = useRef<HTMLInputElement>(null)
 
-  const [, setAllStorage] = useState<LocalStorageData>([])
+  const [allStorage, setAllStorage] = useState<LocalStorageData>([])
 
   // Calculate cards per day
   const totalCards = currentSet.vocab.length
@@ -120,8 +120,8 @@ export default function StudyPlan({ currentSet }: { currentSet: Set }) {
 
 
     const data: LocalStorageInference = { id: id, ratings: ratings, start: days[0], end: days[1] };
-    const allStorage: LocalStorageData = JSON.parse(localStorage.getItem(localStorageKey) || "[]");
-    const objCopyWithNewData = [...allStorage, data];
+    const allStorageCopy: LocalStorageData = JSON.parse(localStorage.getItem(localStorageKey) || "[]");
+    const objCopyWithNewData = [...allStorageCopy, data];
     localStorage.setItem(localStorageKey, JSON.stringify(objCopyWithNewData));
   }
   //END PRELOADING -  AND ALSO SAVING DATA TO LS

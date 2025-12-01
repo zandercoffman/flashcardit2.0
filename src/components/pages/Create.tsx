@@ -3,10 +3,11 @@ import { useState } from "react"
 import { FileUpload } from "../aceternity/file-upload"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "../ui/button"
+import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Copy, CheckCircle2, AlertCircle, Sparkles, FileJson, UploadIcon } from "lucide-react"
+import { Copy, CheckCircle2, AlertCircle, Sparkles, FileJson, UploadIcon, Pencil } from "lucide-react"
 import { toast } from "sonner"
 import { ScrollArea } from "../ui/scroll-area"
 
@@ -15,7 +16,7 @@ interface Set {
   vocab: [string, string][]
 }
 
-export default function Upload({
+export default function Create({
   addSet,
 }: {
   addSet: (set: Set, isAutomatic: boolean) => Promise<number>
@@ -27,6 +28,9 @@ export default function Upload({
   const [jsonError, setJsonError] = useState("")
   const [isValidJson, setIsValidJson] = useState(false)
   const [parsedSet, setParsedSet] = useState<{ title: string; vocab: [string, string][] } | null>(null)
+
+  const [manualTitle, setManualTitle] = useState("")
+  const [manualVocab, setManualVocab] = useState("")
 
   // AI Prompt from your text file
   const AI_PROMPT = `Make me a flashcard set based on the text or files I provide.
@@ -161,17 +165,53 @@ Output only the JSON. No explanations, no commentary, no formatting outside of t
     setFiles([])
   }
 
+  const handleManualCreate = () => {
+    if (!manualTitle.trim() || !manualVocab.trim()) {
+      toast.error("Please provide a title and at least one vocabulary pair.")
+      return
+    }
+
+    try {
+      const vocabPairs = manualVocab
+        .split("\n")
+        .map((line) => {
+          const parts = line.split(",").map((part) => part.trim())
+          if (parts.length !== 2 || !parts[0] || !parts[1]) {
+            throw new Error(`Invalid line: "${line}". Each line must be 'term, definition'.`)
+          }
+          return [parts[0], parts[1]] as [string, string]
+        })
+        .filter((pair) => pair) // Filter out any empty lines that might result
+
+      const newSet: Set = {
+        title: manualTitle,
+        vocab: vocabPairs,
+      }
+
+      addSet(newSet, false)
+      toast.success(`Successfully created and added "${manualTitle}"!`)
+      setManualTitle("")
+      setManualVocab("")
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Failed to parse vocabulary.")
+    }
+  }
+
   return (
     <div className="w-full max-w-5xl h-[75vh] mx-auto p-6 overflow-hidden">
       <Tabs defaultValue="ai" className="w-full">
-        <TabsList className="grid w-full grid-cols-2">
+        <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="ai" className="flex items-center gap-2">
             <Sparkles className="h-4 w-4" />
             Generate with AI
           </TabsTrigger>
           <TabsTrigger value="upload" className="flex items-center gap-2">
             <UploadIcon className="h-4 w-4" />
-            Upload JSON File
+            Create JSON File
+          </TabsTrigger>
+          <TabsTrigger value="manual" className="flex items-center gap-2">
+            <Pencil className="h-4 w-4" />
+            Create Manually
           </TabsTrigger>
         </TabsList>
 
@@ -254,18 +294,7 @@ Output only the JSON. No explanations, no commentary, no formatting outside of t
               </CardHeader>
               <CardContent>
                 <pre className="bg-gray-100 dark:bg-gray-800 p-3 rounded text-xs overflow-x-auto">
-                  {`{
-  "id": "span101",
-  "set": {
-    "title": "Spanish Basics",
-    "vocab": [
-      ["hello", "hola"],
-      ["goodbye", "adiós"],
-      ["thank you", "gracias"],
-      ["please", "por favor"]
-    ]
-  }
-}`}
+                  {`{\n  "id": "span101",\n  "set": {\n    "title": "Spanish Basics",\n    "vocab": [\n      ["hello", "hola"],\n      ["goodbye", "adiós"],\n      ["thank you", "gracias"],\n      ["please", "por favor"]\n    ]\n  }\n}`}
                 </pre>
               </CardContent>
             </Card>
@@ -277,9 +306,9 @@ Output only the JSON. No explanations, no commentary, no formatting outside of t
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <FileJson className="h-5 w-5" />
-                Upload JSON Files
+                Create JSON Files
               </CardTitle>
-              <CardDescription>Upload flashcard sets that you&apos;ve previously generated or downloaded</CardDescription>
+              <CardDescription>Create flashcard sets that you&apos;ve previously generated or downloaded</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <FileUpload onChange={handleFileUpload} />
@@ -308,6 +337,52 @@ Output only the JSON. No explanations, no commentary, no formatting outside of t
               )}
             </CardContent>
           </Card>
+        </TabsContent>
+
+        <TabsContent value="manual" className="space-y-6 h-full rounded-xl">
+          <ScrollArea className="h-[55vh]">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Pencil className="h-5 w-5" />
+                  Create a New Set Manually
+                </CardTitle>
+                <CardDescription>
+                  Enter a title and then your vocabulary. Each line should be a term and its definition, separated by a
+                  comma.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <label htmlFor="manual-title" className="font-semibold text-sm">
+                    Set Title
+                  </label>
+                  <Input
+                    id="manual-title"
+                    placeholder="e.g., Spanish 101"
+                    value={manualTitle}
+                    onChange={(e) => setManualTitle(e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="manual-vocab" className="font-semibold text-sm">
+                    Vocabulary
+                  </label>
+                  <Textarea
+                    id="manual-vocab"
+                    placeholder="hello, hola\ngoodbye, adiós\nthank you, gracias"
+                    value={manualVocab}
+                    onChange={(e) => setManualVocab(e.target.value)}
+                    className="min-h-[250px] font-mono text-sm"
+                  />
+                </div>
+                <Button onClick={handleManualCreate} className="w-full" size="lg">
+                  <CheckCircle2 className="h-4 w-4 mr-2" />
+                  Create and Study Set
+                </Button>
+              </CardContent>
+            </Card>
+          </ScrollArea>
         </TabsContent>
       </Tabs>
     </div>

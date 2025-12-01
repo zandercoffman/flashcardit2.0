@@ -14,10 +14,9 @@ import {
 import HomePage from "@/components/pages/home"
 import React, { useState, useEffect, useRef } from "react"
 import MainSet from "@/components/set/MainSet"
-import Upload from "@/components/pages/upload"
+import Create from "@/components/pages/Create"
 import HelperPage from "@/components/pages/helper"
 import { toast } from "sonner"
-import QuickCreate from "@/components/pages/QuickCreate"
 import { AllSets } from "@/lib/AllSets"
 
 type mode = "normal" | "quiz" | "speakit" | "picturematch" | null;
@@ -42,7 +41,7 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
   function formatPageName(page: string) {
     const pageMap = {
       set: "Set",
-      upload: "Upload",
+      upload: "Create",
       helper: "Helper",
       dashboard: "Dashboard",
       quickcreate: "Quick Create",
@@ -226,10 +225,10 @@ function MainScreen({
     <div className="flex flex-1 flex-col md:p-5 pt-5">
       {CurrentPage === "set" ? (
         <MainSet mode={currentMode} currentSet={pastSets[selected || 0]} />
-      ) : CurrentPage === "upload" ? <Upload addSet={addSet} /> :
+      ) : CurrentPage === "upload" ? <Create addSet={addSet} /> :
         CurrentPage === "helper" ? <HelperPage /> :
           CurrentPage === "dashboard" ? <HomePage allSets={setsLoading ? undefined : pastSets} addSet={addSet}/> :
-            CurrentPage === "quickcreate" ? <QuickCreate addSet={addSet} /> : <></>}
+             <></>}
 
 
     </div>

@@ -12,7 +12,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { LucideIcon, LucideProps, Search } from "lucide-react"
-import Upload from "./pages/upload"
+import Create from "./pages/Create"
 import { SearchBar } from "./pages/compOfPages/SearchBar"
 
 export function NavMain({
@@ -37,8 +37,8 @@ export function NavMain({
           <SidebarMenuItem className="flex flex-col md:flex-row items-center align-center gap-2">
             <SearchBar/>
             <SidebarMenuButton
-              tooltip="Upload"
-              className="shadow-xl w-full text-xl pl-4 md:pl-2 md:text-sm md:w-[40%] h-[120%] rounded-3xl  md:rounded-lg md:h-min 
+              tooltip="Create"
+              className="shadow-xl border-1 rounded-full w-full text-xl pl-4 md:pl-2 md:text-sm md:w-[40%]
              bg-white text-black 
              hover:bg-gray-100 hover:text-black 
              active:bg-gray-200 active:text-black 
@@ -48,11 +48,11 @@ export function NavMain({
              duration-200 ease-linear"
              onClick={() => {
               setcurpage("upload");
-              setCurrentHeader("Upload");
+              setCurrentHeader("Create");
              }}
             >
               <IconCirclePlusFilled />
-              <span>Upload</span>
+              <span>Create</span>
             </SidebarMenuButton>
 
 

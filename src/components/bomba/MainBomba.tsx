@@ -14,7 +14,8 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { RotateCcw, Check, Bomb, Shuffle, Trophy } from "lucide-react"
+import { RotateCcw, Check, Bomb, Shuffle, Trophy, ArrowDownUp, ArrowUpDown } from "lucide-react"
+import { BlurFade } from "../ui/blur-fade"
 
 interface Set {
   title: string
@@ -33,6 +34,9 @@ export default function MainBomba({ currentSet }: { currentSet: Set }) {
   const [hasChosenWords, setHasChosenWords] = useState(false)
   const [gridCells, setGridCells] = useState<GridCell[]>([])
   const [selectedCell, setSelectedCell] = useState<number | null>(null)
+  const [showSide1, setSide1Show] = useState<boolean>(true);
+
+  const amountEarned = 225;
 
 
   // TEAM LOGIC
@@ -113,24 +117,26 @@ export default function MainBomba({ currentSet }: { currentSet: Set }) {
       {/* GRID */}
       <div className="grid grid-rows-5 w-[80vh] h-[80vh] grid-cols-5 gap-3">
         {gridCells.map((cell, index) => (
-          <motion.div
-            key={index}
-            layoutId={`cell-${index}`}
-            className="w-20 h-20 aspect-square"
-          >
-            <Button
-              className="w-full h-full text-2xl font-bold rounded-3xl cursor-pointer"
-              onClick={() => !cell.isDisabled && handleCellClick(index)}
-              disabled={cell.isDisabled}
+          <BlurFade key={index} delay={0.3 + (0.07 * index)}>
+            <motion.div
+
+              layoutId={`cell-${index}`}
+              className="w-20 h-20 aspect-square"
             >
-              {index + 1}
-            </Button>
-          </motion.div>
+              <Button
+                className="w-full shadow-xl h-full text-2xl font-bold rounded-3xl cursor-pointer"
+                onClick={() => !cell.isDisabled && handleCellClick(index)}
+                disabled={cell.isDisabled}
+              >
+                {index + 1}
+              </Button>
+            </motion.div>
+          </BlurFade>
         ))}
       </div>
 
       {/* SCOREBOARD */}
-      <div className="flex flex-col gap-4 justify-center">
+      <div className="flex flex-col max-w-[200px] w-full gap-4 justify-center">
         <TeamCard
           number={1}
           points={team1Score}
@@ -143,6 +149,7 @@ export default function MainBomba({ currentSet }: { currentSet: Set }) {
           isActive={currentTeam === 2}
           onScoreChange={setTeam2Score}
         />
+        <p className="text-center text-sm">Press CTRL and + to zoom in and CTRL and - to zoom out.</p>
       </div>
 
       {/* EXPANDED CARD */}
@@ -174,14 +181,21 @@ export default function MainBomba({ currentSet }: { currentSet: Set }) {
                     {gridCells[selectedCell].type === "bomb"
                       ? "💣 Bomb Card"
                       : gridCells[selectedCell].word?.[0]}
+                    {gridCells[selectedCell].type !== "bomb" && <Button variant={"link"} className="flex w-min flex-row gap-2 " onClick={() => {
+                      setSide1Show(!showSide1)
+                    }}>
+                      <span>{showSide1 ? "Show" : "Hide"} Answer </span> {showSide1 ? <ArrowDownUp /> : <ArrowUpDown />}
+                    </Button>}
+
                   </CardDescription>
 
                   <CardAction>
                     <Button
                       className="text-md"
                       onClick={() => {
-                        setSelectedCell(null)
-                        setCurrentTeam((prev) => (prev === 1 ? 2 : 1))
+                        setSelectedCell(null);
+                        setCurrentTeam((prev) => (prev === 1 ? 2 : 1));
+                        setSide1Show(true);
                       }}
                     >
                       Close
@@ -219,7 +233,7 @@ export default function MainBomba({ currentSet }: { currentSet: Set }) {
 
                               <div className="flex flex-col">
                                 <span className="text-md text-muted-foreground uppercase tracking-wide">Points</span>
-                                <NumberTicker className="text-[3rem]" delay={0.7} startValue={refScore} value={0}/>
+                                <NumberTicker className="text-[3rem]" delay={0.7} startValue={refScore} value={0} />
                               </div>
                             </div>
                           </CardContent>
@@ -230,18 +244,26 @@ export default function MainBomba({ currentSet }: { currentSet: Set }) {
                     <div className="flex flex-col items-center text-center gap-4">
                       {/* BIG SPANISH WORD */}
                       <h2 className="font-extrabold leading-tight text-[clamp(3rem,6vw,6.5rem)]">
-                        {gridCells[selectedCell].word?.[0]}
+                        {gridCells[selectedCell].word?.[showSide1 ? 0 : 1]}
                       </h2>
 
                       {/* INSTRUCTIONS */}
                       <div className="space-y-2">
-                        <p className="text-[clamp(1.2rem,2.4vw,2rem)] text-muted-foreground font-medium">
-                          Team {currentTeam}, here’s your mission:
-                        </p>
+                        {
+                          showSide1 ? <>
+                            <p className="text-[clamp(1.2rem,2.4vw,2rem)] text-muted-foreground font-medium">
+                              Team {currentTeam}, here’s your mission:
+                            </p>
 
-                        <p className="text-[clamp(1rem,2vw,1.5rem)] tracking-wide font-semibold">
-                          1. Translate this word into English.
-                        </p>
+                            <p className="text-[clamp(1rem,2vw,1.5rem)] tracking-wide font-semibold">
+                              1. Translate this word into English.
+                            </p>
+                          </> : <>
+                            <p className="text-[clamp(1.2rem,2.4vw,2rem)] text-muted-foreground font-medium">
+                              The answer is provided above.
+                            </p>
+                          </>
+                        }
                       </div>
                     </div>
                   )}
@@ -250,34 +272,36 @@ export default function MainBomba({ currentSet }: { currentSet: Set }) {
                   {gridCells[selectedCell].type !== "bomb" && (
                     <div className="mt-6 flex gap-6 justify-center">
                       <Button
-                        className="px-8 py-6 text-[1.2rem] font-bold"
+                        className="cursor-pointer px-8 py-6 text-[1.2rem] font-bold"
                         onClick={() => {
-                          if (currentTeam === 1) setTeam1Score(team1Score + 125)
-                          else setTeam2Score(team2Score + 125)
+                          if (currentTeam === 1) setTeam1Score(team1Score + amountEarned)
+                          else setTeam2Score(team2Score + amountEarned)
 
                           // auto-close & switch
                           setSelectedCell(null)
                           setCurrentTeam((prev) => (prev === 1 ? 2 : 1))
+                          setSide1Show(true);
                         }}
                       >
-                        +125 for Team {currentTeam}
+                        +{amountEarned} points for Team {currentTeam}
                       </Button>
 
                       <Button
                         variant="destructive"
-                        className="px-8 py-6 text-[1.2rem] font-bold"
+                        className="cursor-pointer px-8 py-6 text-[1.2rem] font-bold"
                         onClick={() => {
                           const stealTeam = currentTeam === 1 ? 2 : 1
 
-                          if (stealTeam === 1) setTeam1Score(team1Score + 125)
-                          else setTeam2Score(team2Score + 125)
+                          if (stealTeam === 1) setTeam1Score(team1Score + amountEarned)
+                          else setTeam2Score(team2Score + amountEarned)
 
                           // auto-close & switch
                           setSelectedCell(null)
                           setCurrentTeam((prev) => (prev === 1 ? 2 : 1))
+                          setSide1Show(true);
                         }}
                       >
-                        Team {getOppositeTeam(currentTeam)} steals +125
+                        Team {getOppositeTeam(currentTeam)} steals +{amountEarned} points
                       </Button>
                     </div>
                   )}
