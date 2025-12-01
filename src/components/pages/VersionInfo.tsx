@@ -31,7 +31,7 @@ import {
               </CardHeader>
               <CardContent>
                 <p>
-                  We've made significant progress on the Study Path Mode. You can
+                  We&apos;ve made significant progress on the Study Path Mode. You can
                   now track your progress as you move through your personalized
                   study plan. More exciting features are coming to this mode
                   soon!
@@ -53,7 +53,7 @@ import {
               <CardContent>
                 <p>
                   Introducing Bomba! A fast-paced quiz mode where you have to
-                  answer questions before the bomb "explodes". It's a fun and
+                  answer questions before the bomb &quot;explodes&quot;. It&apos;s a fun and
                   engaging way to challenge yourself and master your study sets.
                 </p>
               </CardContent>
@@ -72,7 +72,7 @@ import {
               </CardHeader>
               <CardContent>
                 <p>
-                  We've polished the user interface to make your study sessions
+                  We&apos;ve polished the user interface to make your study sessions
                   more enjoyable. This includes better layouts, clearer
                   instructions, and a more responsive design across all devices.
                 </p>

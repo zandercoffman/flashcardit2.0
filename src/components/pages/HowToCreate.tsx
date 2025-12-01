@@ -28,9 +28,9 @@ export default function HowToCreate() {
             </CardHeader>
             <CardContent>
               <p>
-                Go to the "Generate with AI" tab. Copy our custom prompt and
+                Go to the &quot;Generate with AI&quot; tab. Copy our custom prompt and
                 paste it into your favorite AI assistant (like ChatGPT or
-                Claude) along with your notes or any text. Paste the AI's JSON
+                Claude) along with your notes or any text. Paste the AI&apos;s JSON
                 output back into our app to instantly create your set.
               </p>
             </CardContent>
@@ -50,7 +50,7 @@ export default function HowToCreate() {
             <CardContent>
               <p>
                 If you already have a study set in a valid JSON format, simply
-                go to the "Upload JSON File" tab. Drag and drop your file to
+                go to the &quot;Upload JSON File&quot; tab. Drag and drop your file to
                 load it into the app and start studying right away.
               </p>
             </CardContent>
@@ -69,10 +69,10 @@ export default function HowToCreate() {
             </CardHeader>
             <CardContent>
               <p>
-                Switch to the "Create Manually" tab. Give your set a title,
+                Switch to the &quot;Create Manually&quot; tab. Give your set a title,
                 then type your terms and definitions. Each new line should
-                contain one pair separated by a comma (e.g., "Hello, Hola").
-                It's simple, direct, and gives you full control.
+                contain one pair separated by a comma (e.g., &quot;Hello, Hola&quot;).
+                It&apos;s simple, direct, and gives you full control.
               </p>
             </CardContent>
           </Card>

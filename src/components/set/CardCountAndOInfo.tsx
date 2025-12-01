@@ -9,7 +9,7 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import { NavigationMenuLink } from "@/components/ui/navigation-menu"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
-import SpanishVerbs from "spanish-verbs";
+import * as SpanishVerbs from "spanish-verbs";
 
 type Tense =
   | "INDICATIVE_PRESENT"

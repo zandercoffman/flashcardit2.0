@@ -9,12 +9,11 @@ import {
   CardAction,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { RotateCcw, Check, Bomb, Shuffle, Trophy, ArrowDownUp, ArrowUpDown } from "lucide-react"
+import { RotateCcw, Check, Shuffle, Trophy, ArrowDownUp, ArrowUpDown } from "lucide-react"
 import { BlurFade } from "../ui/blur-fade"
 
 interface Set {
@@ -453,7 +452,6 @@ export function TeamCard({
   number,
   points = 0,
   isActive = false,
-  onScoreChange,
 }: {
   number: number
   points?: number
@@ -461,10 +459,6 @@ export function TeamCard({
   onScoreChange?: (p: number) => void
 }) {
   const teamColor = number === 1 ? "team1" : "team2"
-
-  const change = (delta: number) => {
-    onScoreChange?.(Math.max(0, points + delta))
-  }
 
   return (
     <Card

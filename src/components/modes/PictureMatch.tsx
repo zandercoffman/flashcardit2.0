@@ -18,35 +18,11 @@ export default function PictureMatch({ currentSet }: { currentSet: Set }) {
     const [src, setSrc] = useState<string | null>(
         "https://images.pexels.com/photos/5691515/pexels-photo-5691515.jpeg"
     );
-
-    const findImage = async (word: string): Promise<string | null> => {
-        try {
-            const response = await fetch(`/api/pexels?query=${encodeURIComponent(word)}`);
-
-            if (!response.ok) {
-                throw new Error(`API error: ${response.status}`);
-            }
-
-            const data = await response.json();
-
-            if (data.photos && data.photos.length > 0) {
-                return data.photos[0].src.original;
-            }
-
-            return null;
-        } catch (error) {
-            console.error("Error fetching image:", error);
-            return null;
-        }
-    };
-
-    const [hasChosenRightAns, setHasChosenRightAns] = useState<boolean>(false);
     const [chooseableOptions, setChooseableOptions] = useState<ChooseableOptions | null>(null);
-    const [inProgress, setInProgress] = useState<boolean>(true);
 
     const [randomizedSet] = useState<Set>({
         title: currentSet.title,
-        vocab: currentSet.vocab.sort(() => Math.random() - 0.5)
+        vocab: [...currentSet.vocab].sort(() => Math.random() - 0.5)
     });
 
     const [curCardIndex, setCurCardIndex] = useState<number>(0);
@@ -59,26 +35,29 @@ export default function PictureMatch({ currentSet }: { currentSet: Set }) {
     >([null, null, null, null]);
 
     useEffect(() => {
+        const findImage = async (word: string) => {
+            try {
+                const response = await fetch(`/api/pexels?query=${encodeURIComponent(word)}`);
+                if (!response.ok) throw new Error(`API error: ${response.status}`);
+                const data = await response.json();
+                setSrc(data.photos?.[0]?.src.original || null);
+            } catch (error) {
+                console.error("Error fetching image:", error);
+                setSrc(null);
+            }
+        };
+        
         const gottenCard = randomizedSet.vocab[curCardIndex];
         if (gottenCard) {
             setCurCard(gottenCard);
-
-            // show loader immediately
-            setSrc(null);
-
-            findImage(gottenCard[1]).then((res) => {
-                setSrc(res || null);
-            });
-        } else {
-            setInProgress(false);
+            setSrc(null); // Show loader
+            findImage(gottenCard[1]);
         }
     }, [curCardIndex, randomizedSet.vocab]);
 
-
-    // setup answer options whenever card changes
     useEffect(() => {
-        if (curCardIndex === currentSet.vocab.length) {
-            setInProgress(false);
+        if (curCardIndex >= randomizedSet.vocab.length) {
+            return;
         }
 
         const gottenCard = randomizedSet.vocab[curCardIndex];
@@ -86,13 +65,11 @@ export default function PictureMatch({ currentSet }: { currentSet: Set }) {
 
         const rightOption = gottenCard[0];
         const incorrectAnswers = currentSet.vocab
-            .filter((entry, index) => index !== curCardIndex)
+            .filter((entry) => entry[0] !== rightOption)
             .map((entry) => entry[0]);
 
         const shuffledIncorrect = incorrectAnswers.sort(() => 0.5 - Math.random());
-        const numIncorrectAnswers = 3;
-
-        const selectedIncorrectAns = shuffledIncorrect.slice(0, numIncorrectAnswers);
+        const selectedIncorrectAns = shuffledIncorrect.slice(0, 3);
         const allAnswers = [rightOption, ...selectedIncorrectAns];
 
         const fullMapping: ChooseableOptions = allAnswers
@@ -103,13 +80,11 @@ export default function PictureMatch({ currentSet }: { currentSet: Set }) {
             .sort(() => Math.random() - 0.5) as ChooseableOptions;
 
         setSelectedButtons([null, null, null, null]);
-        setHasChosenRightAns(false);
         setChooseableOptions(fullMapping);
     }, [curCard, curCardIndex, currentSet.vocab, randomizedSet.vocab]);
 
     return (
         <div className="relative w-full h-full flex flex-col items-center ">
-            {/* Left arrow (previous card) */}
             <div
                 onClick={() => {
                     if (curCardIndex > 0) {
@@ -121,7 +96,6 @@ export default function PictureMatch({ currentSet }: { currentSet: Set }) {
                 <ArrowLeft />
             </div>
 
-            {/* Right arrow (next card) */}
             <div
                 onClick={() => {
                     if (curCardIndex < currentSet.vocab.length - 1) {
@@ -138,7 +112,7 @@ export default function PictureMatch({ currentSet }: { currentSet: Set }) {
                     (src ? "object-cover" : " ") +
                     " w-[65%] bg-gray-300 h-[45vh] rounded-lg shadow-xl"
                 }
-                src={src ? src : "/loader.svg"} // <-- this kicks in when src=null
+                src={src ? src : "/loader.svg"}
             />
 
             <h1 className="mt-6 scroll-m-20 text-center text-xl font-bold tracking-tight text-balance">
@@ -160,14 +134,10 @@ export default function PictureMatch({ currentSet }: { currentSet: Set }) {
                                             boolean | null
                                         ];
                                         if (newArr[index] === null) {
-                                            newArr[index] = option.correct; // true if right, false if wrong
+                                            newArr[index] = option.correct;
                                         }
                                         return newArr;
                                     });
-
-                                    if (option.correct) {
-                                        setHasChosenRightAns(true);
-                                    }
                                 }}
                                 style={{
                                     backgroundColor:

@@ -3,11 +3,9 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { ChevronDown, Sun, Flame, Clock, Play, Settings, BookOpenCheck, Dices } from "lucide-react"
+import { Flame, Clock, Play, BookOpenCheck, Dices } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { RainbowButton } from "@/components/magicui/rainbow-button"
 import { InteractiveHoverButton } from "@/components/aceternity/IntHoverButton"
-import { BorderBeam } from "@/components/aceternity/borderBeam"
 
 interface QuizSetupProps {
   onStartQuiz: (settings: QuizSettings) => void

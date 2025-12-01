@@ -27,7 +27,7 @@ import {
               </CardHeader>
               <CardContent>
                 <p>
-                  Harness the power of AI to create flashcard sets for you. Simply provide a topic or a block of text, and our AI assistant will generate a set of terms and definitions for you. It's the fastest way to get started.
+                  Harness the power of AI to create flashcard sets for you. Simply provide a topic or a block of text, and our AI assistant will generate a set of terms and definitions for you. It&apos;s the fastest way to get started.
                 </p>
               </CardContent>
             </Card>

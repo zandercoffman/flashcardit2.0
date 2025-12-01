@@ -42,7 +42,7 @@ import {
               </CardHeader>
               <CardContent>
                 <p>
-                  Make learning fun! Challenge yourself with interactive games like 'Bomba' that test your knowledge in a fast-paced, exciting way.
+                  Make learning fun! Challenge yourself with interactive games like &apos;Bomba&apos; that test your knowledge in a fast-paced, exciting way.
                 </p>
               </CardContent>
             </Card>
@@ -57,7 +57,7 @@ import {
               </CardHeader>
               <CardContent>
                 <p>
-                  Create, manage, and review flashcards with ease. It's the classic, effective way to study and memorize terms and definitions.
+                  Create, manage, and review flashcards with ease. It&apos;s the classic, effective way to study and memorize terms and definitions.
                 </p>
               </CardContent>
             </Card>
