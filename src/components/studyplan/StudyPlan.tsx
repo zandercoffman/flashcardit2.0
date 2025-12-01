@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { StudyCarousel } from "./StudyCarousel"
-import { LoaderOne } from "@/components/ui/loader";
+import Loader from "../loader"
 import { StartStudying } from "./StartStudying"
 
 interface Set {
@@ -256,7 +256,7 @@ export default function StudyPlan({ currentSet }: { currentSet: Set }) {
 
   if (mode === "loading") {
     return <div className="w-full h-full flex justify-center items-center">
-      <LoaderOne/>
+      <Loader/>
     </div>
   }
 
