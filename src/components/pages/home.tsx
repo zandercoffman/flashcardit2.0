@@ -38,17 +38,16 @@ interface Set {
 interface AllSetsInterface { id: string, set: Set }
 
 const SUGGESTED_SETS: Set[] = [
-    { title: "APUSH Period 1", vocab: [["The first Americans", "The first Americans were the Paleo-Indians, who were hunter-gatherers that migrated from Asia to North America across the Bering Strait land bridge."], ["The Mayans", "The Mayans were a Mesoamerican civilization that developed a complex calendar, a system of writing, and impressive architecture."], ["The Aztecs", "The Aztecs were a Mesoamerican civilization that was known for its military prowess and its practice of human sacrifice."], ["The Incas", "The Incas were a South American civilization that was known for its extensive road system and its centralized government."]], },
-    { title: "APUSH Period 2", vocab: [["The Columbian Exchange", "The Columbian Exchange was the widespread transfer of plants, animals, culture, human populations, technology, and ideas between the Americas, West Africa, and the Old World in the 15th and 16th centuries."], ["The Encomienda System", "The Encomienda System was a labor system that was used by the Spanish in their American colonies. In this system, the Spanish crown granted a person a specified number of natives for whom they were to take responsibility."], ["The Pueblo Revolt", "The Pueblo Revolt was an uprising of most of the indigenous Pueblo people against the Spanish colonizers in the province of Santa Fe de Nuevo México, present day New Mexico."]], },
-    { title: "APUSH Period 3", vocab: [["The French and Indian War", "The French and Indian War was a theater of the Seven Years' War, which pitted the North American colonies of the British Empire against those of the French, each side being supported by various Native American tribes."], ["The Stamp Act", "The Stamp Act was a tax that was imposed by the British Parliament on the colonies of British America. The act required that many printed materials in the colonies be produced on stamped paper produced in London, carrying an embossed revenue stamp."], ["The Boston Tea Party", "The Boston Tea Party was a political protest that occurred on December 16, 1773, at Griffin's Wharf in Boston, Massachusetts. American colonists, frustrated and angry at Britain for imposing \"taxation without representation,\" dumped 342 chests of tea, imported by the British East India Company into the harbor."]], },
-    { title: "APUSH Period 4", vocab: [["The Louisiana Purchase", "The Louisiana Purchase was the acquisition of the Louisiana territory by the United States from France in 1803."], ["The War of 1812", "The War of 1812 was a conflict fought between the United States and its allies, and the United Kingdom of Great Britain and Ireland and its own allies."], ["The Missouri Compromise", "The Missouri Compromise was a United States federal statute devised by Henry Clay. It regulated slavery in the country's western territories by prohibiting the practice in the former Louisiana Territory north of the parallel 36°30′ north, except within the boundaries of the proposed state of Missouri."]], },
-    { title: "APUSH Period 5", vocab: [["The Second Great Awakening", "The Second Great Awakening was a Protestant religious revival during the early 19th century in the United States."], ["The Nullification Crisis", "The Nullification Crisis was a sectional crisis during the presidency of Andrew Jackson created by the Ordinance of Nullification, an attempt by the state of South Carolina to nullify a federal law - the tariff of 1828 - passed by the United States Congress."], ["The Bank War", "The Bank War was the political struggle that developed over the issue of rechartering the Second Bank of the United States."]], },
+    AllSets[AllSets.length - 1].set,
+    AllSets[AllSets.length - 2].set
 ]
 
 type Rating = "again" | "hard" | "good" | "easy";
 type LocalStorageInference = { id: string, ratings: Rating[], start: string, end: string }
 type LocalStorageData = LocalStorageInference[]
 const localStorageKey = "setsAndRatings"
+
+type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | null;
 
 
 const INFORMATION = {
@@ -70,7 +69,7 @@ const INFORMATION = {
     ]
 }
 
-export default function HomePage({ allSets, addSet }: { allSets: Set[] | undefined, addSet: (set: Set, isAutomatic: boolean) => Promise<number> }) {
+export default function HomePage({ allSets, addSet, setMode, setSet }: { allSets: Set[] | undefined, addSet: (set: Set, isAutomatic: boolean) => Promise<number>, setMode: (mode: mode) => void, setSet: (idx: number) => void }) {
     const [isOpen, setIsOpen] = React.useState(false)
     const [allStorage, setAllStorage] = React.useState<LocalStorageData>([])
     const [studyPathSets, setStudyPathSets] = React.useState<AllSetsInterface[] | null>(null)
@@ -176,13 +175,17 @@ export default function HomePage({ allSets, addSet }: { allSets: Set[] | undefin
                                         <ShowcaseSkeletonSP />
                                         <ShowcaseSkeletonSP />
                                     </>
-                                ) : studyPathSets !== null ? (
+                                ) : (studyPathSets !== null && studyPathSets.length > 0) ? (
                                     studyPathSets.map((set, index) => (
-                                        <ShowcaseStudyPath key={index} set={set.set} storage={allStorage.find(s => s.id == set.set.title)} />
+                                        <ShowcaseStudyPath key={index} set={set.set} storage={allStorage.find(s => s.id == set.set.title)} setMode={setMode} setSet={setSet} idx={index} />
+                                    ))
+                                ) : (studyPathSets !== null && studyPathSets.length === 1) ? (
+                                    SUGGESTED_SETS.filter(set => set.title !== studyPathSets[0].set.title).map((set, index) => (
+                                        <ShowcaseSuggestionCard key={index} setMode={setMode} set={set} addSet={addSet} />
                                     ))
                                 ) : (
                                     SUGGESTED_SETS.map((set, index) => (
-                                        <ShowcaseSuggestion key={index} set={set} addSet={addSet} />
+                                        <ShowcaseSuggestionCard key={index} setMode={setMode} set={set} addSet={addSet} />
                                     ))
                                 )
                             }
@@ -290,19 +293,25 @@ function ShowcaseStudyPath({
     id,
     addSet,
     storage,
+    setMode,
+    setSet,
+    idx
 }: {
     set: Set;
     id?: string;
     addSet?: (set: Set, isAutomatic: boolean) => Promise<number>;
     storage: LocalStorageInference | undefined;
+    setMode: (mode: mode) => void,
+    setSet: (idx: number) => void,
+    idx: number
 }) {
     // --- Calculate total days ---
     const totalDays = storage?.end
         ? Math.floor(
-              (new Date(storage.end).getTime() -
-                  new Date(storage.start).getTime()) /
-                  (1000 * 60 * 60 * 24)
-          ) + 1
+            (new Date(storage.end).getTime() -
+                new Date(storage.start).getTime()) /
+            (1000 * 60 * 60 * 24)
+        ) + 1
         : 5;
 
     // --- Words per day ---
@@ -330,6 +339,7 @@ function ShowcaseStudyPath({
                     <Button
                         className="flex flex-row gap-2 cursor-pointer rounded-full"
                         variant={"ghost"}
+                        onClick={() => { setMode("studyplan"); setSet(idx) }}
                     >
                         <Footprints />
                         <span>Continue The Path</span>
@@ -359,13 +369,12 @@ function ShowcaseStudyPath({
                                             className={`w-3 h-3 rounded-full transition-all border border-gray-600 ${dot}`}
                                         />
                                         <p
-                                            className={`text-xs mt-1 transition-all ${
-                                                isPast
+                                            className={`text-xs mt-1 transition-all ${isPast
                                                     ? "text-white"
                                                     : isToday
-                                                    ? "text-white font-semibold"
-                                                    : "text-gray-500"
-                                            }`}
+                                                        ? "text-white font-semibold"
+                                                        : "text-gray-500"
+                                                }`}
                                         >
                                             Day {index + 1}
                                         </p>
@@ -373,11 +382,10 @@ function ShowcaseStudyPath({
 
                                     {index < totalDays - 1 && (
                                         <div
-                                            className={`flex-1 h-px ${
-                                                isPast
+                                            className={`flex-1 h-px ${isPast
                                                     ? "bg-white"
                                                     : "bg-gray-500"
-                                            }`}
+                                                }`}
                                         />
                                     )}
                                 </React.Fragment>
@@ -408,30 +416,94 @@ function ShowcaseStudyPath({
     );
 }
 
+function ShowcaseSuggestionCard({
+    set,
+    id,
+    addSet,
+    setMode
+}: {
+    set: Set;
+    id?: string;
+    addSet?: (set: Set, isAutomatic: boolean) => Promise<number>;
+    setMode: (mode: mode) => void
+}) {
+    // --- Static values for suggestion ---
+    const totalDays = 5;
+    const wordsPerDay = Math.ceil(set.vocab.length / totalDays);
 
-
-
-
-
-function ShowcaseSuggestion({ set, id, addSet }: { set: Set, id?: string, addSet?: (set: Set, isAutomatic: boolean) => Promise<number> }) {
     return (
-        <Card className="w-[450px] h-48 rounded-4xl flex-shrink-0 border-dashed bg-gray-50 dark:bg-gray-900">
+        <Card className="w-[450px] h-52 rounded-4xl flex-shrink-0 flex flex-col bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900 dark:to-indigo-950">
             <CardHeader>
-                <CardTitle>{set.title.substring(0, 50) + (set.title.length > 50 ? "..." : "")}</CardTitle>
-                <CardDescription>{set.vocab.length} words</CardDescription>
+                <CardTitle>
+                    {set.title.substring(0, 50) +
+                        (set.title.length > 50 ? "..." : "")}
+                </CardTitle>
+                <CardDescription>{set.vocab.length} words to learn</CardDescription>
+
+                <CardAction>
+                    <Button
+                        className="flex flex-row gap-2 cursor-pointer rounded-full"
+                        variant={"outline"}
+                        onClick={() => {
+                            if (addSet) addSet(set, true);
+                            setTimeout(() => {
+                                if (addSet) setMode("studyplan")
+                            }, 100)
+                        }}
+                    >
+                        <Plus />
+                        <span>Start The Path</span>
+                    </Button>
+                </CardAction>
             </CardHeader>
+
+            {/* --- TIMELINE --- */}
             <CardContent>
-                <p className="text-sm text-gray-500">{set.vocab.map(v => v[0]).join(", ")}</p>
+                <div className="flex items-center justify-center w-full pt-2">
+                    <div className="flex items-center w-full max-w-xs">
+                        {Array.from({ length: totalDays }).map((_, index) => {
+                            return (
+                                <React.Fragment key={index}>
+                                    <div className="flex flex-col items-center">
+                                        <div
+                                            className={`w-3 h-3 rounded-full transition-all border border-gray-400 bg-gray-400`}
+                                        />
+                                        <p
+                                            className={`text-xs mt-1 transition-all text-gray-500`}
+                                        >
+                                            Day {index + 1}
+                                        </p>
+                                    </div>
+
+                                    {index < totalDays - 1 && (
+                                        <div
+                                            className={`flex-1 h-px bg-gray-400`}
+                                        />
+                                    )}
+                                </React.Fragment>
+                            );
+                        })}
+                    </div>
+                </div>
+
+                <p className="text-xs text-center text-gray-500 mt-2">
+                    ~{wordsPerDay} words/day
+                </p>
             </CardContent>
-            <CardFooter className="mt-auto">
-                <button onClick={() => {
-                    if (addSet) {
-                        addSet(set, true)
-                    }
-                }} className="flex flex-row gap-2 font-bold cursor-pointer rounded-3xl dark:bg-white px-4 py-2 mt-auto dark:text-black text-white bg-black">
-                    <Plus /> <span>Add Now</span>
-                </button>
-            </CardFooter>
+
+            {/* Add button only if id exists */}
+            {id && (
+                <CardFooter className="mt-auto">
+                    <button
+                        onClick={() => {
+                            if (addSet) addSet(set, true);
+                        }}
+                        className="flex flex-row gap-2 font-bold cursor-pointer rounded-3xl dark:bg-white px-4 py-2 mt-auto dark:text-black text-white bg-black"
+                    >
+                        <Plus /> <span>Add Now</span>
+                    </button>
+                </CardFooter>
+            )}
         </Card>
-    )
+    );
 }

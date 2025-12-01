@@ -209,7 +209,8 @@ export function AppSidebar({ ...props }: any) {
         <NavDocuments items={data.documents as Set[]}
           setSeled={props.setSeled}
           setcurpage={props.setcurpage} 
-          setCurrentHeader={props.setCurrentHeader}/>
+          setCurrentHeader={props.setCurrentHeader}
+          getRidOfSet={props.getRidOfSet} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
     </Sidebar>

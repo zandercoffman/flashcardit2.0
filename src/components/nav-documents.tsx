@@ -51,11 +51,13 @@ export function NavDocuments({
   setSeled,
   setcurpage,
   setCurrentHeader,
+  getRidOfSet,
 }: {
   items: Set[],
   setSeled: Function,
   setcurpage: Function,
   setCurrentHeader: Function,
+  getRidOfSet: Function,
 }) {
   const { isMobile } = useSidebar()
   const [theseItems, useTheseItems] = useState<Set[]>(items);
@@ -185,7 +187,7 @@ export function NavDocuments({
                       <span>Share</span>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem variant="destructive">
+                    <DropdownMenuItem variant="destructive" onClick={() => getRidOfSet(index)}>
                       <IconTrash />
                       <span>Delete</span>
                     </DropdownMenuItem>

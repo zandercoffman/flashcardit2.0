@@ -19,7 +19,7 @@ import HelperPage from "@/components/pages/helper"
 import { toast } from "sonner"
 import { AllSets } from "@/lib/AllSets"
 
-type mode = "normal" | "quiz" | "speakit" | "picturematch" | null;
+type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | null;
 type page = "helper" | "dashboard" | "set" | "upload";
 
 interface DashboardPageProps {
@@ -46,12 +46,14 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
       dashboard: "Dashboard",
       quickcreate: "Quick Create",
     };
-  
+
     return pageMap[page as keyof typeof pageMap] || page;
-  }  
-  
+  }
+
 
   const [currentMode, setCurrentMode] = useState<mode>("normal");
+
+
 
   const [selected, setSeled] = useState<number | null>(null);
   const [pastSets, setPastSets] = useState<Set[]>([]);
@@ -61,12 +63,29 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
   const dashboardRef = useRef<HTMLButtonElement>(null);
 
   const getRidOfSet = (index: number) => {
-    setSeled(null);
+    const removedSet = pastSets[index];
+    if (!removedSet) return;
 
-    setTimeout(() => {
-      setPastSets(prevSets => prevSets.filter((_, i) => i !== index));
-    }, 100);
+    // Update component state first
+    const newPastSets = pastSets.filter((_, i) => i !== index);
+    setPastSets(newPastSets);
+
+    // Update localStorage
+    const existingSetsFromStorage = JSON.parse(localStorage.getItem("sets") || "[]") as AllSetsInterface[];
+    const updatedSetsForStorage = existingSetsFromStorage.filter(item => item.set.title !== removedSet.title);
+    localStorage.setItem("sets", JSON.stringify(updatedSetsForStorage));
+
+    // Navigate UI
+    setcurpage("dashboard");
+    setCurrentHeader("Dashboard");
+    setSeled(null);
+    setCurrentMode("normal");
+
+    toast.success(`Set "${removedSet.title}" has been deleted.`);
+    window.location.reload();
   }
+
+  // START IMPM
 
   const addSet = (newSet: Set, isAutomatic: boolean = false): Promise<number> => {
 
@@ -88,7 +107,7 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
       }
       //Then, reset localStorage at sets to existingSets once again
       localStorage.setItem("sets", JSON.stringify(existingSets));
-      
+
     }
 
     if (!isAutomatic) {
@@ -110,18 +129,27 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
 
     });
   };
+  const setMode = (mode: mode) => {
+    setCurrentMode(mode)
+  }
+
+  const setSet = (idx: number) => {
+    setSeled(idx);
+  }
+
+  //STAT IMPM
 
   useEffect(() => {
     try {
-        const existingSets = JSON.parse(localStorage.getItem("sets") || "[]") as AllSetsInterface[];
-        if (existingSets) {
-          setPastSets(existingSets.map(set => set.set));
-        }
+      const existingSets = JSON.parse(localStorage.getItem("sets") || "[]") as AllSetsInterface[];
+      if (existingSets) {
+        setPastSets(existingSets.map(set => set.set));
+      }
     } catch (e) {
-        console.error("Failed to parse sets from localStorage", e);
-        setPastSets([]);
+      console.error("Failed to parse sets from localStorage", e);
+      setPastSets([]);
     } finally {
-        setSetsLoading(false);
+      setSetsLoading(false);
     }
   }, [])
 
@@ -153,9 +181,9 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
       setCurrentHeader(pastSets[0].title); // Set the last to first: What? I do not know but this works.
       setCurrentMode("normal");
       if (!(window.location.pathname == "/")) {
-         setSeled(lastIndex);
+        setSeled(lastIndex);
       }
-     
+
     }
   }, [pastSets]);
 
@@ -165,7 +193,7 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
       setSeled(null)
   }, [CurrentPage])
 
-  
+
 
   return (
     <SidebarProvider
@@ -182,7 +210,8 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
         setCurrentHeader={setCurrentHeader}
         pastSets={pastSets}
         dashRef={dashboardRef}
-        setSeled={setSeled} />
+        setSeled={setSeled}
+        getRidOfSet={getRidOfSet} />
       <SidebarInset>
         <SiteHeader
           currentHeader={currentHeader} currentPage={CurrentPage} setTTSEnabled={setTTSEnabled}
@@ -197,6 +226,8 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
             currentMode={currentMode}
             addSet={addSet}
             setsLoading={setsLoading}
+            setMode={setMode}
+            setSet={setSet}
           />
 
         </div>
@@ -212,7 +243,9 @@ function MainScreen({
   pastSets,
   currentMode,
   addSet,
-  setsLoading
+  setsLoading,
+  setMode,
+  setSet
 }: {
   selected: number | null;
   CurrentPage: page;
@@ -220,15 +253,17 @@ function MainScreen({
   currentMode: mode;
   addSet: (set: Set, isAutomatic: boolean) => Promise<number>;
   setsLoading: boolean;
+  setMode: (mode: mode) => void;
+  setSet: (idx: number) => void;
 }) {
   return (
     <div className="flex flex-1 flex-col md:p-5 pt-5">
-      {CurrentPage === "set" ? (
-        <MainSet mode={currentMode} currentSet={pastSets[selected || 0]} />
+      {CurrentPage === "set" && selected !== null && pastSets[selected] ? (
+        <MainSet mode={currentMode} currentSet={pastSets[selected]} />
       ) : CurrentPage === "upload" ? <Create addSet={addSet} /> :
         CurrentPage === "helper" ? <HelperPage /> :
-          CurrentPage === "dashboard" ? <HomePage allSets={setsLoading ? undefined : pastSets} addSet={addSet}/> :
-             <></>}
+          CurrentPage === "dashboard" ? <HomePage allSets={setsLoading ? undefined : pastSets} addSet={addSet} setMode={setMode} setSet={setSet} /> :
+            <></>}
 
 
     </div>

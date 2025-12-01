@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { ModeToggle } from "./mode-toggle"
-type mode = "normal" | "quiz" | "speakit" | "picturematch" | null;
+type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | null;
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { AudioWaveform, Bomb, BookCheck, BookOpen, Image, LandPlot, Megaphone, Milestone, PencilLine, Settings, Settings2, Volume, Volume2 } from "lucide-react";
 
