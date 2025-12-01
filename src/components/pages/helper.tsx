@@ -23,7 +23,7 @@ export default function HelperPage() {
             Welcome to Your Study Hub
           </h1>
           <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Here’s a quick guide to help you get the most out of our powerful learning tools. Let's get started!
+            Here&apos;s a quick guide to help you get the most out of our powerful learning tools. Let&apos;s get started!
           </p>
         </div>
 
@@ -51,7 +51,7 @@ export default function HelperPage() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2 text-lime-800 dark:text-lime-200">
-              <p>At the top of each set, you'll find a “Study” menu. Click it to explore different ways to learn:</p>
+              <p>At the top of each set, you&apos;ll find a “Study” menu. Click it to explore different ways to learn:</p>
               <ul className="list-none space-y-2 pl-2">
                 <li className="flex items-center gap-2"><BookCopy className="h-5 w-5 text-lime-600 dark:text-lime-400" /> <strong>Study:</strong> Classic flashcard review.</li>
                 <li className="flex items-center gap-2"><FileQuestion className="h-5 w-5 text-lime-600 dark:text-lime-400" /> <strong>Quiz:</strong> Test yourself with questions.</li>
@@ -74,7 +74,7 @@ export default function HelperPage() {
               <ul className="list-disc list-inside space-y-2">
                 <li>Use the <strong>→ and ← arrow keys</strong> to move between cards.</li>
                 <li><strong>Click a card</strong> to flip it over and reveal the answer.</li>
-                <li>Keep an eye on the <strong>progress counter</strong> at the bottom to see how far you've come.</li>
+                <li>Keep an eye on the <strong>progress counter</strong> at the bottom to see how far you&apos;ve come.</li>
               </ul>
             </CardContent>
           </Card>

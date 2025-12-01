@@ -46,14 +46,14 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
       dashboard: "Dashboard",
       quickcreate: "Quick Create",
     };
-
+  
     return pageMap[page as keyof typeof pageMap] || page;
-  }
-
+  }  
+  
 
   const [currentMode, setCurrentMode] = useState<mode>("normal");
 
-
+  
 
   const [selected, setSeled] = useState<number | null>(null);
   const [pastSets, setPastSets] = useState<Set[]>([]);
@@ -81,10 +81,9 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
     setSeled(null);
     setCurrentMode("normal");
 
-    toast.success(`Set "${removedSet.title}" has been deleted.`);
-    window.location.reload();
-  }
-
+    toast.success(`Set "'${removedSet.title}'" has been deleted.`);
+}
+  
   // START IMPM
 
   const addSet = (newSet: Set, isAutomatic: boolean = false): Promise<number> => {
@@ -101,13 +100,13 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
           existingSets.push({ id: crypto.randomUUID(), set: newSet } as AllSetsInterface);
           localStorage.setItem("sets", JSON.stringify(existingSets));
         } else {
-          toast.error(`${newSet.title} is already in your vocab list!`);
+          toast.error(`'${newSet.title}' is already in your vocab list!`);
         }
 
       }
       //Then, reset localStorage at sets to existingSets once again
       localStorage.setItem("sets", JSON.stringify(existingSets));
-
+      
     }
 
     if (!isAutomatic) {
@@ -122,7 +121,7 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
         return updatedSets;
       });
 
-      toast(`${newSet.title} has been successfully been added to your vocab list!`);
+      toast(`'${newSet.title}' has been successfully been added to your vocab list!`);
       if (dashboardRef?.current) {
         dashboardRef.current.click();
       }
@@ -135,28 +134,28 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
 
   const setSet = (idx: number) => {
     setSeled(idx);
+    setcurpage("set")
   }
 
   //STAT IMPM
 
   useEffect(() => {
     try {
-      const existingSets = JSON.parse(localStorage.getItem("sets") || "[]") as AllSetsInterface[];
-      if (existingSets) {
-        setPastSets(existingSets.map(set => set.set));
-      }
+        const existingSets = JSON.parse(localStorage.getItem("sets") || "[]") as AllSetsInterface[];
+        if (existingSets) {
+          setPastSets(existingSets.map(set => set.set));
+        }
     } catch (e) {
-      console.error("Failed to parse sets from localStorage", e);
-      setPastSets([]);
+        console.error("Failed to parse sets from localStorage", e);
+        setPastSets([]);
     } finally {
-      setSetsLoading(false);
+        setSetsLoading(false);
     }
   }, [])
 
   useEffect(() => {
     const process = async () => {
       if (defaultImportedSetID) {
-        setTimeout(async () => {
           const foundSet = AllSets.find(set => set.id === defaultImportedSetID);
           if (foundSet && !(window.location.pathname == "/")) {
             const newIndex = await addSet(foundSet.set, false);
@@ -166,34 +165,17 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
             setCurrentMode("normal");
             setSeled(newIndex); // wait until set is added to pastSets
           }
-        }, 100); // Small delay
       }
 
     };
     process();
-  }, [defaultImportedSetID, AllSets]); // Add defaultImportedSetID to the dependency array
-
-  useEffect(() => {
-    if (pastSets.length > 0 && typeof window !== null) {
-      const lastIndex = pastSets.length - 1;
-
-      setcurpage("set");
-      setCurrentHeader(pastSets[0].title); // Set the last to first: What? I do not know but this works.
-      setCurrentMode("normal");
-      if (!(window.location.pathname == "/")) {
-        setSeled(lastIndex);
-      }
-
-    }
-  }, [pastSets]);
+  }, [defaultImportedSetID]);
 
   useEffect(() => {
     document.title = formatPageName(CurrentPage) || "Page";
-    if (selected != null && CurrentPage == "set")
-      setSeled(null)
   }, [CurrentPage])
 
-
+  
 
   return (
     <SidebarProvider
@@ -263,7 +245,7 @@ function MainScreen({
       ) : CurrentPage === "upload" ? <Create addSet={addSet} /> :
         CurrentPage === "helper" ? <HelperPage /> :
           CurrentPage === "dashboard" ? <HomePage allSets={setsLoading ? undefined : pastSets} addSet={addSet} setMode={setMode} setSet={setSet} /> :
-            <></>}
+             <></>}
 
 
     </div>
