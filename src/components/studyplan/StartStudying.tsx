@@ -41,11 +41,11 @@ export function StartStudying({
                 </DialogFooter>
             </DialogContent>
         </Dialog>
-        <section className="w-full mb-4 h-min flex flex-row gap-2 justify-between items-center">
+        <section className="absolute top-[8vh] w-[95%] mb-4 h-min flex flex-row gap-2 justify-between items-center">
             <StepsHeader steps={steps} currentStep={currentStep} />
             <Button>Next Step</Button>
         </section>
-        <section className="w-full h-full">
+        <section className="w-full flex justify-center items-center h-full">
             <FlashcardHolder set={{ title: "Study Path", vocab: cards }} />
         </section>
     </div>
