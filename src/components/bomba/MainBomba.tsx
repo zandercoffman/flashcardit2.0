@@ -258,7 +258,7 @@ export default function MainBomba({ currentSet }: { currentSet: Set }) {
                             </p>
 
                             <p className="text-[clamp(1rem,2vw,1.5rem)] tracking-wide font-semibold">
-                              1. Translate this word into English/Conjugate.
+                              1. Translate this word into English/Conjugate/Put the Verb into the set.
                             </p>
                           </> : <>
                             <p className="text-[clamp(1.2rem,2.4vw,2rem)] text-muted-foreground font-medium">
