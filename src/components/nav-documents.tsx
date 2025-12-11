@@ -60,10 +60,10 @@ export function NavDocuments({
   getRidOfSet: Function,
 }) {
   const { isMobile } = useSidebar()
-  const [theseItems, useTheseItems] = useState<Set[]>(items);
+  const [theseItems, setTheseItems] = useState<Set[]>(items);
 
   useEffect(() => {
-    useTheseItems(items)
+    setTheseItems(items)
   }, [items])
 
   return (

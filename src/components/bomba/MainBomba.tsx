@@ -242,7 +242,7 @@ export default function MainBomba({ currentSet }: { currentSet: Set }) {
                   ) : (
                     <div className="flex flex-col items-center text-center gap-4">
                       {/* BIG SPANISH WORD */}
-                      <h2 className="font-extrabold leading-tight text-[clamp(3rem,6vw,6.5rem)]">
+                      <h2 className="font-extrabold leading-tight text-[4rem]">
                         {gridCells[selectedCell].word?.[showSide1 ? 0 : 1]}
                       </h2>
 
@@ -255,7 +255,7 @@ export default function MainBomba({ currentSet }: { currentSet: Set }) {
                             </p>
 
                             <p className="text-[clamp(1rem,2vw,1.5rem)] tracking-wide font-semibold">
-                              1. Translate this word into English.
+                              1. Translate this word into English/Conjugate.
                             </p>
                           </> : <>
                             <p className="text-[clamp(1.2rem,2.4vw,2rem)] text-muted-foreground font-medium">

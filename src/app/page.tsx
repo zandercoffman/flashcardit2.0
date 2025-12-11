@@ -36,7 +36,6 @@ interface AllSetsInterface { id: string, set: Set }
 export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) {
   const [CurrentPage, setcurpage] = useState<page>("dashboard");
   const [currentHeader, setCurrentHeader] = useState<string>("Dashboard");
-  const [setsLoading, setSetsLoading] = useState(true);
 
   function formatPageName(page: string) {
     const pageMap = {
@@ -56,7 +55,29 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
   
 
   const [selected, setSeled] = useState<number | null>(null);
-  const [pastSets, setPastSets] = useState<Set[]>([]);
+  const [pastSets, setPastSets] = useState<Set[]>(() => {
+    if (typeof window === "undefined") {
+      return [];
+    }
+    try {
+      const item = window.localStorage.getItem("sets");
+      if (item) {
+        const parsed = JSON.parse(item) as AllSetsInterface[];
+        return parsed.map(s => s.set);
+      }
+      return [];
+    } catch (error) {
+      console.error("Failed to parse sets from localStorage", error);
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    setMode("normal")
+  }, [selected])
+
+  const [setsLoading, setSetsLoading] = useState(false);
+
 
   const [ttsEnabled, setTTSEnabled] = useState<boolean>(false);
 
@@ -138,20 +159,6 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
   }
 
   //STAT IMPM
-
-  useEffect(() => {
-    try {
-        const existingSets = JSON.parse(localStorage.getItem("sets") || "[]") as AllSetsInterface[];
-        if (existingSets) {
-          setPastSets(existingSets.map(set => set.set));
-        }
-    } catch (e) {
-        console.error("Failed to parse sets from localStorage", e);
-        setPastSets([]);
-    } finally {
-        setSetsLoading(false);
-    }
-  }, [])
 
   useEffect(() => {
     const process = async () => {

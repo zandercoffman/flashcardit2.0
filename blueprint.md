@@ -44,3 +44,9 @@ This application is a versatile study tool that allows users to create, manage, 
 
 1.  **Redesigned `src/components/pages/helper.tsx`:** Modernized the helper page with a card-based layout, unique icons, and a clear, step-by-step instructional guide to improve user experience.
 2.  **Updated `blueprint.md`:** Updated the blueprint to reflect the changes made to the `helper.tsx` page.
+
+## Recent Changes
+
+### Bug Fixes
+
+*   **Initial Set Loading:** Fixed an issue where study sets were not loaded into the navigation sidebar on the initial page load. The code was modified to load sets from local storage earlier in the component lifecycle, eliminating the loading delay.

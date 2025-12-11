@@ -48,7 +48,6 @@ import {
 } from "@/components/ui/hover-card"
 import HomePage from "@/components/pages/home"
 import HelperPage from "@/components/pages/helper"
-import { useEffect, useRef, useState } from "react"
 
 type PageData = {
   title: string;
@@ -141,22 +140,7 @@ var thisdata = {
 
 
 export function AppSidebar({ ...props }: any) {
-  const sets = props.pastSets;
-  const [data, setData] = useState(thisdata);
-
-  useEffect(() => {
-    var copy = data;
-    copy.documents = [
-      ...sets.map((set: Set) => {
-        return {
-          title: set.title,
-          vocab: set.vocab
-        }
-      })
-    ]
-
-    setData(copy)
-  }, [sets])
+  const sets = props.pastSets || [];
 
   return (
     <Sidebar collapsible="offcanvas" variant={props.variant}>
@@ -170,9 +154,9 @@ export function AppSidebar({ ...props }: any) {
 
               <HoverCard>
                 <HoverCardTrigger asChild >
-                  <a href="
+                  <a href="'''
                   
-                  "
+                  '''"
                     className="flex flex-row gap-2 align-center items-center w-min">
                     <BookOpenText className=" text-3xl md:text-base" />
                     <span className="text-2xl md:text-base font-semibold">Flashcard/It</span>
@@ -202,16 +186,16 @@ export function AppSidebar({ ...props }: any) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent className="mx-2 my-2 md:mx-0 md:my-0">
-        <NavMain items={data.navMain as PageData[]}
+        <NavMain items={thisdata.navMain as PageData[]}
           setcurpage={props.setcurpage}
           dashRef={props.dashRef}
           setCurrentHeader={props.setCurrentHeader} />
-        <NavDocuments items={data.documents as Set[]}
+        <NavDocuments items={sets as Set[]}
           setSeled={props.setSeled}
           setcurpage={props.setcurpage} 
           setCurrentHeader={props.setCurrentHeader}
           getRidOfSet={props.getRidOfSet} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        <NavSecondary items={thisdata.navSecondary} className="mt-auto" />
       </SidebarContent>
     </Sidebar>
   )
