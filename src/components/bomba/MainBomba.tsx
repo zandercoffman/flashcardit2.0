@@ -242,7 +242,10 @@ export default function MainBomba({ currentSet }: { currentSet: Set }) {
                   ) : (
                     <div className="flex flex-col items-center text-center gap-4">
                       {/* BIG SPANISH WORD */}
-                      <h2 className="font-extrabold leading-tight text-[4rem]">
+                      <h2 className="font-extrabold leading-tight "
+                      style={{
+                        fontSize: (gridCells[selectedCell].word?.[showSide1 ? 0 : 1] || "").length > 20 ? "2rem" : "4rem"
+                      }}>
                         {gridCells[selectedCell].word?.[showSide1 ? 0 : 1]}
                       </h2>
 
