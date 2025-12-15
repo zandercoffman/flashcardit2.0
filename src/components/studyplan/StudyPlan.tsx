@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label"
 import { StudyCarousel } from "./StudyCarousel"
 import Loader from "../loader"
 import { StartStudying } from "./StartStudying"
+import { BetaBadge } from "../BetaBadge"
 
 interface Set {
   title: string
@@ -251,7 +252,7 @@ export default function StudyPlan({ currentSet }: { currentSet: Set }) {
     }
   }
   // END SETUP
-
+  const isInBeta = true;
   
 
   if (mode === "loading") {
@@ -260,10 +261,15 @@ export default function StudyPlan({ currentSet }: { currentSet: Set }) {
     </div>
   }
 
+  
+
   if (mode === "setup") {
     return <Card className="w-full" id="setup">
       <CardHeader>
-        <CardTitle>Study Path</CardTitle>
+        <CardTitle className="flex flex-row gap-2">
+          <span>Study Path</span>
+          <BetaBadge/>
+        </CardTitle>
         <CardDescription>
           Your personalized flashcard roadmap — spreads reviews over time for stronger memory.
         </CardDescription>
