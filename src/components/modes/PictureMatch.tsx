@@ -2,10 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-interface Set {
-    title: string;
-    vocab: [string, string][];
-}
+import { Set } from "@/lib/AllSets"
 
 type ChooseableOptions = [
     { option: string; correct: boolean },

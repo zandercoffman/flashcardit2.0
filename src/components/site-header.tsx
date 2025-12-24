@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { ModeToggle } from "./mode-toggle"
-type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | null;
+import { mode } from "@/lib/AllSets" 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { AudioWaveform, Bomb, BookCheck, BookOpen, Image, LandPlot, Megaphone, Milestone, PencilLine, Settings, Settings2, Volume, Volume2 } from "lucide-react";
+import { AudioWaveform, Bomb, BookCheck, BookOpen, Image, LandPlot, LayoutTemplate, Megaphone, Milestone, PencilLine, Settings, Settings2, Volume, Volume2 } from "lucide-react";
 
 
 import { VolumeX } from "lucide-react"
@@ -235,6 +235,15 @@ export function SiteHeader({
                             <BookCheck className="size-4 lg:size-6" />
                             <div className=" w-full">
                               <h4 className="text-xl md:text-base font-semibold">Quiz</h4>
+                            </div>
+                          </div>
+                        </SelectItem>
+
+                        <SelectItem value="matching">
+                          <div className="flex justify-start items-center gap-4 ">
+                            <LayoutTemplate className="size-4 lg:size-6" />
+                            <div className=" w-full">
+                              <h4 className="text-xl md:text-base font-semibold">Matching</h4>
                             </div>
                           </div>
                         </SelectItem>

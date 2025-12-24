@@ -8,11 +8,12 @@ import StudyMode from "./StudyMode";
 import MainBomba from "../bomba/MainBomba";
 import StudyPlan from "../studyplan/StudyPlan";
 
-type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | null;
+import { mode } from "@/lib/AllSets" 
+import Matching from "../matching/page";
 
 interface Set {
     title: string;
-    vocab: [string, string][]; // Array of tuples with two strings
+    vocab: [string, string][];
 }
 
 interface Flashcard {
@@ -55,7 +56,8 @@ export default function MainSet({
             return <MainBomba currentSet={currentSet}/>
         case "studyplan":
             return <StudyPlan currentSet={currentSet}/>
-
+        case "matching":
+            return <Matching currentSet={currentSet}/>
 
     }
 

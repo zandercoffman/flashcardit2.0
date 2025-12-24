@@ -19,7 +19,7 @@ import HelperPage from "@/components/pages/helper"
 import { toast } from "sonner"
 import { AllSets } from "@/lib/AllSets"
 
-type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | null;
+import { mode } from "@/lib/AllSets"
 type page = "helper" | "dashboard" | "set" | "upload";
 
 interface DashboardPageProps {
@@ -45,14 +45,14 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
       dashboard: "Dashboard",
       quickcreate: "Quick Create",
     };
-  
+
     return pageMap[page as keyof typeof pageMap] || page;
-  }  
-  
+  }
+
 
   const [currentMode, setCurrentMode] = useState<mode>("normal");
 
-  
+
 
   const [selected, setSeled] = useState<number | null>(null);
   const [pastSets, setPastSets] = useState<Set[]>(() => {
@@ -103,8 +103,8 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
     setCurrentMode("normal");
 
     toast.success(`Set "'${removedSet.title}'" has been deleted.`);
-}
-  
+  }
+
   // START IMPM
 
   const addSet = (newSet: Set, isAutomatic: boolean = false): Promise<number> => {
@@ -127,7 +127,7 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
       }
       //Then, reset localStorage at sets to existingSets once again
       localStorage.setItem("sets", JSON.stringify(existingSets));
-      
+
     }
 
     if (!isAutomatic) {
@@ -163,15 +163,15 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
   useEffect(() => {
     const process = async () => {
       if (defaultImportedSetID) {
-          const foundSet = AllSets.find(set => set.id === defaultImportedSetID);
-          if (foundSet && !(window.location.pathname == "/")) {
-            const newIndex = await addSet(foundSet.set, false);
-            toast.success(`Successfully found ${foundSet.set.title}. Happy Studying! (PS. I know you will do well!)`);
-            setcurpage("set");
-            setCurrentHeader(foundSet.set.title);
-            setCurrentMode("normal");
-            setSeled(newIndex); // wait until set is added to pastSets
-          }
+        const foundSet = AllSets.find(set => set.id === defaultImportedSetID);
+        if (foundSet && !(window.location.pathname == "/")) {
+          const newIndex = await addSet(foundSet.set, false);
+          toast.success(`Successfully found ${foundSet.set.title}. Happy Studying! (PS. I know you will do well!)`);
+          setcurpage("set");
+          setCurrentHeader(foundSet.set.title);
+          setCurrentMode("normal");
+          setSeled(newIndex); // wait until set is added to pastSets
+        }
       }
 
     };
@@ -182,7 +182,7 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
     document.title = formatPageName(CurrentPage) || "Page";
   }, [CurrentPage])
 
-  
+
 
   return (
     <SidebarProvider
@@ -252,7 +252,7 @@ function MainScreen({
       ) : CurrentPage === "upload" ? <Create addSet={addSet} /> :
         CurrentPage === "helper" ? <HelperPage /> :
           CurrentPage === "dashboard" ? <HomePage allSets={setsLoading ? undefined : pastSets} addSet={addSet} setMode={setMode} setSet={setSet} /> :
-             <></>}
+            <></>}
 
 
     </div>

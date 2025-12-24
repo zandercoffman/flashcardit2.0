@@ -23,10 +23,7 @@ import {
     CommandShortcut,
 } from "@/components/ui/command"
 
-interface Set {
-    title: string;
-    vocab: [string, string][];
-}
+import { Set } from "@/lib/AllSets"
 
 interface AllSetsInterface { id: string, set: Set }
 

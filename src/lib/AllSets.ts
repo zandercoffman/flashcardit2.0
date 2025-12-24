@@ -1,7 +1,9 @@
-interface Set {
+export interface Set {
     title: string;
     vocab: [string, string][];
 }
+
+export type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | "matching" | null;
 
 interface AllSetsInterface { id: string, set: Set }
 

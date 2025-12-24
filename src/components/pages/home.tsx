@@ -30,10 +30,7 @@ import {
 import React from "react"
 import { ChevronsUpDown } from "lucide-react"
 
-interface Set {
-    title: string;
-    vocab: [string, string][];
-}
+import { Set } from "@/lib/AllSets"
 
 interface AllSetsInterface { id: string, set: Set }
 
@@ -47,7 +44,7 @@ type LocalStorageInference = { id: string, ratings: Rating[], start: string, end
 type LocalStorageData = LocalStorageInference[]
 const localStorageKey = "setsAndRatings"
 
-type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | null;
+import { mode } from "@/lib/AllSets" 
 
 
 const INFORMATION = {
