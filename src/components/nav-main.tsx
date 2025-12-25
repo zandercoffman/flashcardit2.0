@@ -31,7 +31,7 @@ export function NavMain({
   dashRef: any
 }) {
   return (
-    <SidebarGroup>
+    <SidebarGroup className="w-[20vw]">
       <SidebarGroupContent className="flex flex-col gap-2">
         <SidebarMenu className=" font-semibold">
           <SidebarMenuItem className="flex flex-col md:flex-row items-center align-center gap-2">

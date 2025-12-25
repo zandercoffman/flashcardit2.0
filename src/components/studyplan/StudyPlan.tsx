@@ -1,6 +1,6 @@
 'use client'
 import { Calendar } from "@/components/ui/calendar"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, Dispatch, SetStateAction } from "react"
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { CalendarDays, Divide, WalletCards, Clock2Icon } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -22,7 +22,7 @@ type LocalStorageData = LocalStorageInference[]
 const localStorageKey = "setsAndRatings"
 
 
-export default function StudyPlan({ currentSet }: { currentSet: Set }) {
+export default function StudyPlan({ currentSet, curStudyPathN, setCurStudyPathN }: { currentSet: Set, curStudyPathN: number, setCurStudyPathN: Dispatch<SetStateAction<number>> }) {
   const [selectedDays, setSelectedDays] = useState<Date[]>([])
   const [error, setError] = useState("")
   const timeRef = useRef<HTMLInputElement>(null)
@@ -373,7 +373,7 @@ export default function StudyPlan({ currentSet }: { currentSet: Set }) {
       <section className="w-full"></section>
     </section>
   } else if (mode === "startstudying") {
-    return <StartStudying cards={cardsStudied} />
+    return <StartStudying cards={cardsStudied} curStudyPathN={curStudyPathN} setCurStudyPathN={setCurStudyPathN} />
   } else {
     return <>
 

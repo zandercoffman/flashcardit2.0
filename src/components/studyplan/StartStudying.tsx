@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { useState } from "react"
+import { Dispatch, SetStateAction, useState } from "react"
 import StepsHeader from "../StepsHeader"
 import { Button } from "../ui/button"
 import FlashcardHolder from "../set/FlashcardHolder"
@@ -13,15 +13,39 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog"
+import QuizMode from "../set/QuizMode"
+import Matching from "../matching/page"
+import { steps } from "@/lib/studyPlan"
 
 export function StartStudying({
-    cards
+    cards,
+    curStudyPathN,
+    setCurStudyPathN
 }: {
-    cards: [string, string][]
+    cards: [string, string][],
+    curStudyPathN: number,
+    setCurStudyPathN: Dispatch<SetStateAction<number>>
 }) {
     const [isDialogOpen, setIsDialogOpen] = useState(true);
-    const steps = [{ label: "Flashcards" }, { label: "Quiz" }, { label: "Matching" }, {label: "Rewrite"}, { label: "Conclusion" }]
-    const [currentStep] = useState(2)
+
+    const handleNextStep = () => {
+        if (curStudyPathN < steps.length - 1) {
+            setCurStudyPathN(curStudyPathN + 1);
+        }
+    }
+
+    const renderStepContent = () => {
+        switch (curStudyPathN) {
+            case 0:
+                return <FlashcardHolder set={{ title: "Study Path", vocab: cards }} />;
+            case 1:
+                return <QuizMode currentSet={{ title: "Study Path", vocab: cards }} />;
+            case 2:
+                return <Matching currentSet={{ title: "Study Path", vocab: cards }} />;
+            default:
+                return <FlashcardHolder set={{ title: "Study Path", vocab: cards }} />;
+        }
+    }
 
     return <div className="w-full h-full flex mb-6 flex-col justify-center items-center">
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -42,11 +66,10 @@ export function StartStudying({
             </DialogContent>
         </Dialog>
         <section className="absolute top-[8vh] w-[95%] mb-4 h-min flex flex-row gap-2 justify-between items-center">
-            <StepsHeader steps={steps} currentStep={currentStep} />
-            <Button>Next Step</Button>
+            <Button onClick={handleNextStep}>Next Step</Button>
         </section>
         <section className="w-full flex justify-center items-center h-full">
-            <FlashcardHolder set={{ title: "Study Path", vocab: cards }} />
+            {renderStepContent()}
         </section>
     </div>
 }

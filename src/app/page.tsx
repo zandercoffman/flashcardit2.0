@@ -10,9 +10,9 @@ import {
   SidebarInset,
   SidebarProvider,
 } from "@/components/ui/sidebar"
-
+import { Video, defaultVideos } from "@/components/MusicButton"
 import HomePage from "@/components/pages/home"
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, Dispatch, SetStateAction } from "react"
 import MainSet from "@/components/set/MainSet"
 import Create from "@/components/pages/Create"
 import HelperPage from "@/components/pages/helper"
@@ -20,7 +20,8 @@ import { toast } from "sonner"
 import { AllSets } from "@/lib/AllSets"
 
 import { mode } from "@/lib/AllSets"
-type page = "helper" | "dashboard" | "set" | "upload";
+import NoteDocumentTaker from "@/components/notetaker/page"
+type page = "helper" | "dashboard" | "set" | "upload" | "NoteTaker/DocumentViewer";
 
 interface DashboardPageProps {
   defaultImportedSetID: string;
@@ -44,6 +45,7 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
       helper: "Helper",
       dashboard: "Dashboard",
       quickcreate: "Quick Create",
+      notetakerdocumentviewer: "Note Taker / Document Viewer"
     };
 
     return pageMap[page as keyof typeof pageMap] || page;
@@ -51,6 +53,7 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
 
 
   const [currentMode, setCurrentMode] = useState<mode>("normal");
+  const [currentVideo, setCurrentVideo] = useState<Video | null>(null);
 
 
 
@@ -182,7 +185,11 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
     document.title = formatPageName(CurrentPage) || "Page";
   }, [CurrentPage])
 
+  //START STUDY MODE TRACKER
+  
+  const [curStudyPathN, setCurStudyPathN] = useState<number>(0);
 
+  //END STUDY MODE TRACKER
 
   return (
     <SidebarProvider
@@ -192,6 +199,7 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
           "--header-height": "calc(var(--spacing) * 12)",
         } as React.CSSProperties
       }
+      className="overflow-hidden"
     >
       <AppSidebar
         variant="inset"
@@ -200,14 +208,17 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
         pastSets={pastSets}
         dashRef={dashboardRef}
         setSeled={setSeled}
-        getRidOfSet={getRidOfSet} />
+        getRidOfSet={getRidOfSet} 
+        currentVideo={currentVideo}/>
       <SidebarInset>
         <SiteHeader
           currentHeader={currentHeader} currentPage={CurrentPage} setTTSEnabled={setTTSEnabled}
           currentMode={currentMode} setCurrentMode={function (value: string): void {
             setCurrentMode(value as mode)
-          }} />
-        <div className="flex flex-1 flex-col md:p-5">
+          }} 
+          setCurrentVideo={setCurrentVideo}
+          curStudyPathN={curStudyPathN}/>
+        <div className="flex flex-1 flex-col px-2">
           <MainScreen
             selected={selected}
             CurrentPage={CurrentPage}
@@ -217,6 +228,10 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
             setsLoading={setsLoading}
             setMode={setMode}
             setSet={setSet}
+            extra={{
+              curStudyPathN: curStudyPathN,
+              setCurStudyPathN: setCurStudyPathN
+            }}
           />
 
         </div>
@@ -234,7 +249,8 @@ function MainScreen({
   addSet,
   setsLoading,
   setMode,
-  setSet
+  setSet,
+  extra
 }: {
   selected: number | null;
   CurrentPage: page;
@@ -244,17 +260,20 @@ function MainScreen({
   setsLoading: boolean;
   setMode: (mode: mode) => void;
   setSet: (idx: number) => void;
+  extra: {
+    curStudyPathN: number
+    setCurStudyPathN: Dispatch<SetStateAction<number>>
+  }
 }) {
   return (
-    <div className="flex flex-1 flex-col md:p-5 pt-5">
+    <div className={`flex flex-1 flex-col ${CurrentPage !== "NoteTaker/DocumentViewer" && "md:p-5 pt-2"}`}>
       {CurrentPage === "set" && selected !== null && pastSets[selected] ? (
-        <MainSet mode={currentMode} currentSet={pastSets[selected]} />
+        <MainSet mode={currentMode} currentSet={pastSets[selected]} extra={extra} />
       ) : CurrentPage === "upload" ? <Create addSet={addSet} /> :
         CurrentPage === "helper" ? <HelperPage /> :
+        CurrentPage === "NoteTaker/DocumentViewer".toLowerCase() ? <NoteDocumentTaker/> :
           CurrentPage === "dashboard" ? <HomePage allSets={setsLoading ? undefined : pastSets} addSet={addSet} setMode={setMode} setSet={setSet} /> :
             <></>}
-
-
     </div>
   );
 }

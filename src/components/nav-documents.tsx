@@ -45,6 +45,12 @@ import { useEffect, useState } from "react";
 import { BlurFade } from "./ui/blur-fade";
 import { Skeleton } from "@/components/ui/skeleton"
 import { ScrollArea } from "./ui/scroll-area";
+import { Video } from "./MusicButton";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
 
 export function NavDocuments({
   items,
@@ -52,12 +58,14 @@ export function NavDocuments({
   setcurpage,
   setCurrentHeader,
   getRidOfSet,
+  currentVideo
 }: {
   items: Set[],
   setSeled: Function,
   setcurpage: Function,
   setCurrentHeader: Function,
   getRidOfSet: Function,
+  currentVideo: Video | null
 }) {
   const { isMobile } = useSidebar()
   const [theseItems, setTheseItems] = useState<Set[]>(items);
@@ -67,7 +75,28 @@ export function NavDocuments({
   }, [items])
 
   return (
-    <SidebarGroup className="group-data-[collapsible=icon]:hidden" >
+    <SidebarGroup className="w-[19vw] group-data-[collapsible=icon]:hidden" >
+      {currentVideo && <>
+        <SidebarGroupLabel>Music</SidebarGroupLabel>
+        <SidebarMenu>
+          <SidebarMenuItem className="overflow-hidden whitespace-nowrap">
+            <span className="whitespace-nowrap inline-block animate-marquee text-xs ml-2 text-gray-600">🎶 Playing: {currentVideo.title} — 🎶 Playing: {currentVideo.title} — 🎶 Playing: {currentVideo.title}</span>
+            <style jsx>{`
+  .animate-marquee {
+    display: inline-block;
+    padding-left: 50%; /* start off to the right */
+    animation: marquee 15s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); } /* move to the left */
+  }
+`}</style>
+
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </>}
       <SidebarGroupLabel>Sets</SidebarGroupLabel>
       <SidebarMenu>
         <ScrollArea className="h-[50vh]">

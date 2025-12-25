@@ -1,11 +1,13 @@
 /* eslint-disable */
+
+"use client"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { ModeToggle } from "./mode-toggle"
-import { mode } from "@/lib/AllSets" 
+import { mode } from "@/lib/AllSets"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { AudioWaveform, Bomb, BookCheck, BookOpen, Image, LandPlot, LayoutTemplate, Megaphone, Milestone, PencilLine, Settings, Settings2, Volume, Volume2 } from "lucide-react";
+import { AudioWaveform, Bomb, BookCheck, BookOpen, Image, LandPlot, LayoutTemplate, Megaphone, Milestone, Music, PencilLine, Settings, Settings2, Volume, Volume2 } from "lucide-react";
 
 
 import { VolumeX } from "lucide-react"
@@ -17,11 +19,6 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar"
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card"
 import {
   Select,
   SelectContent,
@@ -55,19 +52,27 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import StepsHeader from "./StepsHeader"
+import { steps } from "@/lib/studyPlan"
+import MusicButton, { Video } from "./MusicButton"
+
 
 export function SiteHeader({
   currentHeader,
   currentMode,
   currentPage,
   setTTSEnabled,
-  setCurrentMode
+  setCurrentMode,
+  curStudyPathN,
+  setCurrentVideo
 }: {
   currentHeader: string,
   currentMode: mode,
   currentPage: string | "set"
   setTTSEnabled: Function
   setCurrentMode: (value: string) => void
+  curStudyPathN: number
+  setCurrentVideo: (video: Video | null) => void
 }) {
 
   const [thisMode, setThisMode] = useState<mode>(currentMode);
@@ -96,10 +101,13 @@ export function SiteHeader({
 
   const isMobile = useMobile();
 
+  const [isExpandedSidebar, setIsExpandedSidebar] = useState<boolean>(false); // false will be the default view
+
   return (
     <header className="flex h-(--header-height) shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)">
       <div className="flex w-full items-center px-4 lg:gap-2 lg:px-6">
-        <SidebarTrigger className="-ml-1 text-lg" />
+        <SidebarTrigger className="-ml-1 text-lg" onClick={() => setIsExpandedSidebar(!isExpandedSidebar)} />
+        <MusicButton setCurrentVideo={setCurrentVideo}/>
         {
           currentPage == "set" && <>
             {
@@ -108,7 +116,7 @@ export function SiteHeader({
                   <NavigationMenuList>
                     <NavigationMenuItem>
                       <NavigationMenuTrigger>
-                        <Settings/>
+                        <Settings />
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
                         <div className="flex flex-col gap-2 ">
@@ -205,7 +213,7 @@ export function SiteHeader({
               </> : <>
                 <div className="flex flex-row gap-2 ">
                   <Select value={currentMode || "normal"} onValueChange={setCurrentMode}>
-                    <SelectTrigger className="w-[170px] rounded-2xl">
+                    <SelectTrigger className={`flex items-center justify-center overflow-hidden w-full rounded-2xl`}>
                       <SelectValue placeholder="Select a mode" />
                     </SelectTrigger>
                     <SelectContent className="rounded-3xl mt-2 px-2">
@@ -266,7 +274,7 @@ export function SiteHeader({
                           </div>
                         </SelectItem>
 
-                        
+
 
                         {/**
                      * <SelectItem value="sentencecreator">
@@ -313,13 +321,20 @@ export function SiteHeader({
             }
           </>
         }
+        
         <Separator
           orientation="vertical"
           className="mx-2 data-[orientation=vertical]:h-4"
         />
-        <h1 className="text-base text-center md:text-left  md:mx-0 font-medium">{currentHeader}</h1>
+        <h1 className="text-base text-center md:text-left  md:mx-0 font-medium">
+          {!(thisMode === "studyplan" && isExpandedSidebar) ? currentHeader : currentHeader.substring(0, 6) + "..."}
+        </h1>
+
 
         <div className="ml-auto flex items-center gap-2">
+          {
+            currentMode === "studyplan" && <StepsHeader steps={steps} currentStep={curStudyPathN} isExpandedSidebar={isExpandedSidebar} />
+          }
           <ModeToggle />
         </div>
       </div>

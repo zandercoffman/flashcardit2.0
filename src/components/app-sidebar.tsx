@@ -33,7 +33,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { BookOpenText, HandHelping, LucideIcon, LucideProps } from "lucide-react"
+import { BookOpenText, FilePenLine, HandHelping, LucideIcon, LucideProps } from "lucide-react"
 import { CalendarIcon } from "lucide-react"
 import {
   Avatar,
@@ -48,6 +48,8 @@ import {
 } from "@/components/ui/hover-card"
 import HomePage from "@/components/pages/home"
 import HelperPage from "@/components/pages/helper"
+import { ScrollArea } from "./ui/scroll-area"
+import NoteTaker from "./notetaker/page"
 
 type PageData = {
   title: string;
@@ -75,9 +77,9 @@ var thisdata = {
       icon: IconDashboard,
     },
     {
-      title: "Helper",
-      page: HelperPage,
-      icon: HandHelping
+      title: "NoteTaker/DocumentViewer",
+      page: NoteTaker,
+      icon: FilePenLine
     }
   ],
   navClouds: [
@@ -185,18 +187,24 @@ export function AppSidebar({ ...props }: any) {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent className="mx-2 my-2 md:mx-0 md:my-0">
+
+      <SidebarContent className="mx-2 h-[90vh] my-2 md:mx-0 md:my-0 overflow-hidden">
         <NavMain items={thisdata.navMain as PageData[]}
           setcurpage={props.setcurpage}
           dashRef={props.dashRef}
           setCurrentHeader={props.setCurrentHeader} />
-        <NavDocuments items={sets as Set[]}
-          setSeled={props.setSeled}
-          setcurpage={props.setcurpage} 
-          setCurrentHeader={props.setCurrentHeader}
-          getRidOfSet={props.getRidOfSet} />
+        <ScrollArea className="h-[60vh]">
+          <NavDocuments items={sets as Set[]}
+            setSeled={props.setSeled}
+            setcurpage={props.setcurpage}
+            setCurrentHeader={props.setCurrentHeader}
+            getRidOfSet={props.getRidOfSet}
+            currentVideo={props.currentVideo} />
+        </ScrollArea>
+
         <NavSecondary items={thisdata.navSecondary} className="mt-auto" />
       </SidebarContent>
+
     </Sidebar>
   )
 }

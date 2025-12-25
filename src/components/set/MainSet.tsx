@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import PictureMatch from "../modes/PictureMatch";
 import SpeakIt from "../modes/SpeakIt";
 import QuizMode from "./QuizMode";
@@ -25,9 +25,14 @@ interface Flashcard {
 export default function MainSet({
     mode,
     currentSet,
+    extra
 }: {
     mode: mode,
     currentSet: Set,
+    extra: {
+        curStudyPathN: number,
+        setCurStudyPathN: Dispatch<SetStateAction<number>>
+    }
 }) {
     const [bombaWords, setBombaWords] = useState<string[] | null>(null);
 
@@ -55,7 +60,7 @@ export default function MainSet({
         case "bomba":
             return <MainBomba currentSet={currentSet}/>
         case "studyplan":
-            return <StudyPlan currentSet={currentSet}/>
+            return <StudyPlan currentSet={currentSet} curStudyPathN={extra.curStudyPathN} setCurStudyPathN={extra.setCurStudyPathN} />
         case "matching":
             return <Matching currentSet={currentSet}/>
 
