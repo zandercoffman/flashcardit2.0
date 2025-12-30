@@ -13,6 +13,14 @@ export interface Video {
     pfp: string
 }
 
+const swmPositions: Array<"top-left" | "top-right" | "bottom-left" | "bottom-right"> = [
+    "top-left",
+    "top-right",
+    "bottom-left",
+    "bottom-right",
+]
+
+
 const lofiGirlVideos: Video[] = [
     {
         title: "1 A.M Study Session 📚 [lofi hip hop]",
@@ -353,15 +361,17 @@ export default function MusicButton({
 
                             {studyWithMe && (
                                 <div className="flex gap-2 mt-1">
-                                    {["top-left", "top-right", "bottom-left", "bottom-right"].map(pos => (
+                                    {swmPositions.map((pos) => (
                                         <button
                                             key={pos}
-                                            className={`border px-2 py-1 text-xs rounded ${swmPosition === pos ? "bg-sky-400 text-white" : "bg-card"}`}
-                                            onClick={() => setSwmPosition(pos as any)}
+                                            className={`border px-2 py-1 text-xs rounded ${swmPosition === pos ? "bg-sky-400 text-white" : "bg-card"
+                                                }`}
+                                            onClick={() => setSwmPosition(pos)}
                                         >
                                             {pos.replace("-", " ")}
                                         </button>
                                     ))}
+
                                 </div>
                             )}
                         </div>
