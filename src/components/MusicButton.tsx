@@ -5,6 +5,7 @@ import { Button } from "./ui/button"
 import { Music } from "lucide-react"
 import { motion } from "framer-motion"
 import { ScrollArea } from "./ui/scroll-area"
+import { custom } from "zod"
 
 export interface Video {
     title: string
@@ -256,6 +257,13 @@ export default function MusicButton({
     useEffect(() => {
         if (showCurrentInMenu && selectedVideo) {
             setCurrentVideo(selectedVideo)
+        } else if (showCurrentInMenu && customLink !== "") {
+            setCurrentVideo({
+                title: "Custom Video",
+                channel: "Unknown",
+                link: customLink,
+                pfp: "",
+            })
         } else {
             setCurrentVideo(null)
         }
@@ -350,7 +358,7 @@ export default function MusicButton({
 
                         {/* Study With Me */}
                         <div className="mt-4 flex flex-col gap-2">
-                            <div className="flex flex-row gap-6">
+                            <div className="flex flex-row gap-8">
                                 <div className="flex items-center gap-2">
                                     <input
                                         type="checkbox"
@@ -502,6 +510,30 @@ export default function MusicButton({
                             </div>
                         </motion.div>
                     </div>}
+                    {
+                        customLink && !selectedVideo && <div className="flex flex-col gap-2">
+                            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+                                Currently Playing...
+                            </h3>
+                            <motion.div
+                                className="flex flex-row items-center gap-2 "
+                                onClick={() => setLink(customLink)}
+                                whileHover={{ scale: 1.03 }}
+                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            >
+                                <img
+                                    src={getYouTubeThumbnail(customLink)}
+                                    className="w-20 h-12 rounded-md object-cover"
+                                />
+                                <div className="flex flex-col gap-1 overflow-hidden flex-1">
+                                    <span className="font-semibold truncate">Custom Video</span>
+                                    <div className="flex items-center gap-1">
+                                        <span className="text-xs truncate">Unknown Channel</span>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </div>
+                    }
                 </motion.div>
             )}
         </div>

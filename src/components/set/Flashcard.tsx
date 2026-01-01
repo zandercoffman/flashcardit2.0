@@ -31,7 +31,7 @@ const Flashcard = ({
                 style={{ transformStyle: 'preserve-3d' }}
             >
                 <div
-                    className="absolute w-full h-full flex items-center justify-center bg-white dark:bg-neutral-800 border border-gray-300 dark:border-neutral-600 shadow-xl rounded-3xl p-3 [backface-visibility:hidden]"
+                    className="absolute w-full h-full flex items-center justify-center  bg-white/50 dark:bg-neutral-800/50 border border-gray-300 dark:border-neutral-600 shadow-3xl rounded-3xl p-3 [backface-visibility:hidden]"
                     style={{
                         fontSize: front.length > 20 ? '1.3rem' : '2rem',
                     }}
@@ -40,7 +40,7 @@ const Flashcard = ({
                 </div>
 
                 <div
-                    className="absolute w-full h-full flex items-center justify-center bg-white dark:bg-neutral-800 border border-gray-300 dark:border-neutral-600 shadow-xl rounded-3xl p-3 [backface-visibility:hidden]"
+                    className="absolute w-full h-full flex items-center justify-center bg-white/50 dark:bg-neutral-800/50 border border-gray-300 dark:border-neutral-600 shadow-3xl rounded-3xl p-3 [backface-visibility:hidden]"
                     style={{ transform: 'rotateY(180deg)', fontSize: front.length > 20 ? '1.3rem' : '2rem' }}
                 >
                     {back}

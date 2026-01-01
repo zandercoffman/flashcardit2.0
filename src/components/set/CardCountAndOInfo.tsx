@@ -10,6 +10,7 @@ import { NavigationMenuLink } from "@/components/ui/navigation-menu"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import * as SpanishVerbs from "spanish-verbs";
+import { Badge } from "../ui/badge"
 
 type Tense =
   | "INDICATIVE_PRESENT"
@@ -114,7 +115,7 @@ export default function NavigationMenuFlashcardSet({
                   See Conjugations
                 </Button>
               </HoverCardTrigger>
-              <HoverCardContent className="w-[600px]">
+              <HoverCardContent className="w-[600px] bg-transparent backdrop-blur-md">
                 <Table>
                   <TableCaption>{currentAtSet}</TableCaption>
                   <TableHeader>
@@ -151,7 +152,7 @@ export default function NavigationMenuFlashcardSet({
       )}
 
       <div
-        className={`w-[32vw] fixed right-0 top-0 bg-background border-l shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${showWordList ? "translate-x-0 " : "translate-x-full"
+        className={`w-[32vw] fixed right-0 top-0  border-l shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${showWordList ? "translate-x-0 " : "translate-x-full"
           }`}
       >
         <div className="flex flex-col h-full">
@@ -164,7 +165,7 @@ export default function NavigationMenuFlashcardSet({
 
           <div className="flex-1 p-4">
             <p className="text-md dark:text-gray-300 text-center mb-4">Tap a word to jump to it.</p>
-            <ScrollArea className="space-y-2 h-[80vh]">
+            <ScrollArea className="space-y-6 flex flex-col gap-4 h-[80vh]">
               {set.vocab.map((word, index) => (
                 <button
                   key={index}
@@ -172,13 +173,13 @@ export default function NavigationMenuFlashcardSet({
                     onWordClick?.(index)
                     setShowWordList(false)
                   }}
-                  className={`w-full cursor-pointer text-left p-3 rounded-lg border transition-colors ${index === current - 1 ? "bg-primary/10 border-primary" : "hover:bg-muted border-transparent"
+                  className={`w-full mt-2 mb-2 mr-4 cursor-pointer text-left p-3 rounded-lg border transition-colors ${index === current - 1 ? "bg-primary/10 border-primary" : "hover:bg-muted border-transparent"
                     }`}
                 >
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-sm text-muted-foreground">#{index + 1}</span>
                     {index === current - 1 && (
-                      <span className="text-xs bg-primary text-primary-foreground px-2 py-0.5 rounded">Current</span>
+                      <Badge className="text-xs bg-primary text-primary-foreground px-2 py-0.5 rounded">Current</Badge>
                     )}
                   </div>
                   <div className="mt-1 font-medium">

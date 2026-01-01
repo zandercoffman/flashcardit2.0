@@ -124,7 +124,7 @@ export default function FlashcardHolder({ set }: { set: Set }) {
   }, [api, showWordList])
 
   return (
-    <div className="mx-auto my-auto flex flex-col lg:flex-row gap-4 relative p-4">
+    <div className="mx-auto my-auto mt-[2rem] flex flex-col lg:flex-row gap-4 relative p-4">
       {/* Main Flashcard Area */}
       <div className="flex-1 flex flex-col max-w-2xl mx-auto w-full">
         <NavigationMenuFlashcardSet current={current} total={count} set={set} onWordClick={jumpToCard} />

@@ -145,13 +145,13 @@ export function AppSidebar({ ...props }: any) {
   const sets = props.pastSets || [];
 
   return (
-    <Sidebar collapsible="offcanvas" variant={props.variant}>
-      <SidebarHeader className="my-4 mx-auto md:my-0 md:mx-0">
-        <SidebarMenu>
+    <Sidebar collapsible="offcanvas" variant={props.variant} className="p-2  *:bg-transparent">
+      <SidebarHeader className="my-4 mx-auto md:my-0 md:mx-0 bg-transparent z-22 p-2" >
+        <SidebarMenu className="bg-transparent z-22">
           <SidebarMenuItem>
             <SidebarMenuButton
               asChild
-              className="data-[slot=sidebar-menu-button]:!p-1.5"
+              className="data-[slot=sidebar-menu-button]:p-2"
             >
 
               <HoverCard>
@@ -165,7 +165,7 @@ export function AppSidebar({ ...props }: any) {
                   </a>
 
                 </HoverCardTrigger>
-                <HoverCardContent className="w-80" side="right" align="start">
+                <HoverCardContent className="w-80" side="right" align="start"> 
                   <div className="flex justify-between gap-4">
                     <Avatar>
                       <AvatarImage src="https://github.com/vercel.png" />
@@ -188,7 +188,7 @@ export function AppSidebar({ ...props }: any) {
         </SidebarMenu>
       </SidebarHeader>
 
-      <SidebarContent className="mx-2 h-[90vh] my-2 md:mx-0 md:my-0 overflow-hidden">
+      <SidebarContent className="mx-2 h-[90vh] my-2 md:mx-0 md:my-0 overflow-hidden !bg-transparent z-20">
         <NavMain items={thisdata.navMain as PageData[]}
           setcurpage={props.setcurpage}
           dashRef={props.dashRef}

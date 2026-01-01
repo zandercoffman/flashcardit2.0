@@ -186,8 +186,18 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
   }, [CurrentPage])
 
   //START STUDY MODE TRACKER
-  
+
   const [curStudyPathN, setCurStudyPathN] = useState<number>(0);
+
+  const getYouTubeThumbnail = (link: string) => {
+        try {
+            const url = new URL(link)
+            const id = url.searchParams.get("v")
+            return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : ""
+        } catch {
+            return ""
+        }
+    }
 
   //END STUDY MODE TRACKER
 
@@ -208,34 +218,43 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
         pastSets={pastSets}
         dashRef={dashboardRef}
         setSeled={setSeled}
-        getRidOfSet={getRidOfSet} 
-        currentVideo={currentVideo}/>
+        getRidOfSet={getRidOfSet}
+        currentVideo={currentVideo} />
       <SidebarInset>
-        <SiteHeader
-          currentHeader={currentHeader} currentPage={CurrentPage} setTTSEnabled={setTTSEnabled}
-          currentMode={currentMode} setCurrentMode={function (value: string): void {
-            setCurrentMode(value as mode)
-          }} 
-          setCurrentVideo={setCurrentVideo}
-          curStudyPathN={curStudyPathN}/>
-        <div className="flex flex-1 flex-col px-2">
-          <MainScreen
-            selected={selected}
-            CurrentPage={CurrentPage}
-            pastSets={pastSets}
-            currentMode={currentMode}
-            addSet={addSet}
-            setsLoading={setsLoading}
-            setMode={setMode}
-            setSet={setSet}
-            extra={{
-              curStudyPathN: curStudyPathN,
-              setCurStudyPathN: setCurStudyPathN
+        {currentVideo && (
+          <div className="fixed inset-0 z-8 pointer-events-none">
+            <img
+              src={getYouTubeThumbnail(currentVideo.link)}
+              className="w-full h-full object-cover z-8 opacity-60 blur-lg dark:opacity-30 filter dark:blur-md scale-100"
+              style={{ border: 'none' }}
+            />
+          </div>
+        )}
+        <div className="relative z-10">
+          <SiteHeader
+            currentHeader={currentHeader} currentPage={CurrentPage} setTTSEnabled={setTTSEnabled}
+            currentMode={currentMode} setCurrentMode={function (value: string): void {
+              setCurrentMode(value as mode)
             }}
-          />
-
+            setCurrentVideo={setCurrentVideo}
+            curStudyPathN={curStudyPathN} />
+          <div className="flex flex-1 flex-col px-2">
+            <MainScreen
+              selected={selected}
+              CurrentPage={CurrentPage}
+              pastSets={pastSets}
+              currentMode={currentMode}
+              addSet={addSet}
+              setsLoading={setsLoading}
+              setMode={setMode}
+              setSet={setSet}
+              extra={{
+                curStudyPathN: curStudyPathN,
+                setCurStudyPathN: setCurStudyPathN
+              }}
+            />
+          </div>
         </div>
-
       </SidebarInset>
     </SidebarProvider>
   )
@@ -271,9 +290,9 @@ function MainScreen({
         <MainSet mode={currentMode} currentSet={pastSets[selected]} extra={extra} />
       ) : CurrentPage === "upload" ? <Create addSet={addSet} /> :
         CurrentPage === "helper" ? <HelperPage /> :
-        CurrentPage === "NoteTaker/DocumentViewer".toLowerCase() ? <NoteDocumentTaker/> :
-          CurrentPage === "dashboard" ? <HomePage allSets={setsLoading ? undefined : pastSets} addSet={addSet} setMode={setMode} setSet={setSet} /> :
-            <></>}
+          CurrentPage === "NoteTaker/DocumentViewer".toLowerCase() ? <NoteDocumentTaker /> :
+            CurrentPage === "dashboard" ? <HomePage allSets={setsLoading ? undefined : pastSets} addSet={addSet} setMode={setMode} setSet={setSet} /> :
+              <></>}
     </div>
   );
 }
