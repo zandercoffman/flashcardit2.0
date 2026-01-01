@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Card } from "../ui/card"
+import { Card, CardContent, CardHeader } from "../ui/card"
 import { Button } from "../ui/button"
 import {
   DropdownMenu,
@@ -13,6 +13,19 @@ import {
 import { useEditor, EditorContent } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
 import TurndownService from "turndown"
+import { ArrowUpRightIcon, Plus, Upload } from "lucide-react"
+import { Textarea } from "../ui/textarea"
+import { Label } from "../ui/label"
+import { Input } from "../ui/input"
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty"
+import { IconFolderCode } from "@tabler/icons-react"
 
 interface BottomItem {
   label: string
@@ -41,16 +54,45 @@ export default function NoteDocumentTaker() {
     setFiles((prev) => [...prev, ...newFiles])
   }
 
+  const hasChosen = chosenValue1 !== null || chosenValue2 !== null
+
   const getViewerUrl = (file: BottomItem) => {
+    if (file.type === "link") {
+      // YouTube embed support
+      if (file.url.includes("youtube.com") || file.url.includes("youtu.be")) {
+        const id =
+          file.url.split("v=")[1]?.split("&")[0] ||
+          file.url.split("youtu.be/")[1]
+        return `https://www.youtube.com/embed/${id}`
+      }
+  
+      return file.url
+    }
+  
     if (file.type === "application/pdf") return file.url
-    // fallback to Google Docs Viewer for PPTX/DOCX
+  
     return `https://docs.google.com/gview?url=${encodeURIComponent(
       file.url
     )}&embedded=true`
   }
-
+  
   return (
-    <div className="p-4 w-[95vw] h-screen fixed">
+    <div className="overflow-none p-4 w-screen h-screen absolute translate-x-[-10px] translate-y-[-30px] left-0 m-0 p-0">
+
+      {
+        !hasChosen && <Empty className="absolute left-[25vw] translate-y-[20vh]">
+        <EmptyHeader>
+          <EmptyMedia variant="icon">
+            <IconFolderCode />
+          </EmptyMedia>
+          <EmptyTitle>No Files/Notes Yet</EmptyTitle>
+          <EmptyDescription>
+            Nothing here yet — you&apos;re just getting started. Click <strong>the sidebar expand button</strong> in the sidebar, click <strong>Add Note</strong> and upload any media you&apos;d like.
+          </EmptyDescription>
+
+        </EmptyHeader>
+      </Empty>
+      }
 
       {/* Bottom bar + cards */}
       <AnimatePresence mode="popLayout">
@@ -72,6 +114,18 @@ export default function NoteDocumentTaker() {
             }))
             setFiles((prev) => [...prev, ...newFiles])
           }}
+          hasChosen={hasChosen}
+          onAddLink={(url) => {
+            const newItem: BottomItem = {
+              id: crypto.randomUUID(),
+              label: url.replace(/^https?:\/\//, "").slice(0, 30),
+              url,
+              type: "link",
+            }
+          
+            setFiles((prev) => [...prev, newItem])
+          }}
+          
         />
 
 
@@ -84,7 +138,7 @@ export default function NoteDocumentTaker() {
                   <motion.iframe
                     key={activeFile.id}
                     src={getViewerUrl(activeFile)}
-                    className="w-full h-[90vh] mt-4 rounded border"
+                    className="w-full h-[72vh] rounded border"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -95,9 +149,17 @@ export default function NoteDocumentTaker() {
           )}
           {chosenValue2 !== null && (
             <motion.div layoutId={`val-${-1}`} className="w-1/2">
-              <Card>{chosenValue2}
-                <TipTapEditor />
+              <Card className="px-2 gap-2 ">
+                <CardHeader className="w-[90%]">
+                  <div className="grid w-full max-w-sm items-center gap-3">
+                    <Label htmlFor="name">File Name</Label>
+                    <Input type="name" id="name" placeholder="FileName (extension will be added accordingly)" />
+                  </div>
+                </CardHeader>
+                <CardContent className="w-[90%]">
+                  <Textarea placeholder="Type your message here." className="mx-auto h-[66vh]" />
 
+                </CardContent>
               </Card>
 
             </motion.div>
@@ -110,6 +172,35 @@ export default function NoteDocumentTaker() {
     </div>
   )
 }
+
+function BottomBarButtonLink({
+  onAdd,
+  hasChosen,
+}: {
+  onAdd: (url: string) => void
+  hasChosen: boolean
+}) {
+  const handleClick = () => {
+    const url = prompt("Paste a link (YouTube, website, etc.)")
+    if (!url) return
+    onAdd(url)
+  }
+
+  return (
+    <motion.button
+      onClick={handleClick}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      className={`px-3 py-1 flex flex-col items-center justify-center ${
+        hasChosen ? "size-20" : "size-26"
+      } rounded-xl cursor-pointer bg-secondary text-secondary-foreground shadow-xs text-xs hover:bg-secondary/80`}
+    >
+      <ArrowUpRightIcon size={hasChosen ? 26 : 40} />
+      Add Link
+    </motion.button>
+  )
+}
+
 
 export function TipTapEditor() {
   const [markdown, setMarkdown] = useState("")
@@ -127,12 +218,6 @@ export function TipTapEditor() {
   return (
     <div className="p-4">
       <EditorContent editor={editor} className="border p-2 rounded" />
-      <div className="mt-4">
-        <h3 className="font-semibold">Markdown Output:</h3>
-        <pre className="bg-gray-100 p-2 rounded whitespace-pre-wrap">
-          {markdown}
-        </pre>
-      </div>
     </div>
   )
 }
@@ -142,21 +227,26 @@ function BottomBar({
   onSelect,
   onSelect2,
   onUpload,
+  onAddLink,
+  hasChosen,
 }: {
   files: BottomItem[]
   onSelect: (idx: number) => void
   onSelect2: () => void
   onUpload: (files: FileList) => void
+  onAddLink: (url: string) => void
+  hasChosen: boolean
 }) {
   return (
-    <div className="h-auto absolute top-1/2 left-0 -translate-y-1/2 flex flex-col items-center gap-3 px-4">
+    <div className="h-auto absolute top-1/2 right-0 -translate-y-1/2 flex flex-col items-center gap-3 px-4">
       {files.map((file, idx) => (
-        <BottomBarButtonFile key={file.id} idx={idx} file={file} onSelect={onSelect} />
+        <BottomBarButtonFile key={file.id} idx={idx} file={file} onSelect={onSelect} hasChosen={hasChosen} />
       ))}
-      <BottomBarButtonAdd idx={0} onSelect={onSelect2} />
+      <BottomBarButtonAdd idx={0} onSelect={onSelect2} hasChosen={hasChosen} />
 
       {/* File Upload Button */}
-      <label className="px-3 py-1 size-26 rounded text-xs rounded-xl cursor-pointer bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80">
+      <label className={`x-3 py-1 flex gap-2 flex-col justify-center items-center ${hasChosen ? "size-20" : "size-26"}  rounded text-xs rounded-xl cursor-pointer bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80`}>
+        <Upload size={hasChosen ? 26 : 40} />
         Upload File
         <input
           type="file"
@@ -169,6 +259,9 @@ function BottomBar({
           }}
         />
       </label>
+
+      <BottomBarButtonLink onAdd={onAddLink} hasChosen={hasChosen} />
+
     </div>
   )
 }
@@ -209,22 +302,24 @@ function BottomBarButtonFile({
   file,
   onSelect,
   idx,
+  hasChosen
 }: {
   file: BottomItem
   onSelect: (idx: number) => void
   idx: number
+  hasChosen: boolean
 }) {
   return (
     <motion.button
       key={idx}
       onClick={() => onSelect(idx)}
       whileHover={{ scale: 1.1, opacity: 1 }}
-      style={{opacity: 0.5}}
+      style={{ opacity: 0.5 }}
       whileTap={{ scale: 0.9 }}
       layoutId={`val-${idx}`}
-      className="px-3 py-1 size-26 rounded text-xs rounded-xl cursor-pointer bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80"
+      className={`px-3 py-1 flex flex-1 justify-center items-center overflow-hidden ${hasChosen ? "size-20" : "size-26"} rounded text-xs rounded-xl cursor-pointer bg-secondary text-secondary-foreground shadow-xs text-xs hover:bg-secondary/80`}
     >
-      {file.label}
+      <span>{file.label}</span>
     </motion.button>
   )
 }
@@ -232,9 +327,11 @@ function BottomBarButtonFile({
 function BottomBarButtonAdd({
   onSelect,
   idx,
+  hasChosen
 }: {
   onSelect: () => void
   idx: number
+  hasChosen: boolean
 }) {
   return (
     <motion.button
@@ -242,8 +339,9 @@ function BottomBarButtonAdd({
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       layoutId={`val-${-1}`}
-      className="px-3 py-1 size-26 rounded text-xs rounded-xl cursor-pointer bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80"
+      className={`px-3 py-1 relative flex flex-col items-center justify-center ${hasChosen ? "size-20" : "size-26"} rounded text-xs rounded-xl cursor-pointer bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80`}
     >
+      <Plus size={hasChosen ? 26 : 40} />
       Add Note
     </motion.button>
   )

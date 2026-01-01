@@ -92,7 +92,7 @@ export default function HomePage({ allSets, addSet, setMode, setSet }: { allSets
     }, [])
 
     return (
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 px-4 mt-2">
             <section className="mb-2 flex flex-col gap-2">
                 <h1 className="text-6xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
                     Welcome to your Study Hub!
