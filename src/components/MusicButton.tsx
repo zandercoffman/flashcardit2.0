@@ -350,13 +350,23 @@ export default function MusicButton({
 
                         {/* Study With Me */}
                         <div className="mt-4 flex flex-col gap-2">
-                            <div className="flex items-center gap-2">
-                                <input
-                                    type="checkbox"
-                                    checked={studyWithMe}
-                                    onChange={() => setStudyWithMe(prev => !prev)}
-                                />
-                                <label className="text-sm font-semibold">Study With Me</label>
+                            <div className="flex flex-row gap-6">
+                                <div className="flex items-center gap-2">
+                                    <input
+                                        type="checkbox"
+                                        checked={studyWithMe}
+                                        onChange={() => setStudyWithMe(prev => !prev)}
+                                    />
+                                    <label className="text-sm font-semibold">Study With Me</label>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <input
+                                        type="checkbox"
+                                        checked={studyWithMe}
+                                        onChange={() => setStudyWithMe(prev => !prev)}
+                                    />
+                                    <label className="text-sm font-semibold">Study With Me</label>
+                                </div>
                             </div>
 
                             {studyWithMe && (
