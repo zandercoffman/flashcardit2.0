@@ -125,7 +125,7 @@ export function SiteHeader({
                             <SelectTrigger className="w-[150px]">
                               <SelectValue placeholder="Select a mode" />
                             </SelectTrigger>
-                            <SelectContent>
+                            <SelectContent className="!bg-transparent !backdrop-blur-md">
                               <SelectGroup >
                                 <SelectLabel>Modes</SelectLabel>
 
@@ -216,7 +216,7 @@ export function SiteHeader({
                     <SelectTrigger className={`flex items-center justify-center overflow-hidden w-full rounded-2xl`}>
                       <SelectValue placeholder="Select a mode" />
                     </SelectTrigger>
-                    <SelectContent className="rounded-3xl mt-2 px-2">
+                    <SelectContent className="rounded-3xl mt-2 px-2 bg-transparent backdrop-blur-xl" >
                       <SelectGroup >
                         <SelectLabel>Modes</SelectLabel>
 

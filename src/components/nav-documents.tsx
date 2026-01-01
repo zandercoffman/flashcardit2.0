@@ -76,6 +76,7 @@ export function NavDocuments({
 
   return (
     <SidebarGroup className="w-[19vw] group-data-[collapsible=icon]:hidden" >
+      {/* Commented out music player feature
       {currentVideo && <>
         <SidebarGroupLabel>Music</SidebarGroupLabel>
         <SidebarMenu>
@@ -84,19 +85,19 @@ export function NavDocuments({
             <style jsx>{`
   .animate-marquee {
     display: inline-block;
-    padding-left: 50%; /* start off to the right */
+    padding-left: 50%;
     animation: marquee 15s linear infinite;
   }
 
   @keyframes marquee {
     0% { transform: translateX(0%); }
-    100% { transform: translateX(-100%); } /* move to the left */
+    100% { transform: translateX(-100%); }
   }
 `}</style>
-
           </SidebarMenuItem>
         </SidebarMenu>
       </>}
+      */}
       <SidebarGroupLabel>Sets</SidebarGroupLabel>
       <SidebarMenu>
         <ScrollArea className="h-[50vh]">

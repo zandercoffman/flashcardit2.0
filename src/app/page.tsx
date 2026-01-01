@@ -225,7 +225,7 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
           <div className="fixed inset-0 z-8 pointer-events-none">
             <img
               src={getYouTubeThumbnail(currentVideo.link)}
-              className="w-full h-full object-cover z-8 opacity-60 blur-lg dark:opacity-30 filter dark:blur-md scale-100"
+              className="w-full h-full object-cover z-8 opacity-20 blur-lg dark:opacity-30 filter dark:blur-md scale-100"
               style={{ border: 'none' }}
             />
           </div>

@@ -66,6 +66,7 @@ export default function Matching({
                         className="z-30 flex h-18 scale-[80%] bg-muted/50 text-gray-500 min-w-[140px] items-center justify-center rounded-xl bg-muted p-4 text-center font-medium"
                         layoutId={`leftword-${a}`}
                         ref={leftSideRefs[i]}
+                        key={i}
                     >
                         {a}
                     </motion.div> : i === chosenWord ? <motion.div
@@ -73,12 +74,14 @@ export default function Matching({
                         onClick={() => setChosenWord(i)}
                         layoutId={`leftword-${a}`}
                         ref={leftSideRefs[i]}
+                        key={i}
                     >
                         {a}
                     </motion.div> : <motion.div
                         className="z-30 flex h-18 hidden scale-[80%] bg-muted/50 text-gray-500 min-w-[140px] items-center justify-center rounded-xl bg-muted p-4 text-center font-medium"
                         layoutId={`leftword-${a}`}
                         ref={leftSideRefs[i]}
+                        key={i}
                     >
                         {a}
                     </motion.div>

@@ -193,7 +193,7 @@ export default function MusicButton({
 }: {
     setCurrentVideo: (video: Video | null) => void
 }) {
-    const [link, setLink] = useState(defaultVideos[0].link)
+    const [link, setLink] = useState("")
     const [videoId, setVideoId] = useState<string>("")
     const [open, setOpen] = useState(false)
     const [hovered, setHovered] = useState(false)
@@ -530,6 +530,25 @@ export default function MusicButton({
                                     <div className="flex items-center gap-1">
                                         <span className="text-xs truncate">Unknown Channel</span>
                                     </div>
+                                </div>
+                            </motion.div>
+                        </div>
+                    }
+                    {
+                        !selectedVideo && !customLink && <div className="flex flex-col gap-2">
+                            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+                                Currently Playing...
+                            </h3>
+                            <motion.div
+                                className="flex flex-row items-center gap-2 "
+                                whileHover={{ scale: 1.03 }}
+                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            >
+                                <div
+                                    className="w-20 h-12 bg-black rounded-md object-cover"
+                                />
+                                <div className="flex flex-col gap-1 overflow-hidden flex-1">
+                                    <span className="font-semibold truncate">Not watching a video</span>
                                 </div>
                             </motion.div>
                         </div>
