@@ -24,11 +24,9 @@
   margin-right: 0;
 }
 
-
-
 @theme inline {
   --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
- 
+
   @keyframes rainbow {
     0% {
       background-position: 0%;

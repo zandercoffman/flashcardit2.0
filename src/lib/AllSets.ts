@@ -3,7 +3,7 @@ export interface Set {
     vocab: [string, string][];
 }
 
-export type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | "matching" | null;
+export type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | "matching" | "aichat" | null;
 
 interface AllSetsInterface { id: string, set: Set }
 

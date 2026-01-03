@@ -21,7 +21,8 @@ import { AllSets } from "@/lib/AllSets"
 
 import { mode } from "@/lib/AllSets"
 import NoteDocumentTaker from "@/components/notetaker/page"
-type page = "helper" | "dashboard" | "set" | "upload" | "NoteTaker/DocumentViewer";
+import AiChatPage from "@/components/AIChat/page"
+type page = "helper" | "dashboard" | "set" | "upload" | "Notes" | "aichat";
 
 interface DashboardPageProps {
   defaultImportedSetID: string;
@@ -45,7 +46,8 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
       helper: "Helper",
       dashboard: "Dashboard",
       quickcreate: "Quick Create",
-      notetakerdocumentviewer: "Note Taker / Document Viewer"
+      notetakerdocumentviewer: "Notes",
+      aichat: "AI Chat"
     };
 
     return pageMap[page as keyof typeof pageMap] || page;
@@ -225,7 +227,7 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
           <div className="fixed inset-0 z-8 pointer-events-none">
             <img
               src={getYouTubeThumbnail(currentVideo.link)}
-              className="w-full h-full object-cover z-8 opacity-20 blur-lg dark:opacity-30 filter dark:blur-md scale-100"
+              className="w-full h-full object-cover z-8 opacity-10 blur-lg dark:opacity-30 filter dark:blur-md scale-100"
               style={{ border: 'none' }}
             />
           </div>
@@ -285,12 +287,13 @@ function MainScreen({
   }
 }) {
   return (
-    <div className={`flex flex-1 flex-col ${CurrentPage !== "NoteTaker/DocumentViewer" && "md:p-5 pt-2"}`}>
+    <div className={`flex flex-1 flex-col ${CurrentPage !== "Notes" && "md:p-5 pt-2"}`}>
       {CurrentPage === "set" && selected !== null && pastSets[selected] ? (
         <MainSet mode={currentMode} currentSet={pastSets[selected]} extra={extra} />
       ) : CurrentPage === "upload" ? <Create addSet={addSet} /> :
         CurrentPage === "helper" ? <HelperPage /> :
-          CurrentPage === "NoteTaker/DocumentViewer".toLowerCase() ? <NoteDocumentTaker /> :
+          CurrentPage === "Notes".toLowerCase() ? <NoteDocumentTaker /> :
+          CurrentPage === "aichat"? <AiChatPage /> :
             CurrentPage === "dashboard" ? <HomePage allSets={setsLoading ? undefined : pastSets} addSet={addSet} setMode={setMode} setSet={setSet} /> :
               <></>}
     </div>

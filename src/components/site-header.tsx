@@ -7,7 +7,7 @@ import { SidebarTrigger } from "@/components/ui/sidebar"
 import { ModeToggle } from "./mode-toggle"
 import { mode } from "@/lib/AllSets"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { AudioWaveform, Bomb, BookCheck, BookOpen, Image, LandPlot, LayoutTemplate, Megaphone, Milestone, Music, PencilLine, Settings, Settings2, Volume, Volume2 } from "lucide-react";
+import { AudioWaveform, Bomb, BookCheck, BookOpen, Image, LandPlot, LayoutTemplate, Megaphone, Milestone, Music, PencilLine, Settings, Settings2, Sparkles, Volume, Volume2 } from "lucide-react";
 
 
 import { VolumeX } from "lucide-react"
@@ -55,6 +55,8 @@ import {
 import StepsHeader from "./StepsHeader"
 import { steps } from "@/lib/studyPlan"
 import MusicButton, { Video } from "./MusicButton"
+import {BetaBadge2, InProgressBadge} from "./CustomBadges"
+import ClockButton from "./ClockButton"
 
 
 export function SiteHeader({
@@ -108,6 +110,7 @@ export function SiteHeader({
       <div className="flex w-full items-center px-4 lg:gap-2 lg:px-6">
         <SidebarTrigger className="-ml-1 text-lg" onClick={() => setIsExpandedSidebar(!isExpandedSidebar)} />
         <MusicButton setCurrentVideo={setCurrentVideo}/>
+        <ClockButton />
         {
           currentPage == "set" && <>
             {
@@ -133,7 +136,7 @@ export function SiteHeader({
                                   <div className="flex justify-start items-center gap-4 ">
                                     <BookOpen className="size-4 lg:size-6" />
                                     <div className=" w-full">
-                                      <h4 className="text-xl md:text-base font-semibold">Study</h4>
+                                      <h4 className="text-xl md:text-base font-semibold">FLashcards</h4>
                                     </div>
                                   </div>
                                 </SelectItem>
@@ -213,10 +216,10 @@ export function SiteHeader({
               </> : <>
                 <div className="flex flex-row gap-2 ">
                   <Select value={currentMode || "normal"} onValueChange={setCurrentMode}>
-                    <SelectTrigger className={`flex items-center justify-center overflow-hidden w-full rounded-2xl`}>
-                      <SelectValue placeholder="Select a mode" />
+                    <SelectTrigger className={`flex flex-row items-center justify-center overflow-hidden w-full rounded-2xl`}>
+                      <SelectValue placeholder="Select a mode" className="flex !flex-row" />
                     </SelectTrigger>
-                    <SelectContent className="rounded-3xl mt-2 px-2 bg-transparent backdrop-blur-xl" >
+                    <SelectContent className="rounded-3xl translate-y-[3rem] px-2 bg-transparent backdrop-blur-xl" >
                       <SelectGroup >
                         <SelectLabel>Modes</SelectLabel>
 
@@ -224,7 +227,7 @@ export function SiteHeader({
                           <div className="flex justify-start items-center gap-4 ">
                             <BookOpen className="size-4 lg:size-6" />
                             <div className=" w-full">
-                              <h4 className="text-xl md:text-base font-semibold">Study</h4>
+                              <h4 className="text-xl md:text-base font-semibold">Flashcards</h4>
                             </div>
                           </div>
                         </SelectItem>
@@ -233,7 +236,16 @@ export function SiteHeader({
                           <div className="flex justify-start items-center gap-4 ">
                             <LandPlot className="size-4 lg:size-6" />
                             <div className=" w-full">
-                              <h4 className="text-xl md:text-base font-semibold">Study Path</h4>
+                              <h4 className="text-xl md:text-base flex flex-col font-semibold">Study Path <BetaBadge2/></h4>
+                            </div>
+                          </div>
+                        </SelectItem>
+                        
+                        <SelectItem value="aichat">
+                          <div className="flex justify-start items-center gap-4 ">
+                            <Sparkles className="size-4 lg:size-6" />
+                            <div className=" w-full">
+                              <h4 className="text-xl md:text-base flex flex-col font-semibold">AI Chat <InProgressBadge /></h4>
                             </div>
                           </div>
                         </SelectItem>
@@ -335,7 +347,6 @@ export function SiteHeader({
           {
             currentMode === "studyplan" && <StepsHeader steps={steps} currentStep={curStudyPathN} isExpandedSidebar={isExpandedSidebar} />
           }
-          <ModeToggle />
         </div>
       </div>
     </header>

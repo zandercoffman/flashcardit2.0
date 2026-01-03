@@ -10,6 +10,7 @@ import StudyPlan from "../studyplan/StudyPlan";
 
 import { mode } from "@/lib/AllSets" 
 import Matching from "../matching/page";
+import AIChatPage from "../AIChat/page";
 
 interface Set {
     title: string;
@@ -63,6 +64,8 @@ export default function MainSet({
             return <StudyPlan currentSet={currentSet} curStudyPathN={extra.curStudyPathN} setCurStudyPathN={extra.setCurStudyPathN} />
         case "matching":
             return <Matching currentSet={currentSet}/>
+        case "aichat":
+            return <AIChatPage currentSet={currentSet} />
 
     }
 

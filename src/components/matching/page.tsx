@@ -48,7 +48,7 @@ export default function Matching({
             <BlurFade delay={0.1 + (0.1 * i)} key={i}>
                 <motion.div
                     key={i}
-                    className="flex h-full items-center justify-center rounded-xl bg-muted p-4 text-center font-medium cursor-pointer"
+                    className="flex h-full items-center justify-center rounded-xl bg-muted/50 backdrop-blur border border-[2px] p-4 text-center font-medium cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                 >
@@ -63,14 +63,14 @@ export default function Matching({
             {
                 currentSet.vocab.map(([a, _], i) => (
                     i === chosenWord - 1 || i === chosenWord + 1 ? <motion.div
-                        className="z-30 flex h-18 scale-[80%] bg-muted/50 text-gray-500 min-w-[140px] items-center justify-center rounded-xl bg-muted p-4 text-center font-medium"
+                        className="z-30 flex h-18 scale-[80%] bg-muted/10 backdrop-blur border border-[2px] text-gray-500 min-w-[140px] items-center justify-center rounded-xl bg-muted p-4 text-center font-medium"
                         layoutId={`leftword-${a}`}
                         ref={leftSideRefs[i]}
                         key={i}
                     >
                         {a}
                     </motion.div> : i === chosenWord ? <motion.div
-                        className="z-30 flex h-20 min-w-[140px] items-center justify-center rounded-xl bg-muted p-4 text-center font-medium cursor-pointer"
+                        className="z-30 flex h-20 min-w-[140px] items-center justify-center rounded-xl bg-muted/50 backdrop-blur border border-[2px] p-4 text-center font-medium cursor-pointer"
                         onClick={() => setChosenWord(i)}
                         layoutId={`leftword-${a}`}
                         ref={leftSideRefs[i]}
@@ -78,7 +78,7 @@ export default function Matching({
                     >
                         {a}
                     </motion.div> : <motion.div
-                        className="z-30 flex h-18 hidden scale-[80%] bg-muted/50 text-gray-500 min-w-[140px] items-center justify-center rounded-xl bg-muted p-4 text-center font-medium"
+                        className="z-30 flex h-18 hidden scale-[80%] bg-muted/10 backdrop-blur border border-[2px] text-gray-500 min-w-[140px] items-center justify-center rounded-xl bg-muted p-4 text-center font-medium"
                         layoutId={`leftword-${a}`}
                         ref={leftSideRefs[i]}
                         key={i}
@@ -98,7 +98,7 @@ export default function Matching({
                 <BlurFade delay={0.1 + (0.1 * i)} key={i}>
                     <motion.div
                         key={i}
-                        className="z-30 my-2 mr-4 flex h-16 w-fit ml-auto items-center justify-center rounded-xl bg-muted p-4 text-center font-medium cursor-pointer"
+                        className="z-30 w-[360px] mx-4 my-4 mr-4 flex h-fit ml-auto items-center justify-center rounded-xl bg-muted/50 backdrop-blur border border-[2px] p-4 text-center font-medium cursor-pointer"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         ref={rightSideRefs[i]}

@@ -42,7 +42,7 @@ export function SearchBar() {
     return (
         <>
             <button 
-            className="flex shadow-xl cursor-pointer gap-2 w-1/2 bg-black h-8 text-white dark:bg-white dark:text-black px-2 rounded-xl py-1 my-auto"
+            className="flex shadow-xl cursor-pointer gap-2 w-1/2 bg-black h-8 text-white dark:bg-white dark:text-black px-2 rounded-3xl py-1 my-auto relative text-sm font-semibold"
             onClick={() => {
                 setOpen(!open)
             }}>
