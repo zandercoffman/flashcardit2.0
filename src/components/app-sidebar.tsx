@@ -56,6 +56,14 @@ import AIChatPage from "./AIChat/page"
 import Create from "./pages/Create"
 import { ModeToggle } from "./mode-toggle"
 import { NewBadge } from "./CustomBadges"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 type PageData = {
   title: string;
@@ -149,6 +157,7 @@ var thisdata = {
     },
   ],
   documents: [] as Set[],
+  version: "2.2.4"
 }
 
 
@@ -264,7 +273,7 @@ export function AppSidebar({ ...props }: any) {
                       </div>
                       <ButtonGroup className="mt-2">
                         <Button variant="outline" size="sm" asChild>
-                          
+
 
                           <a href="https://github.com/zandercoffman/flashcardit2.0" target="_blank" rel="noopener noreferrer"> <svg
                             viewBox="0 0 24 24"
@@ -320,16 +329,63 @@ export function AppSidebar({ ...props }: any) {
         </ScrollArea>
       </SidebarContent>
       <SidebarFooter className="mx-2 w-full text-sm flex flex-row gap-2 mb-4 md:mx-0 md:mb-0">
-        <div className="flex flex-row gap-2 w-full items-center">
-          <NewBadge/>
-          Version 2.2.4
-        </div>
-        <div className="w-min flex flex-row gap-1 justify-end">
-          <ModeToggle/>
+        <Dialog>
+          <DialogTrigger className="flex flex-row gap-2 items-center w-full justify-center px-4 py-2 border-1 bg-muted/50 cursor-pointer text-white rounded-3xl shadow-md">
+            <div className="flex flex-row gap-2 w-full items-center">
+              <NewBadge />
+              Version {thisdata.version}
+            </div>
+
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Version {thisdata.version}</DialogTitle>
+              <DialogDescription>
+                <div className="space-y-4 text-sm">
+                  <div className="flex flex-col gap-1">
+                    <span className="font-semibold text-primary">Notes</span>
+                    <p className="text-muted-foreground">Refreshed workspace for writing, organizing, and reviewing study material alongside your sets.</p>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="font-semibold text-primary">AI Chat (preview)</span>
+                    <p className="text-muted-foreground">Draft prompts, refine flashcards, and get quick answers without leaving the dashboard.</p>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="font-semibold text-primary">Music Button</span>
+                    <p className="text-muted-foreground">Keep focus playlists one tap away to stay in flow during study sessions.</p>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="font-semibold text-primary">Pomodoro Timer</span>
+                    <p className="text-muted-foreground">Timeboxed deep-work and break cycles to keep pace with spaced repetition.</p>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="font-semibold text-primary">Matching mode</span>
+                    <ul className="ml-4 list-disc space-y-1 text-muted-foreground">
+                      <li>4x4 grid matching for rapid recall.</li>
+                      <li>Quiz mode blending multiple-choice with short answers.</li>
+                    </ul>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="font-semibold text-primary">General UI Improvements</span>
+                    <p className="text-muted-foreground">Sharper spacing, lighter cards, and smoother navigation polish the overall dashboard experience.</p>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="font-semibold text-primary">Themes</span>
+                    <p className="text-muted-foreground">Open the Music Button, choose “Show in menu/background,” and pick thematic backdrops to match your session vibe.</p>
+                  </div>
+                </div>
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
+
+        <div className="w-min items-center flex flex-row gap-1 justify-end">
+          <ModeToggle />
           <Button variant={"outline"} size="icon-sm">
-            <IconSettings/>
+            <IconSettings />
           </Button>
         </div>
+
       </SidebarFooter>
     </Sidebar>
   )

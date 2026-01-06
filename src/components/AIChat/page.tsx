@@ -197,6 +197,10 @@ export default function AIChatPage({
 }: {
     currentSet?: Set
 }) {
+
+    const isPlaceholder = true
+
+
     const [contextOpen, setContextOpen] = useState(false);
     const [context2Open, setContext2Open] = useState(false);
     const contextRef = useRef<HTMLDivElement>(null);
@@ -597,7 +601,8 @@ export default function AIChatPage({
                 {/* Input */}
                 <div className="w-[40vw] dark:border-input dark:hover:bg-input/50 h-[8vh] bg-muted/60 px-2 py-2 border border-muted rounded-4xl flex items-center">
                     <Input
-                        placeholder="Type a message here..."
+                        placeholder={isPlaceholder ? "This is a preview of the AI Chat feature. More coming later." : "Type a message here..."}
+                        disabled={isPlaceholder}
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                         className="
@@ -628,7 +633,7 @@ export default function AIChatPage({
                         className="rounded-full cursor-pointer  w-[3.2vw] h-[7vh]"
                         size="icon-lg"
                         variant={"outline"}
-
+                        disabled={isPlaceholder || inputValue.trim() === ""}
                     >
                         <Send size={100} />
                     </Button>
