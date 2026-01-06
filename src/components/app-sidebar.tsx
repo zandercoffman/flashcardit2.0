@@ -331,7 +331,7 @@ export function AppSidebar({ ...props }: any) {
       <SidebarFooter className="mx-2 w-full text-sm flex flex-row gap-2 mb-4 md:mx-0 md:mb-0">
         <Dialog>
           <DialogTrigger className="flex flex-row gap-2 items-center w-full justify-center px-4 py-2 border-1 bg-muted/50 cursor-pointer text-white rounded-3xl shadow-md">
-            <div className="flex flex-row gap-2 w-full items-center">
+            <div className="dark:text-white text-black flex flex-row gap-2 w-full items-center">
               <NewBadge />
               Version {thisdata.version}
             </div>
