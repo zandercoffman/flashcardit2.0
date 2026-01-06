@@ -149,47 +149,47 @@ export const textAIs: TextAIModel[] = [
 import React from "react";
 import { cn } from "@/lib/utils";
 
-const convertGeneratedSetToCustomUI = (generatedSet: AllSetsInterface, setContext: Dispatch<SetStateAction<Set | null>> )=> {
-
+function GeneratedSetCard({ generatedSet, setContext }: { generatedSet: AllSetsInterface; setContext: Dispatch<SetStateAction<Set | null>> }) {
     const [open, setOpen] = useState(false);
 
-    return <div className={cn(`pl-1 relative backdrop-blur-[100px] border border-1 w-[400px] p-4 flex flex-col gap-2 rounded-3xl mb-10`, `${open ? "h-[300px]" : "h-[150px]"} `)}>
-        <h1 className="ml-1 mb-2 text-2xl max-w-[350px] font-bold truncate">
-            {generatedSet.set.title}
-        </h1>
-        <div className={` w-full ${open ? "h-[245px]" : "h-[60px]"}  overflow-hidden`}>
-            <ScrollArea className={`w-full mt-2 h-[70%] ${open ? "pb-2 opacity-100" : "opacity-0"}`}>
+    return (
+        <div className={cn("pl-1 relative backdrop-blur-[100px] border border-1 w-[400px] p-4 flex flex-col gap-2 rounded-3xl mb-10", `${open ? "h-[300px]" : "h-[150px]"} `)}>
+            <h1 className="ml-1 mb-2 text-2xl max-w-[350px] font-bold truncate">
+                {generatedSet.set.title}
+            </h1>
+            <div className={` w-full ${open ? "h-[245px]" : "h-[60px]"}  overflow-hidden`}>
+                <ScrollArea className={`w-full mt-2 h-[70%] ${open ? "pb-2 opacity-100" : "opacity-0"}`}>
+                    <div className="px-4 grid grid-cols-2 gap-4 mt-2">
+                        {generatedSet.set.vocab.map(([term, definition], index) => (
+                            <div key={index} className="flex flex-col gap-1">
+                                <span className="font-semibold">{term}</span>
+                                <span className="text-sm text-muted-foreground">{definition}</span>
+                            </div>
+                        ))}
+                    </div>
+                </ScrollArea>
+            </div>
+            <div className="absolute flex flex-row gap-2 bottom-4 ">
+                <Button className="cursor-pointer rounded-full transition-all duration-300" variant="outline">Import Now</Button>
+                <Button className="cursor-pointer rounded-full transition-all duration-300" variant="outline" onClick={() => setOpen(!open)}>{open ? "Collapse" : "Preview"}</Button>
+            </div>
+            <div className="absolute flex flex-row gap-2 bottom-4 right-6 text-sm text-muted-foreground">
+                {generatedSet.set.vocab.length} cards
+            </div>
 
-                <div className="px-4 grid grid-cols-2 gap-4 mt-2">
-                    {generatedSet.set.vocab.map(([term, definition], index) => (
-                        <div key={index} className="flex flex-col gap-1">
-                            <span className="font-semibold">{term}</span>
-                            <span className="text-sm text-muted-foreground">{definition}</span>
-                        </div>
-                    ))}
-                </div>
-            </ScrollArea>
+            <div className="absolute bottom-[-30%] left-0 flex flex-row gap-2">
+                <Button onClick={() => setContext(generatedSet.set)} className=" text-xs rounded-full cursor-pointer transition-all duration-300" variant={"outline"} >
+                    <Scan /> Use For Context
+                </Button>
+                <Button className="text-xs rounded-full cursor-pointer transition-all duration-300" variant={"outline"}>
+                    <BookCheck /> Quiz Me
+                </Button>
+                <Button className="text-xs rounded-full cursor-pointer transition-all duration-300" variant={"outline"}>
+                    <BookOpenText /> Help Me Study
+                </Button>
+            </div>
         </div>
-        <div className="absolute flex flex-row gap-2 bottom-4 ">
-            <Button className="cursor-pointer rounded-full transition-all duration-300" variant="outline">Import Now</Button>
-            <Button className="cursor-pointer rounded-full transition-all duration-300" variant="outline" onClick={() => setOpen(!open)}>{open ? "Collapse" : "Preview"}</Button>
-        </div>
-        <div className="absolute flex flex-row gap-2 bottom-4 right-6 text-sm text-muted-foreground">
-            {generatedSet.set.vocab.length} cards
-        </div>
-
-        <div className="absolute bottom-[-30%] left-0 flex flex-row gap-2">
-            <Button onClick={() => setContext(generatedSet.set)} className=" text-xs rounded-full cursor-pointer transition-all duration-300" variant={"outline"} >
-                <Scan /> Use For Context
-            </Button>
-            <Button className="text-xs rounded-full cursor-pointer transition-all duration-300" variant={"outline"}>
-                <BookCheck /> Quiz Me
-            </Button>
-             <Button className="text-xs rounded-full cursor-pointer transition-all duration-300" variant={"outline"}>
-                <BookOpenText /> Help Me Study
-            </Button>
-        </div>
-    </div>
+    );
 }
 
 export default function AIChatPage({
@@ -314,7 +314,9 @@ export default function AIChatPage({
                                 {msg.type === "text" && msg.role === "assistant" && <div className="flex justify-start mt-2">
                                     <span className="text-xs text-muted-foreground">Assistant</span>
                                 </div>}
-                                {msg.type === "set" && convertGeneratedSetToCustomUI(msg.set, setContextSet)}
+                                {msg.type === "set" && (
+                                    <GeneratedSetCard generatedSet={msg.set} setContext={setContextSet} />
+                                )}
                             </div>
                         </div>
                     ))

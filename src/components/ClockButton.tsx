@@ -349,7 +349,7 @@ export default function ClockButton() {
             setSession((prev) => {
                 if (prev.timeLeft <= 1) {
                     // Time’s up — switch focus/break
-                    let nextIsFocus = !prev.isFocus;
+                    const nextIsFocus = !prev.isFocus;
                     let nextTime = prev.isFocus
                         ? (prev.mode?.breakTime || 5) * 60
                         : (prev.mode?.focusTime || 25) * 60;
@@ -399,11 +399,20 @@ export default function ClockButton() {
     const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
     // Determine total seconds for the current block
+    const focusSeconds = (session.mode?.focusTime ?? 0) * 60;
+    const breakSeconds = (session.mode?.breakTime ?? 0) * 60;
+    const longBreakSeconds = (session.mode?.longBreakTime ?? session.mode?.breakTime ?? 0) * 60;
+    const sessionsBeforeLongBreak = session.mode?.sessionsBeforeLongBreak ?? 4;
+    const isLongBreak =
+        !session.isFocus &&
+        session.mode?.longBreakTime !== undefined &&
+        session.currentSession % sessionsBeforeLongBreak === 0;
+
     const totalSeconds = session.isFocus
-        ? session.mode?.focusTime! * 60
-        : session.mode?.longBreakTime && !session.isFocus && session.currentSession % (session.mode?.sessionsBeforeLongBreak || 4) === 0
-            ? session.mode.longBreakTime * 60
-            : session.mode?.breakTime! * 60;
+        ? focusSeconds
+        : isLongBreak
+            ? longBreakSeconds
+            : breakSeconds;
 
     // Calculate progress
     const progressPercent = totalSeconds

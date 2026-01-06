@@ -163,7 +163,7 @@ export default function Matching({
 
     useEffect(() => {
         // Get the vocab pair for the current chosen left word
-        let curPair = currentSet.vocab[chosenWord];
+        const curPair = currentSet.vocab[chosenWord];
         if (currentMode === "full" && curPair[1] === randomizedWords[setChosenNumber][1]) {
             // If they match, mark the right tile as selected
             setSelectedRightSideTiles(prev => {
@@ -184,6 +184,7 @@ export default function Matching({
 
     }, [setChosenNumber, chosenWord, currentSet.vocab, randomizedWords]);
 
+    
 
 
     // END CYCLE THROUGH WORD SELECTED FOR FULL
@@ -366,4 +367,4 @@ export default function Matching({
 
 
     </AnimatePresence>
-} 1
+}
