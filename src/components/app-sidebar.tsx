@@ -216,7 +216,7 @@ export function AppSidebar({ ...props }: any) {
                       />
                     </svg>
 
-                    <span className="text-2xl md:text-base font-extrabold my-auto translate-y-[-.25rem]">flashcardit</span>
+                    <span className="text-2xl md:text-base font-semibold my-auto translate-y-[-.25rem]">flashcardit</span>
                     <Badge className="translate-y-[-.25rem] rounded-xl font-semibold px-2 pb-1 bg-transparent backdrop-blur-3xl border border-black/50 dark:border-white/20" variant={"secondary"}>.vercel.app</Badge>
                     <Info className="translate-y-[-.25rem]" size={14} />
                   </a>
