@@ -180,7 +180,7 @@ export default function Matching({
             });
         }
 
-        print(`Hi! I am the useEffect. The chosen left word is ${currentSet.vocab[chosenWord][0]} and the right word is ${randomizedWords[setChosenNumber][1]}`);
+        console.log(`Hi! I am the useEffect. The chosen left word is ${currentSet.vocab[chosenWord][0]} and the right word is ${randomizedWords[setChosenNumber][1]}`);
 
     }, [setChosenNumber, chosenWord, currentSet.vocab, randomizedWords]);
 
@@ -262,7 +262,7 @@ export default function Matching({
                             whileTap={{ scale: 0.95 }}
                             ref={rightSideRefs[i]}
                             onClick={() => {
-                                print(
+                                console.log(
                                     `My right chosen index is ${i}. The left chosen index is ${chosenWord}. The right word is ${b} and the left word is ${currentSet.vocab[chosenWord][0]}.`
                                 );
                                 setCurrentChosenRef(rightSideRefs[i]);
