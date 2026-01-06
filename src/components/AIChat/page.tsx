@@ -1,17 +1,39 @@
 "use client";
-import { useState, useRef, useEffect, ReactNode } from "react";
+import { useState, useRef, useEffect, ReactNode, Dispatch, SetStateAction } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { ArrowRight, BadgePlus, Brain, Plus, Send, VectorSquare } from "lucide-react";
+import { ArrowDown01, ArrowRight, BadgePlus, BookCheck, BookOpenText, Brain, Clock, NotebookPen, Plus, Redo2, Scan, Send, VectorSquare } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Set } from "@/lib/AllSets";
+import { AllSetsInterface } from "@/app/page";
 import { ScrollArea } from "../ui/scroll-area";
+import { AllSets } from "@/lib/AllSets";
+import { MagicCard } from "../magicui/magic-card";
+import { RainbowButton } from "../magicui/rainbow-button";
+
+const exampleSet = AllSets[0]; // Placeholder set for testing
 
 export interface TextAIModel {
     name: string;
     svg: ReactNode; // placeholder for your custom SVG
     description: string;
 }
+
+type TextMessage = {
+    role: "user" | "assistant"
+    type: "text"
+    content: string
+}
+
+type SetMessage = {
+    role: "assistant"
+    type: "set"
+    set: AllSetsInterface
+}
+
+export type Message = TextMessage | SetMessage
+
+
 export const textAIs: TextAIModel[] = [
     {
         name: "MetaLlama 3.1 8B Instant",
@@ -124,6 +146,51 @@ export const textAIs: TextAIModel[] = [
     },
 ];
 
+import React from "react";
+import { cn } from "@/lib/utils";
+
+const convertGeneratedSetToCustomUI = (generatedSet: AllSetsInterface, setContext: Dispatch<SetStateAction<Set | null>> )=> {
+
+    const [open, setOpen] = useState(false);
+
+    return <div className={cn(`pl-1 relative backdrop-blur-[100px] border border-1 w-[400px] p-4 flex flex-col gap-2 rounded-3xl mb-10`, `${open ? "h-[300px]" : "h-[150px]"} `)}>
+        <h1 className="ml-1 mb-2 text-2xl max-w-[350px] font-bold truncate">
+            {generatedSet.set.title}
+        </h1>
+        <div className={` w-full ${open ? "h-[245px]" : "h-[60px]"}  overflow-hidden`}>
+            <ScrollArea className={`w-full mt-2 h-[70%] ${open ? "pb-2 opacity-100" : "opacity-0"}`}>
+
+                <div className="px-4 grid grid-cols-2 gap-4 mt-2">
+                    {generatedSet.set.vocab.map(([term, definition], index) => (
+                        <div key={index} className="flex flex-col gap-1">
+                            <span className="font-semibold">{term}</span>
+                            <span className="text-sm text-muted-foreground">{definition}</span>
+                        </div>
+                    ))}
+                </div>
+            </ScrollArea>
+        </div>
+        <div className="absolute flex flex-row gap-2 bottom-4 ">
+            <Button className="cursor-pointer rounded-full transition-all duration-300" variant="outline">Import Now</Button>
+            <Button className="cursor-pointer rounded-full transition-all duration-300" variant="outline" onClick={() => setOpen(!open)}>{open ? "Collapse" : "Preview"}</Button>
+        </div>
+        <div className="absolute flex flex-row gap-2 bottom-4 right-6 text-sm text-muted-foreground">
+            {generatedSet.set.vocab.length} cards
+        </div>
+
+        <div className="absolute bottom-[-30%] left-0 flex flex-row gap-2">
+            <Button onClick={() => setContext(generatedSet.set)} className=" text-xs rounded-full cursor-pointer transition-all duration-300" variant={"outline"} >
+                <Scan /> Use For Context
+            </Button>
+            <Button className="text-xs rounded-full cursor-pointer transition-all duration-300" variant={"outline"}>
+                <BookCheck /> Quiz Me
+            </Button>
+             <Button className="text-xs rounded-full cursor-pointer transition-all duration-300" variant={"outline"}>
+                <BookOpenText /> Help Me Study
+            </Button>
+        </div>
+    </div>
+}
 
 export default function AIChatPage({
     currentSet
@@ -135,6 +202,42 @@ export default function AIChatPage({
     const contextRef = useRef<HTMLDivElement>(null);
     const otherContextRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLDivElement>(null);
+
+    const [inputValue, setInputValue] = useState("");
+    const [messages, setMessages] = useState<Message[]>([
+        {
+            role: "assistant",
+            type: "text",
+            content: "Your set “Tema 1 - Las familias y las comunidades” is ready.\nWant a mnemonic, a quick quiz, or a simple explanation for any term?"
+        },
+        {
+            role: "assistant",
+            type: "set",
+            set: exampleSet
+        },
+        {
+            role: "user",
+            type: "text",
+            content: "Can you help me study this set?"
+        }
+    ])
+
+    const [pastSets, setPastSets] = useState<Set[]>(() => {
+        if (typeof window === "undefined") {
+            return [];
+        }
+        try {
+            const item = window.localStorage.getItem("sets");
+            if (item) {
+                const parsed = JSON.parse(item) as AllSetsInterface[];
+                return parsed.map(s => s.set);
+            }
+            return [];
+        } catch (error) {
+            console.error("Failed to parse sets from localStorage", error);
+            return [];
+        }
+    });
 
     const [chosenAIModel, setChosenAIModel] = useState<TextAIModel>(textAIs[0]);
     const [isHoveringSecondary, setIsHoveringSecondary] = useState<boolean>(false);
@@ -185,8 +288,35 @@ export default function AIChatPage({
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, [contextOpen]);
 
+    // START CONVERTING GENERATED SET TO CUSTOM UI
+
+
+
+
+    // END CONVERTING GENERATED SET TO CUSTOM UI
+
     return (
         <div className="relative w-full min-h-[83vh] flex flex-col items-center justify-end">
+            {/** Messages */}
+            <ScrollArea className="w-[92.5%] mx-auto h-[72vh] flex flex-col gap-1 mb-auto px-10    pt-6    overflow-y-auto ">
+                {
+                    messages.map((msg, index) => (
+                        <div key={index} className={`w-full flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                            <div className={`max-w-[70%] p-3 rounded-lg text-md whitespace-pre-wrap `}>
+                                {msg.type === "text" && msg.content}
+                                {msg.type === "text" && msg.role === "user" && <div className="flex justify-end mt-2">
+                                    <span className="text-xs text-muted-foreground">You</span>
+                                </div>}
+                                {msg.type === "text" && msg.role === "assistant" && <div className="flex justify-start mt-2">
+                                    <span className="text-xs text-muted-foreground">Assistant</span>
+                                </div>}
+                                {msg.type === "set" && convertGeneratedSetToCustomUI(msg.set, setContextSet)}
+                            </div>
+                        </div>
+                    ))
+                }
+            </ScrollArea>
+
             {/* Chat input + buttons */}
             <div className="absolute bottom-0 flex flex-row items-center gap-2 w-full px-4 py-2 justify-center">
                 {/* Context button */}
@@ -211,7 +341,7 @@ export default function AIChatPage({
                         {contextOpen && <>
                             <motion.div
                                 ref={contextRef}
-                                className="absolute flex flex-col gap-2 bottom-[100%] left-0 mr-2 w-[270px] h-[400px] bg-muted/50 rounded-2xl border border-muted px-4 py-3 overflow-hidden"
+                                className="absolute flex flex-col gap-2 bottom-[100%] left-0 mr-2 w-[270px] h-[400px] bg-muted/50 backdrop-blur-[15px] rounded-3xl border border-muted px-4 py-3 overflow-hidden"
                                 initial={{ opacity: 0, scale: 0.8, x: -20, y: 20 }}  // start slightly bottom-left
                                 animate={{ opacity: 1, scale: 1, x: 0, y: -10 }}       // end at top-right
                                 exit={{ opacity: 0, scale: 0.8, x: -20, y: 20 }}       // exit back bottom-left
@@ -239,6 +369,22 @@ export default function AIChatPage({
                                         <ArrowRight size={50} />
                                     </div>
                                 </div>
+                                {
+                                    contextSet && !currentSet && <>
+                                        <div
+                                            onClick={() => setContextSet(null)}
+                                            id="Deselect Context"
+                                            className="cursor-pointer w-full flex flex-row gap-4 h-[50px] ">
+                                            <div className="h-[50px] w-[10%] my-auto flex justify-center items-center">
+                                                <VectorSquare />
+                                            </div>
+                                            <div className="w-[85%]">
+                                                <h1 className="text-[16px]">Deselect Context</h1>
+                                                <h2 className="text-[12px] text-muted-foreground">Unselect the current context</h2>
+                                            </div>
+                                        </div>
+                                    </>
+                                }
                                 {
                                     !contextSet && <>
                                         {/** Going to press select context items here for the CUSTOM AI Model */}
@@ -272,7 +418,7 @@ export default function AIChatPage({
                                         <div
                                             onMouseEnter={() => {
                                                 handleMouseEnterSecondary();
-                                                setContextMode(1);
+                                                setContextMode(2);
                                             }}
                                             onMouseLeave={handleMouseLeaveSecondary}
 
@@ -291,33 +437,79 @@ export default function AIChatPage({
                                         </div>
                                     </>
                                 }
-                                {/** Going to press select context items here for the CUSTOM AI Model */}
-                                {/* Placeholder for AI Model selection UI  and this component will be the hovered one*/}
-                                <div
-                                    onMouseEnter={() => {
-                                        handleMouseEnterSecondary();
-                                        setContextMode(2);
-                                    }}
-                                    onMouseLeave={handleMouseLeaveSecondary}
+                                {
+                                    contextSet && <>
+                                        {/** Going to press select context items here for the CUSTOM AI Model */}
+                                        {/* Placeholder for AI Model selection UI  and this component will be the hovered one*/}
+                                        <div
+                                            onMouseEnter={() => {
+                                                handleMouseEnterSecondary();
+                                                setContextMode(3);
+                                            }}
+                                            onMouseLeave={handleMouseLeaveSecondary}
 
-                                    id="Create Set Context"
-                                    className="cursor-pointer w-full flex flex-row gap-4 h-[50px] ">
-                                    <div className="h-[50px] w-[10%] my-auto flex justify-center items-center">
-                                        <Brain />
-                                    </div>
-                                    <div className="w-[80%]">
-                                        <h1 className="text-[16px]">Memorize</h1>
-                                        <h2 className="text-[12px] text-muted-foreground">Use tactics to memorize</h2>
-                                    </div>
-                                    <div className="w-[5%] h-[50px] flex justify-center items-center">
-                                        <ArrowRight size={50} />
-                                    </div>
-                                </div>
+                                            id="Create Set Context"
+                                            className="cursor-pointer w-full flex flex-row gap-4 h-[50px] ">
+                                            <div className="h-[50px] w-[10%] my-auto flex justify-center items-center">
+                                                <Brain />
+                                            </div>
+                                            <div className="w-[80%]">
+                                                <h1 className="text-[16px]">Memorize</h1>
+                                                <h2 className="text-[12px] text-muted-foreground">Use tactics to memorize</h2>
+                                            </div>
+                                            <div className="w-[5%] h-[50px] flex justify-center items-center">
+                                                <ArrowRight size={50} />
+                                            </div>
+                                        </div>
+                                        {/** Going to press select context items here for the CUSTOM AI Model */}
+                                        {/* Placeholder for AI Model selection UI  and this component will be the hovered one*/}
+                                        <div
+                                            onMouseEnter={() => {
+                                                handleMouseEnterSecondary();
+                                                setContextMode(4);
+                                            }}
+                                            onMouseLeave={handleMouseLeaveSecondary}
+
+                                            id="Create Set Context"
+                                            className="cursor-pointer w-full flex flex-row gap-4 h-[50px] ">
+                                            <div className="h-[50px] w-[10%] my-auto flex justify-center items-center">
+                                                <NotebookPen />
+                                            </div>
+                                            <div className="w-[80%]">
+                                                <h1 className="text-[16px]">Study Tips</h1>
+                                                <h2 className="text-[12px] text-muted-foreground">Tips to study effectively</h2>
+                                            </div>
+                                            <div className="w-[5%] h-[50px] flex justify-center items-center">
+                                                <ArrowRight size={50} />
+                                            </div>
+                                        </div>
+                                        <div
+                                            onMouseEnter={() => {
+                                                handleMouseEnterSecondary();
+                                                setContextMode(4);
+                                            }}
+                                            onMouseLeave={handleMouseLeaveSecondary}
+
+                                            id="Create Set Context"
+                                            className="cursor-pointer w-full flex flex-row gap-4 h-[50px] ">
+                                            <div className="h-[50px] w-[10%] my-auto flex justify-center items-center">
+                                                <Clock />
+                                            </div>
+                                            <div className="w-[80%]">
+                                                <h1 className="text-[16px]">Scheduling</h1>
+                                                <h2 className="text-[12px] text-muted-foreground">Plan a schedule effectively</h2>
+                                            </div>
+                                            <div className="w-[5%] h-[50px] flex justify-center items-center">
+                                                <ArrowRight size={50} />
+                                            </div>
+                                        </div>
+                                    </>
+                                }
                             </motion.div>
                             {
                                 context2Open && <motion.div
                                     ref={otherContextRef}
-                                    className="absolute bottom-[120%] left-[280px] mr-2 w-[220px] h-[400px] bg-muted/50 rounded-2xl border border-muted px-3 py-3 overflow-hidden"
+                                    className="absolute bottom-[120%] left-[280px] mr-2 w-[220px] h-[400px] bg-muted/50 backdrop-blur-[10px] rounded-2xl border border-muted px-3 py-3 overflow-hidden"
                                     initial={{ opacity: 0, scale: 0.8, x: -100 }}  // start slightly bottom-left
                                     animate={{ opacity: 1, scale: 1, x: 0 }}       // end at top-right
                                     exit={{ opacity: 0, scale: 0.8, x: -100 }}
@@ -354,6 +546,43 @@ export default function AIChatPage({
                                             </ScrollArea>
                                         </>
                                     }
+                                    {
+                                        contextMode === 1 && <><ScrollArea id="Set Selector" className="cursor-pointer w-full flex flex-col gap-10 h-[380px] ">
+                                            {
+                                                pastSets.length === 0 && <div className="text-sm text-muted-foreground">No past sets found.</div>
+                                            }
+                                            {
+                                                pastSets.map((set, index) => (
+                                                    <div
+                                                        key={index}
+                                                        onClick={() => {
+                                                            setContextSet(set);
+                                                            setContext2Open(false);
+                                                        }}
+                                                        className="my-4 cursor-pointer w-full flex flex-row gap-4 h-full my-2 ">
+                                                        <div className="w-[80%] h-full">
+                                                            <h1 className="text-sm">{set.title}</h1>
+                                                        </div>
+                                                    </div>
+                                                ))
+                                            }
+                                            {
+                                                AllSets.map((set, index) => (
+                                                    <div
+                                                        key={index}
+                                                        onClick={() => {
+                                                            setContextSet(set.set);
+                                                            setContext2Open(false);
+                                                        }}
+                                                        className="my-4 cursor-pointer w-full flex flex-row gap-4 h-full my-2 ">
+                                                        <div className="w-[80%] h-full">
+                                                            <h1 className="text-sm">{set.set.title}</h1>
+                                                        </div>
+                                                    </div>
+                                                ))
+                                            }
+                                        </ScrollArea></>
+                                    }
                                 </motion.div>
                             }
 
@@ -369,8 +598,10 @@ export default function AIChatPage({
                 <div className="w-[40vw] dark:border-input dark:hover:bg-input/50 h-[8vh] bg-muted/60 px-2 py-2 border border-muted rounded-4xl flex items-center">
                     <Input
                         placeholder="Type a message here..."
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
                         className="
-              w-full
+                        w-[90%]
               !bg-transparent
               !border-0
               rounded-full
@@ -378,10 +609,16 @@ export default function AIChatPage({
               focus:!border-0
               outline-none
             "
+
                     />
-                    <div className="absolute top-[-20px] flex flex-row gap-2">
-                        <div className="w-6 h-6 bg-blue-600 rounded-full"/>
-                        <div className="text-sm text-white">{contextSet?.title}</div>
+                    <div className="absolute bottom-[-13px] flex flex-row justify-between items-center gap-2">
+                        {
+                            contextSet && <section className="flex flex-row gap-2">
+                                <div className="size-1 my-auto bg-blue-600 rounded-full" />
+                                <div className="text-xs text-blue-600"><span className="text-semibold">Set</span>: {contextSet?.title.substring(0, 45)}</div>
+                            </section>
+                        }
+                        <h1 className="text-xs">Powered by <a href="https://www.groq.com" className="text-gray-400 font-bold">Groq</a>. AI may make mistakes.</h1>
                     </div>
                 </div>
 

@@ -33,7 +33,7 @@ interface Set {
   vocab: [string, string][];
 }
 
-interface AllSetsInterface { id: string, set: Set }
+export interface AllSetsInterface { id: string, set: Set }
 
 export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) {
   const [CurrentPage, setcurpage] = useState<page>("dashboard");

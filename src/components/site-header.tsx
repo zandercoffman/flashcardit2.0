@@ -303,31 +303,6 @@ export function SiteHeader({
                       </SelectGroup>
                     </SelectContent>
                   </Select>
-                  <Toggle aria-label="Toggle italic" pressed={useTTS} onPressedChange={(value: boolean) => {
-                    willSetSETTTS(value);
-                    if (typeof window !== "undefined") {
-                      sessionStorage.setItem("ttsEnabled", JSON.stringify(value));
-                    }
-                  }}>
-                    <Dialog>
-                      <DialogTrigger>
-                        <Settings2 className="size-4 lg:size-6" />
-                      </DialogTrigger>
-                      <DialogContent>
-                        <DialogTitle>Settings</DialogTitle>
-                        <div className="flex flex-col gap-2 mt-2">
-
-                          <TTSSettings
-                            ttsEnabledKey="ttsEnabled"
-                            firstVoiceKey="firstVoice"
-                            secondVoiceKey="secondVoice"
-                          />
-
-                        </div>
-                      </DialogContent>
-                    </Dialog>
-
-                  </Toggle>
                 </div>
               </>
             }

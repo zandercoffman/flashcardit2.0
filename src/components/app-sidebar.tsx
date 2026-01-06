@@ -55,6 +55,7 @@ import { Badge } from "./ui/badge"
 import AIChatPage from "./AIChat/page"
 import Create from "./pages/Create"
 import { ModeToggle } from "./mode-toggle"
+import { NewBadge } from "./CustomBadges"
 
 type PageData = {
   title: string;
@@ -319,11 +320,11 @@ export function AppSidebar({ ...props }: any) {
         </ScrollArea>
       </SidebarContent>
       <SidebarFooter className="mx-2 w-full text-sm flex flex-row gap-2 mb-4 md:mx-0 md:mb-0">
-        <div className="flex flex-row gap-2 w-[40%] items-center">
-          <div className="size-[3px] rounded-full bg-blue-100 animate-ping"/>
-          Version 2.0.4
+        <div className="flex flex-row gap-2 w-full items-center">
+          <NewBadge/>
+          Version 2.2.4
         </div>
-        <div className="w-[60%] flex flex-row gap-1 justify-end">
+        <div className="w-min flex flex-row gap-1 justify-end">
           <ModeToggle/>
           <Button variant={"outline"} size="icon-sm">
             <IconSettings/>
