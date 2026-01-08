@@ -1,4 +1,5 @@
-import { tcitr14 } from "./subsets/TCITR";
+import { itw1011, itw12, itw1213, itw1415, itw1617, itw18epilogue, itw345, itw67, itw89 } from "./subsets/ITW";
+import { tcitr1017, tcitr14, tcitr1826, tcitr59 } from "./subsets/TCITR";
 import { tnofd12, tnofd34, tnofd56, tnofd79, tnofdpreface, tnofdx1, tnofdx2, tnofdxi1, tnofdxi2 } from "./subsets/TNOFD";
 
 export interface Set {
@@ -1990,7 +1991,17 @@ export const AllSets: AllSetsInterface[] = [
     tnofdx2,
     tnofdxi1,
     tnofdxi2,
-    tcitr14
-
-
+    tcitr14,
+    tcitr59,
+    tcitr1017,
+    tcitr1826,
+    itw12,
+    itw345,
+    itw67,
+    itw89,
+    itw1011,
+    itw1213,
+    itw1415,
+    itw1617,
+    itw18epilogue,
 ]

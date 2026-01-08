@@ -11,6 +11,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import * as SpanishVerbs from "spanish-verbs";
 import { Badge } from "../ui/badge"
+import { useEffect} from "react"
 
 type Tense =
   | "INDICATIVE_PRESENT"
@@ -53,6 +54,7 @@ export default function NavigationMenuFlashcardSet({
   const esppronouns = ["Yo", "Tú", "Él/Ella/Usted", "Nosotros", "Vosotros", "Ellos/Ellas/Ustedes"];
   const engpronouns = ["I", "You", "He/Her/You (Formal)", "We", "Us all", "They/You All"];
 
+  const [showTotal, setShowTotal] = React.useState(total);
 
   function getVerbType(verb: string) {
     if (!verb || typeof verb !== "string") return null;
@@ -96,16 +98,19 @@ export default function NavigationMenuFlashcardSet({
 
   const pronouns = [0, 1, 2, 3, 4, 5] as const;
 
+  useEffect(() => {
+    setShowTotal(set.vocab.length);
+  }, [set])
 
 
   return (
     <>
       <div className="absolute flex flex-col items-center gap-2 bottom-[-5vh] left-1/2 transform -translate-x-1/2 -translate-y-[-20px]">
-        <h3 className="my-auto">{current}/{total}</h3>
+        <h3 className="my-auto">{current}/{showTotal}</h3>
         <section className="flex flex-row gap-2">
           <Button variant="outline" size="sm" onClick={() => setShowWordList(!showWordList)} className="gap-2">
             <List className="h-4 w-4" />
-            {showWordList ? "Hide" : "Show"} All Words ({total})
+            {showWordList ? "Hide" : "Show"} All Words ({showTotal})
           </Button>
           {
             getVerbType(currentAtSet) !== null && <HoverCard>
