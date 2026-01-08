@@ -1,3 +1,6 @@
+import { tcitr14 } from "./subsets/TCITR";
+import { tnofd12, tnofd34, tnofd56, tnofd79, tnofdpreface, tnofdx1, tnofdx2, tnofdxi1, tnofdxi2 } from "./subsets/TNOFD";
+
 export interface Set {
     title: string;
     vocab: [string, string][];
@@ -5,7 +8,7 @@ export interface Set {
 
 export type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | "matching" | "aichat" | null;
 
-interface AllSetsInterface { id: string, set: Set }
+export interface AllSetsInterface { id: string, set: Set }
 
 export const AllSets: AllSetsInterface[] = [
     {
@@ -1903,84 +1906,91 @@ export const AllSets: AllSetsInterface[] = [
         }
     },
     {
-  "id": "tema-5-los-desafios-mundiales",
-  "set": {
-    "title": "Tema 5 - Los desafíos mundiales",
-    "vocab": [
-      ["La economía", "Economy"],
-      ["La desigualdad económica", "Economic inequality"],
-      ["El préstamo", "Loan"],
-      ["La identidad colectiva", "Collective identity"],
-      ["La autonomía", "Autonomy"],
-      ["El beneficiario", "Beneficiary"],
-      ["Sintetizar", "To synthesize"],
-      ["La preparatoria", "High school"],
-      ["Las características geográficas", "Geographical features"],
-      ["El glacial", "Glacier"],
-      ["El calentamiento global", "Global warming"],
-      ["El consumo sustentable", "Sustainable consumption"],
-      ["La residencia de ancianos", "Nursing home"],
-      ["La natalidad", "Birth rate"],
-      ["La demografía", "Demographics"],
-      ["Desplazar", "To displace"],
-      ["El bienestar social", "Social well-being"],
-      ["La casualidad", "Chance"],
-      ["El pensamiento filosófico", "Philosophical thought"],
-      ["La libertad religiosa", "Religious freedom"],
-      ["El cambio generacional", "Generational change"],
-      ["La conciencia social", "Social awareness"],
-      ["La ciudadanía global", "Global citizenship"],
-      ["El agua potable", "Drinking water"],
-      ["Los países en vías de desarrollo", "Developing countries"],
-      ["Acceder", "To access"],
-      ["Aportar", "To contribute"],
-      ["Brindar", "To provide"],
-      ["Contemplar", "To contemplate"],
-      ["El refugio", "Shelter"],
-      ["El incremento", "Increase"],
-      ["Equilibrado/a", "Balanced"],
-      ["Escaso/a", "Scarce"],
-      ["Postular", "To apply or propose"],
-      ["Proveer", "To provide"],
-      ["Vinculado/a", "Linked"],
-      ["Situar/situado/a", "To place / situated"],
-      ["Involucrado/a", "Involved"],
-      ["Firmar", "To sign"],
-      ["Gobierno", "Government"],
-      ["Los derechos humanos", "Human rights"],
-      ["La guerra (civil)", "War (civil)"],
-      ["Elegir", "To choose"],
-      ["Influir", "To influence"],
-      ["La amenaza", "Threat"],
-      ["Destrozar", "To destroy"],
-      ["La doble moral", "Double standard"],
-      ["La regla", "Rule"],
-      ["El fracaso/fracasar", "Failure / to fail"],
-      ["La ley", "Law"],
-      ["El orgullo", "Pride"],
-      ["La censura", "Censorship"],
-      ["Callar", "To silence / keep quiet"],
-      ["La asimilación", "Assimilation"],
-      ["La frontera", "Border"],
-      ["El idioma oficial", "Official language"],
-      ["El lujo", "Luxury"],
-      ["La población", "Population"],
-      ["Disminuir", "To decrease"],
-      ["El nivel de vida", "Standard of living"],
-      ["Enriquecerse", "To become wealthy"],
-      ["Pertenecer", "To belong"],
-      ["Reconocer", "To recognize"],
-      ["El transporte público", "Public transportation"],
-      ["El cuidado", "Care"],
-      ["La parcialidad/ser parcial", "Bias / to be biased"],
-      ["Entrevistar", "To interview"],
-      ["La reunión/la cita", "Meeting / appointment"]
-    ]
-  }
-}
-
-
-
+        "id": "tema-5-los-desafios-mundiales",
+        "set": {
+            "title": "Tema 5 - Los desafíos mundiales",
+            "vocab": [
+                ["La economía", "Economy"],
+                ["La desigualdad económica", "Economic inequality"],
+                ["El préstamo", "Loan"],
+                ["La identidad colectiva", "Collective identity"],
+                ["La autonomía", "Autonomy"],
+                ["El beneficiario", "Beneficiary"],
+                ["Sintetizar", "To synthesize"],
+                ["La preparatoria", "High school"],
+                ["Las características geográficas", "Geographical features"],
+                ["El glacial", "Glacier"],
+                ["El calentamiento global", "Global warming"],
+                ["El consumo sustentable", "Sustainable consumption"],
+                ["La residencia de ancianos", "Nursing home"],
+                ["La natalidad", "Birth rate"],
+                ["La demografía", "Demographics"],
+                ["Desplazar", "To displace"],
+                ["El bienestar social", "Social well-being"],
+                ["La casualidad", "Chance"],
+                ["El pensamiento filosófico", "Philosophical thought"],
+                ["La libertad religiosa", "Religious freedom"],
+                ["El cambio generacional", "Generational change"],
+                ["La conciencia social", "Social awareness"],
+                ["La ciudadanía global", "Global citizenship"],
+                ["El agua potable", "Drinking water"],
+                ["Los países en vías de desarrollo", "Developing countries"],
+                ["Acceder", "To access"],
+                ["Aportar", "To contribute"],
+                ["Brindar", "To provide"],
+                ["Contemplar", "To contemplate"],
+                ["El refugio", "Shelter"],
+                ["El incremento", "Increase"],
+                ["Equilibrado/a", "Balanced"],
+                ["Escaso/a", "Scarce"],
+                ["Postular", "To apply or propose"],
+                ["Proveer", "To provide"],
+                ["Vinculado/a", "Linked"],
+                ["Situar/situado/a", "To place / situated"],
+                ["Involucrado/a", "Involved"],
+                ["Firmar", "To sign"],
+                ["Gobierno", "Government"],
+                ["Los derechos humanos", "Human rights"],
+                ["La guerra (civil)", "War (civil)"],
+                ["Elegir", "To choose"],
+                ["Influir", "To influence"],
+                ["La amenaza", "Threat"],
+                ["Destrozar", "To destroy"],
+                ["La doble moral", "Double standard"],
+                ["La regla", "Rule"],
+                ["El fracaso/fracasar", "Failure / to fail"],
+                ["La ley", "Law"],
+                ["El orgullo", "Pride"],
+                ["La censura", "Censorship"],
+                ["Callar", "To silence / keep quiet"],
+                ["La asimilación", "Assimilation"],
+                ["La frontera", "Border"],
+                ["El idioma oficial", "Official language"],
+                ["El lujo", "Luxury"],
+                ["La población", "Population"],
+                ["Disminuir", "To decrease"],
+                ["El nivel de vida", "Standard of living"],
+                ["Enriquecerse", "To become wealthy"],
+                ["Pertenecer", "To belong"],
+                ["Reconocer", "To recognize"],
+                ["El transporte público", "Public transportation"],
+                ["El cuidado", "Care"],
+                ["La parcialidad/ser parcial", "Bias / to be biased"],
+                ["Entrevistar", "To interview"],
+                ["La reunión/la cita", "Meeting / appointment"]
+            ]
+        }
+    },
+    tnofdpreface,
+    tnofd12,
+    tnofd34,
+    tnofd56,
+    tnofd79,
+    tnofdx1,
+    tnofdx2,
+    tnofdxi1,
+    tnofdxi2,
+    tcitr14
 
 
 ]
