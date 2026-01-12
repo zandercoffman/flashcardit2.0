@@ -3072,15 +3072,6 @@ export const itwvocab: AllSetsInterface = {
             ["Amiable (adj.)", "Having or displaying a friendly and pleasant manner."],
             ["Contrite (adj.)", "Feeling or expressing remorse or penitence; affected by guilt."],
 
-            ["Emasculate (v.)", "Verb; to deprive strength, effectiveness, or traditionally masculine qualities."],
-            ["Polarization (n.)", "Noun; division into sharply opposing groups or sets of opinions."],
-            ["Brazenly (adv.)", "Adverb; in a boldly shameless or defiant manner."],
-            ["Insolence (n.)", "Noun; rude and disrespectful speech or behavior."],
-            ["Taciturn (adj.)", "Adjective; habitually reserved or saying very little."],
-            ["Gregarious (adj.)", "Adjective; sociable and fond of being in the company of others."],
-            ["Reverie (n.)", "Noun; a state of being pleasantly lost in one's thoughts; daydream."],
-            ["Volition (n.)", "Noun; the power to choose or the act of making a conscious decision."],
-
             ["What is the part of speech for Austere?", "adjective"],
             ["What is the part of speech for Transcendent?", "adjective"],
             ["What is the part of speech for Enigma?", "noun"],
@@ -3089,6 +3080,24 @@ export const itwvocab: AllSetsInterface = {
             ["What is the part of speech for Amalgam?", "noun"],
             ["What is the part of speech for Amiable?", "adjective"],
             ["What is the part of speech for Contrite?", "adjective"],
+
+        ]
+    }
+}
+
+export const itwvocab2: AllSetsInterface = {
+    id: "into-the-wild-vocabulary-list-2",
+    set: {
+        title: "Into The Wild Vocabulary List 2",
+        vocab: [
+            ["Emasculate (v.)", "Verb; to deprive strength, effectiveness, or traditionally masculine qualities."],
+            ["Polarization (n.)", "Noun; division into sharply opposing groups or sets of opinions."],
+            ["Brazenly (adv.)", "Adverb; in a boldly shameless or defiant manner."],
+            ["Insolence (n.)", "Noun; rude and disrespectful speech or behavior."],
+            ["Taciturn (adj.)", "Adjective; habitually reserved or saying very little."],
+            ["Gregarious (adj.)", "Adjective; sociable and fond of being in the company of others."],
+            ["Reverie (n.)", "Noun; a state of being pleasantly lost in one's thoughts; daydream."],
+            ["Volition (n.)", "Noun; the power to choose or the act of making a conscious decision."],
 
             ["What is the part of speech for Emasculate?", "verb"],
             ["What is the part of speech for Polarization?", "noun"],
