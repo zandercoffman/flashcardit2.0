@@ -66,6 +66,37 @@ const INFORMATION = {
     ]
 }
 
+const allSetIds = [
+  // TNOFD.ts
+  "tnofd-preface",
+  "tnofd-chapters-1-and-2",
+  "tnofd-chatpers-3-and-4",
+  "tnofd-chapters-5-and-6",
+  "tnofd-chatpers-7-through-9",
+  "tnofd-chapter-10-part-1",
+  "tnofd-chapter-10-part-2",
+  "tnofd-chapter-11-part-1",
+  "tnofd-chapter-11-part-2",
+
+  // TCITR.ts
+  "tcitr-chapters-1-through-4",
+  "tcitr-chapters-5-through-9",
+  "tcitr-chapters-10-through-17",
+  "tcitr-chapters-18-through-26",
+
+  // ITW.ts
+  "into-the-wild-chapters-1-and-2",
+  "into-the-wild-chapters-3-4-and-5",
+  "into-the-wild-chapters-6-and-7",
+  "into-the-wild-chapters-8-and-9",
+  "into-the-wild-chapters-10-and-11",
+  "into-the-wild-chapters-12-and-13",
+  "into-the-wild-chapters-14-and-15",
+  "into-the-wild-chapters-16-and-17",
+  "into-the-wild-chapter-18-and-epilogue",
+  "into-the-wild-vocabulary-list",
+];
+
 export default function HomePage({ allSets, addSet, setMode, setSet }: { allSets: Set[] | undefined, addSet: (set: Set, isAutomatic: boolean) => Promise<number>, setMode: (mode: mode) => void, setSet: (idx: number) => void }) {
     const [isOpen, setIsOpen] = React.useState(false)
     const [allStorage, setAllStorage] = React.useState<LocalStorageData>([])
@@ -224,8 +255,10 @@ export default function HomePage({ allSets, addSet, setMode, setSet }: { allSets
                     <h1 className="text-3xl font-semibold">All Premade Sets</h1>
                     <ScrollArea className="w-[68vw] h-50">
                         <div className="flex flex-row gap-4 w-max">
-                            {AllSets.map((setObj: AllSetsInterface, index) => (
-                                <Showcase key={setObj.id} set={setObj.set} id={setObj.id} addSet={addSet} />
+                            {AllSets
+                                .filter((setObj: AllSetsInterface) => !allSetIds.includes(setObj.id))
+                                .map((setObj: AllSetsInterface) => (
+                                    <Showcase key={setObj.id} set={setObj.set} id={setObj.id} addSet={addSet} />
                             ))}
                         </div>
                         <ScrollBar orientation="horizontal" />
