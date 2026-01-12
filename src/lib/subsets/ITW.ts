@@ -3086,7 +3086,7 @@ export const itwvocab: AllSetsInterface = {
 }
 
 export const itwvocab2: AllSetsInterface = {
-    id: "into-the-wild-vocabulary-list-two",
+    id: "into-the-wild-vocabulary-list-2",
     set: {
         title: "Into The Wild Vocabulary List 2",
         vocab: [

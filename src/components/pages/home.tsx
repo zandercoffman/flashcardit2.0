@@ -95,7 +95,7 @@ const allSetIds = [
   "into-the-wild-chapters-16-and-17",
   "into-the-wild-chapter-18-and-epilogue",
   "into-the-wild-vocabulary-list",
-  "into-the-wild-vocabulary-list-two"
+  "into-the-wild-vocabulary-list-2"
 ];
 
 export default function HomePage({ allSets, addSet, setMode, setSet }: { allSets: Set[] | undefined, addSet: (set: Set, isAutomatic: boolean) => Promise<number>, setMode: (mode: mode) => void, setSet: (idx: number) => void }) {
