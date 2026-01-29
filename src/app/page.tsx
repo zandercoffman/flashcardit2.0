@@ -22,10 +22,12 @@ import { AllSets } from "@/lib/AllSets"
 import { mode } from "@/lib/AllSets"
 import NoteDocumentTaker from "@/components/notetaker/page"
 import AiChatPage from "@/components/AIChat/page"
+import { AllLists, List } from "@/lib/AllLists"
 type page = "helper" | "dashboard" | "set" | "upload" | "Notes" | "aichat";
 
 interface DashboardPageProps {
   defaultImportedSetID: string;
+  typeOfPage: "list" | "set";
 }
 
 interface Set {
@@ -183,7 +185,10 @@ export const studyMotivationQuotes: string[] = [
 
 export interface AllSetsInterface { id: string, set: Set }
 
-export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) {
+export default function Dashboard({ defaultImportedSetID, typeOfPage }: DashboardPageProps) {
+
+  const [currentList, setCurrentList] = useState<List | null>(null);
+
   const [CurrentPage, setcurpage] = useState<page>("dashboard");
   const [currentHeader, setCurrentHeader] = useState<string>("Dashboard");
 
@@ -316,19 +321,24 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
   useEffect(() => {
     const process = async () => {
       if (defaultImportedSetID) {
-        const foundSet = AllSets.find(set => set.id === defaultImportedSetID);
-        if (foundSet && !(window.location.pathname == "/")) {
-          const newIndex = await addSet(foundSet.set, false);
-          toast.success(`Successfully found ${foundSet.set.title}. Happy Studying! (PS. I know you will do well!)`, {
-            description: <div className="mt-2 text-xs">
-              &apos;{studyMotivationQuotes[Math.floor(Math.random() * studyMotivationQuotes.length)]}&apos;
-            </div>,
-            duration: 8000
-          });
-          setcurpage("set");
-          setCurrentHeader(foundSet.set.title);
-          setCurrentMode("normal");
-          setSeled(newIndex); // wait until set is added to pastSets
+        if (typeOfPage === "set") {
+          const foundSet = AllSets.find(set => set.id === defaultImportedSetID);
+          if (foundSet && !(window.location.pathname == "/")) {
+            const newIndex = await addSet(foundSet.set, false);
+            toast.success(`Successfully found ${foundSet.set.title}. Happy Studying! (PS. I know you will do well!)`, {
+              description: <div className="mt-2 text-xs">
+                &apos;{studyMotivationQuotes[Math.floor(Math.random() * studyMotivationQuotes.length)]}&apos;
+              </div>,
+              duration: 8000
+            });
+            setcurpage("set");
+            setCurrentHeader(foundSet.set.title);
+            setCurrentMode("normal");
+            setSeled(newIndex); // wait until set is added to pastSets
+          }
+        } else if (typeOfPage === "list") {
+          const foundList = AllLists.find(list => list.id === defaultImportedSetID);
+          if (foundList) setCurrentList(foundList);
         }
       }
 
@@ -345,14 +355,14 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
   const [curStudyPathN, setCurStudyPathN] = useState<number>(0);
 
   const getYouTubeThumbnail = (link: string) => {
-        try {
-            const url = new URL(link)
-            const id = url.searchParams.get("v")
-            return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : ""
-        } catch {
-            return ""
-        }
+    try {
+      const url = new URL(link)
+      const id = url.searchParams.get("v")
+      return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : ""
+    } catch {
+      return ""
     }
+  }
 
   //END STUDY MODE TRACKER
 
@@ -394,20 +404,23 @@ export default function Dashboard({ defaultImportedSetID }: DashboardPageProps) 
             setCurrentVideo={setCurrentVideo}
             curStudyPathN={curStudyPathN} />
           <div className="flex flex-1 flex-col px-2">
-            <MainScreen
-              selected={selected}
-              CurrentPage={CurrentPage}
-              pastSets={pastSets}
-              currentMode={currentMode}
-              addSet={addSet}
-              setsLoading={setsLoading}
-              setMode={setMode}
-              setSet={setSet}
-              extra={{
-                curStudyPathN: curStudyPathN,
-                setCurStudyPathN: setCurStudyPathN
-              }}
-            />
+            {
+              currentList ? <ListScreen currentList={currentList} /> : <MainScreen
+                selected={selected}
+                CurrentPage={CurrentPage}
+                pastSets={pastSets}
+                currentMode={currentMode}
+                addSet={addSet}
+                setsLoading={setsLoading}
+                setMode={setMode}
+                setSet={setSet}
+                extra={{
+                  curStudyPathN: curStudyPathN,
+                  setCurStudyPathN: setCurStudyPathN
+                }}
+              />
+            }
+
           </div>
         </div>
       </SidebarInset>
@@ -446,9 +459,43 @@ function MainScreen({
       ) : CurrentPage === "upload" ? <Create addSet={addSet} /> :
         CurrentPage === "helper" ? <HelperPage /> :
           CurrentPage === "Notes".toLowerCase() ? <NoteDocumentTaker /> :
-          CurrentPage === "aichat"? <AiChatPage /> :
-            CurrentPage === "dashboard" ? <HomePage allSets={setsLoading ? undefined : pastSets} addSet={addSet} setMode={setMode} setSet={setSet} /> :
-              <></>}
+            CurrentPage === "aichat" ? <AiChatPage /> :
+              CurrentPage === "dashboard" ? <HomePage allSets={setsLoading ? undefined : pastSets} addSet={addSet} setMode={setMode} setSet={setSet} /> :
+                <></>}
+    </div>
+  );
+}
+
+function ListScreen({ currentList }: { currentList: List }) {
+  const Icon = currentList.icon;
+  return (
+    <div className="p-4 md:p-8">
+      <div className="flex flex-row gap-2">
+        <Icon size={32} className="my-auto"/>
+        <div className="flex flex-col">
+          <h1 className="text-2xl font-bold mb-4">{currentList.title}</h1>
+          <p className="mb-6">{currentList.description}</p>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {currentList.sets.map((setRef) => {
+          const foundSet = AllSets.find(set => set.id === setRef.id);
+          if (!foundSet) return null;
+          return (
+            <div key={setRef.id} className="p-4 border rounded-lg shadow hover:shadow-lg transition">
+              <h2 className="text-xl font-semibold mb-2">{foundSet.set.title}</h2>
+              <button
+                className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                onClick={async () => {
+                  // Logic to add set to pastSets and navigate to it
+                }}
+              >
+                Study This Set
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
