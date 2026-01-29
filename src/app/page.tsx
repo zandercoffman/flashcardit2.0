@@ -23,6 +23,9 @@ import { mode } from "@/lib/AllSets"
 import NoteDocumentTaker from "@/components/notetaker/page"
 import AiChatPage from "@/components/AIChat/page"
 import { AllLists, List } from "@/lib/AllLists"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 type page = "helper" | "dashboard" | "set" | "upload" | "Notes" | "aichat";
 
 interface DashboardPageProps {
@@ -469,33 +472,38 @@ function MainScreen({
 function ListScreen({ currentList }: { currentList: List }) {
   const Icon = currentList.icon;
   return (
-    <div className="p-4 md:p-8">
-      <div className="flex flex-row gap-2">
-        <Icon size={32} className="my-auto"/>
+    <ScrollArea className="p-4 h-[90vh] md:p-8 w-full mx-auto flex flex-col">
+      <div className="flex flex-row gap-6 mb-8 w-[95%] mx-auto">
+        <Icon size={64} className="my-auto"/>
         <div className="flex flex-col">
           <h1 className="text-2xl font-bold mb-4">{currentList.title}</h1>
           <p className="mb-6">{currentList.description}</p>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="gap-2 w-full h-full w-[95%] mx-auto flex flex-col">
         {currentList.sets.map((setRef) => {
           const foundSet = AllSets.find(set => set.id === setRef.id);
           if (!foundSet) return null;
+          const length = foundSet.set.vocab.length;
+
           return (
-            <div key={setRef.id} className="p-4 border rounded-lg shadow hover:shadow-lg transition">
-              <h2 className="text-xl font-semibold mb-2">{foundSet.set.title}</h2>
-              <button
-                className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            <div key={setRef.id} className="w-full flex flex-row justify-between p-4 rounded-lg shadow hover:shadow-lg transition">
+              <h2 className="text-xl flex flex-row gap-2 font-semibold my-auto">
+                {foundSet.set.title}
+                <Badge variant={"outline"}>{length} {length > 1 ? "items" : "item"}</Badge>
+              </h2>
+              <Button
+                className="mt-2 px-6 py-2 rounded-xl cursor-pointer"
                 onClick={async () => {
                   // Logic to add set to pastSets and navigate to it
                 }}
               >
                 Study This Set
-              </button>
+              </Button>
             </div>
           );
         })}
       </div>
-    </div>
+    </ScrollArea>
   );
 }

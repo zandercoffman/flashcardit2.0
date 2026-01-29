@@ -1,3 +1,4 @@
+import { FBLA_SETS } from "./subsets/FBLA";
 import { itw1011, itw12, itw1213, itw1415, itw1617, itw18epilogue, itw345, itw67, itw89, itwvocab, itwvocab2 } from "./subsets/ITW";
 import { tcitr1017, tcitr14, tcitr1826, tcitr59 } from "./subsets/TCITR";
 import { tnofd12, tnofd34, tnofd56, tnofd79, tnofdpreface, tnofdx1, tnofdx2, tnofdxi1, tnofdxi2 } from "./subsets/TNOFD";
@@ -2006,4 +2007,5 @@ export const AllSets: AllSetsInterface[] = [
     itw18epilogue,
     itwvocab,
     itwvocab2,
+    ...FBLA_SETS,
 ]
