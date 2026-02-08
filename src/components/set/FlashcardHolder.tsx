@@ -18,7 +18,7 @@ import { Copy, List, X } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { AnimatePresence, motion } from "framer-motion"
-import { getConjugation } from "spanish-verbs"
+import inflect from "conjugator/inflect"
 import { toast } from "sonner"
 import { useSidebar } from "@/components/ui/sidebar"
 import {
@@ -230,9 +230,64 @@ export default function FlashcardHolder({ set }: { set: Set }) {
   const formatTense = (t: string) =>
     t.toLowerCase().replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
 
-  const conjugate = (verb: string, tense: string, person: number) => {
+  const getMoodAndTense = (tense: string) => {
+    const [moodRaw, ...rest] = tense.split("_")
+    const mood = moodRaw.toLowerCase()
+    const normalized = rest.join("_").toLowerCase()
+
+    const tenseMap: Record<string, string> = {
+      present: "present",
+      imperfect: "imperfect",
+      preterite: "preterite",
+      future: "future",
+      perfect: "perfect",
+      pluperfect: "pluperfect",
+      future_perfect: "future perfect",
+      preterite_perfect: "preterite perfect",
+      imperfect_ra: "imperfect -ra",
+      imperfect_se: "imperfect -se",
+    }
+
+    return {
+      mood,
+      tense: tenseMap[normalized] || normalized.replace(/_/g, " "),
+    }
+  }
+
+  const getNumberAndPerson = (personIndex: number) => {
+    if (personIndex <= 2) {
+      return {
+        number: "singular",
+        person: personIndex === 0 ? "first" : personIndex === 1 ? "second" : "third",
+      }
+    }
+    return {
+      number: "plural",
+      person: personIndex === 3 ? "first" : personIndex === 4 ? "second" : "third",
+    }
+  }
+
+  const conjugate = (verb: string, tense: string, personIndex: number) => {
     try {
-      return getConjugation(verb, tense, person as 0 | 1 | 2 | 3 | 4 | 5)
+      const { mood, tense: mappedTense } = getMoodAndTense(tense)
+      const { number, person } = getNumberAndPerson(personIndex)
+
+      return inflect(verb, {
+        mood: mood as "indicative" | "subjunctive" | "conditional" | "imperative",
+        tense: mappedTense as
+          | "present"
+          | "imperfect"
+          | "preterite"
+          | "future"
+          | "perfect"
+          | "pluperfect"
+          | "future perfect"
+          | "preterite perfect"
+          | "imperfect -ra"
+          | "imperfect -se",
+        number: number as "singular" | "plural",
+        person: person as "first" | "second" | "third",
+      })
     } catch {
       return ""
     }
