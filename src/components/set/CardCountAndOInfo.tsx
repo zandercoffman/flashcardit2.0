@@ -9,7 +9,6 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import { NavigationMenuLink } from "@/components/ui/navigation-menu"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
-import * as SpanishVerbs from "spanish-verbs";
 import { Badge } from "../ui/badge"
 import { useEffect } from "react"
 import { Set } from "@/lib/AllSets"

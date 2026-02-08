@@ -73,6 +73,36 @@ export default function ChatGPTButton({
 
     const thisID = AllSets.find(set => set.set.title === currentSet?.title)?.id
 
+    const buildPrompt = (prompt: string, includeJson: boolean) => {
+        const title = currentSet?.title || "Unknown Set"
+        const jsonPayload = JSON.stringify(currentSet ?? { title, vocab: [] }, null, 2)
+        const sourceLine = includeJson
+            ? `The flashcards JSON is:\n${jsonPayload}`
+            : `The flashcards are at ${window.location.origin + "/api/json/" + thisID}. Please fetch the JSON from this URL and make a GET request.`
+
+        return `Please help me study the following flashcard set: ${title}.
+${sourceLine}
+
+${prompt}
+
+IMPORTANT:
+Do not generate study content yet.
+
+In your next message ONLY, ask me to choose:
+- Difficulty (easy / medium / hard)
+- Level of detail (brief / standard / in-depth)
+- Exam focus or study goal
+
+AFTER I respond with my choices, generate the study content using these rules:
+- Keep explanations concise and easy to understand
+- Use examples or analogies when helpful
+- Strictly tailor the content to my chosen settings
+
+Additional context:\n`
+    }
+
+    const fullSetHref = `https://chat.openai.com/?q=${encodeURIComponent(buildPrompt("", true))}`
+
 
 
 
@@ -109,7 +139,7 @@ export default function ChatGPTButton({
                 >
                     <div className="flex flex-col gap-2">
                         <div className="text-sm font-medium">Open {currentSet?.title || "Unknown Set"} In ChatGPT</div>
-                        <div className="text-xs text-muted-foreground">Click the button again to use this set with ChatGPT. Click <a href="" className="text-blue-600">this</a> to open the full set instead of just a reference. Press the prompts below to open this set with ChatGPT with a custom prompt.</div>
+                        <div className="text-xs text-muted-foreground">Click the button again to use this set with ChatGPT. Click <a href={fullSetHref} target="_blank" rel="noreferrer" className="text-blue-600">this</a> to open the full set instead of just a reference. Press the prompts below to open this set with ChatGPT with a custom prompt.</div>
 
                     </div>
                     <ScrollArea className="h-[40vh] flex flex-col gap-6">
@@ -121,27 +151,7 @@ export default function ChatGPTButton({
                                     className="mt-1 w-[97%] cursor-pointer mb-1 my-2 flex flex-row gap-4 text-xs text-left rounded-2xl whitespace-normal py-4 h-auto bg-gradient-to-r from-indigo-500/10 via-sky-500/10 to-emerald-500/10 hover:from-indigo-500/20 hover:via-sky-500/20 hover:to-emerald-500/20 border border-primary/20"
                                     size="sm"
                                     onClick={() => {
-                                        const link = `https://chat.openai.com/?q=${encodeURIComponent(
-`Please help me study the following flashcard set: ${currentSet?.title || "Unknown Set"}.
-The flashcards are at ${window.location.origin + "/api/json/" + thisID}. Please fetch the JSON from this URL and make a GET request.
-
-${prompt}
-
-IMPORTANT:
-Do not generate study content yet.
-
-In your next message ONLY, ask me to choose:
-- Difficulty (easy / medium / hard)
-- Level of detail (brief / standard / in-depth)
-- Exam focus or study goal
-
-AFTER I respond with my choices, generate the study content using these rules:
-- Keep explanations concise and easy to understand
-- Use examples or analogies when helpful
-- Strictly tailor the content to my chosen settings
-
-Additional context:\n`
-)}`;
+                                        const link = `https://chat.openai.com/?q=${encodeURIComponent(buildPrompt(prompt, false))}`;
 
                                         window.open(link, "_blank");
                                         setHasOpened(true);

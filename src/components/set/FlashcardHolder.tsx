@@ -18,7 +18,7 @@ import { Copy, List, X } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { AnimatePresence, motion } from "framer-motion"
-import * as SpanishVerbs from "spanish-verbs"
+import { getConjugation } from "spanish-verbs"
 import { toast } from "sonner"
 import { useSidebar } from "@/components/ui/sidebar"
 import {
@@ -231,12 +231,8 @@ export default function FlashcardHolder({ set }: { set: Set }) {
     t.toLowerCase().replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
 
   const conjugate = (verb: string, tense: string, person: number) => {
-    const fn =
-      (SpanishVerbs as any).conjugate ||
-      (SpanishVerbs as any).getConjugation ||
-      (SpanishVerbs as any).conjugateVerb
     try {
-      return fn ? fn(verb, tense, person) : ""
+      return getConjugation(verb, tense, person as 0 | 1 | 2 | 3 | 4 | 5)
     } catch {
       return ""
     }
