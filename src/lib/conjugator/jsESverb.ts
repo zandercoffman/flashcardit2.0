@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 //That file is a fork from other project: https://github.com/voldmar/conjugation
 //The original file contains this license:
 
