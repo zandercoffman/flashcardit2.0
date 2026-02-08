@@ -2086,7 +2086,7 @@ export const AllSets: AllSetsInterface[] = [
             ]
         }
     },
-    {
+    {   
         id: "esp-vocab-6a-mi-casa-es-su-casa",
         set: {
             title: "Vocabulario Unidad 6A: Mi casa es su casa",
