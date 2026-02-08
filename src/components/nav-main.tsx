@@ -35,10 +35,10 @@ export function NavMain({
   const inProgressStuff: string[] = ["AI Chat"];
 
   return (
-    <SidebarGroup className="w-[20vw]">
+    <SidebarGroup className="w-[18vw]">
       <SidebarGroupContent className="flex translate-y-[-10px] flex-col gap-2">
         <SidebarMenu className=" font-semibold">
-          <SidebarMenuItem className="flex flex-col md:flex-row items-center mt-1 align-center gap-2">
+          <SidebarMenuItem className="w-full flex flex-col md:flex-row items-center mt-1 align-center gap-2">
             <SearchBar />
             <SidebarMenuItem className="my-0 py-0 h-min w-1/2">
               <SidebarMenuButton tooltip={"Create"}

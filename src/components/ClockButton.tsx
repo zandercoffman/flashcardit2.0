@@ -427,7 +427,7 @@ export default function ClockButton() {
                 <Button
                     ref={buttonRef}
                     variant="ghost"
-                    className="p-2 flex flex-row gap-2 h-6 lg:h-8 px-0"
+                    className="p-2 flex flex-row gap-2 h-6  rounded-lg lg:h-8 px-0"
                     style={{
                         width: hasSelectedTMinimized ? "80px" : "40px",
                         transition: "width 0.3s ease",
@@ -563,7 +563,7 @@ export default function ClockButton() {
                     transition={{ type: "spring", stiffness: 300, damping: 25 }}
                     onHoverStart={() => setHovered(true)}
                     onHoverEnd={() => setHovered(false)}
-                    className="absolute flex flex-row gap-2 translate-y-[-7px] left-0 w-[400px] p-4 bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-3 shadow-sm z-[50] origin-top-left"
+                    className="absolute flex flex-row gap-2 translate-y-[-6px] left-0 w-[400px] p-4 bg-card text-card-foreground flex flex-col gap-6 rounded-3xl border py-3 shadow-sm z-[50] origin-top-left"
                 >
                     <section className="flex-col gap-2 w-[30%] h-full mr-4">
                         <h1 className="text-4xl">{formattedTime}</h1>

@@ -11,46 +11,30 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import * as SpanishVerbs from "spanish-verbs";
 import { Badge } from "../ui/badge"
-import { useEffect} from "react"
-
-type Tense =
-  | "INDICATIVE_PRESENT"
-  | "INDICATIVE_IMPERFECT"
-  | "INDICATIVE_PRETERITE"
-  | "INDICATIVE_FUTURE"
-  | "INDICATIVE_PERFECT"
-  | "INDICATIVE_PLUPERFECT"
-  | "INDICATIVE_FUTURE_PERFECT"
-  | "INDICATIVE_PRETERITE_PERFECT"
-  | "SUBJUNCTIVE_PRESENT"
-  | "SUBJUNCTIVE_IMPERFECT_RA"
-  | "SUBJUNCTIVE_IMPERFECT_SE"
-  | "SUBJUNCTIVE_FUTURE"
-  | "SUBJUNCTIVE_PERFECT"
-  | "SUBJUNCTIVE_PLUPERFECT"
-  | "SUBJUNCTIVE_FUTURE_PERFECT"
-  | "CONDITIONAL_PRESENT"
-  | "CONDITIONAL_PERFECT";
-
-
-interface Set {
-  title: string
-  vocab: [string, string][] // Array of tuples with two strings
-}
+import { useEffect } from "react"
+import { Set } from "@/lib/AllSets"
 
 export default function NavigationMenuFlashcardSet({
   current,
   total,
   set,
   onWordClick,
+  pressedShowAllWords,
+  pressShowConjugation,
+  setPressedShowAllWords,
+  setPressShowConjugation,
 }: {
   current: number
   total: number
   set: Set
   onWordClick?: (index: number) => void
+  pressedShowAllWords: boolean
+  pressShowConjugation: boolean
+  setPressedShowAllWords: React.Dispatch<React.SetStateAction<boolean>>
+  setPressShowConjugation: React.Dispatch<React.SetStateAction<boolean>>
 }) {
   const [showWordList, setShowWordList] = React.useState(false)
-  const [currentAtSet, setCurASet] = React.useState(set.vocab[current - 1][0]);
+  const [currentAtSet, setCurASet] = React.useState(set?.vocab?.[current - 1]?.[0] ?? "");
   const esppronouns = ["Yo", "Tú", "Él/Ella/Usted", "Nosotros", "Vosotros", "Ellos/Ellas/Ustedes"];
   const engpronouns = ["I", "You", "He/Her/You (Formal)", "We", "Us all", "They/You All"];
 
@@ -73,86 +57,56 @@ export default function NavigationMenuFlashcardSet({
   }
 
   React.useEffect(() => {
-    setCurASet(set.vocab[current - 1][0])
+    setCurASet(set?.vocab?.[current - 1]?.[0] ?? "")
   }, [current, set])
 
-  const tenses: Tense[] = [
-    "INDICATIVE_PRESENT",
-    "INDICATIVE_IMPERFECT",
-    "INDICATIVE_PRETERITE",
-    "INDICATIVE_FUTURE",
-    "INDICATIVE_PERFECT",
-    "INDICATIVE_PLUPERFECT",
-    "INDICATIVE_FUTURE_PERFECT",
-    "INDICATIVE_PRETERITE_PERFECT",
-    "SUBJUNCTIVE_PRESENT",
-    "SUBJUNCTIVE_IMPERFECT_RA",
-    "SUBJUNCTIVE_IMPERFECT_SE",
-    "SUBJUNCTIVE_FUTURE",
-    "SUBJUNCTIVE_PERFECT",
-    "SUBJUNCTIVE_PLUPERFECT",
-    "SUBJUNCTIVE_FUTURE_PERFECT",
-    "CONDITIONAL_PRESENT",
-    "CONDITIONAL_PERFECT",
-  ];
-
-  const pronouns = [0, 1, 2, 3, 4, 5] as const;
+  useEffect(() => {
+    setShowTotal(set?.vocab?.length ?? 0);
+  }, [set])
 
   useEffect(() => {
-    setShowTotal(set.vocab.length);
-  }, [set])
+    setShowWordList(pressedShowAllWords)
+  }, [pressedShowAllWords])
 
 
   return (
     <>
+
       <div className="absolute flex flex-col items-center gap-2 bottom-[-5vh] left-1/2 transform -translate-x-1/2 -translate-y-[-20px]">
-        <h3 className="my-auto">{current}/{showTotal}</h3>
-        <section className="flex flex-row gap-2">
-          <Button variant="outline" size="sm" onClick={() => setShowWordList(!showWordList)} className="gap-2">
-            <List className="h-4 w-4" />
-            {showWordList ? "Hide" : "Show"} All Words ({showTotal})
-          </Button>
-          {
-            getVerbType(currentAtSet) !== null && <HoverCard>
-              <HoverCardTrigger asChild>
-                <Button variant="outline" size="sm" className="gap-2" >
+        <div className="flex flex-row gap-2">
+          <h3 className="my-auto">{current}/{showTotal}</h3>
+          <Separator orientation="vertical" className="my-auto !w-[1px] !h-[20px]" />
+          <section className="flex flex-row gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                setPressedShowAllWords((prev) => !prev)
+              }}
+              className="gap-2 cursor-pointer rounded-full !px-[12px]"
+            >
+              <List className="h-4 w-4" />
+              {showWordList ? "Hide" : "Show"} All Words ({showTotal})
+            </Button>
+
+            {
+              getVerbType(currentAtSet) !== null && <>
+                <Separator orientation="vertical" className="my-auto !w-[1px] !h-[20px]" />
+                <Button variant="outline" size="sm" className="cursor-pointer gap-2 rounded-full !px-[12px]" onClick={() => setPressShowConjugation(prev => !prev)}>
                   <Globe className="h-4 w-4" />
                   See Conjugations
                 </Button>
-              </HoverCardTrigger>
-              <HoverCardContent className="w-[600px] bg-transparent backdrop-blur-md">
-                <Table>
-                  <TableCaption>{currentAtSet}</TableCaption>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead className="w-[120px]">Pronoun (ES)</TableHead>
-                      {tenses.map((tense) => (
-                        <TableHead key={tense} className="w-[120px]">{tense.replaceAll("_", " ")}</TableHead>
-                      ))}
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {pronouns.map((idx) => (
-                      <TableRow key={idx}>
-                        <TableCell>{esppronouns[idx]}</TableCell>
-                        {tenses.map((tense) => (
-                          <TableCell key={tense}>
-                            {SpanishVerbs.getConjugation(currentAtSet, tense, idx)}
-                          </TableCell>
-                        ))}
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </HoverCardContent>
-            </HoverCard>
-
-          }
-        </section>
+              </>
+            }
+          </section>
+        </div>
+        <div className="text-center w-[350px] text-xs text-muted-foreground ">Use ← → or arrow keys to navigate. Press space or enter to flip the card. Press T to toggle the sidebar.</div>
 
       </div>
 
-      {showWordList && (
+      {
+        /**
+         * {showWordList && (
         <div className="fixed inset-0 bg-black/20 z-40 backdrop-blur-sm" onClick={() => setShowWordList(false)} />
       )}
 
@@ -196,6 +150,8 @@ export default function NavigationMenuFlashcardSet({
           </div>
         </div>
       </div>
+         */
+      }
     </>
   )
 }

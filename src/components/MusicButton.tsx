@@ -287,7 +287,7 @@ export default function MusicButton({
                 <Button
                     ref={buttonRef}
                     variant="ghost"
-                    className="p-2 w-8 lg:w-8 h-6 lg:h-8"
+                    className="p-2 w-8 lg:w-8 h-6 lg:h-8 rounded-lg"
                     onClick={() => {
                         setOpen(!open)
                         if (!hasOpened)
@@ -456,7 +456,7 @@ export default function MusicButton({
                     initial={{ opacity: 0, scale: 0.5, y: 1 }}
                     animate={{ opacity: 1, scale: 1, y: 8 }}
                     transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                    className="absolute flex flex-col gap-2 top-full mt-2 left-0 w-[400px] p-4 bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-3 shadow-sm z-[50] origin-top-left"
+                    className="absolute flex flex-col gap-2 top-full mt-2 left-0 w-[400px] p-4 bg-card text-card-foreground flex flex-col gap-6 rounded-3xl border py-3 shadow-sm z-[50] origin-top-left"
                 >
                     {
                         (studyWithMe && !selectedVideo) && <div className="flex flex-col gap-2">

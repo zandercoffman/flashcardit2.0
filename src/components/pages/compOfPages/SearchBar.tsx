@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/command"
 
 import { Set } from "@/lib/AllSets"
+import { Button } from "@/components/ui/button"
 
 interface AllSetsInterface { id: string, set: Set }
 
@@ -40,15 +41,15 @@ export function SearchBar() {
     }, [])
 
     return (
-        <>
-            <button 
-            className="flex shadow-xl cursor-pointer gap-2 w-1/2 bg-black h-8 text-white dark:bg-white dark:text-black px-2 rounded-3xl py-1 my-auto relative text-sm font-semibold"
+        <section className="w-1/2">
+            <Button variant={"ghost"}
+            className="flex w-full shadow-xl cursor-pointer gap-2 h-8 dark:text-white text-black px-2 rounded-3xl py-1 my-auto relative text-sm font-semibold"
             onClick={() => {
                 setOpen(!open)
             }}>
                 <Search className="size-4 my-auto ml-1" />
                 <span className="!text-left my-auto">Search</span>
-            </button>
+            </Button>
             <CommandDialog open={open} onOpenChange={setOpen}>
                 <CommandInput placeholder="Type a command or search..." />
                 <CommandList>
@@ -79,6 +80,6 @@ export function SearchBar() {
                     </CommandGroup>
                 </CommandList>
             </CommandDialog>
-        </>
+        </section>
     )
 }

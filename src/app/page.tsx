@@ -398,14 +398,15 @@ export default function Dashboard({ defaultImportedSetID, typeOfPage }: Dashboar
             />
           </div>
         )}
-        <div className="relative z-10">
+        <div className="relative z-10 transition-transform duration-300 ease-in-out ">
           <SiteHeader
             currentHeader={currentHeader} currentPage={CurrentPage} setTTSEnabled={setTTSEnabled}
             currentMode={currentMode} setCurrentMode={function (value: string): void {
               setCurrentMode(value as mode)
             }}
             setCurrentVideo={setCurrentVideo}
-            curStudyPathN={curStudyPathN} />
+            curStudyPathN={curStudyPathN} 
+            currentSet={selected !== null ? pastSets[selected] : undefined}/>
           <div className="flex flex-1 flex-col px-2">
             {
               currentList ? <ListScreen currentList={currentList} /> : <MainScreen

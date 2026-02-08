@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { ModeToggle } from "./mode-toggle"
-import { mode } from "@/lib/AllSets"
+import { AllSetsInterface, mode, Set } from "@/lib/AllSets"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { AudioWaveform, Bomb, BookCheck, BookOpen, Image, LandPlot, LayoutTemplate, Megaphone, Milestone, Music, PencilLine, Settings, Settings2, Sparkles, Volume, Volume2 } from "lucide-react";
 
@@ -55,8 +55,10 @@ import {
 import StepsHeader from "./StepsHeader"
 import { steps } from "@/lib/studyPlan"
 import MusicButton, { Video } from "./MusicButton"
-import {BetaBadge2, InProgressBadge} from "./CustomBadges"
+import { BetaBadge2, InProgressBadge } from "./CustomBadges"
 import ClockButton from "./ClockButton"
+import { AnimatePresence, motion } from "framer-motion"
+import ChatGPTButton from "./OpenInChatGPT"
 
 
 export function SiteHeader({
@@ -66,7 +68,8 @@ export function SiteHeader({
   setTTSEnabled,
   setCurrentMode,
   curStudyPathN,
-  setCurrentVideo
+  setCurrentVideo,
+  currentSet
 }: {
   currentHeader: string,
   currentMode: mode,
@@ -75,6 +78,7 @@ export function SiteHeader({
   setCurrentMode: (value: string) => void
   curStudyPathN: number
   setCurrentVideo: (video: Video | null) => void
+  currentSet: Set | undefined
 }) {
 
   const [thisMode, setThisMode] = useState<mode>(currentMode);
@@ -104,13 +108,17 @@ export function SiteHeader({
   const isMobile = useMobile();
 
   const [isExpandedSidebar, setIsExpandedSidebar] = useState<boolean>(false); // false will be the default view
+  const [isHoverChatGPT, setIsHoverChatGPT] = useState<boolean>(false);
+
 
   return (
     <header className="flex h-(--header-height) shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)">
       <div className="flex w-full items-center px-4 lg:gap-2 lg:px-6">
         <SidebarTrigger className="-ml-1 text-lg" onClick={() => setIsExpandedSidebar(!isExpandedSidebar)} />
-        <MusicButton setCurrentVideo={setCurrentVideo}/>
+        <MusicButton setCurrentVideo={setCurrentVideo} />
         <ClockButton />
+        {currentSet && <ChatGPTButton currentSet={currentSet}/>}
+
         {
           currentPage == "set" && <>
             {
@@ -236,11 +244,11 @@ export function SiteHeader({
                           <div className="flex justify-start items-center gap-4 ">
                             <LandPlot className="size-4 lg:size-6" />
                             <div className=" w-full">
-                              <h4 className="text-xl md:text-base flex flex-col font-semibold">Study Path <BetaBadge2/></h4>
+                              <h4 className="text-xl md:text-base flex flex-col font-semibold">Study Path <BetaBadge2 /></h4>
                             </div>
                           </div>
                         </SelectItem>
-                        
+
                         <SelectItem value="aichat">
                           <div className="flex justify-start items-center gap-4 ">
                             <Sparkles className="size-4 lg:size-6" />
@@ -308,7 +316,9 @@ export function SiteHeader({
             }
           </>
         }
-        
+
+
+
         <Separator
           orientation="vertical"
           className="mx-2 data-[orientation=vertical]:h-4"
