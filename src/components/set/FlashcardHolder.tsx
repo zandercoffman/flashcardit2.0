@@ -18,7 +18,7 @@ import { Copy, List, X } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { AnimatePresence, motion } from "framer-motion"
-import inflect from "conjugator/inflect"
+import SpanishConjugator from "spanishconjugator"
 import { toast } from "sonner"
 import { useSidebar } from "@/components/ui/sidebar"
 import {
@@ -230,64 +230,48 @@ export default function FlashcardHolder({ set }: { set: Set }) {
   const formatTense = (t: string) =>
     t.toLowerCase().replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
 
-  const getMoodAndTense = (tense: string) => {
+  const getSpanishConjugatorArgs = (tense: string, personIndex: number) => {
     const [moodRaw, ...rest] = tense.split("_")
-    const mood = moodRaw.toLowerCase()
-    const normalized = rest.join("_").toLowerCase()
+    const moodKey = moodRaw.toLowerCase()
+    const normalizedTense = rest.join("_").toLowerCase()
+
+    const moodMap: Record<string, string> = {
+      indicative: "indicitive",
+      subjunctive: "subjunctive",
+      conditional: "conditional",
+      imperative: "imperitive",
+    }
 
     const tenseMap: Record<string, string> = {
       present: "present",
       imperfect: "imperfect",
       preterite: "preterite",
       future: "future",
-      perfect: "perfect",
-      pluperfect: "pluperfect",
-      future_perfect: "future perfect",
-      preterite_perfect: "preterite perfect",
-      imperfect_ra: "imperfect -ra",
-      imperfect_se: "imperfect -se",
+      perfect: "present_perfect",
+      pluperfect: "past_anterior",
+      future_perfect: "future_perfect",
+      preterite_perfect: "past_anterior",
+      imperfect_ra: "imperfect",
+      imperfect_se: "imperfect_se",
     }
 
-    return {
-      mood,
-      tense: tenseMap[normalized] || normalized.replace(/_/g, " "),
-    }
-  }
+    const pronounMap = ["yo", "tu", "usted", "nosotros", "vosotros", "ustedes"]
 
-  const getNumberAndPerson = (personIndex: number) => {
-    if (personIndex <= 2) {
-      return {
-        number: "singular",
-        person: personIndex === 0 ? "first" : personIndex === 1 ? "second" : "third",
-      }
-    }
     return {
-      number: "plural",
-      person: personIndex === 3 ? "first" : personIndex === 4 ? "second" : "third",
+      mood: moodMap[moodKey],
+      tense: tenseMap[normalizedTense],
+      pronoun: pronounMap[personIndex],
     }
   }
 
   const conjugate = (verb: string, tense: string, personIndex: number) => {
     try {
-      const { mood, tense: mappedTense } = getMoodAndTense(tense)
-      const { number, person } = getNumberAndPerson(personIndex)
+      const args = getSpanishConjugatorArgs(tense, personIndex)
+      if (!args.mood || !args.tense || !args.pronoun) {
+        return ""
+      }
 
-      return inflect(verb, {
-        mood: mood as "indicative" | "subjunctive" | "conditional" | "imperative",
-        tense: mappedTense as
-          | "present"
-          | "imperfect"
-          | "preterite"
-          | "future"
-          | "perfect"
-          | "pluperfect"
-          | "future perfect"
-          | "preterite perfect"
-          | "imperfect -ra"
-          | "imperfect -se",
-        number: number as "singular" | "plural",
-        person: person as "first" | "second" | "third",
-      })
+      return SpanishConjugator.SpanishConjugator(verb, args.tense, args.mood, args.pronoun)
     } catch {
       return ""
     }

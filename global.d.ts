@@ -56,4 +56,11 @@ interface SpeechRecognition extends EventTarget {
     SpeechRecognition: SpeechRecognitionStatic;
     webkitSpeechRecognition: SpeechRecognitionStatic;
   }
+
+  declare module "spanishconjugator" {
+    const SpanishConjugator: {
+      SpanishConjugator: (verb: string, tense: string, mood: string, pronoun: string) => string
+    }
+    export default SpanishConjugator
+  }
   
