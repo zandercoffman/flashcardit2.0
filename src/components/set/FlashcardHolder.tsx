@@ -1,7 +1,7 @@
 "use client"
 
 /* eslint-disable */
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import FlashCard from "./Flashcard"
 import {
   Carousel,
@@ -18,7 +18,7 @@ import { Copy, List, X } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { AnimatePresence, motion } from "framer-motion"
-import SpanishConjugator from "spanishconjugator"
+import jsESverb from "@/lib/conjugator/jsESverb"
 import { toast } from "sonner"
 import { useSidebar } from "@/components/ui/sidebar"
 import {
@@ -35,8 +35,14 @@ interface Set {
 }
 
 export default function FlashcardHolder({ set }: { set: Set }) {
-  const { toggleSidebar } = useSidebar()
+  const { state , toggleSidebar } = useSidebar()
   const [api, setApi] = useState<CarouselApi>()
+  const conjugator = useMemo(() => {
+    const Conjugator = jsESverb as unknown as {
+      new (): { conjugate: (word: string) => Record<string, string> | null }
+    }
+    return new Conjugator()
+  }, [])
 
   const PAGE_SIZE = 30
   const [visibleCount, setVisibleCount] = useState(() => Math.min(PAGE_SIZE, set.vocab.length))
@@ -177,12 +183,14 @@ export default function FlashcardHolder({ set }: { set: Set }) {
 
   useEffect(() => {
     if (pressedShowAllWords) {
+      toggleSidebar()
       setPressShowConjugation(false)
     }
   }, [pressedShowAllWords])
 
   useEffect(() => {
     if (pressShowConjugation) {
+      toggleSidebar()
       setPressedShowAllWords(false)
     }
   }, [pressShowConjugation])
@@ -230,48 +238,61 @@ export default function FlashcardHolder({ set }: { set: Set }) {
   const formatTense = (t: string) =>
     t.toLowerCase().replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
 
-  const getSpanishConjugatorArgs = (tense: string, personIndex: number) => {
+  const getConjugationKey = (tense: string, personIndex: number) => {
     const [moodRaw, ...rest] = tense.split("_")
-    const moodKey = moodRaw.toLowerCase()
+    const mood = moodRaw.toLowerCase()
     const normalizedTense = rest.join("_").toLowerCase()
+    const person = ["1", "2", "3", "4", "5", "6"][personIndex]
+    if (!person) return null
 
-    const moodMap: Record<string, string> = {
-      indicative: "indicitive",
-      subjunctive: "subjunctive",
-      conditional: "conditional",
-      imperative: "imperitive",
+    if (mood === "indicative") {
+      const map: Record<string, string> = {
+        present: "pre",
+        imperfect: "cop",
+        preterite: "pas",
+        future: "fut",
+        perfect: "pp",
+        pluperfect: "pasp",
+        future_perfect: "futp",
+        preterite_perfect: "prep",
+      }
+      const suffix = map[normalizedTense]
+      return suffix ? `${person}${suffix}` : null
     }
 
-    const tenseMap: Record<string, string> = {
-      present: "present",
-      imperfect: "imperfect",
-      preterite: "preterite",
-      future: "future",
-      perfect: "present_perfect",
-      pluperfect: "past_anterior",
-      future_perfect: "future_perfect",
-      preterite_perfect: "past_anterior",
-      imperfect_ra: "imperfect",
-      imperfect_se: "imperfect_se",
+    if (mood === "subjunctive") {
+      const map: Record<string, string> = {
+        present: "pres",
+        imperfect_ra: "pass",
+        imperfect_se: "passb",
+        future: "futs",
+        perfect: "presps",
+        pluperfect: "pastps",
+        future_perfect: "fps",
+      }
+      const suffix = map[normalizedTense]
+      return suffix ? `${person}${suffix}` : null
     }
 
-    const pronounMap = ["yo", "tu", "usted", "nosotros", "vosotros", "ustedes"]
-
-    return {
-      mood: moodMap[moodKey],
-      tense: tenseMap[normalizedTense],
-      pronoun: pronounMap[personIndex],
+    if (mood === "conditional") {
+      const map: Record<string, string> = {
+        present: "pos",
+        perfect: "conp",
+      }
+      const suffix = map[normalizedTense]
+      return suffix ? `${person}${suffix}` : null
     }
+
+    return null
   }
 
   const conjugate = (verb: string, tense: string, personIndex: number) => {
     try {
-      const args = getSpanishConjugatorArgs(tense, personIndex)
-      if (!args.mood || !args.tense || !args.pronoun) {
-        return ""
-      }
-
-      return SpanishConjugator.SpanishConjugator(verb, args.tense, args.mood, args.pronoun)
+      const conjugations = conjugator.conjugate(verb)
+      if (!conjugations) return ""
+      const key = getConjugationKey(tense, personIndex)
+      if (!key) return ""
+      return conjugations[key] || ""
     } catch {
       return ""
     }
@@ -404,7 +425,7 @@ export default function FlashcardHolder({ set }: { set: Set }) {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.15 }}
-              className="translate-x-[-6vw] xl:translate-x-[0vw] right-0 top-0 h-full z-40 w-100 pr-4"
+              className="translate-x-[-6vw] xl:translate-x-[0vw] right-0 top-0 h-full z-40 w-40 xl:w-100 pr-4"
             >
               <ScrollArea className="h-[70vh]" onClick={() => setPressShowConjugation(false)}>
                 <div className="min-h-[70vh] flex flex-col items-center justify-center">

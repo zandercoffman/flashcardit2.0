@@ -1,0 +1,97 @@
+jsESverb
+Source: https://github.com/cubiwan/jsESverb
+License: https://github.com/cubiwan/jsESverb/blob/master/LICENSE
+
+This project uses the jsESverb library for Spanish verb conjugation.
+
+Packages (from package.json)
+
+Dependencies
+- @ai-sdk/groq ^3.0.2
+- @ai-sdk/react ^3.0.6
+- @dnd-kit/core ^6.3.1
+- @dnd-kit/modifiers ^9.0.0
+- @dnd-kit/sortable ^10.0.0
+- @dnd-kit/utilities ^3.2.2
+- @google/genai ^1.15.0
+- @google/generative-ai ^0.24.1
+- @hookform/resolvers ^5.2.2
+- @radix-ui/react-accordion ^1.2.12
+- @radix-ui/react-alert-dialog ^1.1.15
+- @radix-ui/react-aspect-ratio ^1.1.8
+- @radix-ui/react-avatar ^1.1.11
+- @radix-ui/react-checkbox ^1.3.3
+- @radix-ui/react-collapsible ^1.1.12
+- @radix-ui/react-context-menu ^2.2.16
+- @radix-ui/react-dialog ^1.1.15
+- @radix-ui/react-dropdown-menu ^2.1.16
+- @radix-ui/react-hover-card ^1.1.15
+- @radix-ui/react-label ^2.1.8
+- @radix-ui/react-menubar ^1.1.16
+- @radix-ui/react-navigation-menu ^1.2.14
+- @radix-ui/react-popover ^1.1.15
+- @radix-ui/react-progress ^1.1.8
+- @radix-ui/react-radio-group ^1.3.8
+- @radix-ui/react-scroll-area ^1.2.10
+- @radix-ui/react-select ^2.2.6
+- @radix-ui/react-separator ^1.1.8
+- @radix-ui/react-slider ^1.3.6
+- @radix-ui/react-slot ^1.2.4
+- @radix-ui/react-switch ^1.2.6
+- @radix-ui/react-tabs ^1.1.13
+- @radix-ui/react-toggle ^1.1.10
+- @radix-ui/react-toggle-group ^1.1.11
+- @radix-ui/react-tooltip ^1.2.8
+- @tabler/icons-react ^3.34.1
+- @tanstack/react-table ^8.21.3
+- @tiptap/markdown ^3.14.0
+- @tiptap/react ^3.14.0
+- @tiptap/starter-kit ^3.14.0
+- @types/react-syntax-highlighter ^15.5.13
+- ai ^6.0.6
+- class-variance-authority ^0.7.1
+- clsx ^2.1.1
+- cmdk ^1.1.1
+- conjugate ^1.0.4
+- crypto ^1.0.1
+- date-fns ^4.1.0
+- embla-carousel-react ^8.6.0
+- file-saver ^2.0.5
+- framer-motion ^12.23.12
+- fsrs-algorithm ^1.1.3
+- input-otp ^1.4.2
+- lucide-react ^0.536.0
+- motion ^12.23.26
+- next 15.4.8
+- next-themes ^0.4.6
+- pdf-lib ^1.17.1
+- qss ^3.0.0
+- react 19.2.3
+- react-day-picker ^9.13.0
+- react-dom 19.2.3
+- react-dropzone ^14.3.8
+- react-hook-form ^7.69.0
+- react-resizable-panels ^3.0.6
+- react-syntax-highlighter ^15.6.1
+- recharts ^2.15.4
+- sonner ^2.0.7
+- tailwind-merge ^3.3.1
+- turndown ^7.2.2
+- uuid ^11.1.0
+- vaul ^1.1.2
+- vercel ^46.0.2
+- zod ^4.3.4
+
+Dev Dependencies
+- @eslint/eslintrc ^3
+- @tailwindcss/postcss ^4
+- @types/file-saver ^2.0.7
+- @types/node ^20
+- @types/react ^19
+- @types/react-dom ^19
+- @types/turndown ^5.0.6
+- eslint ^9
+- eslint-config-next 15.4.5
+- tailwindcss ^4
+- tw-animate-css ^1.3.6
+- typescript ^5
