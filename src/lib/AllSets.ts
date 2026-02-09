@@ -2110,7 +2110,7 @@ export const AllSets: AllSetsInterface[] = [
                 ["Tener que", "to have to"],
                 ["Querer", "to want; to love"],
                 ["Empezar", "to begin"],
-                ["Deber", "to owe; must"],
+                ["Deber", "must; to have a duty or obligation"],
                 ["Ayudar", "to help"],
                 ["Cerrar", "to close"],
                 ["Comenzar", "to begin"],
