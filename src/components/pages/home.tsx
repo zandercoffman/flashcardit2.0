@@ -48,7 +48,7 @@ import { mode } from "@/lib/AllSets"
 
 
 const INFORMATION = {
-    version: "1.2.0",
+    version: "2.3.0",
     tabs: [
         {
             name: "How Do I Create A Set?",

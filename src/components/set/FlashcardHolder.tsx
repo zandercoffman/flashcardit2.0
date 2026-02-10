@@ -183,14 +183,12 @@ export default function FlashcardHolder({ set }: { set: Set }) {
 
   useEffect(() => {
     if (pressedShowAllWords) {
-      toggleSidebar()
       setPressShowConjugation(false)
     }
   }, [pressedShowAllWords])
 
   useEffect(() => {
     if (pressShowConjugation) {
-      toggleSidebar()
       setPressedShowAllWords(false)
     }
   }, [pressShowConjugation])
@@ -362,7 +360,7 @@ export default function FlashcardHolder({ set }: { set: Set }) {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.15 }}
-              className="translate-x-[-6vw] xl:translate-x-[0vw] right-0 top-0 h-full z-40 w-100 pr-4"
+              className="translate-x-[-6vw] [@media(max-height:597px)]:translate-x-[-6vw] right-0 top-0 h-full z-40 w-100 pr-4"
             >
               <ScrollArea className="h-[70vh]" onClick={() => setPressedShowAllWords(false)}>
                 {
@@ -428,7 +426,7 @@ export default function FlashcardHolder({ set }: { set: Set }) {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.15 }}
-              className="translate-x-[-6vw] xl:translate-x-[0vw] right-0 top-0 h-full z-40 w-40 xl:w-100 pr-4"
+              className="translate-x-[-6vw] [@media(max-height:597px)]:translate-x-[-7vw] right-0 top-0 h-full z-40 w-40 xl:w-100 pr-4"
             >
               <ScrollArea className="h-[70vh]" onClick={() => setPressShowConjugation(false)}>
                 <div className="min-h-[70vh] flex flex-col items-center justify-center">

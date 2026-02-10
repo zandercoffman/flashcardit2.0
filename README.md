@@ -2,7 +2,7 @@
 
 A powerful, modern flashcard study application built with Next.js, featuring multiple study modes, AI-powered content generation, and advanced spaced repetition algorithms.
 
-![Version](https://img.shields.io/badge/version-1.2.0-blue)
+![Version](https://img.shields.io/badge/version-2.3.0-blue)
 ![Next.js](https://img.shields.io/badge/Next.js-15.4.8-black)
 ![React](https://img.shields.io/badge/React-19.2.3-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
@@ -330,7 +330,7 @@ For issues, questions, or suggestions, please open an issue on GitHub.
 
 ---
 
-**Version**: 1.2.0  
+**Version**: 2.3.0  
 **Last Updated**: February 2026
 
 Happy Studying! 🎓✨

@@ -18,63 +18,59 @@ import {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Study Path Mode Card */}
+            {/* Show All Words Menu Card */}
             <Card className="border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950">
               <CardHeader className="flex flex-row items-start gap-4 space-y-0">
                 <Star className="w-10 h-10 text-green-500" />
                 <div className="space-y-1">
-                  <CardTitle>Study Path Mode Progress</CardTitle>
+                  <CardTitle>Show All Words Menu</CardTitle>
                   <CardDescription>
-                    Your learning journey just got clearer.
+                    See your full word list at a glance.
                   </CardDescription>
                 </div>
               </CardHeader>
               <CardContent>
                 <p>
-                  We&apos;ve made significant progress on the Study Path Mode. You can
-                  now track your progress as you move through your personalized
-                  study plan. More exciting features are coming to this mode
-                  soon!
+                  A new “Show All Words” menu lets you quickly browse every term
+                  in your set without flipping through cards one by one.
                 </p>
               </CardContent>
             </Card>
-  
-            {/* Bomba Card */}
+
+            {/* Spanish Conjugations Menu Card */}
             <Card className="border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950">
               <CardHeader className="flex flex-row items-start gap-4 space-y-0">
                 <Zap className="w-10 h-10 text-red-500" />
                 <div className="space-y-1">
-                  <CardTitle>Bomba is Live!</CardTitle>
+                  <CardTitle>Spanish Conjugations Menu</CardTitle>
                   <CardDescription>
-                    A thrilling new way to test your knowledge.
+                    Fast access to verb forms.
                   </CardDescription>
                 </div>
               </CardHeader>
               <CardContent>
                 <p>
-                  Introducing Bomba! A fast-paced quiz mode where you have to
-                  answer questions before the bomb &quot;explodes&quot;. It&apos;s a fun and
-                  engaging way to challenge yourself and master your study sets.
+                  The new Spanish conjugations menu makes it easy to review verb
+                  forms and study Spanish more efficiently.
                 </p>
               </CardContent>
             </Card>
-  
-            {/* General UI Improvements Card */}
+
+            {/* Open in ChatGPT Card */}
             <Card className="border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950">
               <CardHeader className="flex flex-row items-start gap-4 space-y-0">
                 <Check className="w-10 h-10 text-blue-500" />
                 <div className="space-y-1">
-                  <CardTitle>General UI Improvements</CardTitle>
+                  <CardTitle>Open Cards in ChatGPT</CardTitle>
                   <CardDescription>
-                    A smoother and more intuitive experience.
+                    Continue studying with AI.
                   </CardDescription>
                 </div>
               </CardHeader>
               <CardContent>
                 <p>
-                  We&apos;ve polished the user interface to make your study sessions
-                  more enjoyable. This includes better layouts, clearer
-                  instructions, and a more responsive design across all devices.
+                  A new ChatGPT shortcut opens your cards in ChatGPT so you can
+                  ask questions, get explanations, and practice interactively.
                 </p>
               </CardContent>
             </Card>
