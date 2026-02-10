@@ -193,7 +193,7 @@ const SpeakIt = ({
   // Settings/Setup Screen
   if (!hasPressedStart || showSettings) {
     return (
-      <div className="min-h-screen p-6">
+      <div className="min-h-dvh p-6">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
@@ -312,7 +312,7 @@ const SpeakIt = ({
 
   // Main Practice Screen
   return (
-    <div className="min-h-screen px-6">
+    <div className="min-h-dvh px-6">
       <div className="max-w-4xl mx-auto">
         {/* Header with Progress */}
         <div className="mb-8">

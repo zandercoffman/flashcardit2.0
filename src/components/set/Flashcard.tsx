@@ -23,12 +23,12 @@ const Flashcard = ({
 
     return (
         <div
-            className="w-[80vw] h-[300px] xl:h-[400px] xl:pt-6 overflow-hidden mx-auto md:mx-0 md:w-full perspective-[2000px] font-semibold"
+            className="w-[80vw] h-[300px] [@media(max-height:597px)]:h-[330px] xl:h-[400px] [@media(max-height:597px)]:pt-2 xl:pt-6 overflow-hidden mx-auto md:mx-0 md:w-full perspective-[2000px] font-semibold"
             onClick={handleFlip}
             ref={ref}
         >
             <motion.div
-                className={`h-[200px] xl:h-[300px] w-full lg:w-[400px] w-[260px] mx-auto cursor-pointer relative ${isFlipped ? 'rotate-y-180' : ''}`}
+                className={`h-[200px] [@media(max-height:597px)]:h-[290px] xl:h-[300px] w-full lg:w-[400px] w-[260px] mx-auto cursor-pointer relative ${isFlipped ? 'rotate-y-180' : ''}`}
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
                 transition={{ duration: 0.6 }}
                 style={{ transformStyle: 'preserve-3d' }}

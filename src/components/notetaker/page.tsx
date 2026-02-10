@@ -90,7 +90,7 @@ export default function NoteDocumentTaker() {
 
 
   return (
-    <div className="overflow-none p-4 w-screen h-screen absolute translate-x-[-10px] translate-y-[-30px] left-0 m-0 p-0">
+    <div className="overflow-none p-4 w-screen h-dvh absolute translate-x-[-10px] translate-y-[-30px] left-0 m-0 p-0">
 
       {
         !hasChosen && <Empty className="absolute left-[25vw] translate-y-[20vh]">

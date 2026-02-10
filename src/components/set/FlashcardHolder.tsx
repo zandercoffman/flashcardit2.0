@@ -331,7 +331,10 @@ export default function FlashcardHolder({ set }: { set: Set }) {
                     const windowStart = Math.max(0, currentIndex - amtOfCardsToShow)
                     const windowEnd = Math.min(set.vocab.length - 1, currentIndex + amtOfCardsToShow)
                     return set.vocab.map((vocab, index) => (
-                      <CarouselItem key={index} className="flex-shrink-0  w-80 p-2 mb-10 md:mb-0">
+                      <CarouselItem
+                        key={index}
+                        className="flex-shrink-0 [@media(max-height:597px)]:mb-6 [@media(max-height:597px)]:scale-[0.9] [@media(max-height:597px)]:origin-top w-80 p-2 mb-10 md:mb-0"
+                      >
                         {index >= windowStart && index <= windowEnd ? (
                           <FlashCard front={vocab[0]} back={vocab[1]} setIsFlippedS={setIsFlippedS} ref={refs[index] as React.RefObject<HTMLDivElement>} />
                         ) : (
@@ -431,7 +434,7 @@ export default function FlashcardHolder({ set }: { set: Set }) {
                 <div className="min-h-[70vh] flex flex-col items-center justify-center">
                   <div className="mb-4 mr-4 p-3 flex flex-col justify-center gap-4 rounded-lg">
                     <div className="flex flex-col gap-2 items-center justify-between mb-3">
-                    <div className="text-sm font-semibold text-muted-foreground">Spanish Conjugation Tenses for <span className="text-white">{currentVerb}</span> - <span className="text-white">{currentVerbMeaning}</span></div>
+                    <div className="text-sm text-center font-semibold text-muted-foreground">Spanish Conjugation Tenses for<br/> <span className="dark:text-white text-black">{currentVerb}</span> - <span className="text-black dark:text-white">{currentVerbMeaning}</span></div>
                     
                     <Select
                       value={tenses[tenseIndex]}
