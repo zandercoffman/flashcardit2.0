@@ -1,3 +1,4 @@
+import { AllESP1Sets } from "./subsets/ESP1";
 import { FBLA_SETS } from "./subsets/FBLA";
 import { itw1011, itw12, itw1213, itw1415, itw1617, itw18epilogue, itw345, itw67, itw89, itwvocab, itwvocab2 } from "./subsets/ITW";
 import { tcitr1017, tcitr14, tcitr1826, tcitr59 } from "./subsets/TCITR";
@@ -5,7 +6,7 @@ import { tnofd12, tnofd34, tnofd56, tnofd79, tnofdpreface, tnofdx1, tnofdx2, tno
 
 export interface Set {
     title: string;
-    vocab: [string, string][];
+    vocab: string[][];
 }
 
 export type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | "matching" | "aichat" | null;
@@ -2007,7 +2008,6 @@ export const AllSets: AllSetsInterface[] = [
     itw18epilogue,
     itwvocab,
     itwvocab2,
-    ...FBLA_SETS,
     {
         id: "ap-tema-6-vocabulario",
         set: {
@@ -2086,71 +2086,6 @@ export const AllSets: AllSetsInterface[] = [
             ]
         }
     },
-    {   
-        id: "esp-vocab-6a-mi-casa-es-su-casa",
-        set: {
-            title: "Vocabulario Unidad 6A: Mi casa es su casa",
-            vocab: [
-                ["El refrigerador", "refrigerator"],
-                ["Los cubiertos", "silverware; utensils"],
-                ["La estufa", "stove"],
-                ["El fregadero", "sink"],
-                ["El horno microondas", "microwave oven"],
-                ["El lavaplatos", "dishwasher"],
-                ["Los platos especiales", "special dishes"],
-                ["Los platos de todos los días", "everyday dishes"],
-                ["Las servilletas", "napkins"],
-                ["Los vasos", "glasses"],
-                ["La luz / las luces", "light / lights"],
-                ["La lámpara", "lamp"],
-                ["La mesa", "table"],
-                ["El comedor", "dining room"],
-                ["La cena", "dinner"],
-                ["Tener", "to have"],
-                ["Tener que", "to have to"],
-                ["Querer", "to want; to love"],
-                ["Empezar", "to begin"],
-                ["Deber", "must; to have a duty or obligation"],
-                ["Ayudar", "to help"],
-                ["Cerrar", "to close"],
-                ["Comenzar", "to begin"],
-                ["Encender", "to turn on"],
-                ["Preferir", "to prefer"],
-                ["Sentir", "to feel; to regret"],
-                ["Poner la mesa", "to set the table"],
-                ["El mantel", "tablecloth"],
-                ["La cucharita", "teaspoon"],
-                ["La cuchara", "spoon"],
-                ["El cuchillo", "knife"],
-                ["El tenedor", "fork"],
-                ["El aceite", "oil"],
-                ["La sal", "salt"],
-                ["La pimienta", "pepper"],
-                ["La taza", "cup"],
-                ["El azúcar", "sugar"],
-                ["El pan", "bread"],
-                ["La mantequilla", "butter"],
-                ["La sopa", "soup"],
-                ["La mayonesa", "mayonnaise"],
-                ["La mostaza", "mustard"],
-                ["La salsa de tomate", "ketchup"],
-                ["El postre", "dessert"],
-                ["Pásame", "pass me"],
-                ["Dulce", "sweet"],
-                ["Allá", "over there"],
-                ["Picante", "spicy"],
-                ["El sabor", "flavor; taste"],
-                ["Sabroso/a", "tasty"],
-                ["Delicioso/a", "delicious"],
-                ["Salado/a", "salty"],
-                ["También", "also"],
-                ["Agrio/a", "sour"],
-                ["Desayuno", "breakfast"],
-                ["Pensar", "to think"],
-                ["Almuerzo", "lunch"],
-                ["Venir", "to come"]
-
-            ]
-        }
-    }
+    ...FBLA_SETS,
+    ...AllESP1Sets,
 ]

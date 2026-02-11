@@ -157,7 +157,7 @@ var thisdata = {
     },
   ],
   documents: [] as Set[],
-  version: "2.2.4"
+  version: "2.3"
 }
 
 
