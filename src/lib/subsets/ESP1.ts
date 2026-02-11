@@ -248,7 +248,7 @@ export const SevenA: AllSetsInterface = {
 
 
 export const SevenB: AllSetsInterface = {
-    id: "esp-vocab-7a-los-pasatiempos",
+    id: "esp-vocab-7b-los-pasatiempos",
     set: {
         title: "Vocabulario Unidad 7A: Los pasatiempos",
         vocab: [
