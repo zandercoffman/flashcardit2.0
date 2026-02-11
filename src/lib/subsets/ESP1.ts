@@ -127,7 +127,7 @@ export const SIXB: AllSetsInterface = {
     }
 }
 
-export const FiveA = {
+export const FiveA: AllSetsInterface = {
     id: "esp-vocab-5a-la-rutina-y-la-diversion",
     set: {
         title: "Vocabulario Unidad 5A: La rutina y la diversión",
@@ -173,7 +173,7 @@ export const FiveA = {
 
 }
 
-export const FiveB = {
+export const FiveB: AllSetsInterface = {
     id: "esp-vocab-5b-la-rutina-y-la-diversion",
     set: {
         title: "Vocabulario Unidad 5B: La rutina y la diversión",
@@ -209,7 +209,7 @@ export const FiveB = {
 }
 
 
-export const SevenA = {
+export const SevenA: AllSetsInterface = {
     id: "esp-vocab-7a-los-pasatiempos",
     set: {
         title: "Vocabulario Unidad 7A: Los pasatiempos",
@@ -247,7 +247,7 @@ export const SevenA = {
 }
 
 
-export const SevenB = {
+export const SevenB: AllSetsInterface = {
     id: "esp-vocab-7a-los-pasatiempos",
     set: {
         title: "Vocabulario Unidad 7A: Los pasatiempos",
@@ -317,7 +317,7 @@ export const SevenB = {
 
 }
 
-export const AllESP1Sets = [
+export const AllESP1Sets: AllSetsInterface[] = [
     SIXA,
     SIXB,
     FiveA,

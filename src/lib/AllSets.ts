@@ -6,7 +6,7 @@ import { tnofd12, tnofd34, tnofd56, tnofd79, tnofdpreface, tnofdx1, tnofdx2, tno
 
 export interface Set {
     title: string;
-    vocab: string[][];
+    vocab: [string, string][];
 }
 
 export type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | "matching" | "aichat" | null;
@@ -2008,6 +2008,8 @@ export const AllSets: AllSetsInterface[] = [
     itw18epilogue,
     itwvocab,
     itwvocab2,
+    ...FBLA_SETS,
+    ...AllESP1Sets,
     {
         id: "ap-tema-6-vocabulario",
         set: {
@@ -2086,6 +2088,4 @@ export const AllSets: AllSetsInterface[] = [
             ]
         }
     },
-    ...FBLA_SETS,
-    ...AllESP1Sets,
 ]
