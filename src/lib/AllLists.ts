@@ -84,3 +84,11 @@ export const AllLists: List[] = [
     }
 ]
 
+export const getListSetIds = (listId: string): string[] => {
+    return AllLists.find((list) => list.id === listId)?.sets.map((set) => set.id) ?? []
+}
+
+export const isSetInList = (listId: string, setId: string): boolean => {
+    return AllLists.find((list) => list.id === listId)?.sets.some((set) => set.id === setId) ?? false
+}
+

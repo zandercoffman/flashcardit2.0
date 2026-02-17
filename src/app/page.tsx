@@ -192,6 +192,8 @@ export default function Dashboard({ defaultImportedSetID, typeOfPage }: Dashboar
 
   const [currentList, setCurrentList] = useState<List | null>(null);
 
+  const [isShowLoading, setisShowLoading] = useState<boolean>(true);
+
   const [CurrentPage, setcurpage] = useState<page>("dashboard");
   const [currentHeader, setCurrentHeader] = useState<string>("Dashboard");
 
@@ -343,6 +345,8 @@ export default function Dashboard({ defaultImportedSetID, typeOfPage }: Dashboar
           const foundList = AllLists.find(list => list.id === defaultImportedSetID);
           if (foundList) setCurrentList(foundList);
         }
+
+        setisShowLoading(false);
       }
 
     };
@@ -420,7 +424,9 @@ export default function Dashboard({ defaultImportedSetID, typeOfPage }: Dashboar
                 setSet={setSet}
                 extra={{
                   curStudyPathN: curStudyPathN,
-                  setCurStudyPathN: setCurStudyPathN
+                  setCurStudyPathN: setCurStudyPathN,
+                  loading: defaultImportedSetID,
+                  hasShownLoading: isShowLoading
                 }}
               />
             }
@@ -454,6 +460,8 @@ function MainScreen({
   extra: {
     curStudyPathN: number
     setCurStudyPathN: Dispatch<SetStateAction<number>>
+    loading: string
+    hasShownLoading: boolean
   }
 }) {
   return (
@@ -464,7 +472,7 @@ function MainScreen({
         CurrentPage === "helper" ? <HelperPage /> :
           CurrentPage === "Notes".toLowerCase() ? <NoteDocumentTaker /> :
             CurrentPage === "aichat" ? <AiChatPage /> :
-              CurrentPage === "dashboard" ? <HomePage allSets={setsLoading ? undefined : pastSets} addSet={addSet} setMode={setMode} setSet={setSet} /> :
+              CurrentPage === "dashboard" ? <HomePage pastSets={pastSets} hasShownLoading={extra.hasShownLoading} allSets={setsLoading ? undefined : pastSets} addSet={addSet} setMode={setMode} setSet={setSet} defaultId={extra.loading}/> :
                 <></>}
     </div>
   );

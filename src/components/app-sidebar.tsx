@@ -90,7 +90,8 @@ var thisdata = {
       page: HomePage,
       icon: IconDashboard,
     },
-    {
+    /**
+     * {
       title: "Notes",
       page: NoteTaker,
       icon: FilePenLine
@@ -100,6 +101,7 @@ var thisdata = {
       page: AIChatPage,
       icon: Sparkles,
     }
+     */
   ],
   navClouds: [
     {

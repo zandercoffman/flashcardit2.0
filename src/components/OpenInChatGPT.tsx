@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 import { ScrollArea } from "./ui/scroll-area"
 import { AllSets, Set } from "@/lib/AllSets"
 import { Badge } from "./ui/badge"
+import { toast } from "sonner"
 
 const flashcardPrompts: string[] = [
   // Keep the quiz prompt first
@@ -72,11 +73,13 @@ export default function ChatGPTButton({
     }, [])
 
     const thisID = AllSets.find(set => set.set.title === currentSet?.title)?.id
+    const hasValidId = Boolean(thisID)
 
     const buildPrompt = (prompt: string, includeJson: boolean) => {
         const title = currentSet?.title || "Unknown Set"
         const jsonPayload = JSON.stringify(currentSet ?? { title, vocab: [] }, null, 2)
-        const sourceLine = includeJson
+        const useJson = includeJson || !hasValidId
+        const sourceLine = useJson
             ? `The flashcards JSON is:\n${jsonPayload}`
             : `The flashcards are at ${window.location.origin + "/api/json/" + thisID}. Please fetch the JSON from this URL and make a GET request.`
 
@@ -101,7 +104,28 @@ AFTER I respond with my choices, generate the study content using these rules:
 Additional context:\n`
     }
 
-    const fullSetHref = `https://chat.openai.com/?q=${encodeURIComponent(buildPrompt("", true))}`
+    const MAX_CHATGPT_URL_LENGTH = 2000
+
+    const openChatGpt = async (prompt: string) => {
+        const encoded = encodeURIComponent(prompt)
+        const url = `https://chat.openai.com/?q=${encoded}`
+
+        if (url.length > MAX_CHATGPT_URL_LENGTH) {
+            try {
+                await navigator.clipboard.writeText(prompt)
+                toast.success("Prompt copied. Paste it into ChatGPT.")
+            } catch {
+                toast.error("Prompt is too long. Please copy and paste it into ChatGPT.")
+            }
+            window.alert("Your prompt was copied. Paste it into ChatGPT after the page opens.")
+            window.open("https://chat.openai.com/", "_blank")
+            setHasOpened(true)
+            return
+        }
+
+        window.open(url, "_blank")
+        setHasOpened(true)
+    }
 
 
 
@@ -114,11 +138,7 @@ Additional context:\n`
                     ref={buttonRef}
                     variant="ghost"
                     className="relative cursor-pointer p-2 w-8 lg:w-8 h-6 lg:h-8 rounded-lg mr-[1.8rem]"
-                    onClick={() => {
-                        const link = `https://chat.openai.com/?q=${encodeURIComponent(`Please help me study the following flashcard set: ${currentSet?.title || "Unknown Set"}. The flashcards are at ${window.location.origin + "/api/json/" + thisID}\n\n`)}`;
-                        window.open(link, "_blank");
-                        setHasOpened(true);
-                    }}
+                    onClick={() => openChatGpt(buildPrompt("", false))}
                     onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}
                 >
@@ -139,7 +159,17 @@ Additional context:\n`
                 >
                     <div className="flex flex-col gap-2">
                         <div className="text-sm font-medium">Open {currentSet?.title || "Unknown Set"} In ChatGPT</div>
-                        <div className="text-xs text-muted-foreground">Click the button again to use this set with ChatGPT. Click <a href={fullSetHref} target="_blank" rel="noreferrer" className="text-blue-600">this</a> to open the full set instead of just a reference. Press the prompts below to open this set with ChatGPT with a custom prompt.</div>
+                        <div className="text-xs text-muted-foreground">
+                            Click the button again to use this set with ChatGPT. Click{" "}
+                            <button
+                                type="button"
+                                onClick={() => openChatGpt(buildPrompt("", true))}
+                                className="text-blue-600 underline"
+                            >
+                                this
+                            </button>
+                            {" "}to open the full set instead of just a reference. Press the prompts below to open this set with ChatGPT with a custom prompt.
+                        </div>
 
                     </div>
                     <ScrollArea className="h-[40vh] flex flex-col gap-6">
@@ -150,12 +180,7 @@ Additional context:\n`
                                     variant="outline"
                                     className="mt-1 w-[97%] cursor-pointer mb-1 my-2 flex flex-row gap-4 text-xs text-left rounded-2xl whitespace-normal py-4 h-auto bg-gradient-to-r from-indigo-500/10 via-sky-500/10 to-emerald-500/10 hover:from-indigo-500/20 hover:via-sky-500/20 hover:to-emerald-500/20 border border-primary/20"
                                     size="sm"
-                                    onClick={() => {
-                                        const link = `https://chat.openai.com/?q=${encodeURIComponent(buildPrompt(prompt, false))}`;
-
-                                        window.open(link, "_blank");
-                                        setHasOpened(true);
-                                    }}
+                                    onClick={() => openChatGpt(buildPrompt(prompt, false))}
                                 >
                                     <Sparkles size={36} className="text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]" />
                                     {prompt}

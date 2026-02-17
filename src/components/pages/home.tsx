@@ -3,7 +3,7 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription, CardAction } from "@/components/ui/card"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { AllSets } from "@/lib/AllSets"
-import { Footprints, Plus } from "lucide-react"
+import { ArrowBigRight, Footprints, LandPlot, LayoutGrid, Pencil, Plus, Sparkles } from "lucide-react"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Button } from "../ui/button"
 import HowToCreate from "./HowToCreate"
@@ -27,7 +27,7 @@ import {
     CollapsibleContent,
     CollapsibleTrigger,
 } from "@/components/ui/collapsible"
-import React from "react"
+import React, { useRef, useState } from "react"
 import { ChevronsUpDown } from "lucide-react"
 
 import { Set } from "@/lib/AllSets"
@@ -44,7 +44,23 @@ type LocalStorageInference = { id: string, ratings: Rating[], start: string, end
 type LocalStorageData = LocalStorageInference[]
 const localStorageKey = "setsAndRatings"
 
-import { mode } from "@/lib/AllSets" 
+import { mode } from "@/lib/AllSets"
+import { Input } from "../ui/input"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel"
+import { AllLists, getListSetIds, isSetInList, List } from "@/lib/AllLists"
+import { AnimatePresence, motion } from "framer-motion"
+
+import {
+    Drawer,
+    DrawerClose,
+    DrawerContent,
+    DrawerDescription,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerTitle,
+    DrawerTrigger,
+} from "@/components/ui/drawer"
+import { Badge } from "../ui/badge"
 
 
 const INFORMATION = {
@@ -66,42 +82,71 @@ const INFORMATION = {
     ]
 }
 
+const WELCOME_MESSAGES = [
+    "Ready to learn?",
+    "Start now, regret never.",
+    "Welcome back.",
+    "Good to see you.",
+    "Pick a set.",
+    "Let’s study.",
+    "Keep going.",
+    "You’ve got this.",
+    "One more round.",
+    "Stay consistent.",
+    "Make progress.",
+    "Ready when you are.",
+]
+
 const allSetIds = [
-  // TNOFD.ts
-  "tnofd-preface",
-  "tnofd-chapters-1-and-2",
-  "tnofd-chatpers-3-and-4",
-  "tnofd-chapters-5-and-6",
-  "tnofd-chatpers-7-through-9",
-  "tnofd-chapter-10-part-1",
-  "tnofd-chapter-10-part-2",
-  "tnofd-chapter-11-part-1",
-  "tnofd-chapter-11-part-2",
+    // TNOFD.ts
+    "tnofd-preface",
+    "tnofd-chapters-1-and-2",
+    "tnofd-chatpers-3-and-4",
+    "tnofd-chapters-5-and-6",
+    "tnofd-chatpers-7-through-9",
+    "tnofd-chapter-10-part-1",
+    "tnofd-chapter-10-part-2",
+    "tnofd-chapter-11-part-1",
+    "tnofd-chapter-11-part-2",
 
-  // TCITR.ts
-  "tcitr-chapters-1-through-4",
-  "tcitr-chapters-5-through-9",
-  "tcitr-chapters-10-through-17",
-  "tcitr-chapters-18-through-26",
+    // TCITR.ts
+    "tcitr-chapters-1-through-4",
+    "tcitr-chapters-5-through-9",
+    "tcitr-chapters-10-through-17",
+    "tcitr-chapters-18-through-26",
 
-  // ITW.ts
-  "into-the-wild-chapters-1-and-2",
-  "into-the-wild-chapters-3-4-and-5",
-  "into-the-wild-chapters-6-and-7",
-  "into-the-wild-chapters-8-and-9",
-  "into-the-wild-chapters-10-and-11",
-  "into-the-wild-chapters-12-and-13",
-  "into-the-wild-chapters-14-and-15",
-  "into-the-wild-chapters-16-and-17",
-  "into-the-wild-chapter-18-and-epilogue",
-  "into-the-wild-vocabulary-list",
-  "into-the-wild-vocabulary-list-2"
+    // ITW.ts
+    "into-the-wild-chapters-1-and-2",
+    "into-the-wild-chapters-3-4-and-5",
+    "into-the-wild-chapters-6-and-7",
+    "into-the-wild-chapters-8-and-9",
+    "into-the-wild-chapters-10-and-11",
+    "into-the-wild-chapters-12-and-13",
+    "into-the-wild-chapters-14-and-15",
+    "into-the-wild-chapters-16-and-17",
+    "into-the-wild-chapter-18-and-epilogue",
+    "into-the-wild-vocabulary-list",
+    "into-the-wild-vocabulary-list-2"
 ];
 
-export default function HomePage({ allSets, addSet, setMode, setSet }: { allSets: Set[] | undefined, addSet: (set: Set, isAutomatic: boolean) => Promise<number>, setMode: (mode: mode) => void, setSet: (idx: number) => void }) {
+export default function HomePage({ pastSets, hasShownLoading, allSets, addSet, setMode, setSet, defaultId }: { pastSets: Set[], hasShownLoading: boolean, defaultId: string, allSets: Set[] | undefined, addSet: (set: Set, isAutomatic: boolean) => Promise<number>, setMode: (mode: mode) => void, setSet: (idx: number) => void }) {
     const [isOpen, setIsOpen] = React.useState(false)
     const [allStorage, setAllStorage] = React.useState<LocalStorageData>([])
     const [studyPathSets, setStudyPathSets] = React.useState<AllSetsInterface[] | null>(null)
+    const [welcomeMessage] = React.useState(() => {
+        return WELCOME_MESSAGES[Math.floor(Math.random() * WELCOME_MESSAGES.length)]
+    })
+    const foundSet: string = defaultId
+        ? (AllSets.find(set => set.id === defaultId)?.set.title ?? "")
+        : "";
+
+    const rightRef = useRef<HTMLButtonElement | null>(null);
+
+    const [chosenList, setChosenList] = useState<List | undefined>(undefined);
+    const [recommendedList] = useState<List>(() => {
+        return AllLists[Math.floor(Math.random() * AllLists.length)];
+    });
+
 
     //START PRELOADING - AND ALSO SAVING DATA TO LS
     // const id = currentSet.title;
@@ -123,152 +168,224 @@ export default function HomePage({ allSets, addSet, setMode, setSet }: { allSets
         loadSetsFromStorage();
     }, [])
 
-    return (
-        <div className="flex flex-col gap-1 px-4 mt-2">
-            <section className="mb-2 flex flex-col gap-2">
-                <h1 className="text-6xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
-                    Welcome to your Study Hub!
-                </h1>
-                <p className="leading-7 [&:not(:first-child)]:mt-2">
-                    Built for APUSH, now use Flashcard/It to make quick, versatile AI-powered flashcards for any subject.
-                </p>
-            </section>
+    return <Carousel className="w-[90%] mx-auto h-[83vh]" >
+        <CarouselContent >
+            <CarouselItem className="w-full h-[83vh]">
+                <ScrollArea className="w-full h-[83vh] ">
+                    <div className="w-full h-full flex flex-col justify-center items-center">
+                        <div className="flex flex-col items-center gap-2 mt-[20vh]">
+                            {hasShownLoading && foundSet != "" && <h2 className="text-center flex items-center justify-center">
+                                <svg className="mr-3 size-5 animate-spin text-muted-foreground" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                    <path className="opacity-75" d="M4 12a8 8 0 0 1 8-8" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+                                </svg>
+                                Loading {foundSet}
+                            </h2>}
+                            <h1 className="text-6xl mb-2 h-[11vh] font-bold bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">
+                                {welcomeMessage}
+                            </h1>
+                            <div className="flex flex-row gap-2">
+                                <Button className="rounded-3xl border-2 cursor-pointer" variant={"secondary"}>
+                                    <Plus /> Create a Set
+                                </Button>
+                                <Button className="rounded-3xl border-2 cursor-pointer" variant={"secondary"}>
+                                    <LayoutGrid /> Explore Sets and Lists
+                                </Button>
+                                <Button className="rounded-3xl relative border-2 cursor-pointer" variant={"secondary"}>
+                                    <LandPlot /> Your Study Path
+                                    <Badge className="absolute right-[-20px] top-[-15px] bg-blue-500 text-white">Beta</Badge>
+                                </Button>
+                            </div>
+                            {!hasShownLoading && foundSet != "" && <h2 className=" relative flex text-center text-sm text-gray-200 opacity-50">
+                                <span className="animate-ping mr-4 inline-flex size-2 my-auto rounded-full bg-sky-400 opacity-75"></span>
+                                Just loaded {foundSet}
+                            </h2>}
+                            {hasShownLoading && foundSet == "" && <h2 className=" relative flex text-center text-sm text-gray-200 opacity-50 mt-2">
+                                Swipe to the left and right to switch tabs.
+                            </h2>}
+                        </div>
+                        <div className="mt-[100vh] absolute gap-4 w-full h-60 flex flex-row">
+                            <div className="w-1/2 h-full">
+                                <ScrollArea className="relative w-full h-[28vh] bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-2 shadow-sm rounded-4xl px-2">
+                                    <Drawer>
+                                        <DrawerTrigger>
+                                            <div className="cursor-pointer absolute top-[-8px] right-[-7px] size-6 border border-1 flex items-center justify-center rounded-full bg-card text-card-foreground">
+                                                <Pencil size={12} />
+                                            </div>
+                                        </DrawerTrigger>
+                                        <DrawerContent>
+                                            <DrawerHeader>
+                                                <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+                                                <DrawerDescription>This action cannot be undone.</DrawerDescription>
+                                            </DrawerHeader>
+                                            <DrawerFooter>
+                                                <Button>Submit</Button>
+                                                <DrawerClose>
+                                                    <Button variant="outline">Cancel</Button>
+                                                </DrawerClose>
+                                            </DrawerFooter>
+                                        </DrawerContent>
+                                    </Drawer>
 
-            <section className="flex flex-col gap-2">
-                <Collapsible>
-                    <CollapsibleTrigger className="flex cursor-pointer flex-row gap-2 justify-center items-center"><h1 className="text-xl font-semibold">Quick Shortcuts </h1>  <ChevronsUpDown /></CollapsibleTrigger>
-                    <CollapsibleContent>
-                        <ScrollArea className="w-[68vw] h-10">
-                            <div className="flex flex-row items-center gap-2 w-max">
-                                {/* Version Button */}
-                                <Dialog>
-                                    <DialogTrigger asChild>
-                                        <Button className="shadow-sm rounded-full flex cursor-pointer flex-row gap-4 flex-shrink-0" variant={"secondary"}>
-                                            <div className="size-2 animate-ping bg-black dark:bg-white rounded-full flex items-center justify-center" />
-                                            <span>Version {INFORMATION.version}</span>
+                                    <h1 className="text-lg ml-3 text-foreground mb-2">Reccomended List</h1>
+                                    <motion.div
+                                        key={recommendedList.id}
+                                        whileHover={{ y: -2 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        onClick={() => setChosenList(recommendedList)}
+                                        className="ml-2 w-[95%] flex items-start gap-3 rounded-3xl cursor-pointer px-4 py-4 text-left transition"
+                                    >
+                                        <span className="mt-0.5 rounded-xl bg-foreground/10 p-2">
+                                            <recommendedList.icon className="size-5 text-foreground/80" />
+                                        </span>
+                                        <div className="flex flex-col">
+                                            <span className="text-sm font-medium text-foreground/90 line-clamp-2">{recommendedList.title}</span>
+                                            <span className="text-xs text-foreground/50 mt-1">{recommendedList.sets.length} sets</span>
+                                        </div>
+                                        <Button
+                                            size="sm"
+                                            variant="secondary"
+                                            className="rounded-2xl cursor-pointer border-1 whitespace-nowrap transition group-hover:scale-[1.02]"
+                                            onClick={(event) => {
+                                                event.stopPropagation();
+                                                setChosenList(recommendedList);
+                                                rightRef.current?.click();
+                                            }}
+                                        >
+                                            <ArrowBigRight className="size-4" /> Go to
                                         </Button>
-                                    </DialogTrigger>
-                                    <DialogContent className="w-[90vw] sm:max-w-none h-[90vh]">
-                                        <DialogHeader>
-                                            <DialogTitle>Version {INFORMATION.version}</DialogTitle>
-                                            <DialogDescription>
-                                                <VersionInfo version={INFORMATION.version} />
-                                            </DialogDescription>
-                                        </DialogHeader>
-                                    </DialogContent>
-                                </Dialog>
+                                    </motion.div>
 
+                                </ScrollArea>
+                            </div>
+                            <div className="w-1/2 h-full">
+                                <ScrollArea className="relative w-full h-[28vh] bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-2 shadow-sm rounded-4xl px-2">
+                                    <Drawer>
+                                        <DrawerTrigger>
+                                            <div className="cursor-pointer absolute top-[-8px] left-[-7px] size-6 border border-1 flex items-center justify-center rounded-full bg-card text-card-foreground">
+                                                <Pencil size={12} />
+                                            </div>
+                                        </DrawerTrigger>
+                                        <DrawerContent>
+                                            <DrawerHeader>
+                                                <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+                                                <DrawerDescription>This action cannot be undone.</DrawerDescription>
+                                            </DrawerHeader>
+                                            <DrawerFooter>
+                                                <Button>Submit</Button>
+                                                <DrawerClose>
+                                                    <Button variant="outline">Cancel</Button>
+                                                </DrawerClose>
+                                            </DrawerFooter>
+                                        </DrawerContent>
+                                    </Drawer>
 
-                                {/* Tab Buttons */}
-                                {INFORMATION.tabs.map((tab, idx) => (
-                                    <Dialog key={idx}>
-                                        <DialogTrigger asChild>
-                                            <Button className=" shadow-sm flex-shrink-0 rounded-full cursor-pointer" variant={"secondary"}>{tab.name}</Button>
-                                        </DialogTrigger>
-                                        <DialogContent className="w-[90vw] sm:max-w-none h-[90vh]">
-                                            <DialogHeader>
-                                                <DialogTitle>{tab.name}</DialogTitle>
-                                                <DialogDescription>
-                                                    <ScrollArea className="h-[80vh]">
-                                                        {tab.text}
-                                                    </ScrollArea>
-                                                </DialogDescription>
-                                            </DialogHeader>
-                                        </DialogContent>
-                                    </Dialog>
-                                ))}
+                                    <h1 className="text-lg ml-2 text-foreground">Current Sets</h1>
+                                    {
+                                        pastSets.map((set, idx) => {
+                                            return <h1 key={idx} className="ml-2 my-2 text-sm font-semibold text-foreground/80 hover:text-foreground">{set.title}</h1>
+                                        })
+                                    }
+                                </ScrollArea>
+                            </div>
+                        </div>
+
+                    </div>
+                </ScrollArea>
+            </CarouselItem>
+            <CarouselItem className="w-full h-[83vh]">
+                <ScrollArea className="w-full h-full mt-auto">
+                    <div className="flex flex-col gap-6 w-full px-6 py-6">
+                        <div className="flex flex-col gap-1">
+                            <h2 className="text-3xl font-semibold text-foreground">Explore Lists & Sets</h2>
+                            <p className="text-sm text-foreground/60">Pick a list to filter the sets below.</p>
+                        </div>
+
+                        <AnimatePresence mode="popLayout">
+                            <motion.h3 className="text-2xl font-semibold text-foreground">All Lists</motion.h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+                                {AllLists.map((list) => {
+                                    const isActive = chosenList?.id === list.id
+                                    return (
+                                        <motion.button
+                                            key={list.id}
+                                            layout
+                                            whileHover={{ y: -2 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            onClick={() => setChosenList(list)}
+                                            className={`flex items-start gap-3 rounded-3xl cursor-pointer border px-4 py-4 text-left transition ${isActive ? "bg-foreground/10 border-foreground/20" : "bg-foreground/5 border-foreground/10 hover:bg-foreground/10"}`}
+                                        >
+                                            <span className="mt-0.5 rounded-xl bg-foreground/10 p-2">
+                                                <list.icon className="size-5 text-foreground/80" />
+                                            </span>
+                                            <div className="flex flex-col">
+                                                <span className="text-sm font-medium text-foreground/90 line-clamp-2">{list.title}</span>
+                                                <span className="text-xs text-foreground/50 mt-1">{list.sets.length} sets</span>
+                                            </div>
+                                        </motion.button>
+                                    )
+                                })}
                             </div>
 
-                            <ScrollBar orientation="horizontal" />
-                        </ScrollArea>
-                    </CollapsibleContent>
-                </Collapsible>
-            </section>
+                            <div className="flex items-center justify-between">
+                                <motion.h3 className="text-2xl font-semibold text-foreground">{chosenList ? "Sets in this list" : "All Sets"}</motion.h3>
+                                {chosenList && (
+                                    <Button
+                                        variant="ghost"
+                                        className="rounded-3xl text-foreground/70 hover:text-foreground"
+                                        onClick={() => setChosenList(undefined)}
+                                    >
+                                        Clear filter
+                                    </Button>
+                                )}
+                            </div>
 
-
-            <section className="flex flex-col gap-2">
-
-                {/* Study Path */}
-                <section className="flex flex-col gap-4">
-                    <div className="flex items-center gap-2">
-                        <h1 className="text-3xl font-semibold">Study Path</h1>
-                        <BetaBadge />
+                            <motion.div
+                                layout
+                                className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                            >
+                                {(chosenList
+                                    ? AllSets.filter((setObj: AllSetsInterface) => isSetInList(chosenList.id, setObj.id))
+                                    : AllSets.filter((setObj: AllSetsInterface) => !allSetIds.includes(setObj.id))
+                                ).map((setObj: AllSetsInterface) => (
+                                    <motion.div
+                                        key={setObj.id}
+                                        layoutId={setObj.id}
+                                        className="group relative overflow-hidden rounded-3xl border border-foreground/10 bg-gradient-to-br from-foreground/10 via-foreground/5 to-foreground/0 px-5 py-5 shadow-sm transition hover:border-foreground/20 hover:shadow-md"
+                                    >
+                                        <div className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100">
+                                            <div className="absolute -right-10 -top-10 size-32 rounded-full bg-foreground/10 blur-2xl" />
+                                        </div>
+                                        <div className="relative flex items-start justify-between gap-4">
+                                            <div className="min-w-0">
+                                                <div className="text-base font-semibold text-foreground/95 line-clamp-2">
+                                                    {setObj.set.title}
+                                                </div>
+                                                <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/10 px-3 py-1 text-xs text-foreground/70">
+                                                    {setObj.set.vocab.length} cards
+                                                </div>
+                                            </div>
+                                            <Button
+                                                size="sm"
+                                                variant="secondary"
+                                                className="rounded-2xl cursor-pointer border-1 whitespace-nowrap transition group-hover:scale-[1.02]"
+                                                onClick={() => addSet(setObj.set, true)}
+                                            >
+                                                <Plus className="size-4" /> Add
+                                            </Button>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
-                    <ScrollArea className="w-[68vw] h-52">
-                        <div className="flex flex-row gap-4 w-max">
-                            {
-                                allSets === undefined ? (
-                                    <>
-                                        <ShowcaseSkeletonSP />
-                                        <ShowcaseSkeletonSP />
-                                        <ShowcaseSkeletonSP />
-                                        <ShowcaseSkeletonSP />
-                                    </>
-                                ) : (studyPathSets !== null && studyPathSets.length > 0) ? (
-                                    studyPathSets.map((set, index) => (
-                                        <ShowcaseStudyPath key={index} set={set.set} storage={allStorage.find(s => s.id == set.set.title)} setMode={setMode} setSet={setSet} idx={index} />
-                                    ))
-                                ) : (studyPathSets !== null && studyPathSets.length === 1) ? (
-                                    SUGGESTED_SETS.filter(set => set.title !== studyPathSets[0].set.title).map((set, index) => (
-                                        <ShowcaseSuggestionCard key={index} setMode={setMode} set={set} addSet={addSet} />
-                                    ))
-                                ) : (
-                                    SUGGESTED_SETS.map((set, index) => (
-                                        <ShowcaseSuggestionCard key={index} setMode={setMode} set={set} addSet={addSet} />
-                                    ))
-                                )
-                            }
-                        </div>
-                        <ScrollBar orientation="horizontal" />
-                    </ScrollArea>
-                </section>
-
-                {/* Current Sets */}
-                <section className="flex flex-col gap-4">
-                    <h1 className="text-3xl font-semibold">Current Sets</h1>
-                    <ScrollArea className="w-[68vw] h-50">
-                        <div className="flex flex-row gap-4 w-max">
-                            {
-                                allSets === undefined ? (
-                                    <>
-                                        <ShowcaseSkeleton />
-                                        <ShowcaseSkeleton />
-                                        <ShowcaseSkeleton />
-                                        <ShowcaseSkeleton />
-                                    </>
-                                ) : allSets.length > 0 ? (
-                                    allSets.map((set, index) => (
-                                        <Showcase key={index} set={set} />
-                                    ))
-                                ) : (
-                                    <div className="flex items-center justify-center w-[68vw] h-48">
-                                        <p className="text-gray-500">You don&apos;t have any sets yet. Add one from below!</p>
-                                    </div>
-                                )
-                            }
-                        </div>
-                        <ScrollBar orientation="horizontal" />
-                    </ScrollArea>
-                </section>
-
-                {/* All Premade Sets */}
-                <section className="flex flex-col gap-4">
-                    <h1 className="text-3xl font-semibold">All Premade Sets</h1>
-                    <ScrollArea className="w-[68vw] h-50">
-                        <div className="flex flex-row gap-4 w-max">
-                            {AllSets
-                                .filter((setObj: AllSetsInterface) => !allSetIds.includes(setObj.id))
-                                .map((setObj: AllSetsInterface) => (
-                                    <Showcase key={setObj.id} set={setObj.set} id={setObj.id} addSet={addSet} />
-                            ))}
-                        </div>
-                        <ScrollBar orientation="horizontal" />
-                    </ScrollArea>
-                </section>
-            </section>
-
-        </div>
-    )
+                    <ScrollBar orientation="horizontal" />
+                </ScrollArea>
+            </CarouselItem>
+        </CarouselContent>
+        <CarouselNext ref={rightRef} />
+        <CarouselPrevious />
+    </Carousel>
 }
 
 function Showcase({ set, id, addSet }: { set: Set, id?: string, addSet?: (set: Set, isAutomatic: boolean) => Promise<number> }) {
@@ -401,10 +518,10 @@ function ShowcaseStudyPath({
                                         />
                                         <p
                                             className={`text-xs mt-1 transition-all ${isPast
-                                                    ? "text-white"
-                                                    : isToday
-                                                        ? "text-white font-semibold"
-                                                        : "text-gray-500"
+                                                ? "text-white"
+                                                : isToday
+                                                    ? "text-white font-semibold"
+                                                    : "text-gray-500"
                                                 }`}
                                         >
                                             Day {index + 1}
@@ -414,8 +531,8 @@ function ShowcaseStudyPath({
                                     {index < totalDays - 1 && (
                                         <div
                                             className={`flex-1 h-px ${isPast
-                                                    ? "bg-white"
-                                                    : "bg-gray-500"
+                                                ? "bg-white"
+                                                : "bg-gray-500"
                                                 }`}
                                         />
                                     )}

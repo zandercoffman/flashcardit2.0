@@ -249,14 +249,16 @@ export function SiteHeader({
                           </div>
                         </SelectItem>
 
-                        <SelectItem value="aichat">
+                        {
+                          /**<SelectItem value="aichat">
                           <div className="flex justify-start items-center gap-4 ">
                             <Sparkles className="size-4 lg:size-6" />
                             <div className=" w-full">
                               <h4 className="text-xl md:text-base flex flex-col font-semibold">AI Chat <InProgressBadge /></h4>
                             </div>
                           </div>
-                        </SelectItem>
+                        </SelectItem> */
+                        }
 
                         <SelectItem value="quiz">
                           <div className="flex justify-start items-center gap-4 ">
