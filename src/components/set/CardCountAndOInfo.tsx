@@ -85,7 +85,7 @@ export default function NavigationMenuFlashcardSet({
               className="gap-2 cursor-pointer rounded-full !px-[12px]"
             >
               <List className="h-4 w-4" />
-              {showWordList ? "Hide" : "Show"} All Words ({showTotal})
+              {showWordList ? "Hide" : "Show"} All Terms ({showTotal})
             </Button>
 
             {

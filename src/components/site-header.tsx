@@ -69,7 +69,8 @@ export function SiteHeader({
   setCurrentMode,
   curStudyPathN,
   setCurrentVideo,
-  currentSet
+  currentSet,
+  initialListId
 }: {
   currentHeader: string,
   currentMode: mode,
@@ -79,6 +80,7 @@ export function SiteHeader({
   curStudyPathN: number
   setCurrentVideo: (video: Video | null) => void
   currentSet: Set | undefined
+  initialListId?: string
 }) {
 
   const [thisMode, setThisMode] = useState<mode>(currentMode);

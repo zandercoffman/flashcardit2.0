@@ -193,7 +193,7 @@ export default function FlashcardHolder({ set }: { set: Set }) {
     }
   }, [pressShowConjugation])
 
-  const WORD_LIST_PAGE_SIZE = 100
+  const WORD_LIST_PAGE_SIZE = 150
   const [wordListPage, setWordListPage] = useState(0)
 
   const getVerbType = (verb: string) => {

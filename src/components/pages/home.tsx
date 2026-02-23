@@ -129,7 +129,7 @@ const allSetIds = [
     "into-the-wild-vocabulary-list-2"
 ];
 
-export default function HomePage({ pastSets, hasShownLoading, allSets, addSet, setMode, setSet, defaultId }: { pastSets: Set[], hasShownLoading: boolean, defaultId: string, allSets: Set[] | undefined, addSet: (set: Set, isAutomatic: boolean) => Promise<number>, setMode: (mode: mode) => void, setSet: (idx: number) => void }) {
+export default function HomePage({ pastSets, hasShownLoading, allSets, addSet, setMode, setSet, defaultId, initialListId }: { pastSets: Set[], hasShownLoading: boolean, defaultId: string, allSets: Set[] | undefined, addSet: (set: Set, isAutomatic: boolean) => Promise<number>, setMode: (mode: mode) => void, setSet: (idx: number) => void, initialListId?: string }) {
     const [isOpen, setIsOpen] = React.useState(false)
     const [allStorage, setAllStorage] = React.useState<LocalStorageData>([])
     const [studyPathSets, setStudyPathSets] = React.useState<AllSetsInterface[] | null>(null)
@@ -141,11 +141,24 @@ export default function HomePage({ pastSets, hasShownLoading, allSets, addSet, s
         : "";
 
     const rightRef = useRef<HTMLButtonElement | null>(null);
+    const [carouselApi, setCarouselApi] = React.useState<any>(null);
 
-    const [chosenList, setChosenList] = useState<List | undefined>(undefined);
+    const [chosenList, setChosenList] = useState<List | undefined>(() => {
+        if (initialListId) {
+            return AllLists.find(list => list.id === initialListId);
+        }
+        return undefined;
+    });
     const [recommendedList] = useState<List>(() => {
         return AllLists[Math.floor(Math.random() * AllLists.length)];
     });
+
+    // Navigate to the Explore Lists tab if initialListId is provided
+    React.useEffect(() => {
+        if (initialListId && carouselApi) {
+            carouselApi.scrollTo(1); // Navigate to second carousel item (index 1)
+        }
+    }, [initialListId, carouselApi]);
 
 
     //START PRELOADING - AND ALSO SAVING DATA TO LS
@@ -168,7 +181,7 @@ export default function HomePage({ pastSets, hasShownLoading, allSets, addSet, s
         loadSetsFromStorage();
     }, [])
 
-    return <Carousel className="w-[90%] mx-auto h-[83vh]" >
+    return <Carousel className="w-[90%] mx-auto h-[83vh]" setApi={setCarouselApi} >
         <CarouselContent >
             <CarouselItem className="w-full h-[83vh]">
                 <ScrollArea className="w-full h-[83vh] ">
@@ -196,7 +209,7 @@ export default function HomePage({ pastSets, hasShownLoading, allSets, addSet, s
                                     <Badge className="absolute right-[-20px] top-[-15px] bg-blue-500 text-white">Beta</Badge>
                                 </Button>
                             </div>
-                            {!hasShownLoading && foundSet != "" && <h2 className=" relative flex text-center text-sm text-gray-200 opacity-50">
+                            {!hasShownLoading && foundSet != "" && <h2 className=" relative flex text-center text-sm text-foreground opacity-50">
                                 <span className="animate-ping mr-4 inline-flex size-2 my-auto rounded-full bg-sky-400 opacity-75"></span>
                                 Just loaded {foundSet}
                             </h2>}

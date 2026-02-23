@@ -342,8 +342,8 @@ export default function Dashboard({ defaultImportedSetID, typeOfPage }: Dashboar
             setSeled(newIndex); // wait until set is added to pastSets
           }
         } else if (typeOfPage === "list") {
-          const foundList = AllLists.find(list => list.id === defaultImportedSetID);
-          if (foundList) setCurrentList(foundList);
+          // For list routes, we don't set currentList - instead we let HomePage handle it
+          setisShowLoading(false);
         }
 
         setisShowLoading(false);
@@ -428,6 +428,7 @@ export default function Dashboard({ defaultImportedSetID, typeOfPage }: Dashboar
                   loading: defaultImportedSetID,
                   hasShownLoading: isShowLoading
                 }}
+                initialListId={typeOfPage === "list" ? defaultImportedSetID : undefined}
               />
             }
 
@@ -447,7 +448,8 @@ function MainScreen({
   setsLoading,
   setMode,
   setSet,
-  extra
+  extra,
+  initialListId
 }: {
   selected: number | null;
   CurrentPage: page;
@@ -463,6 +465,7 @@ function MainScreen({
     loading: string
     hasShownLoading: boolean
   }
+  initialListId?: string;
 }) {
   return (
     <div className={`flex flex-1 flex-col ${CurrentPage !== "Notes" && "md:p-5 pt-2"}`}>
@@ -472,7 +475,7 @@ function MainScreen({
         CurrentPage === "helper" ? <HelperPage /> :
           CurrentPage === "Notes".toLowerCase() ? <NoteDocumentTaker /> :
             CurrentPage === "aichat" ? <AiChatPage /> :
-              CurrentPage === "dashboard" ? <HomePage pastSets={pastSets} hasShownLoading={extra.hasShownLoading} allSets={setsLoading ? undefined : pastSets} addSet={addSet} setMode={setMode} setSet={setSet} defaultId={extra.loading}/> :
+              CurrentPage === "dashboard" ? <HomePage pastSets={pastSets} hasShownLoading={extra.hasShownLoading} allSets={setsLoading ? undefined : pastSets} addSet={addSet} setMode={setMode} setSet={setSet} defaultId={extra.loading} initialListId={initialListId}/> :
                 <></>}
     </div>
   );
