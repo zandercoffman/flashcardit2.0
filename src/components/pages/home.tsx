@@ -12,6 +12,7 @@ import WhatCanIDo from "./WhatCanIDo"
 import WhatMethodsDoYouUse from "./WhatMethodsDoYouUse"
 import { BetaBadge } from "@/components/BetaBadge";
 
+import type { UseEmblaCarouselType } from "embla-carousel-react";
 import {
     Dialog,
     DialogClose,
@@ -141,7 +142,7 @@ export default function HomePage({ pastSets, hasShownLoading, allSets, addSet, s
         : "";
 
     const rightRef = useRef<HTMLButtonElement | null>(null);
-    const [carouselApi, setCarouselApi] = React.useState<any>(null);
+    const [carouselApi, setCarouselApi] = React.useState<UseEmblaCarouselType[1] | null>(null);
 
     const [chosenList, setChosenList] = useState<List | undefined>(() => {
         if (initialListId) {

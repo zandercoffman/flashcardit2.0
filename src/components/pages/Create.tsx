@@ -204,7 +204,7 @@ Here is the text to use (and/or) the custom instructions to use:
                   }
                   setIsSubmitting(true);
                   try {
-                    await addSet(result.set, true);
+                    await addSet(result.set, false);
                     toast.success("Flashcards added!");
                     setJsonInput("");
                     setJsonError("");
