@@ -9,7 +9,7 @@ export interface Set {
     vocab: [string, string][];
 }
 
-export type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | "matching" | "aichat" | null;
+export type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | "matching" | "aichat" | "resources" | null;
 
 export interface AllSetsInterface { id: string, set: Set }
 

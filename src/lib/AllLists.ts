@@ -1,14 +1,12 @@
-import { Briefcase, LucideIcon, PiggyBank } from "lucide-react";
+import { Briefcase, LucideIcon } from "lucide-react";
 
 export interface List {
     id: string;
     title: string;
     description: string;
     icon: LucideIcon;
-    sets: {
-        id: string;
-        extraInfo?: string;
-    }[] // Array of set IDs
+    shortNamePerSet: string;
+    sets: string[] // Array of set IDs
 }
 
 export const AllLists: List[] = [
@@ -17,78 +15,83 @@ export const AllLists: List[] = [
         title: "FBLA Roleplay + Presentation + Objective Tests Study Guide",
         description: "A comprehensive study guide for FBLA competitions, including roleplay scenarios, presentation tips, and objective test questions inspired by the given study guide on the rubric.",
         icon: Briefcase,
+        shortNamePerSet: "FBLA",
         sets: [
-            { id: "accounting-objective-test" },
-            { id: "advanced-accounting-objective-test" },
-            { id: "advertising-objective-test" },
-            { id: "agribusiness-objective-test" },
-            { id: "banking-and-financial-systems-role-play" },
-            { id: "broadcast-journalism-presentation" },
-            { id: "business-communication-objective-test" },
-            { id: "business-ethics-presentation" },
-            { id: "business-law-objective-test" },
-            { id: "business-management-role-play" },
-            { id: "business-plan-presentation" },
-            { id: "career-portfolio-presentation" },
-            { id: "coding-and-programming-presentation" },
-            { id: "community-service-project" },
-            { id: "computer-applications" },
-            { id: "computer-game-and-simulation-programming" },
-            { id: "computer-problem-solving-objective-test" },
-            { id: "customer-service-role-play" },
-            { id: "cybersecurity-objective-test" },
-            { id: "data-analysis-presentation" },
-            { id: "data-science-and-ai-objective-test" },
-            { id: "digital-animation-presentation" },
-            { id: "digital-video-production-presentation" },
-            { id: "economics-objective-test" },
-            { id: "entrepreneurship-role-play" },
-            { id: "event-planning-presentation" },
-            { id: "financial-planning-presentation" },
-            { id: "financial-statement-analysis-presentation" },
-            { id: "future-business-educator-presentation" },
-            { id: "future-business-leader-presentation" },
-            { id: "graphic-design-presentation" },
-            { id: "healthcare-administration-objective-test" },
-            { id: "hospitality-and-event-management-role-play" },
-            { id: "human-resource-management-objective-test" },
-            { id: "impromptu-speaking-presentation" },
-            { id: "insurance-and-risk-management-objective-test" },
-            { id: "international-business-role-play" },
-            { id: "job-interview-presentation" },
-            { id: "journalism-objective-test" },
-            { id: "management-information-systems-role-play" },
-            { id: "marketing-role-play" },
-            { id: "mobile-application-development-presentation" },
-            { id: "network-design-role-play" },
-            { id: "networking-infrastructures-objective-test" },
-            { id: "organizational-leadership-objective-test" },
-            { id: "parliamentary-procedure-role-play" },
-            { id: "personal-finance-objective-test" },
-            { id: "project-management-objective-test" },
-            { id: "public-administration-and-management-objective-test" },
-            { id: "public-service-announcement-presentation" },
-            { id: "public-speaking-presentation" },
-            { id: "real-estate-objective-test" },
-            { id: "retail-management-objective-test" },
-            { id: "sales-presentation" },
-            { id: "securities-and-investments-objective-test" },
-            { id: "social-media-strategies-presentation" },
-            { id: "sports-and-entertainment-management-role-play" },
-            { id: "supply-chain-management-presentation" },
-            { id: "technology-support-and-services-role-play" },
-            { id: "visual-design-presentation" },
-            { id: "website-coding-and-development-presentation" },
-            { id: "website-design-presentation" },
+            "accounting-objective-test",
+            "advanced-accounting-objective-test",
+            "advertising-objective-test",
+            "agribusiness-objective-test",
+            "banking-and-financial-systems-role-play",
+            "broadcast-journalism-presentation",
+            "business-communication-objective-test",
+            "business-ethics-presentation",
+            "business-law-objective-test",
+            "business-management-role-play",
+            "business-plan-presentation",
+            "career-portfolio-presentation",
+            "coding-and-programming-presentation",
+            "community-service-project",
+            "computer-applications",
+            "computer-game-and-simulation-programming",
+            "computer-problem-solving-objective-test",
+            "customer-service-role-play",
+            "cybersecurity-objective-test",
+            "data-analysis-presentation",
+            "data-science-and-ai-objective-test",
+            "digital-animation-presentation",
+            "digital-video-production-presentation",
+            "economics-objective-test",
+            "entrepreneurship-role-play",
+            "event-planning-presentation",
+            "financial-planning-presentation",
+            "financial-statement-analysis-presentation",
+            "future-business-educator-presentation",
+            "future-business-leader-presentation",
+            "graphic-design-presentation",
+            "healthcare-administration-objective-test",
+            "hospitality-and-event-management-role-play",
+            "human-resource-management-objective-test",
+            "impromptu-speaking-presentation",
+            "insurance-and-risk-management-objective-test",
+            "international-business-role-play",
+            "job-interview-presentation",
+            "journalism-objective-test",
+            "management-information-systems-role-play",
+            "marketing-role-play",
+            "mobile-application-development-presentation",
+            "network-design-role-play",
+            "networking-infrastructures-objective-test",
+            "organizational-leadership-objective-test",
+            "parliamentary-procedure-role-play",
+            "personal-finance-objective-test",
+            "project-management-objective-test",
+            "public-administration-and-management-objective-test",
+            "public-service-announcement-presentation",
+            "public-speaking-presentation",
+            "real-estate-objective-test",
+            "retail-management-objective-test",
+            "sales-presentation",
+            "securities-and-investments-objective-test",
+            "social-media-strategies-presentation",
+            "sports-and-entertainment-management-role-play",
+            "supply-chain-management-presentation",
+            "technology-support-and-services-role-play",
+            "visual-design-presentation",
+            "website-coding-and-development-presentation",
+            "website-design-presentation",
         ]
     }
 ]
 
 export const getListSetIds = (listId: string): string[] => {
-    return AllLists.find((list) => list.id === listId)?.sets.map((set) => set.id) ?? []
+    return AllLists.find((list) => list.id === listId)?.sets ?? []
 }
 
 export const isSetInList = (listId: string, setId: string): boolean => {
-    return AllLists.find((list) => list.id === listId)?.sets.some((set) => set.id === setId) ?? false
+    return AllLists.find((list) => list.id === listId)?.sets.includes(setId) ?? false
+}
+
+export const getShortNameForSet = (listId: string): string => {
+    return AllLists.find((list) => list.id === listId)?.shortNamePerSet ?? ""
 }
 

@@ -410,7 +410,8 @@ export default function Dashboard({ defaultImportedSetID, typeOfPage }: Dashboar
             }}
             setCurrentVideo={setCurrentVideo}
             curStudyPathN={curStudyPathN} 
-            currentSet={selected !== null ? pastSets[selected] : undefined}/>
+            currentSet={selected !== null ? pastSets[selected] : undefined}
+            initialListId={typeOfPage === "list" ? defaultImportedSetID : undefined}/>
           <div className="flex flex-1 flex-col px-2">
             {
               currentList ? <ListScreen currentList={currentList} /> : <MainScreen
@@ -494,12 +495,12 @@ function ListScreen({ currentList }: { currentList: List }) {
       </div>
       <div className="gap-2 w-full h-full w-[95%] mx-auto flex flex-col">
         {currentList.sets.map((setRef) => {
-          const foundSet = AllSets.find(set => set.id === setRef.id);
+          const foundSet = AllSets.find(set => set.id === setRef);
           if (!foundSet) return null;
           const length = foundSet.set.vocab.length;
 
           return (
-            <div key={setRef.id} className="w-full flex flex-row justify-between p-4 rounded-lg shadow hover:shadow-lg transition">
+            <div key={setRef} className="w-full flex flex-row justify-between p-4 rounded-lg shadow hover:shadow-lg transition">
               <h2 className="text-xl flex flex-row gap-2 font-semibold my-auto">
                 {foundSet.set.title}
                 <Badge variant={"outline"}>{length} {length > 1 ? "items" : "item"}</Badge>

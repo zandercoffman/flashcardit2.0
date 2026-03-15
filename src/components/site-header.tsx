@@ -7,7 +7,7 @@ import { SidebarTrigger } from "@/components/ui/sidebar"
 import { ModeToggle } from "./mode-toggle"
 import { AllSetsInterface, mode, Set } from "@/lib/AllSets"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { AudioWaveform, Bomb, BookCheck, BookOpen, Image, LandPlot, LayoutTemplate, Megaphone, Milestone, Music, PencilLine, Settings, Settings2, Sparkles, Volume, Volume2 } from "lucide-react";
+import { AudioWaveform, Bomb, BookCheck, BookOpen, Image, LandPlot, LayoutTemplate, Megaphone, Milestone, Music, PackageOpen, PencilLine, Settings, Settings2, Sparkles, Volume, Volume2 } from "lucide-react";
 
 
 import { VolumeX } from "lucide-react"
@@ -59,6 +59,9 @@ import { BetaBadge2, InProgressBadge } from "./CustomBadges"
 import ClockButton from "./ClockButton"
 import { AnimatePresence, motion } from "framer-motion"
 import ChatGPTButton from "./OpenInChatGPT"
+import { Badge } from "./ui/badge"
+import { getShortNameForSet, isSetInList } from "@/lib/AllLists"
+import { AllSets } from "@/lib/AllSets"
 
 
 export function SiteHeader({
@@ -111,6 +114,9 @@ export function SiteHeader({
 
   const [isExpandedSidebar, setIsExpandedSidebar] = useState<boolean>(false); // false will be the default view
   const [isHoverChatGPT, setIsHoverChatGPT] = useState<boolean>(false);
+  const currentSetId = currentSet
+    ? AllSets.find((setObj) => setObj.set.title === currentSet.title)?.id
+    : undefined;
 
 
   return (
@@ -242,6 +248,17 @@ export function SiteHeader({
                           </div>
                         </SelectItem>
 
+                        {
+                          isSetInList(initialListId ?? "", currentSetId || "") && <SelectItem value="resources">
+                            <div className="flex justify-start items-center gap-4 ">
+                              <PackageOpen className="size-4 lg:size-6" />
+                              <div className=" w-full">
+                                <h4 className="text-xl md:text-base font-semibold flex flex-col ">Resources <Badge variant={"outline"}>for {getShortNameForSet(initialListId ?? "")}</Badge></h4>
+                              </div>
+                            </div>
+                          </SelectItem>
+                        }
+
                         <SelectItem value="studyplan">
                           <div className="flex justify-start items-center gap-4 ">
                             <LandPlot className="size-4 lg:size-6" />
@@ -327,6 +344,13 @@ export function SiteHeader({
           orientation="vertical"
           className="mx-2 data-[orientation=vertical]:h-4"
         />
+
+       {
+        currentSetId && isSetInList(initialListId ?? "", currentSetId) && <Badge  className="ml-2" variant={"outline"}>
+          {getShortNameForSet(initialListId ?? "")}
+        </Badge>
+       }
+
         <h1 className="text-base text-center md:text-left  md:mx-0 font-medium">
           {!(thisMode === "studyplan" && isExpandedSidebar) ? currentHeader : currentHeader.substring(0, 6) + "..."}
         </h1>
