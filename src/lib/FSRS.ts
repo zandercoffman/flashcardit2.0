@@ -64,11 +64,6 @@ const localStorageKEY = "setsAndRatings"
 
 // START types
 type SetCardSet = [string, string];
-interface Set {
-    title: string;
-    vocab: SetCardSet[];
-}
-
 
 type Card = { id: number; front: string; back: string; fsrsCard: ReturnType<FSRS["createEmptyCard"]> };
 //END

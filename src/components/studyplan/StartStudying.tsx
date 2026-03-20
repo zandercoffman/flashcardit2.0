@@ -1,7 +1,6 @@
 'use client'
 
 import { Dispatch, SetStateAction, useState } from "react"
-import StepsHeader from "../StepsHeader"
 import { Button } from "../ui/button"
 import FlashcardHolder from "../set/FlashcardHolder"
 import {

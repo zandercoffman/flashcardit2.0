@@ -27,8 +27,6 @@ export default function StudyPlan({ currentSet, curStudyPathN, setCurStudyPathN 
   const [error, setError] = useState("")
   const timeRef = useRef<HTMLInputElement>(null)
 
-  const [allStorage, setAllStorage] = useState<LocalStorageData>([])
-
   // Calculate cards per day
   const totalCards = currentSet.vocab.length
   const daysCount = selectedDays.length
@@ -92,7 +90,6 @@ export default function StudyPlan({ currentSet, curStudyPathN, setCurStudyPathN 
   useEffect(() => {
     const loadSetsFromStorage = async (): Promise<void> => {
       const data: LocalStorageData = JSON.parse(localStorage.getItem(localStorageKey) || "[]");
-      setAllStorage(data);
       const foundMatch: LocalStorageInference | undefined  = data.find(s => s.id == currentSet.title);
       if (foundMatch) {
 
@@ -252,8 +249,6 @@ export default function StudyPlan({ currentSet, curStudyPathN, setCurStudyPathN 
     }
   }
   // END SETUP
-  const isInBeta = true;
-  
 
   if (mode === "loading") {
     return <div className="w-full h-full flex justify-center items-center">
