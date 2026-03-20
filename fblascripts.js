@@ -1,5 +1,7 @@
 const prompts = require("prompts");
 
+const presentationTitles = [ "Broadcast Journalism Presentation", "Business Ethics Presentation", "Business Plan Presentation", "Career Portfolio Presentation", "Coding & Programming Presentation", "Data Analysis Presentation", "Digital Animation Presentation", "Digital Video Production Presentation", "Event Planning Presentation", "Financial Planning Presentation", "Financial Statement Analysis Presentation", "Future Business Educator Presentation", "Future Business Leader Presentation", "Graphic Design Presentation", "Impromptu Speaking Presentation", "Job Interview Presentation", "Mobile Application Development Presentation", "Public Service Announcement Presentation", "Public Speaking Presentation", "Sales Presentation", "Social Media Strategies Presentation", "Supply Chain Management Presentation", "Visual Design Presentation", "Website Coding & Development Presentation", "Website Design Presentation" ];
+
 const fblaEventName = "Securities & Investments Objective Test";
 const AmountOfTerms = 3
 const amountOfFlashcards = 60
@@ -96,6 +98,134 @@ Requirements:
 Example format:
 ["Market Segmentation","Dividing a broad market into smaller groups with shared characteristics"],["Brand Loyalty","A consumer's consistent preference for one brand over competitors"],
     `
+}
+
+const getBasicPresentationPrompt = (title) => {
+  return `
+You are generating FBLA ${title} study flashcards for competitive presentation preparation.
+
+Create AT LEAST 250 flashcards (no maximum limit — more is encouraged if useful). Aim for breadth and depth across all categories.
+
+==== CORE FORMAT REQUIREMENTS ====
+- Return ONLY comma-separated tuple entries in JavaScript array literal format.
+- Each entry must be a 2-element array: ["term", "definition"]
+- Do NOT include markdown, commentary, labels, code fences, or wrapper arrays.
+- Output should be parseable directly into a JavaScript array.
+- Each flashcard ends with a comma and line break.
+
+==== CONTENT STRUCTURE & CATEGORIES ====
+Create flashcards distributed across these interconnected areas:
+
+1. PRESENTATION ARCHITECTURE (20-30 cards)
+   - Opening techniques (hook strategies, attention capture, problem setup)
+   - Structure frameworks (3-act structure, pyramid principle, story arcs)
+   - Transition strategies (bridging sections, building momentum, narrative flow)
+   - Closing techniques (calls-to-action, impact statements, judge impression)
+   - Time management within sections
+
+2. SLIDE DESIGN & VISUAL PRESENTATION (25-35 cards)
+   - Typography hierarchy (font choices, sizing, readability at distance)
+   - Color psychology and contrast (background/foreground ratios, accessibility)
+   - Layout principles (rule of thirds, whitespace, visual balance)
+   - Consistency standards (logo placement, color palettes, design systems)
+   - Chart/graph best practices (data visualization, avoiding clutter)
+   - Image selection and optimization (relevance, resolution, licensing)
+
+3. PUBLIC SPEAKING EXECUTION (30-40 cards)
+   - Voice modulation (pace variation, emphasis, volume control, pausing)
+   - Projection and vocal clarity (enunciation, breathing, microphone technique)
+   - Pacing strategies (avoiding rushing, strategic slow-downs, pacing peaks)
+   - Delivery confidence (eye contact patterns, hand gestures, movement)
+   - Energy management (opening energy, maintaining momentum, closing intensity)
+
+4. BODY LANGUAGE & PRESENCE (20-30 cards)
+   - Posture and positioning (standing authority, symmetry, stage positioning)
+   - Hand and arm gestures (purposeful movement, gesture types, gesture placement)
+   - Facial expressions (authenticity, smile timing, expression variety)
+   - Movement patterns (walking direction, stance shifts, physical transitions)
+   - Proxemics (distance from screen, interaction zones, judge engagement distance)
+
+5. CONTENT STRATEGY (30-40 cards)
+   - Story integration (narrative hooks, case studies, personal anecdotes)
+   - Data presentation (statistics usage, proof points, evidence ordering)
+   - Problem-solution framework (challenge framing, solution positioning, value proposition)
+   - Evidence hierarchy (primary vs. supporting points, emphasis allocation)
+   - Relevance messaging (connecting features to judge priorities)
+
+6. AUDIENCE ENGAGEMENT & PSYCHOLOGY (25-35 cards)
+   - Judge expectations (scoring rubric alignment, competitive context awareness)
+   - Attention dynamics (recapturing attention, cognitive load management)
+   - Persuasion principles (credibility building, social proof, reciprocity)
+   - Objection anticipation (addressing concerns proactively)
+   - Q&A mastery (question types, response frameworks, judge handling)
+
+7. PROFESSIONALISM & COMPETITIVE CONTEXT (15-25 cards)
+   - Dress code execution (region-appropriate professional appearance)
+   - Etiquette standards (judge interaction, timing respect, rule compliance)
+   - Technical professionalism (AV troubleshooting, backup plans, equipment checks)
+   - Competitive psychology (handling pressure, confidence projection, resilience)
+
+8. COMMON MISTAKES & PITFALLS (20-30 cards)
+   - Design errors (crowded slides, inconsistent branding, poor contrast)
+   - Delivery failures (filler words, monotone delivery, lost pacing)
+   - Content mistakes (irrelevant details, unsupported claims, weak data)
+   - Timing violations (running over, rushing through key points)
+   - Recovery techniques (handling mistakes, adapting mid-presentation)
+
+9. ADVANCED & COMPETITIVE TECHNIQUES (20-30 cards)
+   - Judge impression management (anticipating scoring criteria, strategic emphasis)
+   - Differentiation strategies (standing out from competitors memorably)
+   - Storytelling depth (creating emotional resonance, narrative sophistication)
+   - Advanced persuasion (rhetorical patterns, strategic vulnerability, aspirational positioning)
+   - Competition-specific strategies (regional/national level nuances)
+
+10. PREPARATION & PRACTICE METHODS (15-25 cards)
+    - Rehearsal strategies (deliberate practice, timed rehearsals, feedback loops)
+    - Memorization techniques (scripting vs. extemporaneous, key phrase anchoring)
+    - Stress management (pre-presentation routines, confidence building)
+    - Feedback integration (peer review, self-recording analysis)
+
+==== SKILL LEVEL DISTRIBUTION ====
+Ensure representation across difficulty levels:
+- BEGINNER (30%): Foundational principles, basic techniques, essential concepts
+- INTERMEDIATE (45%): Applied strategies, nuanced execution, competitive advantages
+- ADVANCED (25%): Expert-level optimization, advanced psychology, championship-level refinement
+
+==== QUALITY STANDARDS ====
+Each flashcard must meet these criteria:
+
+TERM QUALITY:
+- 3–8 words maximum (concise, scannable, specific)
+- Should be a concrete concept, technique, or principle—not vague
+- Avoid generic labels; use specific, actionable language
+- Use parallel structure when possible (e.g., "Noun + Adjective" pattern)
+
+DEFINITION QUALITY:
+- 1–2 sentences maximum (concise yet complete)
+- Actionable: "How do I use this?" should be answerable
+- Specific: Reference concrete techniques, numbers, or examples (not vague advice)
+- Practical: Include a "why" or "what effect" element
+- Avoid repetition: No definition should duplicate another's core concept
+
+CONTENT QUALITY:
+- Each flashcard represents UNIQUE information—no near-duplicates
+- No generic motivational statements ("Be confident," "Try your best")
+- Every flashcard should be applicable to FBLA competitive judging standards
+- Prioritize competition-relevant knowledge over general speaking advice
+- Include nuances competitors actually debate (e.g., hand gesture timing, color contrast ratios)
+
+==== FORMATTING & EXAMPLES ====
+Correct format (all on one line per entry, comma-separated):
+["Opening Statistical Hook", "Lead with a surprising statistic that directly challenges judges' assumptions about your topic's importance."],["Color Contrast Minimum", "Ensure text and background have at least 4.5:1 contrast ratio for readability from 20+ feet away."],["Strategic Pause Pattern", "Pause for 2-3 seconds after key claims to let judges absorb impact rather than rushing to next point."],
+
+EXAMPLE CARDS (reference quality):
+["Rule of Thirds Grid", "Position key visual elements at intersection points of an imaginary 3x3 grid to create natural visual balance."],
+["Vocal Emphasis Technique", "Drop pitch slightly and increase volume on key competitive advantages to signal importance to judges."],
+["Example: Technical Recovery", "If AV fails, pause confidently, reference backup slides on paper, and continue with authority to minimize judge perception of chaos."],
+["Recency Bias Strategy", "End presentation with your strongest competitive differentiator to ensure judges' final impression favors your entry."],
+
+Now generate all flashcards for FBLA ${title}. Output ONLY the flashcard tuples, one per line, comma-separated.
+`
 }
 
 const readClipboard = async () => {
@@ -658,6 +788,54 @@ const runFlashcardMode = async () => {
     }
 }
 
+const runPresentationTitlesPromptMode = async () => {
+    if (!Array.isArray(presentationTitles) || presentationTitles.length === 0) {
+        console.error("No presentation titles found.")
+        return
+    }
+
+    let curIndex = 0
+    let lastCopied = ""
+
+    while (curIndex < presentationTitles.length) {
+        const title = presentationTitles[curIndex]
+        const promptText = getBasicPresentationPrompt(title)
+
+        console.clear()
+        if (lastCopied) {
+            console.log("Last copied:\n" + lastCopied + "\n")
+        }
+
+        console.log(`Title ${curIndex + 1}/${presentationTitles.length}: ${title}\n`)
+
+        const { action } = await prompts({
+            type: "select",
+            name: "action",
+            message: "Choose action",
+            choices: [
+                { title: "Copy basic prompt", value: "c" },
+                { title: "Skip", value: "s" },
+                { title: "Quit", value: "q" },
+            ],
+        })
+
+        if (!action || action === "q") {
+            return
+        }
+
+        if (action === "c") {
+            const copied = await copyToClipboard(promptText)
+            if (copied) {
+                lastCopied = promptText
+            } else {
+                console.error("Failed to copy prompt to clipboard.")
+            }
+        }
+
+        curIndex += 1
+    }
+}
+
 const run = async () => {
     const { mode } = await prompts({
         type: "select",
@@ -667,6 +845,7 @@ const run = async () => {
             { title: "Flashcards", value: "flashcards" },
             { title: "PresentationGuide", value: "presentation-guide" },
             { title: "RoleplayMode", value: "roleplay-mode" },
+            { title: "PresentationTitlesPrompts", value: "presentation-titles-prompts" },
             { title: "Quit", value: "quit" },
         ],
     })
@@ -682,6 +861,11 @@ const run = async () => {
 
     if (mode === "roleplay-mode") {
         await runRoleplayMode()
+        return
+    }
+
+    if (mode === "presentation-titles-prompts") {
+        await runPresentationTitlesPromptMode()
         return
     }
 

@@ -62,6 +62,9 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer"
 import { Badge } from "../ui/badge"
+import { useSidebar } from "@/components/ui/sidebar"
+import SetQrShare from "@/components/SetQrShare"
+import SetNativeShare from "@/components/SetNativeShare"
 
 
 const INFORMATION = {
@@ -131,6 +134,7 @@ const allSetIds = [
 ];
 
 export default function HomePage({ pastSets, hasShownLoading, allSets, addSet, setMode, setSet, defaultId, initialListId }: { pastSets: Set[], hasShownLoading: boolean, defaultId: string, allSets: Set[] | undefined, addSet: (set: Set, isAutomatic: boolean) => Promise<number>, setMode: (mode: mode) => void, setSet: (idx: number) => void, initialListId?: string }) {
+    const { isMobile } = useSidebar()
     const [isOpen, setIsOpen] = React.useState(false)
     const [allStorage, setAllStorage] = React.useState<LocalStorageData>([])
     const [studyPathSets, setStudyPathSets] = React.useState<AllSetsInterface[] | null>(null)
@@ -182,12 +186,12 @@ export default function HomePage({ pastSets, hasShownLoading, allSets, addSet, s
         loadSetsFromStorage();
     }, [])
 
-    return <Carousel className="w-[90%] mx-auto h-[83vh]" setApi={setCarouselApi} >
+    return <Carousel className={`${isMobile ? "w-full h-[74svh]" : "w-[90%] h-[83vh]"} mx-auto`} setApi={setCarouselApi} >
         <CarouselContent >
-            <CarouselItem className="w-full h-[83vh]">
-                <ScrollArea className="w-full h-[83vh] ">
-                    <div className="w-full h-full flex flex-col justify-center items-center">
-                        <div className="flex flex-col items-center gap-2 mt-[20vh]">
+            <CarouselItem className={`w-full ${isMobile ? "h-[74svh]" : "h-[83vh]"}`}>
+                <ScrollArea className={`w-full ${isMobile ? "h-[74svh]" : "h-[83vh]"}`}>
+                    <div className={`w-full h-full flex flex-col items-center ${isMobile ? "justify-start px-2" : "justify-center"}`}>
+                        <div className={`flex flex-col items-center gap-2 ${isMobile ? "mt-6" : "mt-[20vh]"}`}>
                             {hasShownLoading && foundSet != "" && <h2 className="text-center flex items-center justify-center">
                                 <svg className="mr-3 size-5 animate-spin text-muted-foreground" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
@@ -195,17 +199,17 @@ export default function HomePage({ pastSets, hasShownLoading, allSets, addSet, s
                                 </svg>
                                 Loading {foundSet}
                             </h2>}
-                            <h1 className="text-6xl mb-2 h-[11vh] font-bold bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">
+                            <h1 className={`${isMobile ? "text-4xl h-auto px-2" : "text-6xl h-[11vh]"} mb-2 font-bold bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent`}>
                                 {welcomeMessage}
                             </h1>
-                            <div className="flex flex-row gap-2">
-                                <Button className="rounded-3xl border-2 cursor-pointer" variant={"secondary"}>
+                            <div className={`flex gap-2 ${isMobile ? "flex-col w-full max-w-sm" : "flex-row"}`}>
+                                <Button className={`${isMobile ? "w-full" : ""} rounded-3xl border-2 cursor-pointer`} variant={"secondary"}>
                                     <Plus /> Create a Set
                                 </Button>
-                                <Button className="rounded-3xl border-2 cursor-pointer" variant={"secondary"}>
+                                <Button className={`${isMobile ? "w-full" : ""} rounded-3xl border-2 cursor-pointer`} variant={"secondary"}>
                                     <LayoutGrid /> Explore Sets and Lists
                                 </Button>
-                                <Button className="rounded-3xl relative border-2 cursor-pointer" variant={"secondary"}>
+                                <Button className={`${isMobile ? "w-full" : ""} rounded-3xl relative border-2 cursor-pointer`} variant={"secondary"}>
                                     <LandPlot /> Your Study Path
                                     <Badge className="absolute right-[-20px] top-[-15px] bg-blue-500 text-white">Beta</Badge>
                                 </Button>
@@ -218,9 +222,9 @@ export default function HomePage({ pastSets, hasShownLoading, allSets, addSet, s
                                 Swipe to the left and right to switch tabs.
                             </h2>}
                         </div>
-                        <div className="mt-[100vh] absolute gap-4 w-full h-60 flex flex-row">
-                            <div className="w-1/2 h-full">
-                                <ScrollArea className="relative w-full h-[28vh] bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-2 shadow-sm rounded-4xl px-2">
+                        <div className={`${isMobile ? "mt-6 mb-4 w-full flex flex-col gap-3 px-2" : "mt-[100vh] absolute gap-4 w-full h-60 flex flex-row"}`}>
+                            <div className={isMobile ? "w-full" : "w-1/2 h-full"}>
+                                <ScrollArea className={`relative w-full ${isMobile ? "min-h-[12rem]" : "h-[28vh]"} bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-2 shadow-sm rounded-4xl px-2`}>
                                     <Drawer>
                                         <DrawerTrigger>
                                             <div className="cursor-pointer absolute top-[-8px] right-[-7px] size-6 border border-1 flex items-center justify-center rounded-full bg-card text-card-foreground">
@@ -272,8 +276,8 @@ export default function HomePage({ pastSets, hasShownLoading, allSets, addSet, s
 
                                 </ScrollArea>
                             </div>
-                            <div className="w-1/2 h-full">
-                                <ScrollArea className="relative w-full h-[28vh] bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-2 shadow-sm rounded-4xl px-2">
+                            <div className={isMobile ? "w-full" : "w-1/2 h-full"}>
+                                <ScrollArea className={`relative w-full ${isMobile ? "min-h-[12rem]" : "h-[28vh]"} bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-2 shadow-sm rounded-4xl px-2`}>
                                     <Drawer>
                                         <DrawerTrigger>
                                             <div className="cursor-pointer absolute top-[-8px] left-[-7px] size-6 border border-1 flex items-center justify-center rounded-full bg-card text-card-foreground">
@@ -307,7 +311,7 @@ export default function HomePage({ pastSets, hasShownLoading, allSets, addSet, s
                     </div>
                 </ScrollArea>
             </CarouselItem>
-            <CarouselItem className="w-full h-[83vh]">
+            <CarouselItem className={`w-full ${isMobile ? "h-[74svh]" : "h-[83vh]"}`}>
                 <ScrollArea className="w-full h-full mt-auto">
                     <div className="flex flex-col gap-6 w-full px-6 py-6">
                         <div className="flex flex-col gap-1">
@@ -379,6 +383,19 @@ export default function HomePage({ pastSets, hasShownLoading, allSets, addSet, s
                                                     {setObj.set.vocab.length} cards
                                                 </div>
                                             </div>
+                                        </div>
+
+                                        <div className="relative mt-4 flex items-center justify-end gap-2">
+                                            <SetQrShare
+                                                setId={setObj.id}
+                                                setTitle={setObj.set.title}
+                                                triggerClassName="rounded-2xl border border-foreground/10 bg-background/60 px-3 hover:bg-background/90"
+                                            />
+                                            <SetNativeShare
+                                                setId={setObj.id}
+                                                setTitle={setObj.set.title}
+                                                triggerClassName="rounded-2xl border border-foreground/10 bg-background/60 px-3 hover:bg-background/90"
+                                            />
                                             <Button
                                                 size="sm"
                                                 variant="secondary"

@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useSidebar } from '../ui/sidebar';
 
 const Flashcard = ({
     front,
@@ -14,6 +15,7 @@ const Flashcard = ({
     ref: React.RefObject<HTMLDivElement> | null
 }) => {
     const [isFlipped, setIsFlipped] = useState(false);
+    const isMobile = useSidebar().isMobile;
 
     const handleFlip = () => {
         setIsFlippedS(!isFlipped)
@@ -23,12 +25,20 @@ const Flashcard = ({
 
     return (
         <div
-            className="w-[80vw] h-[300px] [@media(max-height:597px)]:h-[330px] xl:h-[400px] [@media(max-height:597px)]:pt-2 xl:pt-6 overflow-hidden mx-auto md:mx-0 md:w-full perspective-[2000px] font-semibold"
+            className={`${
+                isMobile
+                    ? "w-[85vw] h-[150px] sm:h-[180px]"
+                    : "w-[min(30vw,38rem)] mb-12  h-[min(46vh,30rem)] [@media(max-height:597px)]:h-[220px]"
+            } [@media(max-height:597px)]:pt-2 xl:pt-4 overflow-hidden mx-auto perspective-[2000px] font-semibold`}
             onClick={handleFlip}
             ref={ref}
         >
             <motion.div
-                className={`h-[200px] [@media(max-height:597px)]:h-[290px] xl:h-[300px] w-full lg:w-[400px] w-[260px] mx-auto cursor-pointer relative ${isFlipped ? 'rotate-y-180' : ''}`}
+                className={`${
+                    isMobile
+                        ? "h-[150px] w-[85vw] sm:h-[180px]"
+                        : "h-full w-full"
+                } mx-auto cursor-pointer relative ${isFlipped ? 'rotate-y-180' : ''}`}
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
                 transition={{ duration: 0.6 }}
                 style={{ transformStyle: 'preserve-3d' }}

@@ -10,6 +10,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar"
 import { LucideIcon, LucideProps, Plus, Search } from "lucide-react"
 import Create from "./pages/Create"
@@ -31,18 +32,19 @@ export function NavMain({
   setCurrentHeader: Function,
   dashRef: any
 }) {
+  const { isMobile } = useSidebar()
   const newStuff: string[] = ["Notes"];
   const inProgressStuff: string[] = ["AI Chat"];
 
   return (
-    <SidebarGroup className="w-[18vw]">
+    <SidebarGroup className="w-full md:w-[18vw]">
       <SidebarGroupContent className="flex translate-y-[-10px] flex-col gap-2">
         <SidebarMenu className=" font-semibold">
           <SidebarMenuItem className="w-full flex flex-col md:flex-row items-center mt-1 align-center gap-2">
             <SearchBar />
-            <SidebarMenuItem className="my-0 py-0 h-min w-1/2">
+            <SidebarMenuItem className="my-0 py-0 h-min w-full md:w-1/2">
               <SidebarMenuButton tooltip={"Create"}
-                className="text-sm rounded-3xl w-full mx-auto flex gap-2 justify-center "
+                className="text-sm rounded-3xl w-full mx-auto flex gap-2 justify-center"
                 onClick={() => {
                   setcurpage("upload");
                   setCurrentHeader("Create");
@@ -62,7 +64,7 @@ export function NavMain({
           {items.map((item) => (
             <SidebarMenuItem key={item.title} ref={item.title === "Dashboard" ? dashRef : null} className="my-0 py-0 h-min">
               <SidebarMenuButton tooltip={item.title}
-                className="text-sm "
+                className="text-sm"
                 onClick={() => {
                   const slug = item.title === "AI Chat" ? "aichat" : item.title.toLowerCase();
                   setcurpage(slug);

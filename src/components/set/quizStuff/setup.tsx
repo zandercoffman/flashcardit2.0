@@ -32,19 +32,21 @@ export function QuizSetup({ onStartQuiz }: QuizSetupProps) {
 
   return (
     <div className="flex-1 flex flex-col w-full">
-      <Card className="w-[90vw] mx-auto md:w-[70vw] p-8 mb-8 flex flex-col lg:flex-row rounded-3xl">
+      <Card className="relative overflow-hidden w-[90vw] mx-auto md:w-[70vw] p-8 mb-8 flex flex-col lg:flex-row rounded-3xl border border-[#2ED4C4]/30 bg-[#0E1424]/80 backdrop-blur-xl text-white">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -left-12 -top-10 h-40 w-40 rounded-full bg-[#2ED4C4]/20 blur-3xl" />
+          <div className="absolute right-0 bottom-0 h-44 w-44 rounded-full bg-[#806BFF]/20 blur-3xl" />
+        </div>
         <div className="flex flex-col w-full lg:w-1/2">
           <div className="text-center mb-8">
-            <BookOpenCheck className="w-12 h-12 text-primary mx-auto mb-4" />
-            <h2 className="font-bold text-2xl mb-2">Select modes...</h2>
-            <p className="text-muted-foreground text-sm">
-              Choose your challenge modes for an enhanced learning experience
-            </p>
+            <BookOpenCheck className="w-12 h-12 text-[#2ED4C4] mx-auto mb-4" />
+            <h2 className="font-bold text-2xl mb-2">Choose your challenge</h2>
+            <p className="text-muted-foreground text-sm">Stack modes to fit your energy level today.</p>
           </div>
           {/* Preview of selected modes */}
-          <div className=" p-4 mt-auto bg-muted/30 rounded-lg">
-            <h4 className="font-medium text-sm mb-2">Selected Features:</h4>
-            <div className="flex flex-wrap gap-2">
+          <div className="p-4 mt-auto bg-white/5 rounded-2xl border border-white/10">
+            <h4 className="font-medium text-sm mb-2 text-white">Selected Features</h4>
+            <div className="flex flex-wrap gap-2 text-white">
               {streakMode && (
                 <span className="inline-flex items-center gap-1 px-2 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-medium dark:bg-orange-900/30 dark:text-orange-400">
                   <Flame className="w-3 h-3" />
@@ -70,14 +72,14 @@ export function QuizSetup({ onStartQuiz }: QuizSetupProps) {
         </div>
 
         <div className="flex flex-col gap-10 w-full lg:w-1/2 lg:mt-auto justify-center items-center lg:justify-end lg:items-end">
-          <div className=" flex flex-col gap-2">
+          <div className=" flex flex-col gap-2 z-10">
             {/* Streak Mode Option */}
             <Card
               className={cn(
-                "p-4 cursor-pointer transition-all duration-200 hover:shadow-md border-2",
+                "p-4 cursor-pointer transition-all duration-200 hover:shadow-xl border",
                 streakMode
-                  ? "bg-orange-50 border-orange-200 dark:bg-orange-950/20 dark:border-orange-800"
-                  : "border-border hover:bg-muted/50",
+                  ? "border-orange-400/60 bg-orange-500/10"
+                  : "border-white/15 bg-white/5",
               )}
               onClick={() => setStreakMode(!streakMode)}
             >
@@ -109,10 +111,10 @@ export function QuizSetup({ onStartQuiz }: QuizSetupProps) {
             {/* Timer Mode Option */}
             <Card
               className={cn(
-                "p-4 cursor-pointer transition-all duration-200 hover:shadow-md border-2",
+                "p-4 cursor-pointer transition-all duration-200 hover:shadow-xl border",
                 timerMode
-                  ? "bg-blue-50 border-blue-200 dark:bg-blue-950/20 dark:border-blue-800"
-                  : "border-border hover:bg-muted/50",
+                  ? "border-blue-400/60 bg-blue-500/10"
+                  : "border-white/15 bg-white/5",
               )}
               onClick={() => setTimerMode(!timerMode)}
             >
@@ -143,10 +145,10 @@ export function QuizSetup({ onStartQuiz }: QuizSetupProps) {
              {/* Random Mode Option */}
              <Card
               className={cn(
-                "p-4 cursor-pointer transition-all duration-200 hover:shadow-md border-2",
+                "p-4 cursor-pointer transition-all duration-200 hover:shadow-xl border",
                 randomMode
-                  ? "bg-red-50 border-red-200 dark:bg-red-950/20 dark:border-red-800"
-                  : "border-border hover:bg-muted/50",
+                  ? "border-red-400/60 bg-red-500/10"
+                  : "border-white/15 bg-white/5",
               )}
               onClick={() => setRandomMode(!randomMode)}
             >
@@ -179,9 +181,9 @@ export function QuizSetup({ onStartQuiz }: QuizSetupProps) {
 
 
           <InteractiveHoverButton onClick={handleStartQuiz} className="cursor-pointer">
-            <span className="flex flex-row justify-center items-center">
-              <Play className="w-4 h-4 mr-2 " />
-              <span>Start Quiz</span>
+            <span className="flex flex-row justify-center items-center text-white">
+              <Play className="w-4 h-4 mr-2" />
+              <span>Start quiz</span>
             </span>
           </InteractiveHoverButton>
         </div>
@@ -189,7 +191,7 @@ export function QuizSetup({ onStartQuiz }: QuizSetupProps) {
       </Card>
 
       <div className="text-center pb-8">
-        <span className="text-muted-foreground text-sm">Customize your learning experience with challenge modes</span>
+        <span className="text-muted-foreground text-sm">Adaptive, streak-ready, and timing-aware.</span>
       </div>
     </div>
   )

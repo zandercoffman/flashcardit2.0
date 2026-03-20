@@ -91,7 +91,16 @@ export const isSetInList = (listId: string, setId: string): boolean => {
     return AllLists.find((list) => list.id === listId)?.sets.includes(setId) ?? false
 }
 
+export const isSetInAnyList = (setId: string): boolean => {
+    return AllLists.some((list) => list.sets.includes(setId))
+}
+
 export const getShortNameForSet = (listId: string): string => {
     return AllLists.find((list) => list.id === listId)?.shortNamePerSet ?? ""
+}
+
+export const getShortNameFromSetFromId = (setId: string): string => {
+    const list = isSetInAnyList(setId) ? AllLists.find((list) => list.sets.includes(setId)) : undefined
+    return list ? list.shortNamePerSet : ""
 }
 

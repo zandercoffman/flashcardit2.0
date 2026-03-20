@@ -12,6 +12,7 @@ import { Separator } from "@/components/ui/separator"
 import { Badge } from "../ui/badge"
 import { useEffect } from "react"
 import { Set } from "@/lib/AllSets"
+import { useSidebar } from "@/components/ui/sidebar"
 
 export default function NavigationMenuFlashcardSet({
   current,
@@ -33,6 +34,7 @@ export default function NavigationMenuFlashcardSet({
   setPressShowConjugation: React.Dispatch<React.SetStateAction<boolean>>
 }) {
   const [showWordList, setShowWordList] = React.useState(false)
+  const { isMobile } = useSidebar()
   const [currentAtSet, setCurASet] = React.useState(set?.vocab?.[current - 1]?.[0] ?? "");
   const esppronouns = ["Yo", "Tú", "Él/Ella/Usted", "Nosotros", "Vosotros", "Ellos/Ellas/Ustedes"];
   const engpronouns = ["I", "You", "He/Her/You (Formal)", "We", "Us all", "They/You All"];
@@ -71,11 +73,11 @@ export default function NavigationMenuFlashcardSet({
   return (
     <>
 
-      <div className="absolute flex flex-col items-center gap-2 bottom-[-5vh] left-1/2 transform -translate-x-1/2 -translate-y-[-20px]">
-        <div className="flex flex-row gap-2">
+      <div className={isMobile ? "mt-2 flex flex-col items-center gap-2" : "absolute flex flex-col items-center gap-2 bottom-[-5vh] left-1/2 transform -translate-x-1/2 -translate-y-[-20px]"}>
+        <div className={isMobile ? "flex flex-col items-center gap-2 w-full" : "flex flex-row gap-2"}>
           <h3 className="my-auto">{current}/{showTotal}</h3>
           <Separator orientation="vertical" className="my-auto !w-[1px] !h-[20px]" />
-          <section className="flex flex-row gap-2">
+          <section className={isMobile ? "flex flex-col sm:flex-row items-center gap-2" : "flex flex-row gap-2"}>
             <Button
               variant="outline"
               size="sm"
@@ -85,12 +87,12 @@ export default function NavigationMenuFlashcardSet({
               className="gap-2 cursor-pointer rounded-full !px-[12px]"
             >
               <List className="h-4 w-4" />
-              {showWordList ? "Hide" : "Show"} All Terms ({showTotal})
+              {showWordList ? "Hide" : "Show"} All Cards {isMobile ? "" : `(${showTotal})`}
             </Button>
 
             {
               getVerbType(currentAtSet) !== null && <>
-                <Separator orientation="vertical" className="my-auto !w-[1px] !h-[20px]" />
+                {!isMobile &&<Separator orientation="vertical" className="my-auto !w-[1px] !h-[20px]" />}
                 <Button variant="outline" size="sm" className="cursor-pointer gap-2 rounded-full !px-[12px]" onClick={() => setPressShowConjugation(prev => !prev)}>
                   <Globe className="h-4 w-4" />
                   See Conjugations
@@ -99,7 +101,7 @@ export default function NavigationMenuFlashcardSet({
             }
           </section>
         </div>
-        <div className="text-center w-[350px] text-xs text-muted-foreground ">Use ← → or arrow keys to navigate. Press space or enter to flip the card. Press T to toggle the sidebar.</div>
+        <div className={isMobile ? "text-center w-full max-w-[22rem] text-xs text-muted-foreground px-2" : "text-center w-[350px] text-xs text-muted-foreground"}>Use ← → or arrow keys to navigate. Press space or enter to flip the card. Press T to toggle the sidebar.</div>
 
       </div>
 

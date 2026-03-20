@@ -77,7 +77,7 @@ export function NavDocuments({
   return (
     <>
       {/** This is the sets */}
-      <SidebarGroup className="w-[19vw] translate-y-[-1rem] group-data-[collapsible=icon]:hidden" >
+      <SidebarGroup className="w-full md:w-[19vw] translate-y-[-1rem] group-data-[collapsible=icon]:hidden" >
         {/* Commented out music player feature
       {currentVideo && <>
         <SidebarGroupLabel>Music</SidebarGroupLabel>
@@ -102,7 +102,7 @@ export function NavDocuments({
       */}
         <SidebarGroupLabel>Sets</SidebarGroupLabel>
         <SidebarMenu>
-          <ScrollArea className="h-[44vh]">
+          <ScrollArea className={isMobile ? "h-[52svh]" : "h-[44vh]"}>
             {theseItems.length > 0 ? theseItems.map((item, index) => (
               <SidebarMenuItem key={`${item.title}-${index}`}>
                 <SidebarMenuButton asChild onClick={() => {
@@ -111,13 +111,13 @@ export function NavDocuments({
                   setCurrentHeader(item.title)
                 }}>
                   <BlurFade delay={0.2 + (0.06 * index)}>
-                    <span className="whitespace-nowrap">{item.title}</span>
+                    <span className={isMobile ? "whitespace-normal break-words" : "whitespace-nowrap"}>{item.title}</span>
                   </BlurFade>
                 </SidebarMenuButton>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <SidebarMenuAction
-                      showOnHover
+                      showOnHover={!isMobile}
                       className="data-[state=open]:bg-accent rounded-sm"
                     >
                       <IconDots />

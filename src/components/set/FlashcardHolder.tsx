@@ -28,6 +28,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { cn } from "@/lib/utils"
 
 interface Set {
   title: string
@@ -35,7 +36,7 @@ interface Set {
 }
 
 export default function FlashcardHolder({ set }: { set: Set }) {
-  const { state , toggleSidebar } = useSidebar()
+  const { toggleSidebar, isMobile, state } = useSidebar()
   const [api, setApi] = useState<CarouselApi>()
   const conjugator = useMemo(() => {
     const Conjugator = jsESverb as unknown as {
@@ -55,7 +56,7 @@ export default function FlashcardHolder({ set }: { set: Set }) {
   const [pressedShowAllWords, setPressedShowAllWords] = useState(false)
   const [pressShowConjugation, setPressShowConjugation] = useState(false)
 
-  const [refs, setRefs] = useState<React.RefObject<HTMLDivElement | null>[]>(() => new Array(set.vocab.length).fill(0).map(() => React.createRef<HTMLDivElement>()))
+  const [refs] = useState<React.RefObject<HTMLDivElement | null>[]>(() => new Array(set.vocab.length).fill(0).map(() => React.createRef<HTMLDivElement>()))
 
   const amtOfCardsToShow = 10;
 
@@ -67,14 +68,19 @@ export default function FlashcardHolder({ set }: { set: Set }) {
     setCount(set.vocab.length)
     setCurrent(api.selectedScrollSnap() + 1)
 
-    api.on("select", () => {
+    const handleSelect = () => {
       const nextIndex = api.selectedScrollSnap()
       setCurrent(nextIndex + 1)
 
       if (nextIndex >= visibleCount - 5) {
         setVisibleCount((prev) => Math.min(set.vocab.length, prev + PAGE_SIZE))
       }
-    })
+    }
+
+    api.on("select", handleSelect)
+    return () => {
+      api.off("select", handleSelect)
+    }
   }, [api, set.vocab.length, visibleCount])
 
   useEffect(() => {
@@ -297,33 +303,47 @@ export default function FlashcardHolder({ set }: { set: Set }) {
   }
 
   const [tenseIndex, setTenseIndex] = useState(0)
+  const showDesktopPanel = useSidebar().state === "expanded"
+  const isDesktopSidebarOpen = useSidebar().state === "expanded"
+  const thisIsMobile = useSidebar().isMobile
 
   return (
     <AnimatePresence mode="popLayout">
-      <motion.section className="mx-auto my-auto  flex flex-col lg:flex-row gap-4 relative p-4">
-        <div className="mx-auto my-auto mt-[2rem] flex flex-col lg:flex-row gap-4 relative p-4">
+      <motion.section
+        className={cn(
+          "mx-auto my-auto flex w-full flex-col gap-4 relative px-3 py-4 sm:px-4",
+          showDesktopPanel && " ml-[20vw] lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(22rem,32vw)] lg:items-start lg:gap-6",
+        )}
+      >
+        <div
+          className={cn(
+            "mx-auto my-auto mt-2 sm:mt-6 flex w-full flex-col gap-4 relative lg:flex-row lg:col-start-1",
+            showDesktopPanel && !thisIsMobile && "lg:justify-center",
+            showDesktopPanel && thisIsMobile && "translate-x-[-20vw]",
+          )}
+        >
           {/* Main Flashcard Area */}
-          <div className="flex-1 flex flex-col max-w-2xl mx-auto w-full">
-            <NavigationMenuFlashcardSet
-              current={current}
-              total={count}
-              set={set}
-              onWordClick={jumpToCard}
-              pressedShowAllWords={pressedShowAllWords}
-              pressShowConjugation={pressShowConjugation}
-              setPressedShowAllWords={setPressedShowAllWords}
-              setPressShowConjugation={setPressShowConjugation}
-            />
-            <div className="">
+          <div
+            className={cn(
+              "mx-auto flex w-full flex-1 flex-col",
+              "max-w-[min(100%,50rem)]",
+              pressedShowAllWords || (pressShowConjugation && isVerb) ? "select-none" : "",
+            )}
+          >
+            <div className="relative">
               <Carousel
-                className="relative w-[80%] mx-auto h-[100%] z-[3]"
+                className={cn(
+                  "relative mx-auto z-[3]",
+                  isMobile ? "w-full h-[50svh]" : "w-full h-full",
+                )}
                 setApi={setApi}
+                orientation={isMobile ? "vertical" : "horizontal"}
                 opts={{
                   align: "start",
                   loop: true,
                 }}
               >
-                <CarouselContent className="flex ">
+                <CarouselContent className={cn("flex", isMobile && "h-full")}>
                   {(() => {
                     const currentIndex = current - 1
                     const windowStart = Math.max(0, currentIndex - amtOfCardsToShow)
@@ -331,7 +351,12 @@ export default function FlashcardHolder({ set }: { set: Set }) {
                     return set.vocab.map((vocab, index) => (
                       <CarouselItem
                         key={index}
-                        className="flex-shrink-0 [@media(max-height:597px)]:mb-6 [@media(max-height:597px)]:scale-[0.9] [@media(max-height:597px)]:origin-top w-80 p-2 mb-10 md:mb-0"
+                        className={cn(
+                          "flex-shrink-0 w-auto p-2 flex items-center justify-center",
+                          isMobile
+                            ? "h-full basis-full grow-0 pt-0 mb-0"
+                            : "[@media(max-height:597px)]:mb-6 [@media(max-height:597px)]:scale-[0.9] [@media(max-height:597px)]:origin-top mb-14 md:mb-0",
+                        )}
                       >
                         {index >= windowStart && index <= windowEnd ? (
                           <FlashCard front={vocab[0]} back={vocab[1]} setIsFlippedS={setIsFlippedS} ref={refs[index] as React.RefObject<HTMLDivElement>} />
@@ -342,11 +367,33 @@ export default function FlashcardHolder({ set }: { set: Set }) {
                     ))
                   })()}
                 </CarouselContent>
-                <CarouselPrevious className="absolute left-15 md:left-[-15px] md:top-32 top-full lg:top-1/2 transform md:-translate-y-1/2" />
-                <CarouselNext className="absolute right-15 md:right-0 md:top-32 top-full lg:top-1/2 transform md:-translate-y-1/2" />
+                <CarouselPrevious
+                  className={cn(
+                    isMobile
+                      ? "absolute left-1/3 -translate-x-2/3 top-full mt-2 z-20"
+                      : "absolute left-6 md:left-[-15px] top-full mt-2 lg:top-1/2 lg:mt-0 transform lg:-translate-y-1/2",
+                  )}
+                />
+                <CarouselNext
+                  className={cn(
+                    isMobile
+                      ? "absolute left-2/3 -translate-x-1/3 top-full mt-2 z-20"
+                      : "absolute right-6 md:right-0 top-full mt-2 lg:top-1/2 lg:mt-0 transform lg:-translate-y-1/2",
+                  )}
+                />
               </Carousel>
-
             </div>
+
+            <NavigationMenuFlashcardSet
+              current={current}
+              total={count}
+              set={set}
+              onWordClick={jumpToCard}
+              pressedShowAllWords={pressedShowAllWords}
+              pressShowConjugation={pressShowConjugation}
+              setPressedShowAllWords={setPressedShowAllWords}
+              setPressShowConjugation={setPressShowConjugation}
+            />
 
 
           </div>
@@ -360,11 +407,27 @@ export default function FlashcardHolder({ set }: { set: Set }) {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.15 }}
-              className="translate-x-[-6vw] [@media(max-height:597px)]:translate-x-[-6vw] right-0 top-0 h-full z-40 w-100 pr-4"
+              className={cn(
+                "z-40",
+                isMobile
+                  ? "fixed inset-x-0 bottom-0 h-[58vh] rounded-t-2xl border bg-background/95 backdrop-blur px-3 py-2"
+                  : "translate-x-[-16vw] w-[90%] lg:col-start-2 lg:row-start-1 lg:mt-4 h-[78vh] rounded-2xl bg-background/95 backdrop-blur p-3 shadow-xl",
+              )}
             >
-              <ScrollArea className="h-[70vh]" onClick={() => setPressedShowAllWords(false)}>
+              <div className="mb-2 flex items-center justify-between">
+                <h2 className="text-sm font-semibold">All Cards</h2>
+                <button
+                  type="button"
+                  className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:text-foreground"
+                  aria-label="Close all cards panel"
+                  onClick={() => setPressedShowAllWords(false)}
+                >
+                  <X className="h-3.5 w-3.5" />
+                </button>
+              </div>
+              <ScrollArea className={cn(isMobile ? "h-[calc(58vh-4rem)]" : "h-[calc(78vh-4rem)] pr-1")}>
                 {
-                  Math.max(1, Math.ceil(set.vocab.length / WORD_LIST_PAGE_SIZE)) > 1 && <div className="flex items-center justify-between mb-2 mr-4">
+                  Math.max(1, Math.ceil(set.vocab.length / WORD_LIST_PAGE_SIZE)) > 1 && <div className="mb-2 flex items-center justify-between">
                     <button
                       className="px-4 py-1 text-sm border rounded-xl cursor-pointer"
                       onClick={(e) => {
@@ -402,7 +465,7 @@ export default function FlashcardHolder({ set }: { set: Set }) {
                         onClick={() => {
                           jumpToCard(absoluteIndex)
                         }}
-                        className={`w-[95%] flex flex-row gap-4  items-start mt-2 mb-2 mr-4 cursor-pointer text-left p-3 rounded-lg border transition-colors ${absoluteIndex === current - 1 ? "bg-primary/10 border-primary" : "hover:bg-muted border-transparent"
+                        className={`mt-2 mb-2 flex w-full cursor-pointer flex-row items-start gap-4 rounded-lg border p-3 text-left transition-colors ${absoluteIndex === current - 1 ? "border-primary bg-primary/10" : "border-transparent hover:bg-muted"
                           }`}
                       >
                         <h1>{absoluteIndex + 1}. </h1>
@@ -426,11 +489,27 @@ export default function FlashcardHolder({ set }: { set: Set }) {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.15 }}
-              className="translate-x-[-6vw] [@media(max-height:597px)]:translate-x-[-7vw] right-0 top-0 h-full z-40 w-40 xl:w-100 pr-4"
+              className={cn(
+                "z-40",
+                isMobile
+                  ? "fixed inset-x-0 bottom-0 h-[64vh] rounded-t-2xl border bg-background/95 backdrop-blur px-3 py-2"
+                  : "translate-x-[-16vw] w-[90%]  lg:col-start-2 lg:row-start-1 lg:mt-4 h-[78vh] rounded-2xl bg-background/95 backdrop-blur p-3 shadow-xl",
+              )}
             >
-              <ScrollArea className="h-[70vh]" onClick={() => setPressShowConjugation(false)}>
-                <div className="min-h-[70vh] flex flex-col items-center justify-center">
-                  <div className="mb-4 mr-4 p-3 flex flex-col justify-center gap-4 rounded-lg">
+              <div className="mb-2 flex items-center justify-between">
+                <h2 className="text-sm font-semibold"></h2>
+                <button
+                  type="button"
+                  className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:text-foreground"
+                  aria-label="Close conjugation panel"
+                  onClick={() => setPressShowConjugation(false)}
+                >
+                  <X className="h-3.5 w-3.5" />
+                </button>
+              </div>
+              <ScrollArea className={cn(isMobile ? "h-[calc(64vh-4rem)]" : "h-[calc(78vh-4rem)] pr-1")}>
+                <div className={cn("flex flex-col items-center justify-center", isMobile ? "min-h-full" : "min-h-[calc(78vh-4rem)]")}>
+                  <div className="mb-4 w-full rounded-lg p-3">
                     <div className="flex flex-col gap-2 items-center justify-between mb-3">
                     <div className="text-sm text-center font-semibold text-muted-foreground">Spanish Conjugation Tenses for<br/> <span className="dark:text-white text-black">{currentVerb}</span> - <span className="text-black dark:text-white">{currentVerbMeaning}</span></div>
                     
@@ -443,7 +522,7 @@ export default function FlashcardHolder({ set }: { set: Set }) {
                         }
                       }}
                     >
-                      <SelectTrigger className="h-8 rounded-4xl w-[220px] text-xs">
+                      <SelectTrigger className="h-8 rounded-4xl w-full max-w-[260px] text-xs">
                         <SelectValue placeholder="Select tense" />
                       </SelectTrigger>
                       <SelectContent>

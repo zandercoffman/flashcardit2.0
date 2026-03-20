@@ -32,6 +32,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar"
 import { BookOpenText, FilePenLine, HandHelping, Info, LucideIcon, LucideProps, Sparkles } from "lucide-react"
 import { CalendarIcon } from "lucide-react"
@@ -165,10 +166,11 @@ var thisdata = {
 
 export function AppSidebar({ ...props }: any) {
   const sets = props.pastSets || [];
+  const { isMobile } = useSidebar()
 
   return (
-    <Sidebar collapsible="offcanvas" variant={props.variant} className="p-2  *:bg-transparent">
-      <SidebarHeader className="my-4 mx-auto md:my-0 md:mx-0 bg-transparent z-22 p-2" >
+    <Sidebar collapsible="offcanvas" variant={props.variant} className="p-1 md:p-2 *:bg-transparent">
+      <SidebarHeader className="my-2 mx-auto md:my-0 md:mx-0 bg-transparent z-22 p-2" >
         <SidebarMenu className="bg-transparent z-22">
           <SidebarMenuItem>
             <SidebarMenuButton
@@ -316,12 +318,12 @@ export function AppSidebar({ ...props }: any) {
         </SidebarMenu>
       </SidebarHeader>
 
-      <SidebarContent className="mx-2 h-[90vh] my-2 md:mx-0 md:my-0 overflow-hidden !bg-transparent z-20 translate-y-[-0.5rem]">
+      <SidebarContent className="mx-1 my-1 md:mx-0 md:my-0 overflow-hidden !bg-transparent z-20 translate-y-[-0.5rem] flex flex-col min-h-0">
         <NavMain items={thisdata.navMain as PageData[]}
           setcurpage={props.setcurpage}
           dashRef={props.dashRef}
           setCurrentHeader={props.setCurrentHeader} />
-        <ScrollArea className="h-[60vh]">
+        <ScrollArea className={isMobile ? "flex-1 min-h-0 pb-2" : "h-[60vh]"}>
           <NavDocuments items={sets as Set[]}
             setSeled={props.setSeled}
             setcurpage={props.setcurpage}
@@ -330,7 +332,7 @@ export function AppSidebar({ ...props }: any) {
             currentVideo={props.currentVideo} />
         </ScrollArea>
       </SidebarContent>
-      <SidebarFooter className="mx-2 w-full text-sm flex flex-row gap-2 mb-4 md:mx-0 md:mb-0">
+      <SidebarFooter className="mx-1 md:mx-0 w-full text-sm flex flex-row gap-2 mb-2 md:mb-0">
         <Dialog>
           <DialogTrigger className="flex flex-row gap-2 items-center w-full justify-center px-4 py-2 !border-0 bg-muted/50 cursor-pointer text-white rounded-3xl shadow-md">
             <div className="dark:text-white text-black flex flex-row gap-2 w-full items-center">
