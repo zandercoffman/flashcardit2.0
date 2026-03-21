@@ -50,7 +50,8 @@ export default function QuizMode({
     const [quizSettings, setQuizSettings] = useState<QuizSettings>({
         streakMode: false,
         timerMode: false,
-        randomMode: false
+        randomMode: false,
+        timerSeconds: 5
     })
 
     const [currentStreak, setCurrentStreak] = useState<number>(0);
@@ -211,57 +212,57 @@ export default function QuizMode({
     }, [inProgress]);
 
 
+    const currentStatus = cardStatuses[curCardIndex] ?? "pending";
+    const perQuestionTime = Math.min(10, Math.max(5, quizSettings.timerSeconds || 5));
+
     useEffect(() => {
-        if (!quizSettings.timerMode) return;
+        if (!quizSettings.timerMode || !hasStarted || !inProgress) return;
+        setCurrentTime(perQuestionTime);
+    }, [curCardIndex, perQuestionTime, quizSettings.timerMode, hasStarted, inProgress]);
 
-        let intervalId: NodeJS.Timeout | undefined;
-        setCurrentTime(5);
+    useEffect(() => {
+        if (!quizSettings.timerMode || !hasStarted || !inProgress || currentStatus !== "pending") {
+            if (audioRef.current) {
+                audioRef.current.loop = false;
+                audioRef.current.pause();
+            }
+            return;
+        }
 
-        const shouldTick = cardStatuses[curCardIndex] === "pending";
-        if (shouldTick && audioRef.current) {
+        const intervalId = setInterval(() => {
+            setCurrentTime(prevTime => {
+                if (prevTime <= 1) {
+                    setCardStatuses(prev => {
+                        const copy = [...prev];
+                        if (copy[curCardIndex] === "pending") {
+                            copy[curCardIndex] = "wrong";
+                        }
+                        return copy;
+                    });
+                    setWrongNums(prev => prev + 1);
+                    setWrongVocab(prev => [...prev, curCard]);
+                    setCurrentStreak(0);
+                    setLastResult({ type: "timeout", ts: Date.now() });
+                    return 0;
+                }
+                return prevTime - 1;
+            });
+        }, 1000);
+
+        if (audioRef.current) {
             audioRef.current.volume = 0.2;
             audioRef.current.loop = true;
             audioRef.current.play();
         }
 
-        if (shouldTick) {
-            intervalId = setInterval(() => {
-                setCurrentTime(prevTime => {
-                    if (cardStatuses[curCardIndex] !== "pending") {
-                        if (intervalId) clearInterval(intervalId);
-                        if (audioRef.current) {
-                            audioRef.current.loop = false;
-                            audioRef.current.pause();
-                        }
-                        return prevTime;
-                    }
-                    if (prevTime <= 1) {
-                        setCardStatuses(prev => {
-                            const copy = [...prev];
-                            copy[curCardIndex] = "wrong";
-                            return copy;
-                        });
-                        setWrongNums(prev => prev + 1);
-                        setWrongVocab(prev => [...prev, curCard]);
-                        setCurrentStreak(0);
-                        setLastResult({ type: "timeout", ts: Date.now() });
-                        if (intervalId) clearInterval(intervalId);
-                        if (audioRef.current) {
-                            audioRef.current.loop = false;
-                            audioRef.current.pause();
-                        }
-                        return 0;
-                    }
-
-                    return prevTime - 1;
-                });
-            }, 1000);
-        }
-
         return () => {
-            if (intervalId) clearInterval(intervalId);
+            clearInterval(intervalId);
+            if (audioRef.current) {
+                audioRef.current.loop = false;
+                audioRef.current.pause();
+            }
         };
-    }, [curCardIndex, quizSettings.timerMode, cardStatuses]);
+    }, [curCardIndex, curCard, currentStatus, hasStarted, inProgress, quizSettings.timerMode]);
 
 
     useEffect(() => {
@@ -305,15 +306,14 @@ export default function QuizMode({
 
     }, [curCardIndex, currentSet.vocab, potentialCopy]);
 
-    const currentStatus = cardStatuses[curCardIndex] ?? "pending";
     const progressValue = ((curCardIndex + 1) / totalCards) * 100;
     const streakHeat = Math.min(currentStreak / 5, 1);
 
     if (!inProgress || curCardIndex >= totalCards) {
         return (
-            <div className="relative w-full min-h-[90vh] text-white overflow-hidden">
+            <div className="relative w-full min-h-[90vh] text-white light:text-slate-900 overflow-hidden">
 
-                <Card className="relative z-10 max-w-6xl w-[92vw] mx-auto mt-10 mb-8 border border-[#2ED4C4]/30 bg-[#111827]/70 backdrop-blur-xl rounded-3xl p-8">
+                <Card className="relative z-10 max-w-6xl w-[92vw] mx-auto mt-10 mb-8 border border-[#2ED4C4]/30 light:border-slate-300 bg-[#111827]/70 light:bg-white/90 backdrop-blur-xl rounded-3xl p-8">
                     <div className="flex flex-wrap gap-4 items-center justify-between mb-6">
                         <div className="flex items-center gap-3">
                             <div className="p-3 rounded-2xl bg-[#2ED4C4]/15">
@@ -349,11 +349,11 @@ export default function QuizMode({
                         </div>
 
                         <div className="grid grid-cols-2 gap-3">
-                            <Card className="bg-white/5 border-white/10 p-4 rounded-2xl">
+                            <Card className="bg-white/5 light:bg-slate-100 border-white/10 light:border-slate-300 p-4 rounded-2xl">
                                 <p className="text-xs text-muted-foreground">Best streak</p>
                                 <p className="text-2xl font-semibold">{currentStreak}</p>
                             </Card>
-                            <Card className="bg-white/5 border-white/10 p-4 rounded-2xl">
+                            <Card className="bg-white/5 light:bg-slate-100 border-white/10 light:border-slate-300 p-4 rounded-2xl">
                                 <p className="text-xs text-muted-foreground">Time spent</p>
                                 <p className="text-2xl font-semibold">{timeSpent}</p>
                             </Card>
@@ -365,11 +365,11 @@ export default function QuizMode({
                             <X className="h-4 w-4 text-[#FF5C8D]" />
                             <h3 className="font-semibold">Review list</h3>
                         </div>
-                        <ScrollArea className="h-48 border border-white/5 rounded-2xl p-3 bg-black/20">
+                        <ScrollArea className="h-48 border border-white/5 light:border-slate-200 rounded-2xl p-3 bg-black/20 light:bg-slate-50">
                             {wrongVocab.length === 0 ? (
                                 <p className="text-sm text-muted-foreground text-center py-4">No misses — great job!</p>
                             ) : wrongVocab.map((vocab, idx) => (
-                                <div key={idx} className="flex items-center justify-between p-3 rounded-xl bg-white/5 mb-2">
+                                <div key={idx} className="flex items-center justify-between p-3 rounded-xl bg-white/5 light:bg-white mb-2">
                                     <div>
                                         <p className="font-medium">{vocab[0]}</p>
                                         <p className="text-xs text-muted-foreground">{vocab[1]}</p>
@@ -381,7 +381,7 @@ export default function QuizMode({
                     </div>
 
                     <div className="flex flex-wrap gap-3 justify-end mt-6">
-                        <Button variant="ghost" className="gap-2 text-white" onClick={() => setHasStarted(false)}>
+                        <Button variant="ghost" className="gap-2 text-white light:text-slate-900" onClick={() => setHasStarted(false)}>
                             <ArrowLeft className="h-4 w-4" /> Back to setup
                         </Button>
                         <InteractiveHoverButton onClick={() => handleStartQuiz(quizSettings)}>
@@ -402,7 +402,7 @@ export default function QuizMode({
     const hintText = curCard[1];
 
     return (
-        <div className="relative w-full min-h-[90vh] text-white overflow-hidden">
+        <div className="relative w-full min-h-[90vh] text-white light:text-slate-900 overflow-hidden">
             <audio ref={audioRef} src="/correct.mp3" className="hidden" />
 
             <div className="relative z-10 max-w-6xl mx-auto px-4 ">
@@ -414,12 +414,12 @@ export default function QuizMode({
 
                         <div className="flex flex-row gap-2 items-center">
                             {/* Progress bar */}
-                            <div className="w-[50%] rounded-3xl border border-white/10 bg-white/5 px-4 py-3 shadow-inner">
+                            <div className="w-[50%] rounded-3xl border border-white/10 light:border-slate-300 bg-white/5 light:bg-slate-100 px-4 py-3 shadow-inner">
                                 <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
                                     <span>Progress</span>
                                     <span>{Math.round(progressValue)}%</span>
                                 </div>
-                                <div className="flex gap-[2px] h-3 rounded-full overflow-hidden bg-black/40 border border-white/10">
+                                <div className="flex gap-[2px] h-3 rounded-full overflow-hidden bg-black/40 light:bg-slate-200 border border-white/10 light:border-slate-300">
                                     {cardStatuses.map((status, idx) => (
                                         <div
                                             key={idx}
@@ -442,9 +442,9 @@ export default function QuizMode({
                             {/* Timer + Streak compact */}
                             <div className="ml-auto flex flex-wrap justify-end gap-3 pl-4">
                                 {quizSettings.timerMode && (
-                                    <div className="flex rounded-4xl items-center gap-3 border border-[#806BFF]/30 bg-[#0F1424] px-5 py-4">
+                                    <div className="flex rounded-4xl items-center gap-3 border border-[#806BFF]/30 light:border-[#806BFF]/40 bg-[#0F1424] light:bg-slate-50 px-5 py-4">
                                         <AnimatedCircularProgressBar
-                                            max={5}
+                                            max={perQuestionTime}
                                             value={currentTime}
                                             min={0}
                                             showValue
@@ -460,15 +460,15 @@ export default function QuizMode({
                                 )}
 
                                 {quizSettings.streakMode && (
-                                    <div className="flex flex-col gap-2 rounded-4xl border border-[#2ED4C4]/30 bg-[#0F1424] px-5 py-4">
+                                    <div className="flex flex-col gap-2 rounded-4xl border border-[#2ED4C4]/30 light:border-[#2ED4C4]/40 bg-[#0F1424] light:bg-slate-50 px-5 py-4">
                                         <div className="flex items-center justify-between text-xs text-muted-foreground">
                                             <div className="flex items-center gap-2">
                                                 <Flame className="h-4 w-4 text-[#F59E0B]" />
                                                 <span>Streak</span>
                                             </div>
-                                            <span className="text-white font-semibold">{currentStreak}</span>
+                                            <span className="text-white light:text-slate-900 font-semibold">{currentStreak}</span>
                                         </div>
-                                        <div className="h-2 rounded-full overflow-hidden bg-black/50 border border-white/10">
+                                        <div className="h-2 rounded-full overflow-hidden bg-black/50 light:bg-slate-200 border border-white/10 light:border-slate-300">
                                             <div
                                                 className="h-full transition-all"
                                                 style={{
@@ -508,15 +508,15 @@ export default function QuizMode({
                                     />
                                 )}
                                 <div className="relative rounded-3xl p-[1px]" style={{ backgroundImage: gradientBorder }}>
-                                    <div className="relative rounded-[22px] bg-[#0E1424]/80 backdrop-blur-xl border border-white/10 p-8 shadow-2xl text-center">
+                                    <div className="relative rounded-[22px] bg-[#0E1424]/80 light:bg-white backdrop-blur-xl border border-white/10 light:border-slate-300 p-8 shadow-2xl text-center text-white light:text-slate-900">
                                         <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Your word</p>
                                         <h2
-                                            className="text-4xl md:text-5xl font-semibold leading-tight"
+                                            className="text-4xl md:text-5xl font-semibold leading-tight text-white light:text-slate-900"
                                             aria-live="polite"
                                         >
                                             {promptWord}
                                         </h2>
-                                        <p className="text-sm text-muted-foreground mt-3">Select the correct match below.</p>
+                                        <p className="text-sm text-muted-foreground light:text-slate-600 mt-3">Select the correct match below.</p>
                                         <AnimatePresence>
                                             {showHint && (
                                                 <motion.div
@@ -540,31 +540,31 @@ export default function QuizMode({
                                     const isCorrect = option.correct;
                                     const base =
                                         status === "pending"
-                                            ? "bg-white/5 border-white/10 hover:border-[#2ED4C4]/50"
+                                            ? "bg-white/5 light:bg-slate-100 border-white/10 light:border-slate-300 hover:border-[#2ED4C4]/50"
                                             : isCorrect
                                                 ? "bg-[#3DD598]/15 border-[#3DD598]/40"
                                                 : isSelected
                                                     ? "bg-[#FF5C8D]/15 border-[#FF5C8D]/40"
-                                                    : "bg-white/5 border-white/10";
+                                                    : "bg-white/5 light:bg-slate-100 border-white/10 light:border-slate-300";
 
                                     return (
                                         <motion.button
                                             key={index}
                                             whileTap={{ scale: 0.97 }}
                                             className={cn(
-                                                "group relative rounded-2xl border px-3 py-4 text-left transition-all duration-200 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2ED4C4] focus-visible:ring-offset-[#0B1220]",
+                                                "group relative rounded-2xl border px-3 py-4 text-left transition-all duration-200 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2ED4C4] focus-visible:ring-offset-[#0B1220] light:focus-visible:ring-offset-white",
                                                 base
                                             )}
                                             onClick={() => handleOptionSelect(option, index)}
                                         >
                                             <div className="flex items-start gap-3">
-                                                <div className="h-9 w-9 rounded-xl bg-white/5 text-xs flex items-center justify-center border border-white/10">
+                                                <div className="h-9 w-9 rounded-xl bg-white/5 light:bg-white text-xs flex items-center justify-center border border-white/10 light:border-slate-300">
                                                     {String.fromCharCode(65 + index)}
                                                 </div>
                                                 <div className="flex-1">
-                                                    <p className="font-semibold leading-snug">{option.option}</p>
+                                                    <p className="font-semibold leading-snug text-white light:text-slate-900">{option.option}</p>
                                                     {status !== "pending" && (
-                                                        <p className="text-[11px] text-muted-foreground mt-1">
+                                                        <p className="text-[11px] text-muted-foreground light:text-slate-600 mt-1">
                                                             {isCorrect ? "Correct answer" : isSelected ? "Your pick" : "Alternative"}
                                                         </p>
                                                     )}
@@ -583,10 +583,10 @@ export default function QuizMode({
                                 <Button variant="secondary" className="bg-[#2ED4C4]/15 text-[#2ED4C4] border-[#2ED4C4]/30 min-w-[96px]" onClick={handleSkip}>
                                     <SkipForward className="h-4 w-4 mr-2" /> Skip
                                 </Button>
-                                <Button variant="ghost" className="text-white border border-white/10 min-w-[96px]" onClick={() => setShowHint(true)}>
+                                <Button variant="ghost" className="text-white light:text-slate-900 border border-white/10 light:border-slate-300 min-w-[96px]" onClick={() => setShowHint(true)}>
                                     Hint
                                 </Button>
-                                <Button variant="ghost" className="text-white border border-white/10 min-w-[96px]" onClick={handleUndo}>
+                                <Button variant="ghost" className="text-white light:text-slate-900 border border-white/10 light:border-slate-300 min-w-[96px]" onClick={handleUndo}>
                                     <Undo2 className="h-4 w-4 mr-2" /> Undo
                                 </Button>
                                 <Button
@@ -614,7 +614,7 @@ export default function QuizMode({
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: 20 }}
-                                    className="rounded-2xl border border-white/10 bg-[#0E1424] p-4 shadow-2xl"
+                                    className="rounded-2xl border border-white/10 light:border-slate-300 bg-[#0E1424] light:bg-white p-4 shadow-2xl"
                                 >
                                     <div className="flex items-center justify-between mb-3">
                                         <div className="flex items-center gap-2">
@@ -635,7 +635,7 @@ export default function QuizMode({
                                                         onClick={() => setCurCardIndex(idx)}
                                                         className={cn(
                                                             "rounded-xl border px-3 py-2 text-left transition-colors",
-                                                            idx === curCardIndex ? "border-[#2ED4C4]/60 bg-[#2ED4C4]/10" : "border-white/10 bg-white/5"
+                                                            idx === curCardIndex ? "border-[#2ED4C4]/60 bg-[#2ED4C4]/10" : "border-white/10 light:border-slate-300 bg-white/5 light:bg-slate-100"
                                                         )}
                                                     >
                                                         <p className="text-sm font-semibold truncate">{vocab[0]}</p>

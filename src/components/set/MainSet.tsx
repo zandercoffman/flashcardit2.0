@@ -12,6 +12,7 @@ import { mode } from "@/lib/AllSets"
 import Matching from "../matching/page";
 import AIChatPage from "../AIChat/page";
 import ResourcesPage from "../resources/page";
+import PracticeTestPage from "../listStuff/practiceTest/page";
 
 interface Set {
     title: string;
@@ -69,6 +70,8 @@ export default function MainSet({
             return <AIChatPage currentSet={currentSet} />
         case "resources":
             return <ResourcesPage set={currentSet}/>
+        case "practicetest":
+            return <PracticeTestPage set={currentSet}/>
 
     }
 

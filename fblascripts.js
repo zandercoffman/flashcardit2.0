@@ -1,6 +1,9 @@
 const prompts = require("prompts");
 
 const presentationTitles = [ "Broadcast Journalism Presentation", "Business Ethics Presentation", "Business Plan Presentation", "Career Portfolio Presentation", "Coding & Programming Presentation", "Data Analysis Presentation", "Digital Animation Presentation", "Digital Video Production Presentation", "Event Planning Presentation", "Financial Planning Presentation", "Financial Statement Analysis Presentation", "Future Business Educator Presentation", "Future Business Leader Presentation", "Graphic Design Presentation", "Impromptu Speaking Presentation", "Job Interview Presentation", "Mobile Application Development Presentation", "Public Service Announcement Presentation", "Public Speaking Presentation", "Sales Presentation", "Social Media Strategies Presentation", "Supply Chain Management Presentation", "Visual Design Presentation", "Website Coding & Development Presentation", "Website Design Presentation" ];
+const objectiveTestTitles = [ "Accounting Objective Test", "Advanced Accounting Objective Test", "Advertising Objective Test", "Agribusiness Objective Test", "Business Communication Objective Test", "Business Law Objective Test", "Computer Problem Solving Objective Test", "Cybersecurity Objective Test", "Data Science & AI Objective Test", "Economics Objective Test", "Healthcare Administration Objective Test", "Human Resource Management Objective Test", "Insurance & Risk Management Objective Test", "Journalism Objective Test", "Networking Infrastructures Objective Test", "Organizational Leadership Objective Test", "Personal Finance Objective Test", "Project Management Objective Test", "Public Administration & Management Objective Test", "Real Estate Objective Test", "Retail Management Objective Test", "Securities & Investments Objective Test" ]
+
+
 
 const fblaEventName = "Securities & Investments Objective Test";
 const AmountOfTerms = 3
@@ -226,6 +229,194 @@ EXAMPLE CARDS (reference quality):
 
 Now generate all flashcards for FBLA ${title}. Output ONLY the flashcard tuples, one per line, comma-separated.
 `
+}
+
+const getBasicObjectiveTestPrompt = (title, batchNumber = 4) => {
+    return `
+You are generating a portion of a realistic FBLA ${title} Objective Test.
+
+This is batch ${batchNumber} of 4. Each batch must contain EXACTLY 25 unique multiple-choice questions.
+Across all 4 batches, there will be 100 total questions with no duplicates.
+
+==== OUTPUT FORMAT (STRICT) ====
+Return ONLY a single JavaScript object matching this TypeScript interface:
+
+{
+    title: string,
+    questions: [
+        {
+            id: string,
+            question: string,
+            options: string[],
+            correctAnswerIndex: number,
+            explanation: string,
+            difficulty: "easy" | "medium" | "hard",
+            category?: string
+        }
+    ]
+}
+
+- Do NOT include markdown, comments, or extra text.
+- Output must be directly parseable JSON/JavaScript.
+- The "title" must be "FBLA ${title} Practice Test - Batch ${batchNumber}".
+- Generate exactly 25 questions.
+
+==== FIELD RULES ====
+- id: must be globally unique across batches
+  - Use format: "q${batchNumber}_1" → "q${batchNumber}_25"
+- question: clear, professional multiple-choice question
+- options: exactly 4 answer choices (NO "A.", "B.", etc.)
+- correctAnswerIndex: number from 0–3 matching the correct option
+- explanation: 1–2 sentence explanation
+- difficulty distribution per batch:
+  - 6 easy
+  - 13 medium
+  - 6 hard
+- category (optional but encouraged): short topic label
+
+==== CONTENT REQUIREMENTS ====
+- Use realistic FBLA ${title} topics and standards
+- Cover a wide range of subtopics across batches
+- Include:
+  - Definitions and fundamentals
+  - Applied business scenarios
+  - Decision-making and analysis
+  - Laws, regulations, and ethics (if applicable)
+  - Calculations or metrics (if applicable)
+- Include at least 8 scenario-based questions starting with "Example:"
+
+==== QUALITY RULES ====
+- No duplicate or near-duplicate questions within this batch OR across batches
+- Make distractors realistic and competitive
+- Mix straightforward and tricky wording
+- Keep questions aligned with FBLA exam style
+
+==== IMPORTANT ====
+This batch must introduce NEW questions that would not overlap with other batches.
+Assume other batches will cover different angles of the same topic.
+
+Now generate batch ${batchNumber}.
+Output ONLY the JavaScript object.
+    `
+}
+
+const slugifyResourceId = (title) => {
+    return String(title || "")
+        .toLowerCase()
+        .replace(/&/g, " and ")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+}
+
+const getFBLAResourceObjectTemplate = (fblaEventName) => {
+    return `
+You are generating high-quality FBLA study resources for the event: ${fblaEventName}.
+
+You MUST use external knowledge and real-world sources. Do NOT invent or guess links.
+Only include real, accurate, and relevant resources that actually exist.
+
+Your task is to create a fully populated JavaScript object entry that fits into an FBLAResources array.
+
+==== OUTPUT FORMAT (STRICT) ====
+Return ONLY the object inside the array (do NOT include the export wrapper).
+
+Format exactly like this:
+resources: {
+        title: "${fblaEventName} Resources",
+        links: [
+            {
+                title: "Resource title",
+                url: "https://..."
+            }
+        ],
+        aiPrompts: [
+            {
+                title: "Prompt title",
+                prompt: "Prompt text"
+            }
+        ]
+    }
+
+==== REQUIREMENTS ====
+
+ID:
+- Convert "${fblaEventName}" into kebab-case (example: "Accounting Objective Test" → "accounting-objective-test")
+
+LINKS (RESEARCH REQUIRED):
+- Include 20 high-quality, REAL resources from external knowledge and do research
+- In addition to the 20 links, include more links from QUizlet that directly talk about ${fblaEventName} topics (but do NOT include generic Quizlet homepages), and also include the search query to include "fbla" in the search to ensure relevance
+- DO NOT fabricate URLs
+- Prioritize:
+  - Trusted educational sites (Investopedia, Khan Academy, Coursera, etc.)
+  - Official organizations (government, standards boards, etc.)
+  - Well-known learning platforms
+- Links must go to relevant content pages (not generic homepages unless necessary)
+- Each link must have a clear, specific, accurate title
+
+AI PROMPTS:
+- Prompts must be highly useful for studying and practice
+- Include:
+  1. One full-length multiple-choice practice test (20–50 questions)
+  2. One adaptive or weakness-based coaching prompt
+- Prompts must reference real FBLA-style topics for "${fblaEventName}"
+- Make prompts detailed enough to produce high-quality outputs
+
+CONTENT QUALITY:
+- Make everything specific to "${fblaEventName}"
+- Cover a wide range of relevant topics within the event
+- Avoid vague or generic wording
+
+STRICT RULES:
+- Do NOT include markdown, explanations, or extra text
+- Do NOT wrap in an array or export statement
+- Do NOT include code fences
+- Output must be valid JavaScript object syntax
+- End the object with a comma
+
+If you are unsure about a resource, do NOT include it.
+
+Example style:
+
+        title: "Example Event Resources",
+        links: [
+            {
+                title: "Example Source",
+                url: "https://example.com"
+            }
+        ],
+        aiPrompts: [
+            {
+                title: "Practice test",
+                prompt: "Create a 30-question..."
+            }
+        ]
+
+    `
+}
+
+const runFBLAResourceObjectBuilderMode = async () => {
+    const { title } = await prompts({
+        type: "text",
+        name: "title",
+        message: "Enter FBLA event title",
+        validate: (value) => (String(value || "").trim() ? true : "Title is required"),
+    })
+
+    if (!title) {
+        return
+    }
+
+    const objectTemplate = getFBLAResourceObjectTemplate(title)
+    const copied = await copyToClipboard(objectTemplate)
+
+    console.clear()
+    console.log("=== FBLA Resource Object Builder ===")
+    if (copied) {
+        console.log("Resource object copied to clipboard.\n")
+    } else {
+        console.log("Resource object generated, but clipboard copy failed.\n")
+    }
+    console.log(objectTemplate)
 }
 
 const readClipboard = async () => {
@@ -836,6 +1027,54 @@ const runPresentationTitlesPromptMode = async () => {
     }
 }
 
+const runObjectiveTestTitlesPromptMode = async () => {
+    if (!Array.isArray(objectiveTestTitles) || objectiveTestTitles.length === 0) {
+        console.error("No objective test titles found.")
+        return
+    }
+
+    let curIndex = 0
+    let lastCopied = ""
+
+    while (curIndex < objectiveTestTitles.length) {
+        const title = objectiveTestTitles[curIndex]
+        const promptText = getBasicObjectiveTestPrompt(title)
+
+        console.clear()
+        if (lastCopied) {
+            console.log("Last copied:\n" + lastCopied + "\n")
+        }
+
+        console.log(`Title ${curIndex + 1}/${objectiveTestTitles.length}: ${title}\n`)
+
+        const { action } = await prompts({
+            type: "select",
+            name: "action",
+            message: "Choose action",
+            choices: [
+                { title: "Copy objective test prompt", value: "c" },
+                { title: "Skip", value: "s" },
+                { title: "Quit", value: "q" },
+            ],
+        })
+
+        if (!action || action === "q") {
+            return
+        }
+
+        if (action === "c") {
+            const copied = await copyToClipboard(promptText)
+            if (copied) {
+                lastCopied = promptText
+            } else {
+                console.error("Failed to copy prompt to clipboard.")
+            }
+        }
+
+        curIndex += 1
+    }
+}
+
 const run = async () => {
     const { mode } = await prompts({
         type: "select",
@@ -846,6 +1085,8 @@ const run = async () => {
             { title: "PresentationGuide", value: "presentation-guide" },
             { title: "RoleplayMode", value: "roleplay-mode" },
             { title: "PresentationTitlesPrompts", value: "presentation-titles-prompts" },
+            { title: "ObjectiveTestTitlesPrompts", value: "objective-test-titles-prompts" },
+            { title: "FBLAResourceObjectBuilder", value: "fbla-resource-object-builder" },
             { title: "Quit", value: "quit" },
         ],
     })
@@ -866,6 +1107,16 @@ const run = async () => {
 
     if (mode === "presentation-titles-prompts") {
         await runPresentationTitlesPromptMode()
+        return
+    }
+
+    if (mode === "objective-test-titles-prompts") {
+        await runObjectiveTestTitlesPromptMode()
+        return
+    }
+
+    if (mode === "fbla-resource-object-builder") {
+        await runFBLAResourceObjectBuilderMode()
         return
     }
 

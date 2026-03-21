@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant light (&:is(:root:not(.dark) *));
 
 @keyframes flash {
   0% { background-color: #000; color: #ff0000; }
@@ -171,4 +172,21 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Gradient border badge */
+.gradient-border-badge {
+  position: relative;
+  border: 2px solid transparent;
+  background-image: 
+    linear-gradient(white, white),
+    linear-gradient(135deg, #a855f7 0%, #ff6b35 100%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.dark .gradient-border-badge {
+  background-image: 
+    linear-gradient(#09090b, #09090b),
+    linear-gradient(135deg, #a855f7 0%, #ff6b35 100%);
 }

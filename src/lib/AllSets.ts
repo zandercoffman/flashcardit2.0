@@ -1,3 +1,4 @@
+import { allFBLAPracticeTests } from "./practiceTests/FBLAPracticeTests";
 import { AllESP1Sets } from "./subsets/ESP1";
 import { FBLA_SETS } from "./subsets/FBLA";
 import { itw1011, itw12, itw1213, itw1415, itw1617, itw18epilogue, itw345, itw67, itw89, itwvocab, itwvocab2 } from "./subsets/ITW";
@@ -9,7 +10,47 @@ export interface Set {
     vocab: [string, string][];
 }
 
-export type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | "matching" | "aichat" | "resources" | null;
+
+export interface PracticeTest {
+    title: string;
+
+    questions: {
+        id: string;
+        question: string;
+        options: string[];
+        correctAnswerIndex: number;
+        explanation: string;
+        difficulty: "easy" | "medium" | "hard";
+        category?: string;
+    }[];
+}
+
+export interface PracticeTestGroup {
+    id: string;
+    tests: PracticeTest[];
+}
+
+export interface ResourceLink {
+    title: string;
+    url: string;
+}
+
+export type ResourceLinks = ResourceLink[];
+
+export interface ResourceAIPrompt {
+    title: string;
+    prompt: string;
+}
+
+export type ResourceAIPrompts = ResourceAIPrompt[];
+
+export type Resources = {
+    title: string;
+    links: ResourceLinks;
+    aiPrompts: ResourceAIPrompts;
+};
+
+export type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | "matching" | "aichat" | "resources" | "practicetest" | null;
 
 export interface AllSetsInterface { id: string, set: Set }
 
@@ -2089,3 +2130,31 @@ export const AllSets: AllSetsInterface[] = [
         }
     },
 ]
+
+export const allPracticeTests: PracticeTestGroup[] = [
+    ...allFBLAPracticeTests
+]
+
+export const findAllSetFromSet = (set: Set): AllSetsInterface => {
+    const foundSets: AllSetsInterface[] = AllSets.filter(s => s.set.title === set.title);
+    if (foundSets.length === 0) {
+        throw new Error(`No sets found with title: ${set.title}`);
+    }
+    return foundSets[0];
+}
+
+export const findAllSetsFromId = (id: string): AllSetsInterface => {
+    const foundSet = AllSets.find(s => s.id === id);
+    if (!foundSet) {
+        throw new Error(`No set found with id: ${id}`);
+    }
+    return foundSet;
+}
+
+export const findAllSetsFromTitle = (title: string): AllSetsInterface => {
+    const foundSet = AllSets.find(s => s.set.title === title);
+    if (!foundSet) {
+        throw new Error(`No set found with title: ${title}`);
+    }
+    return foundSet;
+}

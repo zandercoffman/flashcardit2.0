@@ -303,23 +303,25 @@ export default function FlashcardHolder({ set }: { set: Set }) {
   }
 
   const [tenseIndex, setTenseIndex] = useState(0)
-  const showDesktopPanel = useSidebar().state === "expanded"
-  const isDesktopSidebarOpen = useSidebar().state === "expanded"
-  const thisIsMobile = useSidebar().isMobile
+  const isDesktopViewport = !isMobile
+  const isDesktopSidebarOpen = state === "expanded"
+  const showDesktopSidePanel =
+    isDesktopViewport && (pressedShowAllWords || (pressShowConjugation && isVerb))
 
   return (
     <AnimatePresence mode="popLayout">
       <motion.section
         className={cn(
           "mx-auto my-auto flex w-full flex-col gap-4 relative px-3 py-4 sm:px-4",
-          showDesktopPanel && " ml-[20vw] lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(22rem,32vw)] lg:items-start lg:gap-6",
+          showDesktopSidePanel && "lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(22rem,32vw)] lg:items-start lg:gap-6",
         )}
       >
         <div
           className={cn(
             "mx-auto my-auto mt-2 sm:mt-6 flex w-full flex-col gap-4 relative lg:flex-row lg:col-start-1",
-            showDesktopPanel && !thisIsMobile && "lg:justify-center",
-            showDesktopPanel && thisIsMobile && "translate-x-[-20vw]",
+            isDesktopViewport && "lg:justify-center",
+            isDesktopViewport && isDesktopSidebarOpen && !showDesktopSidePanel && "lg:translate-x-[-10vw]",
+            isDesktopViewport && isDesktopSidebarOpen && showDesktopSidePanel && "lg:translate-x-0",
           )}
         >
           {/* Main Flashcard Area */}
@@ -409,9 +411,9 @@ export default function FlashcardHolder({ set }: { set: Set }) {
               transition={{ duration: 0.15 }}
               className={cn(
                 "z-40",
-                isMobile
+                !isDesktopViewport
                   ? "fixed inset-x-0 bottom-0 h-[58vh] rounded-t-2xl border bg-background/95 backdrop-blur px-3 py-2"
-                  : "translate-x-[-16vw] w-[90%] lg:col-start-2 lg:row-start-1 lg:mt-4 h-[78vh] rounded-2xl bg-background/95 backdrop-blur p-3 shadow-xl",
+                  : "w-[90%] lg:col-start-2 lg:row-start-1 lg:mt-4 h-[78vh] rounded-2xl bg-background/95 backdrop-blur p-3 shadow-xl",
               )}
             >
               <div className="mb-2 flex items-center justify-between">
@@ -491,9 +493,9 @@ export default function FlashcardHolder({ set }: { set: Set }) {
               transition={{ duration: 0.15 }}
               className={cn(
                 "z-40",
-                isMobile
+                !isDesktopViewport
                   ? "fixed inset-x-0 bottom-0 h-[64vh] rounded-t-2xl border bg-background/95 backdrop-blur px-3 py-2"
-                  : "translate-x-[-16vw] w-[90%]  lg:col-start-2 lg:row-start-1 lg:mt-4 h-[78vh] rounded-2xl bg-background/95 backdrop-blur p-3 shadow-xl",
+                  : "w-[90%]  lg:col-start-2 lg:row-start-1 lg:mt-4 h-[78vh] rounded-2xl bg-background/95 backdrop-blur p-3 shadow-xl",
               )}
             >
               <div className="mb-2 flex items-center justify-between">
