@@ -131,107 +131,107 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FASB Accounting Standards Codification (ASC)",
-                    url: "[https://asc.fasb.org](https://asc.fasb.org)"
+                    url: "https://asc.fasb.org"
                 },
                 {
                     title: "Investopedia: Advanced Financial Accounting",
-                    url: "[https://www.investopedia.com/terms/a/advanced-accounting.asp](https://www.investopedia.com/terms/a/advanced-accounting.asp)"
+                    url: "https://www.investopedia.com/terms/a/advanced-accounting.asp"
                 },
                 {
                     title: "Khan Academy: Accounting and Financial Statements",
-                    url: "[https://www.khanacademy.org/economics-finance-domain/core-finance/accounting-and-financial-stateme](https://www.khanacademy.org/economics-finance-domain/core-finance/accounting-and-financial-stateme)"
+                    url: "https://www.khanacademy.org/economics-finance-domain/core-finance/accounting-and-financial-stateme"
                 },
                 {
                     title: "Coursera: Introduction to Financial Accounting (UPenn)",
-                    url: "[https://www.coursera.org/learn/wharton-accounting](https://www.coursera.org/learn/wharton-accounting)"
+                    url: "https://www.coursera.org/learn/wharton-accounting"
                 },
                 {
                     title: "MIT OpenCourseWare: Financial Accounting",
-                    url: "[https://ocw.mit.edu/courses/15-511-financial-accounting-fall-2004/](https://ocw.mit.edu/courses/15-511-financial-accounting-fall-2004/)"
+                    url: "https://ocw.mit.edu/courses/15-511-financial-accounting-fall-2004/"
                 },
                 {
                     title: "AccountingCoach: Consolidation Accounting",
-                    url: "[https://www.accountingcoach.com/consolidation/explanation](https://www.accountingcoach.com/consolidation/explanation)"
+                    url: "https://www.accountingcoach.com/consolidation/explanation"
                 },
                 {
                     title: "Investopedia: Consolidated Financial Statements",
-                    url: "[https://www.investopedia.com/terms/c/consolidatedfinancialstatement.asp](https://www.investopedia.com/terms/c/consolidatedfinancialstatement.asp)"
+                    url: "https://www.investopedia.com/terms/c/consolidatedfinancialstatement.asp"
                 },
                 {
                     title: "AccountingTools: Foreign Currency Accounting",
-                    url: "[https://www.accountingtools.com/articles/foreign-currency-accounting](https://www.accountingtools.com/articles/foreign-currency-accounting)"
+                    url: "https://www.accountingtools.com/articles/foreign-currency-accounting"
                 },
                 {
                     title: "Investopedia: Foreign Currency Translation",
-                    url: "[https://www.investopedia.com/terms/f/foreign-currency-translation.asp](https://www.investopedia.com/terms/f/foreign-currency-translation.asp)"
+                    url: "https://www.investopedia.com/terms/f/foreign-currency-translation.asp"
                 },
                 {
                     title: "AccountingCoach: Leases (ASC 842)",
-                    url: "[https://www.accountingcoach.com/leases/explanation](https://www.accountingcoach.com/leases/explanation)"
+                    url: "https://www.accountingcoach.com/leases/explanation"
                 },
                 {
                     title: "FASB Lease Accounting Overview (ASC 842)",
-                    url: "[https://www.fasb.org/page/PageContent?pageId=/standards/accounting-standards-updates.html](https://www.fasb.org/page/PageContent?pageId=/standards/accounting-standards-updates.html)"
+                    url: "https://www.fasb.org/page/PageContent?pageId=/standards/accounting-standards-updates.html"
                 },
                 {
                     title: "Investopedia: Deferred Tax Liability",
-                    url: "[https://www.investopedia.com/terms/d/deferredtaxliability.asp](https://www.investopedia.com/terms/d/deferredtaxliability.asp)"
+                    url: "https://www.investopedia.com/terms/d/deferredtaxliability.asp"
                 },
                 {
                     title: "AccountingTools: Deferred Tax Accounting",
-                    url: "[https://www.accountingtools.com/articles/deferred-tax](https://www.accountingtools.com/articles/deferred-tax)"
+                    url: "https://www.accountingtools.com/articles/deferred-tax"
                 },
                 {
                     title: "Investopedia: Pension Accounting",
-                    url: "[https://www.investopedia.com/terms/p/pensionaccounting.asp](https://www.investopedia.com/terms/p/pensionaccounting.asp)"
+                    url: "https://www.investopedia.com/terms/p/pensionaccounting.asp"
                 },
                 {
                     title: "AccountingCoach: Bonds Payable",
-                    url: "[https://www.accountingcoach.com/bonds-payable/explanation](https://www.accountingcoach.com/bonds-payable/explanation)"
+                    url: "https://www.accountingcoach.com/bonds-payable/explanation"
                 },
                 {
                     title: "Investopedia: Goodwill Impairment",
-                    url: "[https://www.investopedia.com/terms/g/goodwill-impairment.asp](https://www.investopedia.com/terms/g/goodwill-impairment.asp)"
+                    url: "https://www.investopedia.com/terms/g/goodwill-impairment.asp"
                 },
                 {
                     title: "AccountingTools: Business Combinations",
-                    url: "[https://www.accountingtools.com/articles/business-combination](https://www.accountingtools.com/articles/business-combination)"
+                    url: "https://www.accountingtools.com/articles/business-combination"
                 },
                 {
                     title: "SEC: Beginners Guide to Financial Statements",
-                    url: "[https://www.sec.gov/reportspubs/investor-publications/investorpubsbegfinstmtguidehtm.html](https://www.sec.gov/reportspubs/investor-publications/investorpubsbegfinstmtguidehtm.html)"
+                    url: "https://www.sec.gov/reportspubs/investor-publications/investorpubsbegfinstmtguidehtm.html"
                 },
                 {
                     title: "IASB IFRS Standards Overview",
-                    url: "[https://www.ifrs.org/issued-standards/list-of-standards/](https://www.ifrs.org/issued-standards/list-of-standards/)"
+                    url: "https://www.ifrs.org/issued-standards/list-of-standards/"
                 },
                 {
                     title: "Investopedia: Statement of Cash Flows",
-                    url: "[https://www.investopedia.com/terms/s/statementcashflow.asp](https://www.investopedia.com/terms/s/statementcashflow.asp)"
+                    url: "https://www.investopedia.com/terms/s/statementcashflow.asp"
                 },
                 {
                     title: "Quizlet: FBLA Advanced Accounting Practice",
-                    url: "[https://quizlet.com/search?query=fbla%20advanced%20accounting](https://quizlet.com/search?query=fbla%20advanced%20accounting)"
+                    url: "https://quizlet.com/search?query=fbla%20advanced%20accounting"
                 },
                 {
                     title: "Quizlet: Consolidation Accounting Flashcards",
-                    url: "[https://quizlet.com/search?query=fbla%20consolidation%20accounting](https://quizlet.com/search?query=fbla%20consolidation%20accounting)"
+                    url: "https://quizlet.com/search?query=fbla%20consolidation%20accounting"
                 },
                 {
                     title: "Quizlet: Foreign Currency Accounting FBLA",
-                    url: "[https://quizlet.com/search?query=fbla%20foreign%20currency%20accounting](https://quizlet.com/search?query=fbla%20foreign%20currency%20accounting)"
+                    url: "https://quizlet.com/search?query=fbla%20foreign%20currency%20accounting"
                 },
                 {
                     title: "Quizlet: Lease Accounting ASC 842 FBLA",
-                    url: "[https://quizlet.com/search?query=fbla%20lease%20accounting%20ASC%20842](https://quizlet.com/search?query=fbla%20lease%20accounting%20ASC%20842)"
+                    url: "https://quizlet.com/search?query=fbla%20lease%20accounting%20ASC%20842"
                 },
                 {
                     title: "Quizlet: Deferred Taxes FBLA Accounting",
-                    url: "[https://quizlet.com/search?query=fbla%20deferred%20tax%20accounting](https://quizlet.com/search?query=fbla%20deferred%20tax%20accounting)"
+                    url: "https://quizlet.com/search?query=fbla%20deferred%20tax%20accounting"
                 },
                 {
                     title: "Quizlet: Business Combinations FBLA",
-                    url: "[https://quizlet.com/search?query=fbla%20business%20combinations%20accounting](https://quizlet.com/search?query=fbla%20business%20combinations%20accounting)"
+                    url: "https://quizlet.com/search?query=fbla%20business%20combinations%20accounting"
                 }
             ],
             aiPrompts: [
@@ -254,99 +254,99 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "Khan Academy - Advertising, Marketing, and Sales",
-                    url: "[https://www.khanacademy.org/economics-finance-domain/core-finance/marketing](https://www.khanacademy.org/economics-finance-domain/core-finance/marketing)"
+                    url: "https://www.khanacademy.org/economics-finance-domain/core-finance/marketing"
                 },
                 {
                     title: "Investopedia - Advertising Definition",
-                    url: "[https://www.investopedia.com/terms/a/advertising.asp](https://www.investopedia.com/terms/a/advertising.asp)"
+                    url: "https://www.investopedia.com/terms/a/advertising.asp"
                 },
                 {
                     title: "Investopedia - Marketing Strategy",
-                    url: "[https://www.investopedia.com/terms/m/marketing-strategy.asp](https://www.investopedia.com/terms/m/marketing-strategy.asp)"
+                    url: "https://www.investopedia.com/terms/m/marketing-strategy.asp"
                 },
                 {
                     title: "HubSpot - What is Advertising?",
-                    url: "[https://blog.hubspot.com/marketing/advertising](https://blog.hubspot.com/marketing/advertising)"
+                    url: "https://blog.hubspot.com/marketing/advertising"
                 },
                 {
                     title: "HubSpot - Advertising Strategies Guide",
-                    url: "[https://blog.hubspot.com/marketing/advertising-strategy](https://blog.hubspot.com/marketing/advertising-strategy)"
+                    url: "https://blog.hubspot.com/marketing/advertising-strategy"
                 },
                 {
                     title: "Google Digital Garage - Fundamentals of Digital Marketing",
-                    url: "[https://learndigital.withgoogle.com/digitalgarage/course/digital-marketing](https://learndigital.withgoogle.com/digitalgarage/course/digital-marketing)"
+                    url: "https://learndigital.withgoogle.com/digitalgarage/course/digital-marketing"
                 },
                 {
                     title: "Coursera - Introduction to Marketing (Wharton)",
-                    url: "[https://www.coursera.org/learn/wharton-marketing](https://www.coursera.org/learn/wharton-marketing)"
+                    url: "https://www.coursera.org/learn/wharton-marketing"
                 },
                 {
                     title: "American Marketing Association - Advertising Overview",
-                    url: "[https://www.ama.org/topics/advertising/](https://www.ama.org/topics/advertising/)"
+                    url: "https://www.ama.org/topics/advertising/"
                 },
                 {
                     title: "Federal Trade Commission - Truth in Advertising",
-                    url: "[https://www.ftc.gov/business-guidance/advertising-marketing](https://www.ftc.gov/business-guidance/advertising-marketing)"
+                    url: "https://www.ftc.gov/business-guidance/advertising-marketing"
                 },
                 {
                     title: "Think with Google - Marketing Insights",
-                    url: "[https://www.thinkwithgoogle.com/marketing-strategies/](https://www.thinkwithgoogle.com/marketing-strategies/)"
+                    url: "https://www.thinkwithgoogle.com/marketing-strategies/"
                 },
                 {
                     title: "Meta Blueprint - Digital Advertising Fundamentals",
-                    url: "[https://www.facebook.com/business/learn](https://www.facebook.com/business/learn)"
+                    url: "https://www.facebook.com/business/learn"
                 },
                 {
                     title: "Hootsuite - Social Media Advertising Guide",
-                    url: "[https://blog.hootsuite.com/social-media-advertising/](https://blog.hootsuite.com/social-media-advertising/)"
+                    url: "https://blog.hootsuite.com/social-media-advertising/"
                 },
                 {
                     title: "WordStream - Online Advertising Guide",
-                    url: "[https://www.wordstream.com/online-advertising](https://www.wordstream.com/online-advertising)"
+                    url: "https://www.wordstream.com/online-advertising"
                 },
                 {
                     title: "Neil Patel - Digital Marketing Guide",
-                    url: "[https://neilpatel.com/what-is-digital-marketing/](https://neilpatel.com/what-is-digital-marketing/)"
+                    url: "https://neilpatel.com/what-is-digital-marketing/"
                 },
                 {
                     title: "Smart Insights - Marketing Planning Guide",
-                    url: "[https://www.smartinsights.com/marketing-planning/](https://www.smartinsights.com/marketing-planning/)"
+                    url: "https://www.smartinsights.com/marketing-planning/"
                 },
                 {
                     title: "Principles of Marketing (OpenStax)",
-                    url: "[https://openstax.org/details/books/principles-marketing](https://openstax.org/details/books/principles-marketing)"
+                    url: "https://openstax.org/details/books/principles-marketing"
                 },
                 {
                     title: "SBA - Market Research and Competitive Analysis",
-                    url: "[https://www.sba.gov/business-guide/plan-your-business/market-research-competitive-analysis](https://www.sba.gov/business-guide/plan-your-business/market-research-competitive-analysis)"
+                    url: "https://www.sba.gov/business-guide/plan-your-business/market-research-competitive-analysis"
                 },
                 {
                     title: "Canva - Advertising Design Basics",
-                    url: "[https://www.canva.com/learn/advertising-design/](https://www.canva.com/learn/advertising-design/)"
+                    url: "https://www.canva.com/learn/advertising-design/"
                 },
                 {
                     title: "AdAge - Advertising Industry News and Insights",
-                    url: "[https://adage.com/](https://adage.com/)"
+                    url: "https://adage.com/"
                 },
                 {
                     title: "eMarketer - Digital Advertising Trends",
-                    url: "[https://www.emarketer.com/topics/topic/digital-advertising](https://www.emarketer.com/topics/topic/digital-advertising)"
+                    url: "https://www.emarketer.com/topics/topic/digital-advertising"
                 },
                 {
                     title: "Quizlet - FBLA Advertising Objective Test",
-                    url: "[https://quizlet.com/search?query=fbla%20advertising%20objective%20test&type=sets](https://quizlet.com/search?query=fbla%20advertising%20objective%20test&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20advertising%20objective%20test&type=sets"
                 },
                 {
                     title: "Quizlet - Advertising and Marketing Terms",
-                    url: "[https://quizlet.com/search?query=fbla%20advertising%20marketing%20terms&type=sets](https://quizlet.com/search?query=fbla%20advertising%20marketing%20terms&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20advertising%20marketing%20terms&type=sets"
                 },
                 {
                     title: "Quizlet - Promotion and Advertising Concepts",
-                    url: "[https://quizlet.com/search?query=fbla%20promotion%20advertising&type=sets](https://quizlet.com/search?query=fbla%20promotion%20advertising&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20promotion%20advertising&type=sets"
                 },
                 {
                     title: "Quizlet - Digital Advertising FBLA Study Sets",
-                    url: "[https://quizlet.com/search?query=fbla%20digital%20advertising&type=sets](https://quizlet.com/search?query=fbla%20digital%20advertising&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20digital%20advertising&type=sets"
                 }
             ],
             aiPrompts: [
@@ -369,103 +369,103 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "USDA Economic Research Service – Agribusiness and Food Industries",
-                    url: "[https://www.ers.usda.gov/topics/food-markets-prices/agribusiness-and-food-industries/](https://www.ers.usda.gov/topics/food-markets-prices/agribusiness-and-food-industries/)"
+                    url: "https://www.ers.usda.gov/topics/food-markets-prices/agribusiness-and-food-industries/"
                 },
                 {
                     title: "Investopedia – Agribusiness Definition",
-                    url: "[https://www.investopedia.com/terms/a/agribusiness.asp](https://www.investopedia.com/terms/a/agribusiness.asp)"
+                    url: "https://www.investopedia.com/terms/a/agribusiness.asp"
                 },
                 {
                     title: "FAO – Agribusiness and Value Chains",
-                    url: "[https://www.fao.org/in-action/value-chains/en/](https://www.fao.org/in-action/value-chains/en/)"
+                    url: "https://www.fao.org/in-action/value-chains/en/"
                 },
                 {
                     title: "National FFA – Agribusiness Career Pathways",
-                    url: "[https://www.ffa.org/careers/agribusiness/](https://www.ffa.org/careers/agribusiness/)"
+                    url: "https://www.ffa.org/careers/agribusiness/"
                 },
                 {
                     title: "Khan Academy – Supply and Demand",
-                    url: "[https://www.khanacademy.org/economics-finance-domain/microeconomics/supply-demand-equilibrium](https://www.khanacademy.org/economics-finance-domain/microeconomics/supply-demand-equilibrium)"
+                    url: "https://www.khanacademy.org/economics-finance-domain/microeconomics/supply-demand-equilibrium"
                 },
                 {
                     title: "Khan Academy – Elasticity",
-                    url: "[https://www.khanacademy.org/economics-finance-domain/microeconomics/elasticity-tutorial](https://www.khanacademy.org/economics-finance-domain/microeconomics/elasticity-tutorial)"
+                    url: "https://www.khanacademy.org/economics-finance-domain/microeconomics/elasticity-tutorial"
                 },
                 {
                     title: "USDA – Agricultural Marketing Service",
-                    url: "[https://www.ams.usda.gov/](https://www.ams.usda.gov/)"
+                    url: "https://www.ams.usda.gov/"
                 },
                 {
                     title: "FAO – Agricultural Marketing Basics",
-                    url: "[https://www.fao.org/3/x5490e/x5490e0a.htm](https://www.fao.org/3/x5490e/x5490e0a.htm)"
+                    url: "https://www.fao.org/3/x5490e/x5490e0a.htm"
                 },
                 {
                     title: "Coursera – Agriculture, Economics and Nature",
-                    url: "[https://www.coursera.org/learn/agriculture-economics-nature](https://www.coursera.org/learn/agriculture-economics-nature)"
+                    url: "https://www.coursera.org/learn/agriculture-economics-nature"
                 },
                 {
                     title: "edX – Sustainable Agribusiness (Wageningen University)",
-                    url: "[https://www.edx.org/course/sustainable-agribusiness](https://www.edx.org/course/sustainable-agribusiness)"
+                    url: "https://www.edx.org/course/sustainable-agribusiness"
                 },
                 {
                     title: "USDA – Farm Income and Wealth Statistics",
-                    url: "[https://www.ers.usda.gov/data-products/farm-income-and-wealth-statistics/](https://www.ers.usda.gov/data-products/farm-income-and-wealth-statistics/)"
+                    url: "https://www.ers.usda.gov/data-products/farm-income-and-wealth-statistics/"
                 },
                 {
                     title: "Investopedia – Economies of Scale",
-                    url: "[https://www.investopedia.com/terms/e/economiesofscale.asp](https://www.investopedia.com/terms/e/economiesofscale.asp)"
+                    url: "https://www.investopedia.com/terms/e/economiesofscale.asp"
                 },
                 {
                     title: "Investopedia – Vertical Integration",
-                    url: "[https://www.investopedia.com/terms/v/verticalintegration.asp](https://www.investopedia.com/terms/v/verticalintegration.asp)"
+                    url: "https://www.investopedia.com/terms/v/verticalintegration.asp"
                 },
                 {
                     title: "EPA – Agriculture and Sustainability",
-                    url: "[https://www.epa.gov/agriculture](https://www.epa.gov/agriculture)"
+                    url: "https://www.epa.gov/agriculture"
                 },
                 {
                     title: "USDA – Risk Management in Agriculture",
-                    url: "[https://www.rma.usda.gov/](https://www.rma.usda.gov/)"
+                    url: "https://www.rma.usda.gov/"
                 },
                 {
                     title: "FAO – Food Supply Chain Overview",
-                    url: "[https://www.fao.org/3/i3128e/i3128e.pdf](https://www.fao.org/3/i3128e/i3128e.pdf)"
+                    url: "https://www.fao.org/3/i3128e/i3128e.pdf"
                 },
                 {
                     title: "Khan Academy – Production Possibilities Frontier",
-                    url: "[https://www.khanacademy.org/economics-finance-domain/microeconomics/production-possibilities-frontier](https://www.khanacademy.org/economics-finance-domain/microeconomics/production-possibilities-frontier)"
+                    url: "https://www.khanacademy.org/economics-finance-domain/microeconomics/production-possibilities-frontier"
                 },
                 {
                     title: "USDA – Agricultural Trade Data",
-                    url: "[https://www.ers.usda.gov/data-products/ag-and-food-statistics-charting-the-essentials/international-trade/](https://www.ers.usda.gov/data-products/ag-and-food-statistics-charting-the-essentials/international-trade/)"
+                    url: "https://www.ers.usda.gov/data-products/ag-and-food-statistics-charting-the-essentials/international-trade/"
                 },
                 {
                     title: "World Bank – Agriculture Overview",
-                    url: "[https://www.worldbank.org/en/topic/agriculture/overview](https://www.worldbank.org/en/topic/agriculture/overview)"
+                    url: "https://www.worldbank.org/en/topic/agriculture/overview"
                 },
                 {
                     title: "Investopedia – Supply Chain Management (SCM)",
-                    url: "[https://www.investopedia.com/terms/s/scm.asp](https://www.investopedia.com/terms/s/scm.asp)"
+                    url: "https://www.investopedia.com/terms/s/scm.asp"
                 },
                 {
                     title: "Quizlet – FBLA Agribusiness Objective Test",
-                    url: "[https://quizlet.com/search?query=fbla%20agribusiness%20objective%20test&type=sets](https://quizlet.com/search?query=fbla%20agribusiness%20objective%20test&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20agribusiness%20objective%20test&type=sets"
                 },
                 {
                     title: "Quizlet – Agribusiness Marketing Terms",
-                    url: "[https://quizlet.com/search?query=agribusiness%20marketing%20terms%20fbla&type=sets](https://quizlet.com/search?query=agribusiness%20marketing%20terms%20fbla&type=sets)"
+                    url: "https://quizlet.com/search?query=agribusiness%20marketing%20terms%20fbla&type=sets"
                 },
                 {
                     title: "Quizlet – Agricultural Economics Vocabulary",
-                    url: "[https://quizlet.com/search?query=agricultural%20economics%20fbla&type=sets](https://quizlet.com/search?query=agricultural%20economics%20fbla&type=sets)"
+                    url: "https://quizlet.com/search?query=agricultural%20economics%20fbla&type=sets"
                 },
                 {
                     title: "Quizlet – Agribusiness Management Concepts",
-                    url: "[https://quizlet.com/search?query=agribusiness%20management%20fbla&type=sets](https://quizlet.com/search?query=agribusiness%20management%20fbla&type=sets)"
+                    url: "https://quizlet.com/search?query=agribusiness%20management%20fbla&type=sets"
                 },
                 {
                     title: "Quizlet – Supply Chain Agriculture FBLA",
-                    url: "[https://quizlet.com/search?query=supply%20chain%20agriculture%20fbla&type=sets](https://quizlet.com/search?query=supply%20chain%20agriculture%20fbla&type=sets)"
+                    url: "https://quizlet.com/search?query=supply%20chain%20agriculture%20fbla&type=sets"
                 }
             ],
             aiPrompts: [
@@ -488,95 +488,95 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "Khan Academy: Banking and Money",
-                    url: "[https://www.khanacademy.org/economics-finance-domain/core-finance/banking-and-money](https://www.khanacademy.org/economics-finance-domain/core-finance/banking-and-money)"
+                    url: "https://www.khanacademy.org/economics-finance-domain/core-finance/banking-and-money"
                 },
                 {
                     title: "Federal Reserve Education: About the Fed",
-                    url: "[https://www.federalreserveeducation.org/about-the-fed](https://www.federalreserveeducation.org/about-the-fed)"
+                    url: "https://www.federalreserveeducation.org/about-the-fed"
                 },
                 {
                     title: "FDIC: Money Smart Financial Education Program",
-                    url: "[https://www.fdic.gov/resources/consumers/money-smart/](https://www.fdic.gov/resources/consumers/money-smart/)"
+                    url: "https://www.fdic.gov/resources/consumers/money-smart/"
                 },
                 {
                     title: "Investopedia: Banking System Definition",
-                    url: "[https://www.investopedia.com/terms/b/bankingsystem.asp](https://www.investopedia.com/terms/b/bankingsystem.asp)"
+                    url: "https://www.investopedia.com/terms/b/bankingsystem.asp"
                 },
                 {
                     title: "Investopedia: Central Bank Overview",
-                    url: "[https://www.investopedia.com/terms/c/centralbank.asp](https://www.investopedia.com/terms/c/centralbank.asp)"
+                    url: "https://www.investopedia.com/terms/c/centralbank.asp"
                 },
                 {
                     title: "Investopedia: Fractional Reserve Banking",
-                    url: "[https://www.investopedia.com/terms/f/fractionalreservebanking.asp](https://www.investopedia.com/terms/f/fractionalreservebanking.asp)"
+                    url: "https://www.investopedia.com/terms/f/fractionalreservebanking.asp"
                 },
                 {
                     title: "Investopedia: Commercial Bank Definition",
-                    url: "[https://www.investopedia.com/terms/c/commercialbank.asp](https://www.investopedia.com/terms/c/commercialbank.asp)"
+                    url: "https://www.investopedia.com/terms/c/commercialbank.asp"
                 },
                 {
                     title: "Investor.gov: Introduction to Financial Markets",
-                    url: "[https://www.investor.gov/introduction-investing/investing-basics](https://www.investor.gov/introduction-investing/investing-basics)"
+                    url: "https://www.investor.gov/introduction-investing/investing-basics"
                 },
                 {
                     title: "Federal Reserve: Monetary Policy Basics",
-                    url: "[https://www.federalreserve.gov/monetarypolicy.htm](https://www.federalreserve.gov/monetarypolicy.htm)"
+                    url: "https://www.federalreserve.gov/monetarypolicy.htm"
                 },
                 {
                     title: "CFPB: What is a Bank Account?",
-                    url: "[https://www.consumerfinance.gov/consumer-tools/bank-accounts/](https://www.consumerfinance.gov/consumer-tools/bank-accounts/)"
+                    url: "https://www.consumerfinance.gov/consumer-tools/bank-accounts/"
                 },
                 {
                     title: "CFPB: Credit Reports and Scores",
-                    url: "[https://www.consumerfinance.gov/consumer-tools/credit-reports-and-scores/](https://www.consumerfinance.gov/consumer-tools/credit-reports-and-scores/)"
+                    url: "https://www.consumerfinance.gov/consumer-tools/credit-reports-and-scores/"
                 },
                 {
                     title: "National Credit Union Administration: Credit Union Resources",
-                    url: "[https://www.ncua.gov/consumers](https://www.ncua.gov/consumers)"
+                    url: "https://www.ncua.gov/consumers"
                 },
                 {
                     title: "World Bank: Financial System Overview",
-                    url: "[https://www.worldbank.org/en/publication/gfdr/gfdr-2016/background/financial-systems](https://www.worldbank.org/en/publication/gfdr/gfdr-2016/background/financial-systems)"
+                    url: "https://www.worldbank.org/en/publication/gfdr/gfdr-2016/background/financial-systems"
                 },
                 {
                     title: "International Monetary Fund: Financial System Soundness",
-                    url: "[https://www.imf.org/en/About/Factsheets/Sheets/2016/08/01/20/57/Financial-Soundness-Indicators](https://www.imf.org/en/About/Factsheets/Sheets/2016/08/01/20/57/Financial-Soundness-Indicators)"
+                    url: "https://www.imf.org/en/About/Factsheets/Sheets/2016/08/01/20/57/Financial-Soundness-Indicators"
                 },
                 {
                     title: "Coursera: Financial Markets by Yale University",
-                    url: "[https://www.coursera.org/learn/financial-markets-global](https://www.coursera.org/learn/financial-markets-global)"
+                    url: "https://www.coursera.org/learn/financial-markets-global"
                 },
                 {
                     title: "Harvard Business School Online: Financial Accounting Fundamentals",
-                    url: "[https://online.hbs.edu/courses/financial-accounting/](https://online.hbs.edu/courses/financial-accounting/)"
+                    url: "https://online.hbs.edu/courses/financial-accounting/"
                 },
                 {
                     title: "Federal Deposit Insurance Corporation: Deposit Insurance Explained",
-                    url: "[https://www.fdic.gov/resources/deposit-insurance/](https://www.fdic.gov/resources/deposit-insurance/)"
+                    url: "https://www.fdic.gov/resources/deposit-insurance/"
                 },
                 {
                     title: "Federal Reserve Bank of St. Louis: Economic Education Resources",
-                    url: "[https://www.stlouisfed.org/education](https://www.stlouisfed.org/education)"
+                    url: "https://www.stlouisfed.org/education"
                 },
                 {
                     title: "NASAA: Investor Education Resources",
-                    url: "[https://www.nasaa.org/investor-education/](https://www.nasaa.org/investor-education/)"
+                    url: "https://www.nasaa.org/investor-education/"
                 },
                 {
                     title: "Investopedia: Risk Management in Finance",
-                    url: "[https://www.investopedia.com/terms/r/riskmanagement.asp](https://www.investopedia.com/terms/r/riskmanagement.asp)"
+                    url: "https://www.investopedia.com/terms/r/riskmanagement.asp"
                 },
                 {
                     title: "Quizlet Search: FBLA Banking and Financial Systems",
-                    url: "[https://quizlet.com/search?query=fbla%20banking%20and%20financial%20systems&type=sets](https://quizlet.com/search?query=fbla%20banking%20and%20financial%20systems&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20banking%20and%20financial%20systems&type=sets"
                 },
                 {
                     title: "Quizlet Search: Banking System Terms FBLA",
-                    url: "[https://quizlet.com/search?query=fbla%20banking%20terms&type=sets](https://quizlet.com/search?query=fbla%20banking%20terms&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20banking%20terms&type=sets"
                 },
                 {
                     title: "Quizlet Search: Financial Systems Role Play FBLA",
-                    url: "[https://quizlet.com/search?query=fbla%20financial%20systems%20role%20play&type=sets](https://quizlet.com/search?query=fbla%20financial%20systems%20role%20play&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20financial%20systems%20role%20play&type=sets"
                 }
             ],
             aiPrompts: [
@@ -599,95 +599,95 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "Poynter News University – Journalism Training",
-                    url: "[https://www.poynter.org/newsu/](https://www.poynter.org/newsu/)"
+                    url: "https://www.poynter.org/newsu/"
                 },
                 {
                     title: "Radio Television Digital News Association (RTDNA) Ethics Guidelines",
-                    url: "[https://www.rtdna.org/content/rtdna_code_of_ethics](https://www.rtdna.org/content/rtdna_code_of_ethics)"
+                    url: "https://www.rtdna.org/content/rtdna_code_of_ethics"
                 },
                 {
                     title: "Society of Professional Journalists Code of Ethics",
-                    url: "[https://www.spj.org/ethicscode.asp](https://www.spj.org/ethicscode.asp)"
+                    url: "https://www.spj.org/ethicscode.asp"
                 },
                 {
                     title: "PBS NewsHour Classroom – Journalism Resources",
-                    url: "[https://www.pbs.org/newshour/classroom](https://www.pbs.org/newshour/classroom)"
+                    url: "https://www.pbs.org/newshour/classroom"
                 },
                 {
                     title: "BBC Academy – Journalism Skills",
-                    url: "[https://www.bbc.co.uk/academy/en/collections/journalism](https://www.bbc.co.uk/academy/en/collections/journalism)"
+                    url: "https://www.bbc.co.uk/academy/en/collections/journalism"
                 },
                 {
                     title: "NPR Training – Journalism Training Resources",
-                    url: "[https://training.npr.org/](https://training.npr.org/)"
+                    url: "https://training.npr.org/"
                 },
                 {
                     title: "Coursera – Journalism Courses",
-                    url: "[https://www.coursera.org/courses?query=journalism](https://www.coursera.org/courses?query=journalism)"
+                    url: "https://www.coursera.org/courses?query=journalism"
                 },
                 {
                     title: "edX – Journalism and Media Courses",
-                    url: "[https://www.edx.org/learn/journalism](https://www.edx.org/learn/journalism)"
+                    url: "https://www.edx.org/learn/journalism"
                 },
                 {
                     title: "Khan Academy – Storytelling and Communication",
-                    url: "[https://www.khanacademy.org/college-careers-more/career-content/storytelling](https://www.khanacademy.org/college-careers-more/career-content/storytelling)"
+                    url: "https://www.khanacademy.org/college-careers-more/career-content/storytelling"
                 },
                 {
                     title: "YouTube Creator Academy – Storytelling for Video",
-                    url: "[https://creatoracademy.youtube.com/page/lesson/storytelling](https://creatoracademy.youtube.com/page/lesson/storytelling)"
+                    url: "https://creatoracademy.youtube.com/page/lesson/storytelling"
                 },
                 {
                     title: "The Open Notebook – Science Journalism Tips (applies broadly)",
-                    url: "[https://www.theopennotebook.com/category/craft/](https://www.theopennotebook.com/category/craft/)"
+                    url: "https://www.theopennotebook.com/category/craft/"
                 },
                 {
                     title: "AP Stylebook Basics",
-                    url: "[https://www.apstylebook.com/](https://www.apstylebook.com/)"
+                    url: "https://www.apstylebook.com/"
                 },
                 {
                     title: "Reuters Handbook of Journalism",
-                    url: "[https://www.reutersagency.com/en/about/standards-values/](https://www.reutersagency.com/en/about/standards-values/)"
+                    url: "https://www.reutersagency.com/en/about/standards-values/"
                 },
                 {
                     title: "Columbia Journalism Review – Resources",
-                    url: "[https://www.cjr.org/](https://www.cjr.org/)"
+                    url: "https://www.cjr.org/"
                 },
                 {
                     title: "National Press Photographers Association Ethics",
-                    url: "[https://nppa.org/code-ethics](https://nppa.org/code-ethics)"
+                    url: "https://nppa.org/code-ethics"
                 },
                 {
                     title: "Media College – Broadcast Journalism Tutorials",
-                    url: "[https://www.mediacollege.com/journalism/](https://www.mediacollege.com/journalism/)"
+                    url: "https://www.mediacollege.com/journalism/"
                 },
                 {
                     title: "SkillsYouNeed – Presentation Skills",
-                    url: "[https://www.skillsyouneed.com/presentation-skills.html](https://www.skillsyouneed.com/presentation-skills.html)"
+                    url: "https://www.skillsyouneed.com/presentation-skills.html"
                 },
                 {
                     title: "Harvard Business Review – How to Give a Great Presentation",
-                    url: "[https://hbr.org/2013/06/how-to-give-a-killer-presentation](https://hbr.org/2013/06/how-to-give-a-killer-presentation)"
+                    url: "https://hbr.org/2013/06/how-to-give-a-killer-presentation"
                 },
                 {
                     title: "TED – The Secret Structure of Great Talks",
-                    url: "[https://www.ted.com/talks/nancy_duarte_the_secret_structure_of_great_talks](https://www.ted.com/talks/nancy_duarte_the_secret_structure_of_great_talks)"
+                    url: "https://www.ted.com/talks/nancy_duarte_the_secret_structure_of_great_talks"
                 },
                 {
                     title: "Canva Design School – Video Storytelling",
-                    url: "[https://www.canva.com/learn/video-storytelling/](https://www.canva.com/learn/video-storytelling/)"
+                    url: "https://www.canva.com/learn/video-storytelling/"
                 },
                 {
                     title: "Quizlet – Broadcast Journalism Basics (FBLA search)",
-                    url: "[https://quizlet.com/search?query=fbla%20broadcast%20journalism&type=sets](https://quizlet.com/search?query=fbla%20broadcast%20journalism&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20broadcast%20journalism&type=sets"
                 },
                 {
                     title: "Quizlet – Journalism Ethics and Reporting Terms",
-                    url: "[https://quizlet.com/search?query=journalism%20ethics%20broadcast&type=sets](https://quizlet.com/search?query=journalism%20ethics%20broadcast&type=sets)"
+                    url: "https://quizlet.com/search?query=journalism%20ethics%20broadcast&type=sets"
                 },
                 {
                     title: "Quizlet – News Production and Reporting Terms",
-                    url: "[https://quizlet.com/search?query=news%20production%20terms&type=sets](https://quizlet.com/search?query=news%20production%20terms&type=sets)"
+                    url: "https://quizlet.com/search?query=news%20production%20terms&type=sets"
                 }
             ],
             aiPrompts: [
@@ -710,103 +710,103 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "Business Communication – Overview (Coursera)",
-                    url: "[https://www.coursera.org/learn/business-communication](https://www.coursera.org/learn/business-communication)"
+                    url: "https://www.coursera.org/learn/business-communication"
                 },
                 {
                     title: "Business Communication Skills (edX)",
-                    url: "[https://www.edx.org/learn/business-communication](https://www.edx.org/learn/business-communication)"
+                    url: "https://www.edx.org/learn/business-communication"
                 },
                 {
                     title: "Communication Skills in Business (Khan Academy)",
-                    url: "[https://www.khanacademy.org/college-careers-more/professional-development](https://www.khanacademy.org/college-careers-more/professional-development)"
+                    url: "https://www.khanacademy.org/college-careers-more/professional-development"
                 },
                 {
                     title: "Effective Business Writing (Harvard Business Review Guide)",
-                    url: "[https://hbr.org/2016/07/how-to-improve-your-business-writing](https://hbr.org/2016/07/how-to-improve-your-business-writing)"
+                    url: "https://hbr.org/2016/07/how-to-improve-your-business-writing"
                 },
                 {
                     title: "Business Writing Tips (Purdue OWL)",
-                    url: "[https://owl.purdue.edu/owl/subject_specific_writing/professional_technical_writing/index.html](https://owl.purdue.edu/owl/subject_specific_writing/professional_technical_writing/index.html)"
+                    url: "https://owl.purdue.edu/owl/subject_specific_writing/professional_technical_writing/index.html"
                 },
                 {
                     title: "Communication Process Explained (Investopedia)",
-                    url: "[https://www.investopedia.com/terms/c/communication.asp](https://www.investopedia.com/terms/c/communication.asp)"
+                    url: "https://www.investopedia.com/terms/c/communication.asp"
                 },
                 {
                     title: "Formal vs Informal Communication (Indeed Career Guide)",
-                    url: "[https://www.indeed.com/career-advice/career-development/formal-vs-informal-communication](https://www.indeed.com/career-advice/career-development/formal-vs-informal-communication)"
+                    url: "https://www.indeed.com/career-advice/career-development/formal-vs-informal-communication"
                 },
                 {
                     title: "Nonverbal Communication in Business (MindTools)",
-                    url: "[https://www.mindtools.com/CommSkll/NonverbalCommunication.htm](https://www.mindtools.com/CommSkll/NonverbalCommunication.htm)"
+                    url: "https://www.mindtools.com/CommSkll/NonverbalCommunication.htm"
                 },
                 {
                     title: "Active Listening Skills (SkillsYouNeed)",
-                    url: "[https://www.skillsyouneed.com/ips/active-listening.html](https://www.skillsyouneed.com/ips/active-listening.html)"
+                    url: "https://www.skillsyouneed.com/ips/active-listening.html"
                 },
                 {
                     title: "Barriers to Effective Communication (Lumen Learning)",
-                    url: "[https://courses.lumenlearning.com/wm-businesscommunication/chapter/barriers-to-effective-communication/](https://courses.lumenlearning.com/wm-businesscommunication/chapter/barriers-to-effective-communication/)"
+                    url: "https://courses.lumenlearning.com/wm-businesscommunication/chapter/barriers-to-effective-communication/"
                 },
                 {
                     title: "Interpersonal Communication Skills (OpenLearn)",
-                    url: "[https://www.open.edu/openlearn/money-business/leadership-management/interpersonal-skills/content-section-0](https://www.open.edu/openlearn/money-business/leadership-management/interpersonal-skills/content-section-0)"
+                    url: "https://www.open.edu/openlearn/money-business/leadership-management/interpersonal-skills/content-section-0"
                 },
                 {
                     title: "Email Writing for Business (Grammarly Blog)",
-                    url: "[https://www.grammarly.com/blog/business-email/](https://www.grammarly.com/blog/business-email/)"
+                    url: "https://www.grammarly.com/blog/business-email/"
                 },
                 {
                     title: "Report Writing in Business (University of Melbourne)",
-                    url: "[https://services.unimelb.edu.au/academicskills/resources/report-writing](https://services.unimelb.edu.au/academicskills/resources/report-writing)"
+                    url: "https://services.unimelb.edu.au/academicskills/resources/report-writing"
                 },
                 {
                     title: "Professional Presentation Skills (Toastmasters)",
-                    url: "[https://www.toastmasters.org/resources/public-speaking-tips](https://www.toastmasters.org/resources/public-speaking-tips)"
+                    url: "https://www.toastmasters.org/resources/public-speaking-tips"
                 },
                 {
                     title: "Ethics in Business Communication (Saylor Academy)",
-                    url: "[https://saylordotorg.github.io/text_business-communication-for-success/s11-ethics-in-business-communicat.html](https://saylordotorg.github.io/text_business-communication-for-success/s11-ethics-in-business-communicat.html)"
+                    url: "https://saylordotorg.github.io/text_business-communication-for-success/s11-ethics-in-business-communicat.html"
                 },
                 {
                     title: "Cross-Cultural Communication (University of Minnesota Libraries)",
-                    url: "[https://open.lib.umn.edu/businesscommunication/chapter/3-3-intercultural-communication/](https://open.lib.umn.edu/businesscommunication/chapter/3-3-intercultural-communication/)"
+                    url: "https://open.lib.umn.edu/businesscommunication/chapter/3-3-intercultural-communication/"
                 },
                 {
                     title: "Persuasive Communication Techniques (MindTools)",
-                    url: "[https://www.mindtools.com/pages/article/newTMC_96.htm](https://www.mindtools.com/pages/article/newTMC_96.htm)"
+                    url: "https://www.mindtools.com/pages/article/newTMC_96.htm"
                 },
                 {
                     title: "Organizational Communication (OpenStax)",
-                    url: "[https://openstax.org/details/books/business-ethics](https://openstax.org/details/books/business-ethics)"
+                    url: "https://openstax.org/details/books/business-ethics"
                 },
                 {
                     title: "Professional Tone in Writing (University of North Carolina Writing Center)",
-                    url: "[https://writingcenter.unc.edu/tips-and-tools/tone/](https://writingcenter.unc.edu/tips-and-tools/tone/)"
+                    url: "https://writingcenter.unc.edu/tips-and-tools/tone/"
                 },
                 {
                     title: "Meeting Management Skills (MindTools)",
-                    url: "[https://www.mindtools.com/pages/article/newLDR_90.htm](https://www.mindtools.com/pages/article/newLDR_90.htm)"
+                    url: "https://www.mindtools.com/pages/article/newLDR_90.htm"
                 },
                 {
                     title: "Quizlet: FBLA Business Communication Vocabulary",
-                    url: "[https://quizlet.com/search?query=fbla%20business%20communication&type=sets](https://quizlet.com/search?query=fbla%20business%20communication&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20business%20communication&type=sets"
                 },
                 {
                     title: "Quizlet: Business Communication Terms FBLA",
-                    url: "[https://quizlet.com/subject/fbla-business-communication/](https://quizlet.com/subject/fbla-business-communication/)"
+                    url: "https://quizlet.com/subject/fbla-business-communication/"
                 },
                 {
                     title: "Quizlet: Communication Process and Barriers (FBLA)",
-                    url: "[https://quizlet.com/search?query=fbla%20communication%20process&type=sets](https://quizlet.com/search?query=fbla%20communication%20process&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20communication%20process&type=sets"
                 },
                 {
                     title: "Quizlet: Business Writing and Email (FBLA)",
-                    url: "[https://quizlet.com/search?query=fbla%20business%20writing&type=sets](https://quizlet.com/search?query=fbla%20business%20writing&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20business%20writing&type=sets"
                 },
                 {
                     title: "Quizlet: Nonverbal Communication FBLA",
-                    url: "[https://quizlet.com/search?query=fbla%20nonverbal%20communication&type=sets](https://quizlet.com/search?query=fbla%20nonverbal%20communication&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20nonverbal%20communication&type=sets"
                 }
             ],
             aiPrompts: [
@@ -829,103 +829,103 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "Investopedia: Business Ethics Definition",
-                    url: "[https://www.investopedia.com/terms/b/business-ethics.asp](https://www.investopedia.com/terms/b/business-ethics.asp)"
+                    url: "https://www.investopedia.com/terms/b/business-ethics.asp"
                 },
                 {
                     title: "Markkula Center for Applied Ethics: Framework for Ethical Decision Making",
-                    url: "[https://www.scu.edu/ethics/ethics-resources/ethical-decision-making/](https://www.scu.edu/ethics/ethics-resources/ethical-decision-making/)"
+                    url: "https://www.scu.edu/ethics/ethics-resources/ethical-decision-making/"
                 },
                 {
                     title: "Khan Academy: Ethics and Public Policy",
-                    url: "[https://www.khanacademy.org/college-careers-more/ap-art-history/later-europe-and-americas/modernity-ap/a/ethics-and-public-policy](https://www.khanacademy.org/college-careers-more/ap-art-history/later-europe-and-americas/modernity-ap/a/ethics-and-public-policy)"
+                    url: "https://www.khanacademy.org/college-careers-more/ap-art-history/later-europe-and-americas/modernity-ap/a/ethics-and-public-policy"
                 },
                 {
                     title: "Harvard Business Review: A Framework for Making Ethical Decisions",
-                    url: "[https://hbr.org/2015/11/a-framework-for-making-ethical-decisions](https://hbr.org/2015/11/a-framework-for-making-ethical-decisions)"
+                    url: "https://hbr.org/2015/11/a-framework-for-making-ethical-decisions"
                 },
                 {
                     title: "Corporate Finance Institute: Business Ethics",
-                    url: "[https://corporatefinanceinstitute.com/resources/knowledge/other/business-ethics/](https://corporatefinanceinstitute.com/resources/knowledge/other/business-ethics/)"
+                    url: "https://corporatefinanceinstitute.com/resources/knowledge/other/business-ethics/"
                 },
                 {
                     title: "Ethics Unwrapped: Giving Voice to Values",
-                    url: "[https://ethicsunwrapped.utexas.edu/topic/giving-voice-to-values](https://ethicsunwrapped.utexas.edu/topic/giving-voice-to-values)"
+                    url: "https://ethicsunwrapped.utexas.edu/topic/giving-voice-to-values"
                 },
                 {
                     title: "Ethics Unwrapped: Moral Reasoning",
-                    url: "[https://ethicsunwrapped.utexas.edu/topic/moral-reasoning](https://ethicsunwrapped.utexas.edu/topic/moral-reasoning)"
+                    url: "https://ethicsunwrapped.utexas.edu/topic/moral-reasoning"
                 },
                 {
                     title: "Coursera: Introduction to Business Ethics",
-                    url: "[https://www.coursera.org/learn/business-ethics](https://www.coursera.org/learn/business-ethics)"
+                    url: "https://www.coursera.org/learn/business-ethics"
                 },
                 {
                     title: "Stanford Encyclopedia of Philosophy: Business Ethics",
-                    url: "[https://plato.stanford.edu/entries/ethics-business/](https://plato.stanford.edu/entries/ethics-business/)"
+                    url: "https://plato.stanford.edu/entries/ethics-business/"
                 },
                 {
                     title: "BBC Bitesize: Ethics in Business",
-                    url: "[https://www.bbc.co.uk/bitesize/guides/zq9g87h/revision/1](https://www.bbc.co.uk/bitesize/guides/zq9g87h/revision/1)"
+                    url: "https://www.bbc.co.uk/bitesize/guides/zq9g87h/revision/1"
                 },
                 {
                     title: "OECD: Business Integrity Toolkit",
-                    url: "[https://www.oecd.org/corruption/business-integrity-toolkit/](https://www.oecd.org/corruption/business-integrity-toolkit/)"
+                    url: "https://www.oecd.org/corruption/business-integrity-toolkit/"
                 },
                 {
                     title: "U.S. Small Business Administration: Ethics in Business",
-                    url: "[https://www.sba.gov/business-guide/manage-your-business/ethics](https://www.sba.gov/business-guide/manage-your-business/ethics)"
+                    url: "https://www.sba.gov/business-guide/manage-your-business/ethics"
                 },
                 {
                     title: "Indeed Career Guide: Business Ethics Definition and Examples",
-                    url: "[https://www.indeed.com/career-advice/career-development/business-ethics](https://www.indeed.com/career-advice/career-development/business-ethics)"
+                    url: "https://www.indeed.com/career-advice/career-development/business-ethics"
                 },
                 {
                     title: "AccountingTools: Code of Ethics Definition",
-                    url: "[https://www.accountingtools.com/articles/code-of-ethics](https://www.accountingtools.com/articles/code-of-ethics)"
+                    url: "https://www.accountingtools.com/articles/code-of-ethics"
                 },
                 {
                     title: "The Ethics Institute: What is Ethics?",
-                    url: "[https://www.ethicsinstitute.co.za/what-is-ethics](https://www.ethicsinstitute.co.za/what-is-ethics)"
+                    url: "https://www.ethicsinstitute.co.za/what-is-ethics"
                 },
                 {
                     title: "NASBA: Code of Professional Conduct Overview",
-                    url: "[https://nasba.org/licensure/nasbalicensing/codeofconduct/](https://nasba.org/licensure/nasbalicensing/codeofconduct/)"
+                    url: "https://nasba.org/licensure/nasbalicensing/codeofconduct/"
                 },
                 {
                     title: "McKinsey: The Role of Ethics in Decision Making",
-                    url: "[https://www.mckinsey.com/featured-insights/leadership/the-importance-of-ethics-in-decision-making](https://www.mckinsey.com/featured-insights/leadership/the-importance-of-ethics-in-decision-making)"
+                    url: "https://www.mckinsey.com/featured-insights/leadership/the-importance-of-ethics-in-decision-making"
                 },
                 {
                     title: "Ethics Unwrapped: Conflicts of Interest",
-                    url: "[https://ethicsunwrapped.utexas.edu/topic/conflicts-of-interest](https://ethicsunwrapped.utexas.edu/topic/conflicts-of-interest)"
+                    url: "https://ethicsunwrapped.utexas.edu/topic/conflicts-of-interest"
                 },
                 {
                     title: "Ethics Unwrapped: Whistleblowing",
-                    url: "[https://ethicsunwrapped.utexas.edu/topic/whistleblowing](https://ethicsunwrapped.utexas.edu/topic/whistleblowing)"
+                    url: "https://ethicsunwrapped.utexas.edu/topic/whistleblowing"
                 },
                 {
                     title: "Global Business Ethics Survey (Ethics & Compliance Initiative)",
-                    url: "[https://www.ethics.org/ecigb-es/](https://www.ethics.org/ecigb-es/)"
+                    url: "https://www.ethics.org/ecigb-es/"
                 },
                 {
                     title: "Quizlet: FBLA Business Ethics Presentation Study Set",
-                    url: "[https://quizlet.com/search?query=fbla%20business%20ethics%20presentation](https://quizlet.com/search?query=fbla%20business%20ethics%20presentation)"
+                    url: "https://quizlet.com/search?query=fbla%20business%20ethics%20presentation"
                 },
                 {
                     title: "Quizlet: Business Ethics Key Terms (FBLA)",
-                    url: "[https://quizlet.com/search?query=fbla%20business%20ethics%20terms](https://quizlet.com/search?query=fbla%20business%20ethics%20terms)"
+                    url: "https://quizlet.com/search?query=fbla%20business%20ethics%20terms"
                 },
                 {
                     title: "Quizlet: Ethical Decision Making Business Quiz",
-                    url: "[https://quizlet.com/search?query=fbla%20ethical%20decision%20making](https://quizlet.com/search?query=fbla%20ethical%20decision%20making)"
+                    url: "https://quizlet.com/search?query=fbla%20ethical%20decision%20making"
                 },
                 {
                     title: "Quizlet: Corporate Social Responsibility FBLA",
-                    url: "[https://quizlet.com/search?query=fbla%20corporate%20social%20responsibility](https://quizlet.com/search?query=fbla%20corporate%20social%20responsibility)"
+                    url: "https://quizlet.com/search?query=fbla%20corporate%20social%20responsibility"
                 },
                 {
                     title: "Quizlet: Business Law and Ethics FBLA Practice",
-                    url: "[https://quizlet.com/search?query=fbla%20business%20law%20ethics](https://quizlet.com/search?query=fbla%20business%20law%20ethics)"
+                    url: "https://quizlet.com/search?query=fbla%20business%20law%20ethics"
                 }
             ],
             aiPrompts: [
@@ -948,99 +948,99 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "Introduction to Business Law - Lumen Learning",
-                    url: "[https://courses.lumenlearning.com/wm-introductiontobusinesslaw/](https://courses.lumenlearning.com/wm-introductiontobusinesslaw/)"
+                    url: "https://courses.lumenlearning.com/wm-introductiontobusinesslaw/"
                 },
                 {
                     title: "Business Law - Saylor Academy",
-                    url: "[https://learn.saylor.org/course/view.php?id=33](https://learn.saylor.org/course/view.php?id=33)"
+                    url: "https://learn.saylor.org/course/view.php?id=33"
                 },
                 {
                     title: "Legal Basics for Entrepreneurs - Coursera",
-                    url: "[https://www.coursera.org/learn/legal-basics-entrepreneurs](https://www.coursera.org/learn/legal-basics-entrepreneurs)"
+                    url: "https://www.coursera.org/learn/legal-basics-entrepreneurs"
                 },
                 {
                     title: "Contract Law: From Trust to Promise to Contract - Harvard (edX)",
-                    url: "[https://pll.harvard.edu/course/contract-law-trust-promise-contract](https://pll.harvard.edu/course/contract-law-trust-promise-contract)"
+                    url: "https://pll.harvard.edu/course/contract-law-trust-promise-contract"
                 },
                 {
                     title: "Uniform Commercial Code (UCC) Overview - Cornell Law",
-                    url: "[https://www.law.cornell.edu/wex/uniform_commercial_code](https://www.law.cornell.edu/wex/uniform_commercial_code)"
+                    url: "https://www.law.cornell.edu/wex/uniform_commercial_code"
                 },
                 {
                     title: "What Is Business Law? - Investopedia",
-                    url: "[https://www.investopedia.com/terms/b/business-law.asp](https://www.investopedia.com/terms/b/business-law.asp)"
+                    url: "https://www.investopedia.com/terms/b/business-law.asp"
                 },
                 {
                     title: "Contract Law Basics - Legal Information Institute",
-                    url: "[https://www.law.cornell.edu/wex/contract](https://www.law.cornell.edu/wex/contract)"
+                    url: "https://www.law.cornell.edu/wex/contract"
                 },
                 {
                     title: "Tort Law Overview - Cornell Law",
-                    url: "[https://www.law.cornell.edu/wex/tort](https://www.law.cornell.edu/wex/tort)"
+                    url: "https://www.law.cornell.edu/wex/tort"
                 },
                 {
                     title: "Intellectual Property Basics - USPTO",
-                    url: "[https://www.uspto.gov/patents/basics](https://www.uspto.gov/patents/basics)"
+                    url: "https://www.uspto.gov/patents/basics"
                 },
                 {
                     title: "Employment Law Guide - U.S. Department of Labor",
-                    url: "[https://www.dol.gov/general/aboutdol/majorlaws](https://www.dol.gov/general/aboutdol/majorlaws)"
+                    url: "https://www.dol.gov/general/aboutdol/majorlaws"
                 },
                 {
                     title: "Antitrust Laws and Competition - Federal Trade Commission",
-                    url: "[https://www.ftc.gov/advice-guidance/competition-guidance/guide-antitrust-laws](https://www.ftc.gov/advice-guidance/competition-guidance/guide-antitrust-laws)"
+                    url: "https://www.ftc.gov/advice-guidance/competition-guidance/guide-antitrust-laws"
                 },
                 {
                     title: "Business Ethics and Legal Environment - OpenStax",
-                    url: "[https://openstax.org/details/books/business-ethics](https://openstax.org/details/books/business-ethics)"
+                    url: "https://openstax.org/details/books/business-ethics"
                 },
                 {
                     title: "Agency Law Overview - Cornell Law",
-                    url: "[https://www.law.cornell.edu/wex/agency](https://www.law.cornell.edu/wex/agency)"
+                    url: "https://www.law.cornell.edu/wex/agency"
                 },
                 {
                     title: "Sales Law and the UCC - Nolo",
-                    url: "[https://www.nolo.com/legal-encyclopedia/sales-law-the-ucc-29848.html](https://www.nolo.com/legal-encyclopedia/sales-law-the-ucc-29848.html)"
+                    url: "https://www.nolo.com/legal-encyclopedia/sales-law-the-ucc-29848.html"
                 },
                 {
                     title: "Bankruptcy Basics - United States Courts",
-                    url: "[https://www.uscourts.gov/services-forms/bankruptcy/bankruptcy-basics](https://www.uscourts.gov/services-forms/bankruptcy/bankruptcy-basics)"
+                    url: "https://www.uscourts.gov/services-forms/bankruptcy/bankruptcy-basics"
                 },
                 {
                     title: "Negotiable Instruments Overview - Investopedia",
-                    url: "[https://www.investopedia.com/terms/n/negotiableinstrument.asp](https://www.investopedia.com/terms/n/negotiableinstrument.asp)"
+                    url: "https://www.investopedia.com/terms/n/negotiableinstrument.asp"
                 },
                 {
                     title: "Partnerships and Corporations - IRS Business Structures",
-                    url: "[https://www.irs.gov/businesses/small-businesses-self-employed/business-structures](https://www.irs.gov/businesses/small-businesses-self-employed/business-structures)"
+                    url: "https://www.irs.gov/businesses/small-businesses-self-employed/business-structures"
                 },
                 {
                     title: "Consumer Protection Laws - Federal Trade Commission",
-                    url: "[https://consumer.ftc.gov/articles/consumer-protection-basics](https://consumer.ftc.gov/articles/consumer-protection-basics)"
+                    url: "https://consumer.ftc.gov/articles/consumer-protection-basics"
                 },
                 {
                     title: "E-Commerce Law Basics - American Bar Association",
-                    url: "[https://www.americanbar.org/groups/business_law/publications/blt/2017/01/05_goldman/](https://www.americanbar.org/groups/business_law/publications/blt/2017/01/05_goldman/)"
+                    url: "https://www.americanbar.org/groups/business_law/publications/blt/2017/01/05_goldman/"
                 },
                 {
                     title: "International Business Law Overview - World Trade Organization",
-                    url: "[https://www.wto.org/english/thewto_e/whatis_e/inbrief_e/inbr_e.htm](https://www.wto.org/english/thewto_e/whatis_e/inbrief_e/inbr_e.htm)"
+                    url: "https://www.wto.org/english/thewto_e/whatis_e/inbrief_e/inbr_e.htm"
                 },
                 {
                     title: "Quizlet: FBLA Business Law Vocabulary",
-                    url: "[https://quizlet.com/subject/fbla-business-law/](https://quizlet.com/subject/fbla-business-law/)"
+                    url: "https://quizlet.com/subject/fbla-business-law/"
                 },
                 {
                     title: "Quizlet: FBLA Business Law Practice Questions",
-                    url: "[https://quizlet.com/search?query=fbla%20business%20law&type=sets](https://quizlet.com/search?query=fbla%20business%20law&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20business%20law&type=sets"
                 },
                 {
                     title: "Quizlet: Business Law Contracts and Torts (FBLA)",
-                    url: "[https://quizlet.com/subject/business-law-contracts-torts-fbla/](https://quizlet.com/subject/business-law-contracts-torts-fbla/)"
+                    url: "https://quizlet.com/subject/business-law-contracts-torts-fbla/"
                 },
                 {
                     title: "Quizlet: FBLA Business Law Terms and Definitions",
-                    url: "[https://quizlet.com/search?query=fbla%20business%20law%20terms&type=sets](https://quizlet.com/search?query=fbla%20business%20law%20terms&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20business%20law%20terms&type=sets"
                 }
             ],
             aiPrompts: [
@@ -1063,99 +1063,99 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "SBA Guide to Managing a Business",
-                    url: "[https://www.sba.gov/business-guide/manage-your-business](https://www.sba.gov/business-guide/manage-your-business)"
+                    url: "https://www.sba.gov/business-guide/manage-your-business"
                 },
                 {
                     title: "Investopedia: Business Management Definition",
-                    url: "[https://www.investopedia.com/terms/b/business-management.asp](https://www.investopedia.com/terms/b/business-management.asp)"
+                    url: "https://www.investopedia.com/terms/b/business-management.asp"
                 },
                 {
                     title: "Harvard Business Review - Management Tips",
-                    url: "[https://hbr.org/topic/management](https://hbr.org/topic/management)"
+                    url: "https://hbr.org/topic/management"
                 },
                 {
                     title: "MindTools: Leadership Skills",
-                    url: "[https://www.mindtools.com/pages/main/newMN_LDR.htm](https://www.mindtools.com/pages/main/newMN_LDR.htm)"
+                    url: "https://www.mindtools.com/pages/main/newMN_LDR.htm"
                 },
                 {
                     title: "MindTools: Decision Making Techniques",
-                    url: "[https://www.mindtools.com/pages/main/newTED_00.htm](https://www.mindtools.com/pages/main/newTED_00.htm)"
+                    url: "https://www.mindtools.com/pages/main/newTED_00.htm"
                 },
                 {
                     title: "Coursera: Principles of Management",
-                    url: "[https://www.coursera.org/learn/principles-of-management](https://www.coursera.org/learn/principles-of-management)"
+                    url: "https://www.coursera.org/learn/principles-of-management"
                 },
                 {
                     title: "Khan Academy: Microeconomics (Decision-Making Concepts)",
-                    url: "[https://www.khanacademy.org/economics-finance-domain/microeconomics](https://www.khanacademy.org/economics-finance-domain/microeconomics)"
+                    url: "https://www.khanacademy.org/economics-finance-domain/microeconomics"
                 },
                 {
                     title: "Indeed Career Guide: Management Skills",
-                    url: "[https://www.indeed.com/career-advice/career-development/management-skills](https://www.indeed.com/career-advice/career-development/management-skills)"
+                    url: "https://www.indeed.com/career-advice/career-development/management-skills"
                 },
                 {
                     title: "Investopedia: SWOT Analysis",
-                    url: "[https://www.investopedia.com/terms/s/swot.asp](https://www.investopedia.com/terms/s/swot.asp)"
+                    url: "https://www.investopedia.com/terms/s/swot.asp"
                 },
                 {
                     title: "Investopedia: Organizational Structure",
-                    url: "[https://www.investopedia.com/terms/o/organizational-structure.asp](https://www.investopedia.com/terms/o/organizational-structure.asp)"
+                    url: "https://www.investopedia.com/terms/o/organizational-structure.asp"
                 },
                 {
                     title: "Corporate Finance Institute: Leadership vs Management",
-                    url: "[https://corporatefinanceinstitute.com/resources/management/leadership-vs-management/](https://corporatefinanceinstitute.com/resources/management/leadership-vs-management/)"
+                    url: "https://corporatefinanceinstitute.com/resources/management/leadership-vs-management/"
                 },
                 {
                     title: "Corporate Finance Institute: Conflict Resolution",
-                    url: "[https://corporatefinanceinstitute.com/resources/management/conflict-resolution/](https://corporatefinanceinstitute.com/resources/management/conflict-resolution/)"
+                    url: "https://corporatefinanceinstitute.com/resources/management/conflict-resolution/"
                 },
                 {
                     title: "McKinsey & Company: Strategy & Corporate Finance Insights",
-                    url: "[https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights](https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights)"
+                    url: "https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights"
                 },
                 {
                     title: "Asana: Project Management Basics",
-                    url: "[https://asana.com/resources/project-management-basics](https://asana.com/resources/project-management-basics)"
+                    url: "https://asana.com/resources/project-management-basics"
                 },
                 {
                     title: "HubSpot: Management Skills Guide",
-                    url: "[https://blog.hubspot.com/marketing/management-skills](https://blog.hubspot.com/marketing/management-skills)"
+                    url: "https://blog.hubspot.com/marketing/management-skills"
                 },
                 {
                     title: "OpenStax Principles of Management Textbook",
-                    url: "[https://openstax.org/details/books/principles-management](https://openstax.org/details/books/principles-management)"
+                    url: "https://openstax.org/details/books/principles-management"
                 },
                 {
                     title: "MIT OpenCourseWare: Introduction to Management",
-                    url: "[https://ocw.mit.edu/courses/sloan-school-of-management/](https://ocw.mit.edu/courses/sloan-school-of-management/)"
+                    url: "https://ocw.mit.edu/courses/sloan-school-of-management/"
                 },
                 {
                     title: "American Management Association: Management Training Articles",
-                    url: "[https://www.amanet.org/articles/](https://www.amanet.org/articles/)"
+                    url: "https://www.amanet.org/articles/"
                 },
                 {
                     title: "Indeed: How to Handle Workplace Conflict",
-                    url: "[https://www.indeed.com/career-advice/career-development/how-to-handle-conflict-at-work](https://www.indeed.com/career-advice/career-development/how-to-handle-conflict-at-work)"
+                    url: "https://www.indeed.com/career-advice/career-development/how-to-handle-conflict-at-work"
                 },
                 {
                     title: "Investopedia: Leadership Definition",
-                    url: "[https://www.investopedia.com/terms/l/leadership.asp](https://www.investopedia.com/terms/l/leadership.asp)"
+                    url: "https://www.investopedia.com/terms/l/leadership.asp"
                 },
                 {
                     title: "Quizlet: FBLA Business Management Role Play",
-                    url: "[https://quizlet.com/search?query=fbla%20business%20management%20role%20play&type=sets](https://quizlet.com/search?query=fbla%20business%20management%20role%20play&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20business%20management%20role%20play&type=sets"
                 },
                 {
                     title: "Quizlet: FBLA Management Role Play Terms",
-                    url: "[https://quizlet.com/search?query=fbla%20management%20role%20play&type=sets](https://quizlet.com/search?query=fbla%20management%20role%20play&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20management%20role%20play&type=sets"
                 },
                 {
                     title: "Quizlet: FBLA Business Management Vocabulary",
-                    url: "[https://quizlet.com/search?query=fbla%20business%20management%20vocabulary&type=sets](https://quizlet.com/search?query=fbla%20business%20management%20vocabulary&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20business%20management%20vocabulary&type=sets"
                 },
                 {
                     title: "Quizlet: FBLA Leadership and Management Concepts",
-                    url: "[https://quizlet.com/search?query=fbla%20leadership%20management&type=sets](https://quizlet.com/search?query=fbla%20leadership%20management&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla%20leadership%20management&type=sets"
                 }
             ],
             aiPrompts: [
@@ -1178,95 +1178,95 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "SBA Guide: Write Your Business Plan",
-                    url: "[https://www.sba.gov/business-guide/plan-your-business/write-your-business-plan](https://www.sba.gov/business-guide/plan-your-business/write-your-business-plan)"
+                    url: "https://www.sba.gov/business-guide/plan-your-business/write-your-business-plan"
                 },
                 {
                     title: "Investopedia: Business Plan Definition",
-                    url: "[https://www.investopedia.com/terms/b/business-plan.asp](https://www.investopedia.com/terms/b/business-plan.asp)"
+                    url: "https://www.investopedia.com/terms/b/business-plan.asp"
                 },
                 {
                     title: "Bplans: How to Write a Business Plan",
-                    url: "[https://www.bplans.com/business-plan-template/](https://www.bplans.com/business-plan-template/)"
+                    url: "https://www.bplans.com/business-plan-template/"
                 },
                 {
                     title: "Harvard Business Review: How to Write a Winning Business Plan",
-                    url: "[https://hbr.org/1997/07/how-to-write-a-winning-business-plan](https://hbr.org/1997/07/how-to-write-a-winning-business-plan)"
+                    url: "https://hbr.org/1997/07/how-to-write-a-winning-business-plan"
                 },
                 {
                     title: "Score.org Business Plan Template and Guide",
-                    url: "[https://www.score.org/resource/business-plan-template-startup-business](https://www.score.org/resource/business-plan-template-startup-business)"
+                    url: "https://www.score.org/resource/business-plan-template-startup-business"
                 },
                 {
                     title: "Entrepreneur: Write Your Business Plan",
-                    url: "[https://www.entrepreneur.com/growing-a-business/how-to-write-a-business-plan/247575](https://www.entrepreneur.com/growing-a-business/how-to-write-a-business-plan/247575)"
+                    url: "https://www.entrepreneur.com/growing-a-business/how-to-write-a-business-plan/247575"
                 },
                 {
                     title: "U.S. Small Business Administration Market Research Guide",
-                    url: "[https://www.sba.gov/business-guide/plan-your-business/market-research-competitive-analysis](https://www.sba.gov/business-guide/plan-your-business/market-research-competitive-analysis)"
+                    url: "https://www.sba.gov/business-guide/plan-your-business/market-research-competitive-analysis"
                 },
                 {
                     title: "MIT OpenCourseWare: New Enterprises Business Planning",
-                    url: "[https://ocw.mit.edu/courses/15-390-new-enterprises-spring-2013/](https://ocw.mit.edu/courses/15-390-new-enterprises-spring-2013/)"
+                    url: "https://ocw.mit.edu/courses/15-390-new-enterprises-spring-2013/"
                 },
                 {
                     title: "Khan Academy: Entrepreneurship Course",
-                    url: "[https://www.khanacademy.org/economics-finance-domain/core-finance/entrepreneurship](https://www.khanacademy.org/economics-finance-domain/core-finance/entrepreneurship)"
+                    url: "https://www.khanacademy.org/economics-finance-domain/core-finance/entrepreneurship"
                 },
                 {
                     title: "Coursera: Entrepreneurship Specialization (Wharton)",
-                    url: "[https://www.coursera.org/specializations/wharton-entrepreneurship](https://www.coursera.org/specializations/wharton-entrepreneurship)"
+                    url: "https://www.coursera.org/specializations/wharton-entrepreneurship"
                 },
                 {
                     title: "Y Combinator: How to Build a Startup",
-                    url: "[https://www.ycombinator.com/library/4A-how-to-build-a-startup](https://www.ycombinator.com/library/4A-how-to-build-a-startup)"
+                    url: "https://www.ycombinator.com/library/4A-how-to-build-a-startup"
                 },
                 {
                     title: "Shopify: Business Plan Guide",
-                    url: "[https://www.shopify.com/blog/business-plan](https://www.shopify.com/blog/business-plan)"
+                    url: "https://www.shopify.com/blog/business-plan"
                 },
                 {
                     title: "NerdWallet: Write a Business Plan",
-                    url: "[https://www.nerdwallet.com/article/small-business/how-to-write-a-business-plan](https://www.nerdwallet.com/article/small-business/how-to-write-a-business-plan)"
+                    url: "https://www.nerdwallet.com/article/small-business/how-to-write-a-business-plan"
                 },
                 {
                     title: "Indeed: How to Create a Business Plan",
-                    url: "[https://www.indeed.com/career-advice/career-development/how-to-create-a-business-plan](https://www.indeed.com/career-advice/career-development/how-to-create-a-business-plan)"
+                    url: "https://www.indeed.com/career-advice/career-development/how-to-create-a-business-plan"
                 },
                 {
                     title: "U.S. Chamber of Commerce: Business Plan Guide",
-                    url: "[https://www.uschamber.com/co/start/strategy/business-plan](https://www.uschamber.com/co/start/strategy/business-plan)"
+                    url: "https://www.uschamber.com/co/start/strategy/business-plan"
                 },
                 {
                     title: "Palo Alto Software: Business Plan Outline",
-                    url: "[https://www.liveplan.com/blog/business-plan-outline](https://www.liveplan.com/blog/business-plan-outline)"
+                    url: "https://www.liveplan.com/blog/business-plan-outline"
                 },
                 {
                     title: "Forbes: Key Elements of a Business Plan",
-                    url: "[https://www.forbes.com/advisor/business/business-plan/](https://www.forbes.com/advisor/business/business-plan/)"
+                    url: "https://www.forbes.com/advisor/business/business-plan/"
                 },
                 {
                     title: "Stanford eCorner: Business Models",
-                    url: "[https://ecorner.stanford.edu/topic/business-models/](https://ecorner.stanford.edu/topic/business-models/)"
+                    url: "https://ecorner.stanford.edu/topic/business-models/"
                 },
                 {
                     title: "HubSpot: Business Plan Template",
-                    url: "[https://blog.hubspot.com/marketing/business-plan-template](https://blog.hubspot.com/marketing/business-plan-template)"
+                    url: "https://blog.hubspot.com/marketing/business-plan-template"
                 },
                 {
                     title: "McKinsey: Developing a Strategy and Business Plan",
-                    url: "[https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights](https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights)"
+                    url: "https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights"
                 },
                 {
                     title: "Quizlet: FBLA Business Plan Presentation Terms",
-                    url: "[https://quizlet.com/search?query=fbla-business-plan-presentation&type=sets](https://quizlet.com/search?query=fbla-business-plan-presentation&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla-business-plan-presentation&type=sets"
                 },
                 {
                     title: "Quizlet: Business Plan Vocabulary (FBLA)",
-                    url: "[https://quizlet.com/search?query=fbla-business-plan&type=sets](https://quizlet.com/search?query=fbla-business-plan&type=sets)"
+                    url: "https://quizlet.com/search?query=fbla-business-plan&type=sets"
                 },
                 {
                     title: "Quizlet: Entrepreneurship Business Plan Concepts",
-                    url: "[https://quizlet.com/search?query=entrepreneurship-business-plan&type=sets](https://quizlet.com/search?query=entrepreneurship-business-plan&type=sets)"
+                    url: "https://quizlet.com/search?query=entrepreneurship-business-plan&type=sets"
                 }
             ],
             aiPrompts: [
@@ -1289,83 +1289,83 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA Career Portfolio Competitive Event Details",
-                    url: "[https://www.fbla.org/competitive-events/career-portfolio/](https://www.fbla.org/competitive-events/career-portfolio/)"
+                    url: "https://www.fbla.org/competitive-events/career-portfolio/"
                 },
                 {
                     title: "2025–2026 FBLA Career Portfolio Competitive Events Guidelines (PDF)",
-                    url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%vents%20Resources/Individual%20Guidelines/Presentation%20Events/Career-Portfolio.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%vents%20Resources/Individual%20Guidelines/Presentation%20Events/Career-Portfolio.pdf)"
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%vents%20Resources/Individual%20Guidelines/Presentation%20Events/Career-Portfolio.pdf"
                 },
                 {
                     title: "Career Portfolio Vocabulary Flashcards on Quizlet",
-                    url: "[https://quizlet.com/1106235980/career-portfolio-vocaulary-flash-cards/](https://quizlet.com/1106235980/career-portfolio-vocaulary-flash-cards/)"
+                    url: "https://quizlet.com/1106235980/career-portfolio-vocaulary-flash-cards/"
                 },
                 {
                     title: "Career Portfolio Flashcards on Quizlet",
-                    url: "[https://quizlet.com/76259696](https://quizlet.com/76259696)"
+                    url: "https://quizlet.com/76259696"
                 },
                 {
                     title: "Career Portfolio Guide (Texas State University Career Services)",
-                    url: "[https://www.careerservices.txst.edu/students-alumni/resources-services/career-guides/portfolio-guide.html](https://www.careerservices.txst.edu/students-alumni/resources-services/career-guides/portfolio-guide.html)"
+                    url: "https://www.careerservices.txst.edu/students-alumni/resources-services/career-guides/portfolio-guide.html"
                 },
                 {
                     title: "Comprehensive Guide to Showcasing Your Portfolio (WGU Career Resources)",
-                    url: "[https://careers.wgu.edu/resources/comprehensive-guide-to-showcasing-your-portfolio/](https://careers.wgu.edu/resources/comprehensive-guide-to-showcasing-your-portfolio/)"
+                    url: "https://careers.wgu.edu/resources/comprehensive-guide-to-showcasing-your-portfolio/"
                 },
                 {
                     title: "12 Elements to Include in a Career Portfolio (Indeed)",
-                    url: "[https://www.indeed.com/career-advice/resumes-cover-letters/career-portfolio](https://www.indeed.com/career-advice/resumes-cover-letters/career-portfolio)"
+                    url: "https://www.indeed.com/career-advice/resumes-cover-letters/career-portfolio"
                 },
                 {
                     title: "What Is a Work Portfolio & How to Build One (Indeed Career Guide)",
-                    url: "[https://www.indeed.com/career-advice/resumes-cover-letters/build-your-work-portfolio](https://www.indeed.com/career-advice/resumes-cover-letters/build-your-work-portfolio)"
+                    url: "https://www.indeed.com/career-advice/resumes-cover-letters/build-your-work-portfolio"
                 },
                 {
                     title: "Electronic Career Portfolio Overview (fbla-resources Google Site)",
-                    url: "[https://sites.google.com/mhrd.org/fbla-resources/Presentation-Events/Individual/Electronic-Career-Portfolio](https://sites.google.com/mhrd.org/fbla-resources/Presentation-Events/Individual/Electronic-Career-Portfolio)"
+                    url: "https://sites.google.com/mhrd.org/fbla-resources/Presentation-Events/Individual/Electronic-Career-Portfolio"
                 },
                 {
                     title: "FBLA Career Ready Practice Event Archive",
-                    url: "[https://www.fbla.org/career_cluster/career-ready-practice/](https://www.fbla.org/career_cluster/career-ready-practice/)"
+                    url: "https://www.fbla.org/career_cluster/career-ready-practice/"
                 },
                 {
                     title: "FBLA High School Competitive Events Overview",
-                    url: "[https://www.fbla.org/high-school/competitive-events/](https://www.fbla.org/high-school/competitive-events/)"
+                    url: "https://www.fbla.org/high-school/competitive-events/"
                 },
                 {
                     title: "FBLA Electronic Career Portfolio Presentation Example on Emaze",
-                    url: "[https://www.emaze.com/%40aoctqfqqq/FBLA-Electronic-Career-Portfolio](https://www.emaze.com/%40aoctqfqqq/FBLA-Electronic-Career-Portfolio)"
+                    url: "https://www.emaze.com/%40aoctqfqqq/FBLA-Electronic-Career-Portfolio"
                 },
                 {
                     title: "Career Portfolio (Wikipedia overview)",
-                    url: "[https://en.wikipedia.org/wiki/Career_portfolio](https://en.wikipedia.org/wiki/Career_portfolio)"
+                    url: "https://en.wikipedia.org/wiki/Career_portfolio"
                 },
                 {
                     title: "Resume Tips for a Portfolio Career (IvyExec)",
-                    url: "[https://ivyexec.com/career-advice/2016/resume-portfolio-career/](https://ivyexec.com/career-advice/2016/resume-portfolio-career/)"
+                    url: "https://ivyexec.com/career-advice/2016/resume-portfolio-career/"
                 },
                 {
                     title: "Developing a Career Portfolio (PDF Guide)",
-                    url: "[https://aiha-assets.sfo2.digitaloceanspaces.com/AIHA/resources/CareerAdvantage/How-to-Develop-a-Career-Portfolio.pdf](https://aiha-assets.sfo2.digitaloceanspaces.com/AIHA/resources/CareerAdvantage/How-to-Develop-a-Career-Portfolio.pdf)"
+                    url: "https://aiha-assets.sfo2.digitaloceanspaces.com/AIHA/resources/CareerAdvantage/How-to-Develop-a-Career-Portfolio.pdf"
                 },
                 {
                     title: "FBLA SEM Careers Flashcards (related career Flashcards on Quizlet)",
-                    url: "[https://quizlet.com/1009411668/fbla-sem-careers-flash-cards/](https://quizlet.com/1009411668/fbla-sem-careers-flash-cards/)"
+                    url: "https://quizlet.com/1009411668/fbla-sem-careers-flash-cards/"
                 },
                 {
                     title: "Formulas for Career Success: Portfolio Development (Quizlet)",
-                    url: "[https://quizlet.com/399764610/formulas-for-career-success-portfolio-development-assessment-iii-flash-cards/](https://quizlet.com/399764610/formulas-for-career-success-portfolio-development-assessment-iii-flash-cards/)"
+                    url: "https://quizlet.com/399764610/formulas-for-career-success-portfolio-development-assessment-iii-flash-cards/"
                 },
                 {
                     title: "Additional Career Portfolio Flashcards (Quizlet set)",
-                    url: "[https://quizlet.com/76259696](https://quizlet.com/76259696)"
+                    url: "https://quizlet.com/76259696"
                 },
                 {
                     title: "Career Portfolio Professional Presentation Tips (Texas State)",
-                    url: "[https://www.careerservices.txst.edu/students-alumni/resources-services/career-guides/portfolio-guide.html](https://www.careerservices.txst.edu/students-alumni/resources-services/career-guides/portfolio-guide.html)"
+                    url: "https://www.careerservices.txst.edu/students-alumni/resources-services/career-guides/portfolio-guide.html"
                 },
                 {
                     title: "Portfolio Showcasing Tips (WGU Career Resources)",
-                    url: "[https://careers.wgu.edu/resources/comprehensive-guide-to-showcasing-your-portfolio/](https://careers.wgu.edu/resources/comprehensive-guide-to-showcasing-your-portfolio/)"
+                    url: "https://careers.wgu.edu/resources/comprehensive-guide-to-showcasing-your-portfolio/"
                 }
             ],
             aiPrompts: [
@@ -1486,83 +1486,83 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA Community Service Project Competitive Event Overview",
-                    url: "[https://www.fbla.org/competitive-events/community-service-project-2/](https://www.fbla.org/competitive-events/community-service-project-2/)"
+                    url: "https://www.fbla.org/competitive-events/community-service-project-2/"
                 },
                 {
                     title: "2025‑2026 FBLA Competitive Events Guidelines: Community Service Project (High School)",
-                    url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/25-26-High-School-Guidelines-All-in-One.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/25-26-High-School-Guidelines-All-in-One.pdf)"
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/25-26-High-School-Guidelines-All-in-One.pdf"
                 },
                 {
                     title: "Florida FBLA Community Service Project Event Details",
-                    url: "[https://www.flfbla.org/event-community-service-project](https://www.flfbla.org/event-community-service-project)"
+                    url: "https://www.flfbla.org/event-community-service-project"
                 },
                 {
                     title: "FBLA Community Service Project Packet (Ideas & Hints)",
-                    url: "[https://pafbla.org/downloads/11_Web_Postings--2011/%2B11_Recruitment_Ideas/commserviceideas.pdf](https://pafbla.org/downloads/11_Web_Postings--2011/%2B11_Recruitment_Ideas/commserviceideas.pdf)"
+                    url: "https://pafbla.org/downloads/11_Web_Postings--2011/%2B11_Recruitment_Ideas/commserviceideas.pdf"
                 },
                 {
                     title: "Quizlet: FBLA community service project Flashcards",
-                    url: "[https://quizlet.com/683250900/fbla-community-service-project-flash-cards/](https://quizlet.com/683250900/fbla-community-service-project-flash-cards/)"
+                    url: "https://quizlet.com/683250900/fbla-community-service-project-flash-cards/"
                 },
                 {
                     title: "Quizlet: FBLA COMMUNITY SERVICE PROJECT 2022 Flashcards",
-                    url: "[https://quizlet.com/688796117/fbla-community-service-project-2022-flash-cards/](https://quizlet.com/688796117/fbla-community-service-project-2022-flash-cards/)"
+                    url: "https://quizlet.com/688796117/fbla-community-service-project-2022-flash-cards/"
                 },
                 {
                     title: "Planning Your Community Service Project Guide (MSU Extension)",
-                    url: "[https://www.canr.msu.edu/uploads/236/67527/PlanYourCommServProj.pdf](https://www.canr.msu.edu/uploads/236/67527/PlanYourCommServProj.pdf)"
+                    url: "https://www.canr.msu.edu/uploads/236/67527/PlanYourCommServProj.pdf"
                 },
                 {
                     title: "63 Unique Community Service Project Ideas for Nonprofits",
-                    url: "[https://www.bonterratech.com/blog/community-service-projects](https://www.bonterratech.com/blog/community-service-projects)"
+                    url: "https://www.bonterratech.com/blog/community-service-projects"
                 },
                 {
                     title: "131 Great Examples of Community Service Projects",
-                    url: "[https://research.com/education/examples-of-community-service-projects](https://research.com/education/examples-of-community-service-projects)"
+                    url: "https://research.com/education/examples-of-community-service-projects"
                 },
                 {
                     title: "99 Community Service Project Ideas Across Ages",
-                    url: "[https://www.rosterfy.com/resources-hub/blog/99-community-service-project-ideas/](https://www.rosterfy.com/resources-hub/blog/99-community-service-project-ideas/)"
+                    url: "https://www.rosterfy.com/resources-hub/blog/99-community-service-project-ideas/"
                 },
                 {
                     title: "How to Create Successful Community Service Projects",
-                    url: "[https://blog.prepscholar.com/community-service-projects](https://blog.prepscholar.com/community-service-projects)"
+                    url: "https://blog.prepscholar.com/community-service-projects"
                 },
                 {
                     title: "Organizing Service Projects Toolkit (SME)",
-                    url: "[https://www.sme.org/globalassets/sme.org/membership/sme-chapter-toolkit/organizing-service-projects.pdf](https://www.sme.org/globalassets/sme.org/membership/sme-chapter-toolkit/organizing-service-projects.pdf)"
+                    url: "https://www.sme.org/globalassets/sme.org/membership/sme-chapter-toolkit/organizing-service-projects.pdf"
                 },
                 {
                     title: "Youth Volunteer Corps (national youth volunteer organization)",
-                    url: "[https://yvc.org/](https://yvc.org/)"
+                    url: "https://yvc.org/"
                 },
                 {
                     title: "Rebuilding Together: Neighborhood Revitalization Volunteer Opportunities",
-                    url: "[https://rebuildingtogether.org/](https://rebuildingtogether.org/)"
+                    url: "https://rebuildingtogether.org/"
                 },
                 {
                     title: "FBLA Big 33 Community Service Program (PA FBLA)",
-                    url: "[https://www.pafbla.org/programs/big-33-community-service/](https://www.pafbla.org/programs/big-33-community-service/)"
+                    url: "https://www.pafbla.org/programs/big-33-community-service/"
                 },
                 {
                     title: "Homestead FBLA Community Service Overview",
-                    url: "[https://www.hhsfbla.com/projects/community-service](https://www.hhsfbla.com/projects/community-service)"
+                    url: "https://www.hhsfbla.com/projects/community-service"
                 },
                 {
                     title: "FBLA Service Season One‑Pager (FBLA official PDF)",
-                    url: "[https://www.fbla.org/media/2023/08/2023-24-Service-Season-One-Pager.pdf](https://www.fbla.org/media/2023/08/2023-24-Service-Season-One-Pager.pdf)"
+                    url: "https://www.fbla.org/media/2023/08/2023-24-Service-Season-One-Pager.pdf"
                 },
                 {
                     title: "Plan Your Service Project (FFA guide with steps)",
-                    url: "[https://www.ffa.org/livingtoserve/plan-your-service-project/](https://www.ffa.org/livingtoserve/plan-your-service-project/)"
+                    url: "https://www.ffa.org/livingtoserve/plan-your-service-project/"
                 },
                 {
                     title: "Nonprofit Skills‑Based Volunteering Toolkit (Ohio Gov PDF)",
-                    url: "[https://dam.assets.ohio.gov/image/upload/serve.ohio.gov/SBV%20Toolkit%20FINAL.pdf](https://dam.assets.ohio.gov/image/upload/serve.ohio.gov/SBV%20Toolkit%20FINAL.pdf)"
+                    url: "https://dam.assets.ohio.gov/image/upload/serve.ohio.gov/SBV%20Toolkit%20FINAL.pdf"
                 },
                 {
                     title: "Evaluation Planning Examples & Template for Service Projects",
-                    url: "[https://saferoutespartnership.org/resource/evaluation-planning-examples-and-template/](https://saferoutespartnership.org/resource/evaluation-planning-examples-and-template/)"
+                    url: "https://saferoutespartnership.org/resource/evaluation-planning-examples-and-template/"
                 }
             ],
             aiPrompts: [
@@ -1683,83 +1683,83 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA Official Computer Game & Simulation Programming Event Guidelines",
-                    url: "[https://www.fbla.org/competitive-events/computer-game-simulation-programming/](https://www.fbla.org/competitive-events/computer-game-simulation-programming/)"
+                    url: "https://www.fbla.org/competitive-events/computer-game-simulation-programming/"
                 },
                 {
                     title: "FBLA Computer Game & Simulation Programming Flashcards (Key Rules & Requirements) - Quizlet",
-                    url: "[https://quizlet.com/1086873479](https://quizlet.com/1086873479)"
+                    url: "https://quizlet.com/1086873479"
                 },
                 {
                     title: "FBLA Computer Game & Simulation Flashcards - Quizlet",
-                    url: "[https://quizlet.com/267945902](https://quizlet.com/267945902)"
+                    url: "https://quizlet.com/267945902"
                 },
                 {
                     title: "Unity Learn Official Tutorials and Courses (Game Development)",
-                    url: "[https://learn.unity.com/](https://learn.unity.com/)"
+                    url: "https://learn.unity.com/"
                 },
                 {
                     title: "Introduction to Game Development Course - Codecademy",
-                    url: "[https://www.codecademy.com/learn/learn-game-development](https://www.codecademy.com/learn/learn-game-development)"
+                    url: "https://www.codecademy.com/learn/learn-game-development"
                 },
                 {
                     title: "Video Game Design & Development Course - FutureLearn",
-                    url: "[https://www.futurelearn.com/courses/video-game-design-development/5](https://www.futurelearn.com/courses/video-game-design-development/5)"
+                    url: "https://www.futurelearn.com/courses/video-game-design-development/5"
                 },
                 {
                     title: "Game Programming Essentials Course - CG Spectrum",
-                    url: "[https://www.cgspectrum.com/courses/game-programming-essentials](https://www.cgspectrum.com/courses/game-programming-essentials)"
+                    url: "https://www.cgspectrum.com/courses/game-programming-essentials"
                 },
                 {
                     title: "Game Programming Courses - CG Spectrum",
-                    url: "[https://www.cgspectrum.com/courses/game-programming](https://www.cgspectrum.com/courses/game-programming)"
+                    url: "https://www.cgspectrum.com/courses/game-programming"
                 },
                 {
                     title: "Simulation and Game Development Research Guide - Wake Tech Library",
-                    url: "[https://researchguides.waketech.edu/SimulationandGameDevelopment](https://researchguides.waketech.edu/SimulationandGameDevelopment)"
+                    url: "https://researchguides.waketech.edu/SimulationandGameDevelopment"
                 },
                 {
                     title: "Phaser HTML5 Game Framework (Documentation & Examples)",
-                    url: "[https://phaser.io/](https://phaser.io/)"
+                    url: "https://phaser.io/"
                 },
                 {
                     title: "Godot Game Engine (Open‑Source Game Dev)",
-                    url: "[https://en.wikipedia.org/wiki/GDevelop](https://en.wikipedia.org/wiki/GDevelop)"
+                    url: "https://en.wikipedia.org/wiki/GDevelop"
                 },
                 {
                     title: "Owlcat Games GameDev Learning Drop (Directory of Game Dev Resources)",
-                    url: "[https://www.pcgamer.com/gaming-industry/rpg-developer-owlcat-launches-free-game-dev-learning-resource-a-rising-tide-truly-lifts-all-ships/](https://www.pcgamer.com/gaming-industry/rpg-developer-owlcat-launches-free-game-dev-learning-resource-a-rising-tide-truly-lifts-all-ships/)"
+                    url: "https://www.pcgamer.com/gaming-industry/rpg-developer-owlcat-launches-free-game-dev-learning-resource-a-rising-tide-truly-lifts-all-ships/"
                 },
                 {
                     title: "Kodu Game Lab (Visual Game Dev for Beginners)",
-                    url: "[https://en.wikipedia.org/wiki/Kodu_Game_Lab](https://en.wikipedia.org/wiki/Kodu_Game_Lab)"
+                    url: "https://en.wikipedia.org/wiki/Kodu_Game_Lab"
                 },
                 {
                     title: "Lightbot (Educational Programming Puzzle Game)",
-                    url: "[https://en.wikipedia.org/wiki/Lightbot](https://en.wikipedia.org/wiki/Lightbot)"
+                    url: "https://en.wikipedia.org/wiki/Lightbot"
                 },
                 {
                     title: "CodeCombat (Educational Game for Learning Programming)",
-                    url: "[https://en.wikipedia.org/wiki/CodeCombat](https://en.wikipedia.org/wiki/CodeCombat)"
+                    url: "https://en.wikipedia.org/wiki/CodeCombat"
                 },
                 {
                     title: "Intro to Game Design Microcourse - Tynker",
-                    url: "[https://www.tynker.com/camps/live/courses/intro-to-game-design-microcourse](https://www.tynker.com/camps/live/courses/intro-to-game-design-microcourse)"
+                    url: "https://www.tynker.com/camps/live/courses/intro-to-game-design-microcourse"
                 },
                 {
                     title: "Programming 300: Intro to Game Design - Tynker",
-                    url: "[https://www.tynker.com/free-classroom-school/coding-curriculum/programming-300/2-intro-to-game-design](https://www.tynker.com/free-classroom-school/coding-curriculum/programming-300/2-intro-to-game-design)"
+                    url: "https://www.tynker.com/free-classroom-school/coding-curriculum/programming-300/2-intro-to-game-design"
                 },
                 {
                     title: "JavaScript Game Design Course - SimplyCoding.org",
-                    url: "[https://simplycoding.org/product/code-computer-games-in-javascript-course/](https://simplycoding.org/product/code-computer-games-in-javascript-course/)"
+                    url: "https://simplycoding.org/product/code-computer-games-in-javascript-course/"
                 },
                 {
                     title: "Zero‑to‑Mastery Game Development Resources",
-                    url: "[https://zero-to-mastery.github.io/resources/GameDev.html](https://zero-to-mastery.github.io/resources/GameDev.html)"
+                    url: "https://zero-to-mastery.github.io/resources/GameDev.html"
                 },
                 {
                     title: "Best Unity Courses List (Class Central)",
-                    url: "[https://www.classcentral.com/report/best-unity-courses/](https://www.classcentral.com/report/best-unity-courses/)"
+                    url: "https://www.classcentral.com/report/best-unity-courses/"
                 }
             ],
             aiPrompts: [
@@ -1978,83 +1978,83 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA Cybersecurity Objective Test Guidelines (Official FBLA Connect PDF)",
-                    url: "[https://connect.fbla.org/headquarters/files/Collegiate%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Cybersecurity.pdf](https://connect.fbla.org/headquarters/files/Collegiate%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Cybersecurity.pdf)"
+                    url: "https://connect.fbla.org/headquarters/files/Collegiate%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Cybersecurity.pdf"
                 },
                 {
                     title: "Cybersecurity Event Details – Florida FBLA",
-                    url: "[https://www.floridafbla.org/event-cybersecurity](https://www.floridafbla.org/event-cybersecurity)"
+                    url: "https://www.floridafbla.org/event-cybersecurity"
                 },
                 {
                     title: "Cybersecurity Knowledge Flashcards – U.S. Dept of Education",
-                    url: "[https://studentprivacy.ed.gov/cybersecurity-knowledge-flashcards](https://studentprivacy.ed.gov/cybersecurity-knowledge-flashcards)"
+                    url: "https://studentprivacy.ed.gov/cybersecurity-knowledge-flashcards"
                 },
                 {
                     title: "Cybersecurity Basics – KnowledgeFlow Cybersafety Foundation",
-                    url: "[https://knowledgeflow.org/resource/cybersecurity-basics/](https://knowledgeflow.org/resource/cybersecurity-basics/)"
+                    url: "https://knowledgeflow.org/resource/cybersecurity-basics/"
                 },
                 {
                     title: "Cybersecurity Basics – Federal Trade Commission",
-                    url: "[https://www.ftc.gov/business-guidance/small-businesses/cybersecurity/basics](https://www.ftc.gov/business-guidance/small-businesses/cybersecurity/basics)"
+                    url: "https://www.ftc.gov/business-guidance/small-businesses/cybersecurity/basics"
                 },
                 {
                     title: "Cybersecurity Basics Quiz – FTC Interactive Quiz",
-                    url: "[https://www.ftc.gov/business-guidance/small-businesses/cybersecurity/quiz/basics](https://www.ftc.gov/business-guidance/small-businesses/cybersecurity/quiz/basics)"
+                    url: "https://www.ftc.gov/business-guidance/small-businesses/cybersecurity/quiz/basics"
                 },
                 {
                     title: "NICCS – National Initiative for Cybersecurity Careers and Studies",
-                    url: "[https://niccs.cisa.gov/](https://niccs.cisa.gov/)"
+                    url: "https://niccs.cisa.gov/"
                 },
                 {
                     title: "Cybersecurity Awareness & Training – CISA",
-                    url: "[https://www.cisa.gov/cybersecurity-awareness-training](https://www.cisa.gov/cybersecurity-awareness-training)"
+                    url: "https://www.cisa.gov/cybersecurity-awareness-training"
                 },
                 {
                     title: "Free & Low Cost Online Cybersecurity Learning Content – NIST",
-                    url: "[https://www.nist.gov/itl/applied-cybersecurity/nice/resources/online-learning-content](https://www.nist.gov/itl/applied-cybersecurity/nice/resources/online-learning-content)"
+                    url: "https://www.nist.gov/itl/applied-cybersecurity/nice/resources/online-learning-content"
                 },
                 {
                     title: "Cybersecurity 701 (High School to Intro Cybersecurity Curriculum)",
-                    url: "[https://cyber.org/cybersecurity](https://cyber.org/cybersecurity)"
+                    url: "https://cyber.org/cybersecurity"
                 },
                 {
                     title: "FBLA Cybersecurity Flashcards – Brainscape",
-                    url: "[https://www.brainscape.com/subjects/fbla-cybersecurity](https://www.brainscape.com/subjects/fbla-cybersecurity)"
+                    url: "https://www.brainscape.com/subjects/fbla-cybersecurity"
                 },
                 {
                     title: "FBLA Cyber Security Flashcards Set (Quizlet)",
-                    url: "[https://quizlet.com/19931629/fbla-cyber-security-flash-cards/](https://quizlet.com/19931629/fbla-cyber-security-flash-cards/)"
+                    url: "https://quizlet.com/19931629/fbla-cyber-security-flash-cards/"
                 },
                 {
                     title: "FBLA - Cybersecurity National Champion Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/157717442/fbla-cybersecurity-by-guy-who-won-nationally-flash-cards/](https://quizlet.com/157717442/fbla-cybersecurity-by-guy-who-won-nationally-flash-cards/)"
+                    url: "https://quizlet.com/157717442/fbla-cybersecurity-by-guy-who-won-nationally-flash-cards/"
                 },
                 {
                     title: "FBLA Cyber Security Questions Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/483289091/fbla-cyber-security-questions-flash-cards/](https://quizlet.com/483289091/fbla-cyber-security-questions-flash-cards/)"
+                    url: "https://quizlet.com/483289091/fbla-cyber-security-questions-flash-cards/"
                 },
                 {
                     title: "FBLA-cybersecurity Flashcards (Quizlet 2019 Packet)",
-                    url: "[https://quizlet.com/489551757/fbla-cybersecurity-flash-cards/](https://quizlet.com/489551757/fbla-cybersecurity-flash-cards/)"
+                    url: "https://quizlet.com/489551757/fbla-cybersecurity-flash-cards/"
                 },
                 {
                     title: "Cyber Security FBLA Practice Test Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/183380564/cyber-security-fbla-practice-test-flash-cards/](https://quizlet.com/183380564/cyber-security-fbla-practice-test-flash-cards/)"
+                    url: "https://quizlet.com/183380564/cyber-security-fbla-practice-test-flash-cards/"
                 },
                 {
                     title: "Cyber Security SLC FBLA Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/196377112/cyber-security-slc-fbla-flash-cards/](https://quizlet.com/196377112/cyber-security-slc-fbla-flash-cards/)"
+                    url: "https://quizlet.com/196377112/cyber-security-slc-fbla-flash-cards/"
                 },
                 {
                     title: "FBLA Cybersecurity Flashcards (Confidentiality, Integrity, Availability) (Quizlet)",
-                    url: "[https://quizlet.com/1129724675/fbla-cybersecurity-flash-cards/](https://quizlet.com/1129724675/fbla-cybersecurity-flash-cards/)"
+                    url: "https://quizlet.com/1129724675/fbla-cybersecurity-flash-cards/"
                 },
                 {
                     title: "FBLA Cyber Security--Defend & Attack Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/342047098/fbla-cyber-security-defend-attack-flash-cards/](https://quizlet.com/342047098/fbla-cyber-security-defend-attack-flash-cards/)"
+                    url: "https://quizlet.com/342047098/fbla-cyber-security-defend-attack-flash-cards/"
                 },
                 {
                     title: "FBLA Cybersecurity Flashcards (Basic Risks & Threats) (Quizlet)",
-                    url: "[https://quizlet.com/984942449/fbla-cybersecurity-flash-cards/](https://quizlet.com/984942449/fbla-cybersecurity-flash-cards/)"
+                    url: "https://quizlet.com/984942449/fbla-cybersecurity-flash-cards/"
                 }
             ],
             aiPrompts: [
@@ -2077,87 +2077,87 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA Data Analysis Event Official Guidelines",
-                    url: "[https://www.fbla.org/competitive-events/data-analysis/](https://www.fbla.org/competitive-events/data-analysis/)"
+                    url: "https://www.fbla.org/competitive-events/data-analysis/"
                 },
                 {
                     title: "Canva Guide: Data Presentation Best Practices",
-                    url: "[https://www.canva.com/resources/data-presentation/](https://www.canva.com/resources/data-presentation/)"
+                    url: "https://www.canva.com/resources/data-presentation/"
                 },
                 {
                     title: "Tableau: Data Visualization Tips and Best Practices",
-                    url: "[https://www.tableau.com/visualization/data-visualization-best-practices](https://www.tableau.com/visualization/data-visualization-best-practices)"
+                    url: "https://www.tableau.com/visualization/data-visualization-best-practices"
                 },
                 {
                     title: "Pragmatic Institute: 10 Ways to Communicate Data Findings Effectively",
-                    url: "[https://www.pragmaticinstitute.com/resources/articles/data/10-ways-to-communicate-data-findings-effectively/](https://www.pragmaticinstitute.com/resources/articles/data/10-ways-to-communicate-data-findings-effectively/)"
+                    url: "https://www.pragmaticinstitute.com/resources/articles/data/10-ways-to-communicate-data-findings-effectively/"
                 },
                 {
                     title: "Digital.gov Introduction to Data Visualization",
-                    url: "[https://digital.gov/resources/an-introduction-to-data-visualization](https://digital.gov/resources/an-introduction-to-data-visualization)"
+                    url: "https://digital.gov/resources/an-introduction-to-data-visualization"
                 },
                 {
                     title: "SOCR: Statistics Online Computational Resource",
-                    url: "[https://www.socr.umich.edu](https://www.socr.umich.edu)"
+                    url: "https://www.socr.umich.edu"
                 },
                 {
                     title: "Coursera: Data Analysis and Presentation Skills Specialization",
-                    url: "[https://www.coursera.org/specializations/pwc-analytics](https://www.coursera.org/specializations/pwc-analytics)"
+                    url: "https://www.coursera.org/specializations/pwc-analytics"
                 },
                 {
                     title: "Coursera: Data Analysis and Presentation Skills Final Project",
-                    url: "[https://www.coursera.org/learn/data-analysis-project-pwc](https://www.coursera.org/learn/data-analysis-project-pwc)"
+                    url: "https://www.coursera.org/learn/data-analysis-project-pwc"
                 },
                 {
                     title: "FBLA Event Overview - Florida FBLA",
-                    url: "[https://www.flfbla.org/fbla-event-data-analysis](https://www.flfbla.org/fbla-event-data-analysis)"
+                    url: "https://www.flfbla.org/fbla-event-data-analysis"
                 },
                 {
                     title: "FBLA Data Analysis Overview - Iowa FBLA",
-                    url: "[https://www.iowafbla.org/hs-competitive-events/data-analysis](https://www.iowafbla.org/hs-competitive-events/data-analysis)"
+                    url: "https://www.iowafbla.org/hs-competitive-events/data-analysis"
                 },
                 {
                     title: "Data Analysis Presentation Template - SlideKit",
-                    url: "[https://www.slidekit.com/data-analysis-presentation-template/](https://www.slidekit.com/data-analysis-presentation-template/)"
+                    url: "https://www.slidekit.com/data-analysis-presentation-template/"
                 },
                 {
                     title: "Data Analysis Process PowerPoint Templates - PPTUniverse",
-                    url: "[https://www.pptuniverse.com/templates/data-analysis-process-powerpoint-presentation/](https://www.pptuniverse.com/templates/data-analysis-process-powerpoint-presentation/)"
+                    url: "https://www.pptuniverse.com/templates/data-analysis-process-powerpoint-presentation/"
                 },
                 {
                     title: "Data Analysis Process Overview - SlideGeeks",
-                    url: "[https://www.slidegeeks.com/powerpoint/Data-Analysis-Process](https://www.slidegeeks.com/powerpoint/Data-Analysis-Process)"
+                    url: "https://www.slidegeeks.com/powerpoint/Data-Analysis-Process"
                 },
                 {
                     title: "Exploratory Data Analysis (Wikipedia)",
-                    url: "[https://en.wikipedia.org/wiki/Exploratory_data_analysis](https://en.wikipedia.org/wiki/Exploratory_data_analysis)"
+                    url: "https://en.wikipedia.org/wiki/Exploratory_data_analysis"
                 },
                 {
                     title: "Ggplot2 Data Visualization Package (Wikipedia)",
-                    url: "[https://en.wikipedia.org/wiki/Ggplot2](https://en.wikipedia.org/wiki/Ggplot2)"
+                    url: "https://en.wikipedia.org/wiki/Ggplot2"
                 },
                 {
                     title: "Stem-and-Leaf Display (Data Visualization)",
-                    url: "[https://en.wikipedia.org/wiki/Stem-and-leaf_display](https://en.wikipedia.org/wiki/Stem-and-leaf_display)"
+                    url: "https://en.wikipedia.org/wiki/Stem-and-leaf_display"
                 },
                 {
                     title: "Mosaic Plot (Data Visualization)",
-                    url: "[https://en.wikipedia.org/wiki/Mosaic_plot](https://en.wikipedia.org/wiki/Mosaic_plot)"
+                    url: "https://en.wikipedia.org/wiki/Mosaic_plot"
                 },
                 {
                     title: "GGobi Interactive Data Visualization Tool",
-                    url: "[http://www.ggobi.org/](http://www.ggobi.org/)"
+                    url: "http://www.ggobi.org/"
                 },
                 {
                     title: "Oregon FBLA Data Analysis Study Guide",
-                    url: "[https://oregonfbla.org/wp-content/uploads/2025/01/Competitive-Event-Study-Guide-.pdf](https://oregonfbla.org/wp-content/uploads/2025/01/Competitive-Event-Study-Guide-.pdf)"
+                    url: "https://oregonfbla.org/wp-content/uploads/2025/01/Competitive-Event-Study-Guide-.pdf"
                 },
                 {
                     title: "FBLA Competitive Events Practice Resources (BizyBear)",
-                    url: "[https://bizybear.app/comps](https://bizybear.app/comps)"
+                    url: "https://bizybear.app/comps"
                 },
                 {
                     title: "Quizlet Search: FBLA Data Analysis Presentation Sets",
-                    url: "[https://www.quizlet.com/search?q=fbla+data+analysis+presentation](https://www.quizlet.com/search?q=fbla+data+analysis+presentation)"
+                    url: "https://www.quizlet.com/search?q=fbla+data+analysis+presentation"
                 }
             ],
             aiPrompts: [
@@ -2180,83 +2180,83 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA Data Science & AI Official Competitive Event Overview & Guidelines",
-                    url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/25-26-High-School-Guidelines-All-in-One.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/25-26-High-School-Guidelines-All-in-One.pdf)"
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/25-26-High-School-Guidelines-All-in-One.pdf"
                 },
                 {
                     title: "FBLA Data Science & AI Event Details — FBLA.org",
-                    url: "[https://www.fbla.org/competitive-events/data-science-ai/](https://www.fbla.org/competitive-events/data-science-ai/)"
+                    url: "https://www.fbla.org/competitive-events/data-science-ai/"
                 },
                 {
                     title: "FBLA High School Competitive Events List (includes Data Science & AI)",
-                    url: "[https://www.fbla.org/media/2025/05/25-26-HS-CE-List.pdf](https://www.fbla.org/media/2025/05/25-26-HS-CE-List.pdf)"
+                    url: "https://www.fbla.org/media/2025/05/25-26-HS-CE-List.pdf"
                 },
                 {
                     title: "Quizlet — FBLA Data Science and AI Flashcards (AnaghaChod)",
-                    url: "[https://quizlet.com/1116898557](https://quizlet.com/1116898557)"
+                    url: "https://quizlet.com/1116898557"
                 },
                 {
                     title: "Quizlet — FBLA - Data Science and AI (Updated) Flash Cards",
-                    url: "[https://quizlet.com/1130474331](https://quizlet.com/1130474331)"
+                    url: "https://quizlet.com/1130474331"
                 },
                 {
                     title: "Quizlet — Testbank Questions on AI Impact & Data Science Concepts",
-                    url: "[https://quizlet.com/421383942](https://quizlet.com/421383942)"
+                    url: "https://quizlet.com/421383942"
                 },
                 {
                     title: "MIT Free Data Science and Machine Learning Courses Overview",
-                    url: "[https://openlearning.mit.edu/news/15-free-mit-data-science-courses](https://openlearning.mit.edu/news/15-free-mit-data-science-courses)"
+                    url: "https://openlearning.mit.edu/news/15-free-mit-data-science-courses"
                 },
                 {
                     title: "GeeksforGeeks AI, ML and Data Science Tutorial",
-                    url: "[https://www.geeksforgeeks.org/machine-learning/ai-ml-and-data-science-tutorial-learn-ai-ml-and-data-science/](https://www.geeksforgeeks.org/machine-learning/ai-ml-and-data-science-tutorial-learn-ai-ml-and-data-science/)"
+                    url: "https://www.geeksforgeeks.org/machine-learning/ai-ml-and-data-science-tutorial-learn-ai-ml-and-data-science/"
                 },
                 {
                     title: "Free Machine Learning & AI Courses on Coursera",
-                    url: "[https://www.coursera.org/courses?query=free&skills=Machine+Learning](https://www.coursera.org/courses?query=free&skills=Machine+Learning)"
+                    url: "https://www.coursera.org/courses?query=free&skills=Machine+Learning"
                 },
                 {
                     title: "Codecademy Data Science Courses & Tutorials",
-                    url: "[https://www.codecademy.com/catalog/subject/data-science](https://www.codecademy.com/catalog/subject/data-science)"
+                    url: "https://www.codecademy.com/catalog/subject/data-science"
                 },
                 {
                     title: "IBM SkillsBuild Free Data Science Courses for Students",
-                    url: "[https://skillsbuild.org/students/course-catalog/data-science](https://skillsbuild.org/students/course-catalog/data-science)"
+                    url: "https://skillsbuild.org/students/course-catalog/data-science"
                 },
                 {
                     title: "Wikipedia — Data Science Field Overview",
-                    url: "[https://en.wikipedia.org/wiki/Data_science](https://en.wikipedia.org/wiki/Data_science)"
+                    url: "https://en.wikipedia.org/wiki/Data_science"
                 },
                 {
                     title: "Wikipedia — Kaggle Data Science Competition Platform",
-                    url: "[https://en.wikipedia.org/wiki/Kaggle](https://en.wikipedia.org/wiki/Kaggle)"
+                    url: "https://en.wikipedia.org/wiki/Kaggle"
                 },
                 {
                     title: "SOCR — Statistics Online Computational Resource for Data Science",
-                    url: "[http://www.socr.umich.edu](http://www.socr.umich.edu)"
+                    url: "http://www.socr.umich.edu"
                 },
                 {
                     title: "Harvard Online Data Science Courses",
-                    url: "[https://pll.harvard.edu/subject/data-science](https://pll.harvard.edu/subject/data-science)"
+                    url: "https://pll.harvard.edu/subject/data-science"
                 },
                 {
                     title: "FBLA Competitive Event Resources (General Practice Links)",
-                    url: "[https://bizybear.app/comps](https://bizybear.app/comps)"
+                    url: "https://bizybear.app/comps"
                 },
                 {
                     title: "Quizlet — Data Science Chapter 5 Study Guide",
-                    url: "[https://quizlet.com/497899621](https://quizlet.com/497899621)"
+                    url: "https://quizlet.com/497899621"
                 },
                 {
                     title: "Quizlet — ITD 140 Machine Learning Flashcards (relevant AI/ML concepts)",
-                    url: "[https://quizlet.com/1126257230](https://quizlet.com/1126257230)"
+                    url: "https://quizlet.com/1126257230"
                 },
                 {
                     title: "SkillsBuild Data Fundamentals Courses",
-                    url: "[https://skillsbuild.org/students/course-catalog/data-science](https://skillsbuild.org/students/course-catalog/data-science)"
+                    url: "https://skillsbuild.org/students/course-catalog/data-science"
                 },
                 {
                     title: "MIT Open Learning Data & Computation Courses",
-                    url: "[https://openlearning.mit.edu/news/15-free-mit-data-science-courses](https://openlearning.mit.edu/news/15-free-mit-data-science-courses)"
+                    url: "https://openlearning.mit.edu/news/15-free-mit-data-science-courses"
                 }
             ],
             aiPrompts: [
@@ -2377,83 +2377,83 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA Digital Video Production Competitive Event Guidelines (National FBLA)",
-                    url: "[https://www.fbla.org/competitive-events/digital-video-production/](https://www.fbla.org/competitive-events/digital-video-production/)"
+                    url: "https://www.fbla.org/competitive-events/digital-video-production/"
                 },
                 {
                     title: "FBLA Digital Video Production Event Overview (Florida FBLA)",
-                    url: "[https://www.flfbla.org/fbla-event-digital-video-production](https://www.flfbla.org/fbla-event-digital-video-production)"
+                    url: "https://www.flfbla.org/fbla-event-digital-video-production"
                 },
                 {
                     title: "FBLA Digital Video Production Flashcards – Quizlet",
-                    url: "[https://quizlet.com/121890618/fbla-digital-video-production-flash-cards/](https://quizlet.com/121890618/fbla-digital-video-production-flash-cards/)"
+                    url: "https://quizlet.com/121890618/fbla-digital-video-production-flash-cards/"
                 },
                 {
                     title: "Digital Video Production Flashcards – Quizlet",
-                    url: "[https://quizlet.com/140238466/digital-video-production-flash-cards/](https://quizlet.com/140238466/digital-video-production-flash-cards/)"
+                    url: "https://quizlet.com/140238466/digital-video-production-flash-cards/"
                 },
                 {
                     title: "FBLA Competitive Events Flashcards – Quizlet (includes Digital Video Production)",
-                    url: "[https://quizlet.com/480834737/fbla-competitive-events-flash-cards/](https://quizlet.com/480834737/fbla-competitive-events-flash-cards/)"
+                    url: "https://quizlet.com/480834737/fbla-competitive-events-flash-cards/"
                 },
                 {
                     title: "Adobe Video Production Beginner’s Guide",
-                    url: "[https://www.adobe.com/creativecloud/video/production.html](https://www.adobe.com/creativecloud/video/production.html)"
+                    url: "https://www.adobe.com/creativecloud/video/production.html"
                 },
                 {
                     title: "Video Production Basics – Fiveable Multimedia Skills Notes",
-                    url: "[https://fiveable.me/multimedia-skills/unit-6](https://fiveable.me/multimedia-skills/unit-6)"
+                    url: "https://fiveable.me/multimedia-skills/unit-6"
                 },
                 {
                     title: "Digital Video Production and Editing Techniques – Fiveable Guide",
-                    url: "[https://fiveable.me/art-and-technology/unit-14/digital-video-production-editing-techniques/study-guide/HrwWDpWeop8pmmnO](https://fiveable.me/art-and-technology/unit-14/digital-video-production-editing-techniques/study-guide/HrwWDpWeop8pmmnO)"
+                    url: "https://fiveable.me/art-and-technology/unit-14/digital-video-production-editing-techniques/study-guide/HrwWDpWeop8pmmnO"
                 },
                 {
                     title: "Video Production Best Practices – Columbia CTL",
-                    url: "[https://ctl.columbia.edu/resources-and-technology/teaching-with-technology/diy-video/video-best-practices/](https://ctl.columbia.edu/resources-and-technology/teaching-with-technology/diy-video/video-best-practices/)"
+                    url: "https://ctl.columbia.edu/resources-and-technology/teaching-with-technology/diy-video/video-best-practices/"
                 },
                 {
                     title: "Video Storytelling Guide for Beginners",
-                    url: "[https://carta.fiu.edu/gsc-creative/2020/01/21/video-storytelling-guide-beginners/](https://carta.fiu.edu/gsc-creative/2020/01/21/video-storytelling-guide-beginners/)"
+                    url: "https://carta.fiu.edu/gsc-creative/2020/01/21/video-storytelling-guide-beginners/"
                 },
                 {
                     title: "Video Planning & Production Guide – Georgia Tech Library",
-                    url: "[https://libguides.library.gatech.edu/VideoProduction/VideoPlanning](https://libguides.library.gatech.edu/VideoProduction/VideoPlanning)"
+                    url: "https://libguides.library.gatech.edu/VideoProduction/VideoPlanning"
                 },
                 {
                     title: "Mastering Digital Video Production Presentation PPT",
-                    url: "[https://www.slideserve.com/robinhunt/basics-of-digital-video-production-powerpoint-ppt-presentation](https://www.slideserve.com/robinhunt/basics-of-digital-video-production-powerpoint-ppt-presentation)"
+                    url: "https://www.slideserve.com/robinhunt/basics-of-digital-video-production-powerpoint-ppt-presentation"
                 },
                 {
                     title: "Practice FBLA Digital Video Production Questions",
-                    url: "[https://lohsfbla.com/comps/Digital%2BVideo%2BProduction](https://lohsfbla.com/comps/Digital%2BVideo%2BProduction)"
+                    url: "https://lohsfbla.com/comps/Digital%2BVideo%2BProduction"
                 },
                 {
                     title: "FBLA Exploring Digital Video Production Guidelines",
-                    url: "[https://www.fbla.org/competitive-events/exploring-digital-video-production/](https://www.fbla.org/competitive-events/exploring-digital-video-production/)"
+                    url: "https://www.fbla.org/competitive-events/exploring-digital-video-production/"
                 },
                 {
                     title: "FBLA Intro Practice Questions – Includes Video Production Term",
-                    url: "[https://quizlet.com/560203409/intro-to-fbla-practice-questions-flash-cards/](https://quizlet.com/560203409/intro-to-fbla-practice-questions-flash-cards/)"
+                    url: "https://quizlet.com/560203409/intro-to-fbla-practice-questions-flash-cards/"
                 },
                 {
                     title: "FBLA Principles & Procedures – Flashcards (includes DVP event)",
-                    url: "[https://quizlet.com/274021384/fbla-principles-procedues-flash-cards/](https://quizlet.com/274021384/fbla-principles-procedues-flash-cards/)"
+                    url: "https://quizlet.com/274021384/fbla-principles-procedues-flash-cards/"
                 },
                 {
                     title: "Video Production 101: Guide for Beginners",
-                    url: "[https://www.lemonlight.com/video-production/](https://www.lemonlight.com/video-production/)"
+                    url: "https://www.lemonlight.com/video-production/"
                 },
                 {
                     title: "Complete Guide to Video Production Workflow",
-                    url: "[https://www.mangomedia.ie/blog/from-concept-to-completion-the-complete-guide-to-video-production](https://www.mangomedia.ie/blog/from-concept-to-completion-the-complete-guide-to-video-production)"
+                    url: "https://www.mangomedia.ie/blog/from-concept-to-completion-the-complete-guide-to-video-production"
                 },
                 {
                     title: "Storyboarding for Film & Video (Wikipedia)",
-                    url: "[https://en.wikipedia.org/wiki/Storyboard](https://en.wikipedia.org/wiki/Storyboard)"
+                    url: "https://en.wikipedia.org/wiki/Storyboard"
                 },
                 {
                     title: "Videomaker Magazine (Video Production magazine)",
-                    url: "[https://en.wikipedia.org/wiki/Videomaker](https://en.wikipedia.org/wiki/Videomaker)"
+                    url: "https://en.wikipedia.org/wiki/Videomaker"
                 }
             ],
             aiPrompts: [
@@ -2476,83 +2476,83 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA Economics Competitive Event Overview (FBLA Official Guides)",
-                    url: "[https://www.fbla.org/competitive-events/economics/](https://www.fbla.org/competitive-events/economics/)"
+                    url: "https://www.fbla.org/competitive-events/economics/"
                 },
                 {
                     title: "2024–25 FBLA Economics Objective Test Guidelines (Official PDF)",
-                    url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Economics.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Economics.pdf)"
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Economics.pdf"
                 },
                 {
                     title: "FBLA Economics Event Details (Florida FBLA)",
-                    url: "[https://www.flfbla.org/fbla-event-economics](https://www.flfbla.org/fbla-event-economics)"
+                    url: "https://www.flfbla.org/fbla-event-economics"
                 },
                 {
                     title: "FBLA Economics Competitive Resources (Canada FBLA)",
-                    url: "[https://fblc.ca/economics](https://fblc.ca/economics)"
+                    url: "https://fblc.ca/economics"
                 },
                 {
                     title: "Supply, Demand, and Market Equilibrium (Khan Academy)",
-                    url: "[https://www.khanacademy.org/economics-finance-domain/microeconomics/supply-demand-equilibrium](https://www.khanacademy.org/economics-finance-domain/microeconomics/supply-demand-equilibrium)"
+                    url: "https://www.khanacademy.org/economics-finance-domain/microeconomics/supply-demand-equilibrium"
                 },
                 {
                     title: "Economics Overview and Modules (Khan Academy)",
-                    url: "[https://www.khanacademy.org/economics-finance-domain](https://www.khanacademy.org/economics-finance-domain)"
+                    url: "https://www.khanacademy.org/economics-finance-domain"
                 },
                 {
                     title: "Microeconomics Principles (Khan Academy)",
-                    url: "[https://www.khanacademy.org/economics-finance-domain/microeconomics](https://www.khanacademy.org/economics-finance-domain/microeconomics)"
+                    url: "https://www.khanacademy.org/economics-finance-domain/microeconomics"
                 },
                 {
                     title: "Macroeconomics Basics (Khan Academy)",
-                    url: "[https://www.khanacademy.org/economics-finance-domain/macroeconomics](https://www.khanacademy.org/economics-finance-domain/macroeconomics)"
+                    url: "https://www.khanacademy.org/economics-finance-domain/macroeconomics"
                 },
                 {
                     title: "FBLA Economics Flashcards (Quizlet set 9331216)",
-                    url: "[https://quizlet.com/9331216/fbla-economics-flash-cards/](https://quizlet.com/9331216/fbla-economics-flash-cards/)"
+                    url: "https://quizlet.com/9331216/fbla-economics-flash-cards/"
                 },
                 {
                     title: "FBLA Economics Objective Test Flashcards (Quizlet set 346212528)",
-                    url: "[https://quizlet.com/346212528/fbla-economics-objective-test-flash-cards/](https://quizlet.com/346212528/fbla-economics-objective-test-flash-cards/)"
+                    url: "https://quizlet.com/346212528/fbla-economics-objective-test-flash-cards/"
                 },
                 {
                     title: "FBLA Economics Objective Test Flashcards (Quizlet set 1001318443)",
-                    url: "[https://quizlet.com/1001318443/fbla-economics-objective-test-flash-cards](https://quizlet.com/1001318443/fbla-economics-objective-test-flash-cards)"
+                    url: "https://quizlet.com/1001318443/fbla-economics-objective-test-flash-cards"
                 },
                 {
                     title: "FBLA Economics Objective Test Key Terms (Quizlet set 854417333)",
-                    url: "[https://quizlet.com/854417333/fbla-economics-objective-test-key-terms-flash-cards/](https://quizlet.com/854417333/fbla-economics-objective-test-key-terms-flash-cards/)"
+                    url: "https://quizlet.com/854417333/fbla-economics-objective-test-key-terms-flash-cards/"
                 },
                 {
                     title: "FBLA Economics Study Guide Flashcards (Quizlet set 855667832)",
-                    url: "[https://quizlet.com/855667832/fbla-economics-study-guide-flash-cards/](https://quizlet.com/855667832/fbla-economics-study-guide-flash-cards/)"
+                    url: "https://quizlet.com/855667832/fbla-economics-study-guide-flash-cards/"
                 },
                 {
                     title: "FBLA Economics Objective Test Part A Flashcards (Quizlet 977861354)",
-                    url: "[https://quizlet.com/977861354/fbla-economics-objective-test-part-a-basic-economic-concepts-and-principles-flash-cards/](https://quizlet.com/977861354/fbla-economics-objective-test-part-a-basic-economic-concepts-and-principles-flash-cards/)"
+                    url: "https://quizlet.com/977861354/fbla-economics-objective-test-part-a-basic-economic-concepts-and-principles-flash-cards/"
                 },
                 {
                     title: "FBLA Economic Basics Objective Test Competencies (Quizlet set 993272551)",
-                    url: "[https://quizlet.com/993272551](https://quizlet.com/993272551)"
+                    url: "https://quizlet.com/993272551"
                 },
                 {
                     title: "Supply and Demand (Wikipedia)",
-                    url: "[https://en.wikipedia.org/wiki/Supply_and_demand](https://en.wikipedia.org/wiki/Supply_and_demand)"
+                    url: "https://en.wikipedia.org/wiki/Supply_and_demand"
                 },
                 {
                     title: "Law of Demand (Wikipedia)",
-                    url: "[https://en.wikipedia.org/wiki/Law_of_demand](https://en.wikipedia.org/wiki/Law_of_demand)"
+                    url: "https://en.wikipedia.org/wiki/Law_of_demand"
                 },
                 {
                     title: "CORE Economics Open Access Textbooks (CORE Econ materials)",
-                    url: "[https://core-econ.org/the-economy/](https://core-econ.org/the-economy/)"
+                    url: "https://core-econ.org/the-economy/"
                 },
                 {
                     title: "Principles of Macroeconomics CLEP Study Resources (CollegeBoard)",
-                    url: "[https://clep.collegeboard.org/prepare-for-an-exam/study-resources-by-exam/macroeconomics](https://clep.collegeboard.org/prepare-for-an-exam/study-resources-by-exam/macroeconomics)"
+                    url: "https://clep.collegeboard.org/prepare-for-an-exam/study-resources-by-exam/macroeconomics"
                 },
                 {
                     title: "Principles of Microeconomics CLEP Study Resources (CollegeBoard)",
-                    url: "[https://clep.collegeboard.org/prepare-for-an-exam/study-resources-by-exam/microeconomics](https://clep.collegeboard.org/prepare-for-an-exam/study-resources-by-exam/microeconomics)"
+                    url: "https://clep.collegeboard.org/prepare-for-an-exam/study-resources-by-exam/microeconomics"
                 }
             ],
             aiPrompts: [
@@ -2575,83 +2575,83 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA Entrepreneurship Event Details and Guidelines",
-                    url: "[https://www.fbla.org/competitive-events/entrepreneurship/](https://www.fbla.org/competitive-events/entrepreneurship/)"
+                    url: "https://www.fbla.org/competitive-events/entrepreneurship/"
                 },
                 {
                     title: "FBLA Competitive Events Guidelines – Entrepreneurship PDF",
-                    url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Role%20Play%20Events/Entrepreneurship.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Role%20Play%20Events/Entrepreneurship.pdf)"
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Role%20Play%20Events/Entrepreneurship.pdf"
                 },
                 {
                     title: "Entrepreneurship Roleplay Practice – Canada FBLA Resources",
-                    url: "[https://fblc.ca/entrepreneurship](https://fblc.ca/entrepreneurship)"
+                    url: "https://fblc.ca/entrepreneurship"
                 },
                 {
                     title: "How to Start a Business – Investopedia Comprehensive Guide",
-                    url: "[https://www.investopedia.com/how-to-start-a-business-7970202](https://www.investopedia.com/how-to-start-a-business-7970202)"
+                    url: "https://www.investopedia.com/how-to-start-a-business-7970202"
                 },
                 {
                     title: "Entrepreneur Definition – Investopedia",
-                    url: "[https://www.investopedia.com/terms/e/entrepreneur.asp](https://www.investopedia.com/terms/e/entrepreneur.asp)"
+                    url: "https://www.investopedia.com/terms/e/entrepreneur.asp"
                 },
                 {
                     title: "Entrepreneurship Basics – Khan Academy",
-                    url: "[https://www.khanacademy.org/economics-finance-domain/economics-personal-finance-va/x3ed8f3aede624754%3Afoundations-of-economics/x3ed8f3aede624754%3Afactors-of-production/v/entrepreneurship](https://www.khanacademy.org/economics-finance-domain/economics-personal-finance-va/x3ed8f3aede624754%3Afoundations-of-economics/x3ed8f3aede624754%3Afactors-of-production/v/entrepreneurship)"
+                    url: "https://www.khanacademy.org/economics-finance-domain/economics-personal-finance-va/x3ed8f3aede624754%3Afoundations-of-economics/x3ed8f3aede624754%3Afactors-of-production/v/entrepreneurship"
                 },
                 {
                     title: "Entrepreneurship Life Skills – Khan Academy Interviews",
-                    url: "[https://www.khanacademy.org/college-careers-more/entrepreneurship2](https://www.khanacademy.org/college-careers-more/entrepreneurship2)"
+                    url: "https://www.khanacademy.org/college-careers-more/entrepreneurship2"
                 },
                 {
                     title: "Entrepreneur Career Profiles – Khan Academy",
-                    url: "[https://www.khanacademy.org/college-careers-more/career-content/career-profiles-start-a-business](https://www.khanacademy.org/college-careers-more/career-content/career-profiles-start-a-business)"
+                    url: "https://www.khanacademy.org/college-careers-more/career-content/career-profiles-start-a-business"
                 },
                 {
                     title: "Coursera: The Entrepreneur’s Guide for Beginners",
-                    url: "[https://www.coursera.org/learn/entrepreneur-guide-beginners](https://www.coursera.org/learn/entrepreneur-guide-beginners)"
+                    url: "https://www.coursera.org/learn/entrepreneur-guide-beginners"
                 },
                 {
                     title: "Quizlet – FBLA Entrepreneurship Role Play Flashcards",
-                    url: "[https://quizlet.com/876836801/fbla-entrepreneurship-role-play-flash-cards/](https://quizlet.com/876836801/fbla-entrepreneurship-role-play-flash-cards/)"
+                    url: "https://quizlet.com/876836801/fbla-entrepreneurship-role-play-flash-cards/"
                 },
                 {
                     title: "Quizlet – FBLA Entrepreneurship Test Questions",
-                    url: "[https://quizlet.com/113099898/fbla-entrepreneurship-test-questions-flash-cards/](https://quizlet.com/113099898/fbla-entrepreneurship-test-questions-flash-cards/)"
+                    url: "https://quizlet.com/113099898/fbla-entrepreneurship-test-questions-flash-cards/"
                 },
                 {
                     title: "Quizlet – FBLA Entrepreneurship Study Guide",
-                    url: "[https://quizlet.com/552204937](https://quizlet.com/552204937)"
+                    url: "https://quizlet.com/552204937"
                 },
                 {
                     title: "Quizlet – FBLA Entrepreneurship Flashcards Set A",
-                    url: "[https://quizlet.com/1019576990/fbla-entrepreneurship-flash-cards/](https://quizlet.com/1019576990/fbla-entrepreneurship-flash-cards/)"
+                    url: "https://quizlet.com/1019576990/fbla-entrepreneurship-flash-cards/"
                 },
                 {
                     title: "Quizlet – FBLA Entrepreneurship Study Guide 2",
-                    url: "[https://quizlet.com/552594850/fbla-entrepreneurship-study-guide-2-flash-cards/](https://quizlet.com/552594850/fbla-entrepreneurship-study-guide-2-flash-cards/)"
+                    url: "https://quizlet.com/552594850/fbla-entrepreneurship-study-guide-2-flash-cards/"
                 },
                 {
                     title: "Quizlet – Additional FBLA Entrepreneurship Flashcards",
-                    url: "[https://quizlet.com/248075190/fbla-entrepreneurship-flash-cards/](https://quizlet.com/248075190/fbla-entrepreneurship-flash-cards/)"
+                    url: "https://quizlet.com/248075190/fbla-entrepreneurship-flash-cards/"
                 },
                 {
                     title: "Lean Startup Methodology Overview – Wikipedia",
-                    url: "[https://en.wikipedia.org/wiki/Lean_startup](https://en.wikipedia.org/wiki/Lean_startup)"
+                    url: "https://en.wikipedia.org/wiki/Lean_startup"
                 },
                 {
                     title: "Lean LaunchPad Entrepreneurship Method – Wikipedia",
-                    url: "[https://en.wikipedia.org/wiki/Lean_Launchpad](https://en.wikipedia.org/wiki/Lean_Launchpad)"
+                    url: "https://en.wikipedia.org/wiki/Lean_Launchpad"
                 },
                 {
                     title: "Principles of Entrepreneurship with Role Play Samples – DECA+",
-                    url: "[https://www.decaplus.org/competitive-events/principles-of-entrepreneurship](https://www.decaplus.org/competitive-events/principles-of-entrepreneurship)"
+                    url: "https://www.decaplus.org/competitive-events/principles-of-entrepreneurship"
                 },
                 {
                     title: "Entrepreneurship Education – Federal Reserve Bank of Kansas City",
-                    url: "[https://www.kansascityfed.org/education/entrepreneurship/](https://www.kansascityfed.org/education/entrepreneurship/)"
+                    url: "https://www.kansascityfed.org/education/entrepreneurship/"
                 },
                 {
                     title: "Entrepreneurship Lesson Plan and Role-Play Activity (PDF)",
-                    url: "[https://www.federalreserveeducation.org/resources/lessons/lesson--mind-your-own-business.pdf](https://www.federalreserveeducation.org/resources/lessons/lesson--mind-your-own-business.pdf)"
+                    url: "https://www.federalreserveeducation.org/resources/lessons/lesson--mind-your-own-business.pdf"
                 }
             ],
             aiPrompts: [
@@ -2672,26 +2672,26 @@ export const FBLAResources: FBLAResourceEntry[] = [
         resources: {
             title: "event-planning-presentation Resources",
             links: [
-                { title: "FBLA Event Planning Competitive Event Guidelines (2025‑2026)", url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Presentation%20Events/Event-Planning.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Presentation%20Events/Event-Planning.pdf)" },
-                { title: "FBLA Event Planning Overview – Florida FBLA", url: "[https://www.flfbla.org/fbla-event-introduction-to-event-planning](https://www.flfbla.org/fbla-event-introduction-to-event-planning)" },
-                { title: "FBLA High School Competitive Events – Event Planning", url: "[https://www.fbla.org/high-school/competitive-events/](https://www.fbla.org/high-school/competitive-events/)" },
-                { title: "FBLA: Introduction to Event Planning Flashcards | Quizlet", url: "[https://quizlet.com/752204644/fbla-introduction-to-event-planning-flash-cards/](https://quizlet.com/752204644/fbla-introduction-to-event-planning-flash-cards/)" },
-                { title: "Introduction to Event Planning (FBLA) Flashcards | Quizlet", url: "[https://quizlet.com/1003736603/introduction-to-event-planning-fbla-flash-cards/](https://quizlet.com/1003736603/introduction-to-event-planning-fbla-flash-cards/)" },
-                { title: "FBLA Event Planning Flashcards", url: "[https://quizlet.com/760819652/fbla-event-planning-flash-cards/](https://quizlet.com/760819652/fbla-event-planning-flash-cards/)" },
-                { title: "FBLA Introduction To Event Planning (282 Terms) | Quizlet", url: "[https://quizlet.com/789675735/fbla-introduction-to-event-planning-flash-cards/](https://quizlet.com/789675735/fbla-introduction-to-event-planning-flash-cards/)" },
-                { title: "FBLA Introduction to Event Planning Practice Page", url: "[https://lohsfbla.com/comps/Introduction%2Bto%2BEvent%2BPlanning](https://lohsfbla.com/comps/Introduction%2Bto%2BEvent%2BPlanning)" },
-                { title: "The Complete Event Management Guide for Modern Planners", url: "[https://www.guidebook.com/post/event-management-guide](https://www.guidebook.com/post/event-management-guide)" },
-                { title: "Event Management Process: 7 Steps To Planning An Event", url: "[https://www.accruent.com/resources/knowledge-hub/event-management-process](https://www.accruent.com/resources/knowledge-hub/event-management-process)" },
-                { title: "How to Plan a Business Event: 10‑Step Guide", url: "[https://www.executivevents.com/post/how-to-plan-a-business-event-the-complete-10-step-guide](https://www.executivevents.com/post/how-to-plan-a-business-event-the-complete-10-step-guide)" },
-                { title: "20+ Expert Event Planning Tips to Run a Smooth Event", url: "[https://whova.com/blog/best-event-planning-tips/](https://whova.com/blog/best-event-planning-tips/)" },
-                { title: "Event Planning Guide With Checklist 2026", url: "[https://www.cvent.com/en/blog/events/event-planning-guide](https://www.cvent.com/en/blog/events/event-planning-guide)" },
-                { title: "Event Planning Checklist | Special Events ‑ Georgia Tech", url: "[https://specialevents.gatech.edu/resources/guide/checklist](https://specialevents.gatech.edu/resources/guide/checklist)" },
-                { title: "Event Planning Template Examples + Best Practices", url: "[https://slidemodel.com/event-planning-template/](https://slidemodel.com/event-planning-template/)" },
-                { title: "What Is Event Management? (Wikipedia)", url: "[https://en.wikipedia.org/wiki/Event_management](https://en.wikipedia.org/wiki/Event_management)" },
-                { title: "2025‑26 FBLA Competitive Events Overview (FBLA.org)", url: "[https://www.fbla.org/high-school/competitive-events/](https://www.fbla.org/high-school/competitive-events/)" },
-                { title: "FBLA Presentation Resources – CVFBLA", url: "[https://cvfbla.org/presentation_events](https://cvfbla.org/presentation_events)" },
-                { title: "FBLA Introduction to Event Planning Practice Flashcards", url: "[https://lohsfbla.com/comps/Introduction%2Bto%2BEvent%2BPlanning/flashcards](https://lohsfbla.com/comps/Introduction%2Bto%2BEvent%2BPlanning/flashcards)" },
-                { title: "FBLA Event Planning Definitions & Key Concepts", url: "[https://quizlet.com/789675735/fbla-introduction-to-event-planning-flash-cards/](https://quizlet.com/789675735/fbla-introduction-to-event-planning-flash-cards/)" }
+                { title: "FBLA Event Planning Competitive Event Guidelines (2025‑2026)", url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Presentation%20Events/Event-Planning.pdf" },
+                { title: "FBLA Event Planning Overview – Florida FBLA", url: "https://www.flfbla.org/fbla-event-introduction-to-event-planning" },
+                { title: "FBLA High School Competitive Events – Event Planning", url: "https://www.fbla.org/high-school/competitive-events/" },
+                { title: "FBLA: Introduction to Event Planning Flashcards | Quizlet", url: "https://quizlet.com/752204644/fbla-introduction-to-event-planning-flash-cards/" },
+                { title: "Introduction to Event Planning (FBLA) Flashcards | Quizlet", url: "https://quizlet.com/1003736603/introduction-to-event-planning-fbla-flash-cards/" },
+                { title: "FBLA Event Planning Flashcards", url: "https://quizlet.com/760819652/fbla-event-planning-flash-cards/" },
+                { title: "FBLA Introduction To Event Planning (282 Terms) | Quizlet", url: "https://quizlet.com/789675735/fbla-introduction-to-event-planning-flash-cards/" },
+                { title: "FBLA Introduction to Event Planning Practice Page", url: "https://lohsfbla.com/comps/Introduction%2Bto%2BEvent%2BPlanning" },
+                { title: "The Complete Event Management Guide for Modern Planners", url: "https://www.guidebook.com/post/event-management-guide" },
+                { title: "Event Management Process: 7 Steps To Planning An Event", url: "https://www.accruent.com/resources/knowledge-hub/event-management-process" },
+                { title: "How to Plan a Business Event: 10‑Step Guide", url: "https://www.executivevents.com/post/how-to-plan-a-business-event-the-complete-10-step-guide" },
+                { title: "20+ Expert Event Planning Tips to Run a Smooth Event", url: "https://whova.com/blog/best-event-planning-tips/" },
+                { title: "Event Planning Guide With Checklist 2026", url: "https://www.cvent.com/en/blog/events/event-planning-guide" },
+                { title: "Event Planning Checklist | Special Events ‑ Georgia Tech", url: "https://specialevents.gatech.edu/resources/guide/checklist" },
+                { title: "Event Planning Template Examples + Best Practices", url: "https://slidemodel.com/event-planning-template/" },
+                { title: "What Is Event Management? (Wikipedia)", url: "https://en.wikipedia.org/wiki/Event_management" },
+                { title: "2025‑26 FBLA Competitive Events Overview (FBLA.org)", url: "https://www.fbla.org/high-school/competitive-events/" },
+                { title: "FBLA Presentation Resources – CVFBLA", url: "https://cvfbla.org/presentation_events" },
+                { title: "FBLA Introduction to Event Planning Practice Flashcards", url: "https://lohsfbla.com/comps/Introduction%2Bto%2BEvent%2BPlanning/flashcards" },
+                { title: "FBLA Event Planning Definitions & Key Concepts", url: "https://quizlet.com/789675735/fbla-introduction-to-event-planning-flash-cards/" }
             ],
             aiPrompts: [
                 {
@@ -2711,26 +2711,26 @@ export const FBLAResources: FBLAResourceEntry[] = [
         resources: {
             title: "financial-planning-presentation Resources",
             links: [
-                { title: "FBLA Financial Planning Competitive Event Guidelines (Official)", url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%vents/Presentation%20Events/Financial-Planning.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%vents/Presentation%20Events/Financial-Planning.pdf)" },
-                { title: "FBLA Financial Planning Event Overview & Description", url: "[https://www.fbla.org/competitive-events/financial-planning/](https://www.fbla.org/competitive-events/financial-planning/)" },
-                { title: "Investopedia Personal Finance: The Complete Guide", url: "[https://www.investopedia.com/personal-finance-4427760](https://www.investopedia.com/personal-finance-4427760)" },
-                { title: "Fidelity: Steps to Create a Financial Plan", url: "[https://www.fidelity.com/learning-center/personal-finance/financial-planning-steps](https://www.fidelity.com/learning-center/personal-finance/financial-planning-steps)" },
-                { title: "CFP Board Guide to the Financial Planning Process", url: "[https://www.cfp.net/-/media/files/cfp-board/standards-and-ethics/compliance-resources/guide-to-financial-planning-process.pdf](https://www.cfp.net/-/media/files/cfp-board/standards-and-ethics/compliance-resources/guide-to-financial-planning-process.pdf)" },
-                { title: "Investopedia: What Is Financial Planning?", url: "[https://www.investopedia.com/terms/f/financial_plan.asp](https://www.investopedia.com/terms/f/financial_plan.asp)" },
-                { title: "Investopedia: Personal Finance Defined", url: "[https://www.investopedia.com/terms/p/personalfinance.asp](https://www.investopedia.com/terms/p/personalfinance.asp)" },
-                { title: "Investopedia: Financial Literacy Basics", url: "[https://www.investopedia.com/guide-to-financial-literacy-4800530](https://www.investopedia.com/guide-to-financial-literacy-4800530)" },
-                { title: "U.S. Bank Guide to Financial Planning", url: "[https://www.usbank.com/wealth-management/financial-perspectives/financial-planning/guide-to-financial-planning.html](https://www.usbank.com/wealth-management/financial-perspectives/financial-planning/guide-to-financial-planning.html)" },
-                { title: "Investopedia: Budgeting & Savings Overview", url: "[https://www.investopedia.com/budgeting-and-savings-4427755](https://www.investopedia.com/budgeting-and-savings-4427755)" },
-                { title: "Quizlet: FBLA Competitive Event Personal Finance Study Guide", url: "[https://quizlet.com/657464095/fbla-competitive-event-personal-finance-study-guide-flash-cards/](https://quizlet.com/657464095/fbla-competitive-event-personal-finance-study-guide-flash-cards/)" },
-                { title: "Quizlet: FBLA Personal Finance 2025 Flashcards", url: "[https://quizlet.com/1015313512](https://quizlet.com/1015313512)" },
-                { title: "Quizlet: FBLA Financial Literacy Flashcards", url: "[https://quizlet.com/991932698/fbla-financial-literacy-flash-cards/](https://quizlet.com/991932698/fbla-financial-literacy-flash-cards/)" },
-                { title: "Brainscape: FBLA Personal Finance Test Flashcards", url: "[https://www.brainscape.com/packs/fbla-personal-finance-test-21840021](https://www.brainscape.com/packs/fbla-personal-finance-test-21840021)" },
-                { title: "Quizlet: Financial Literacy Vocabulary", url: "[https://quizlet.com/405601289/financial-literacy-flash-cards/](https://quizlet.com/405601289/financial-literacy-flash-cards/)" },
-                { title: "Fremont FBLA Financial Literacy Flashcards (Quizlet Links)", url: "[https://quizlet.com/77851089/financial-literacy-vocabulary-flash-cards/](https://quizlet.com/77851089/financial-literacy-vocabulary-flash-cards/)" },
-                { title: "FBLA Financial Literacy Month Toolkit (FBLA PDF)", url: "[https://www.fbla.org/media/2026/02/Financial-Literacy-Month-Toolkit_Final.pdf](https://www.fbla.org/media/2026/02/Financial-Literacy-Month-Toolkit_Final.pdf)" },
-                { title: "Financial Planning Presentation Example (Lancaster CTC PDF)", url: "[https://lancasterctc.edu/wp-content/uploads/2025/04/Financial-Planning-Presentation.pdf](https://lancasterctc.edu/wp-content/uploads/2025/04/Financial-Planning-Presentation.pdf)" },
-                { title: "Bankrate: Financial Planning Guide", url: "[https://www.bankrate.com/investing/financial-advisors/what-is-financial-planning/](https://www.bankrate.com/investing/financial-advisors/what-is-financial-planning/)" },
-                { title: "Investopedia: Master Your Financial Goals", url: "[https://www.investopedia.com/articles/personal-finance/100516/setting-financial-goals/](https://www.investopedia.com/articles/personal-finance/100516/setting-financial-goals/)" }
+                { title: "FBLA Financial Planning Competitive Event Guidelines (Official)", url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%vents/Presentation%20Events/Financial-Planning.pdf" },
+                { title: "FBLA Financial Planning Event Overview & Description", url: "https://www.fbla.org/competitive-events/financial-planning/" },
+                { title: "Investopedia Personal Finance: The Complete Guide", url: "https://www.investopedia.com/personal-finance-4427760" },
+                { title: "Fidelity: Steps to Create a Financial Plan", url: "https://www.fidelity.com/learning-center/personal-finance/financial-planning-steps" },
+                { title: "CFP Board Guide to the Financial Planning Process", url: "https://www.cfp.net/-/media/files/cfp-board/standards-and-ethics/compliance-resources/guide-to-financial-planning-process.pdf" },
+                { title: "Investopedia: What Is Financial Planning?", url: "https://www.investopedia.com/terms/f/financial_plan.asp" },
+                { title: "Investopedia: Personal Finance Defined", url: "https://www.investopedia.com/terms/p/personalfinance.asp" },
+                { title: "Investopedia: Financial Literacy Basics", url: "https://www.investopedia.com/guide-to-financial-literacy-4800530" },
+                { title: "U.S. Bank Guide to Financial Planning", url: "https://www.usbank.com/wealth-management/financial-perspectives/financial-planning/guide-to-financial-planning.html" },
+                { title: "Investopedia: Budgeting & Savings Overview", url: "https://www.investopedia.com/budgeting-and-savings-4427755" },
+                { title: "Quizlet: FBLA Competitive Event Personal Finance Study Guide", url: "https://quizlet.com/657464095/fbla-competitive-event-personal-finance-study-guide-flash-cards/" },
+                { title: "Quizlet: FBLA Personal Finance 2025 Flashcards", url: "https://quizlet.com/1015313512" },
+                { title: "Quizlet: FBLA Financial Literacy Flashcards", url: "https://quizlet.com/991932698/fbla-financial-literacy-flash-cards/" },
+                { title: "Brainscape: FBLA Personal Finance Test Flashcards", url: "https://www.brainscape.com/packs/fbla-personal-finance-test-21840021" },
+                { title: "Quizlet: Financial Literacy Vocabulary", url: "https://quizlet.com/405601289/financial-literacy-flash-cards/" },
+                { title: "Fremont FBLA Financial Literacy Flashcards (Quizlet Links)", url: "https://quizlet.com/77851089/financial-literacy-vocabulary-flash-cards/" },
+                { title: "FBLA Financial Literacy Month Toolkit (FBLA PDF)", url: "https://www.fbla.org/media/2026/02/Financial-Literacy-Month-Toolkit_Final.pdf" },
+                { title: "Financial Planning Presentation Example (Lancaster CTC PDF)", url: "https://lancasterctc.edu/wp-content/uploads/2025/04/Financial-Planning-Presentation.pdf" },
+                { title: "Bankrate: Financial Planning Guide", url: "https://www.bankrate.com/investing/financial-advisors/what-is-financial-planning/" },
+                { title: "Investopedia: Master Your Financial Goals", url: "https://www.investopedia.com/articles/personal-finance/100516/setting-financial-goals/" }
             ],
             aiPrompts: [
                 { title: "Full-Length Practice Test: Financial Planning Presentation", prompt: "Create a comprehensive 30–40 question multiple-choice practice test tailored to FBLA Financial Planning Presentation topics, including budgeting strategies, financial goal setting, investment basics, debt management, the financial planning process, risk mitigation, and scenario evaluation. Provide 4 answer choices per question with an answer key and brief explanations for each answer." },
@@ -2746,71 +2746,71 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA Competitive Event: Financial Statement Analysis Official Guidelines",
-                    url: "[https://www.fbla.org/competitive-events/financial-statement-analysis/](https://www.fbla.org/competitive-events/financial-statement-analysis/)"
+                    url: "https://www.fbla.org/competitive-events/financial-statement-analysis/"
                 },
                 {
                     title: "Investopedia: Financial Statement Analysis Explained",
-                    url: "[https://www.investopedia.com/terms/f/financial-statement-analysis.asp](https://www.investopedia.com/terms/f/financial-statement-analysis.asp)"
+                    url: "https://www.investopedia.com/terms/f/financial-statement-analysis.asp"
                 },
                 {
                     title: "Investopedia: Financial Analysis (Definition and Key Concepts)",
-                    url: "[https://www.investopedia.com/terms/f/financial-analysis.asp](https://www.investopedia.com/terms/f/financial-analysis.asp)"
+                    url: "https://www.investopedia.com/terms/f/financial-analysis.asp"
                 },
                 {
                     title: "Investopedia: Types of Financial Statements & How to Read Them",
-                    url: "[https://www.investopedia.com/terms/f/financial-statements.asp](https://www.investopedia.com/terms/f/financial-statements.asp)"
+                    url: "https://www.investopedia.com/terms/f/financial-statements.asp"
                 },
                 {
                     title: "FBLA Financial Statement Analysis Flashcards on Quizlet",
-                    url: "[https://quizlet.com/852074492/fbla-financial-statement-analysis-flash-cards/](https://quizlet.com/852074492/fbla-financial-statement-analysis-flash-cards/)"
+                    url: "https://quizlet.com/852074492/fbla-financial-statement-analysis-flash-cards/"
                 },
                 {
                     title: "Another FBLA Financial Statement Analysis Quizlet Set",
-                    url: "[https://quizlet.com/900855003/fbla-financial-statement-analysis-flash-cards/](https://quizlet.com/900855003/fbla-financial-statement-analysis-flash-cards/)"
+                    url: "https://quizlet.com/900855003/fbla-financial-statement-analysis-flash-cards/"
                 },
                 {
                     title: "FBLA Financial Statement Analysis Match Quiz (Quizlet)",
-                    url: "[https://quizlet.com/852074492/match?funnelUUID=8c5a7779-c472-455c-966c-0fe506255dd3](https://quizlet.com/852074492/match?funnelUUID=8c5a7779-c472-455c-966c-0fe506255dd3)"
+                    url: "https://quizlet.com/852074492/match?funnelUUID=8c5a7779-c472-455c-966c-0fe506255dd3"
                 },
                 {
                     title: "CH.1 Financial Statement Analysis Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/524986340/ch1-financial-statement-analysis-flash-cards/](https://quizlet.com/524986340/ch1-financial-statement-analysis-flash-cards/)"
+                    url: "https://quizlet.com/524986340/ch1-financial-statement-analysis-flash-cards/"
                 },
                 {
                     title: "Financial Statement Analysis Midterm Review Flashcards",
-                    url: "[https://quizlet.com/325753869/financial-statement-analysis-midterm-review-flash-cards/](https://quizlet.com/325753869/financial-statement-analysis-midterm-review-flash-cards/)"
+                    url: "https://quizlet.com/325753869/financial-statement-analysis-midterm-review-flash-cards/"
                 },
                 {
                     title: "Modules 15 & 16: Financial Reporting Standards Flashcards",
-                    url: "[https://quizlet.com/705737401/modules-15-16-flash-cards/](https://quizlet.com/705737401/modules-15-16-flash-cards/)"
+                    url: "https://quizlet.com/705737401/modules-15-16-flash-cards/"
                 },
                 {
                     title: "MindLuster Financial Statement Analysis Tutorial",
-                    url: "[https://www.mindluster.com/course/495/Financial-Statement-Analysis](https://www.mindluster.com/course/495/Financial-Statement-Analysis)"
+                    url: "https://www.mindluster.com/course/495/Financial-Statement-Analysis"
                 },
                 {
                     title: "LearnAccountingForFree: Financial Statement Analysis Lesson",
-                    url: "[https://learnaccountingforfree.com/lesson10.html](https://learnaccountingforfree.com/lesson10.html)"
+                    url: "https://learnaccountingforfree.com/lesson10.html"
                 },
                 {
                     title: "FBLA Financial Statement Analysis Sample Test",
-                    url: "[https://lohsfbla.com/comps/Financial%2BStatement%2BAnalysis/test](https://lohsfbla.com/comps/Financial%2BStatement%2BAnalysis/test)"
+                    url: "https://lohsfbla.com/comps/Financial%2BStatement%2BAnalysis/test"
                 },
                 {
                     title: "FBLA Canada Financial Statement Analysis Resource Page",
-                    url: "[https://fblc.ca/fsa](https://fblc.ca/fsa)"
+                    url: "https://fblc.ca/fsa"
                 },
                 {
                     title: "Financial Statement Presentation Techniques PDF",
-                    url: "[https://moneywise.adventist.org/wp-content/uploads/FinancialStatementTechniques.pdf](https://moneywise.adventist.org/wp-content/uploads/FinancialStatementTechniques.pdf)"
+                    url: "https://moneywise.adventist.org/wp-content/uploads/FinancialStatementTechniques.pdf"
                 },
                 {
                     title: "2024–25 Competitive Events Financial Statement Analysis Rating Sheet",
-                    url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/24-25-High-School-Rating-Sheets-All-in-One.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/24-25-High-School-Rating-Sheets-All-in-One.pdf)"
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/24-25-High-School-Rating-Sheets-All-in-One.pdf"
                 },
                 {
                     title: "2025–26 FBLA Financial Statement Analysis Guidelines PDF",
-                    url: "[https://greektrack-fbla-public.s3.amazonaws.com/files/1/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Presentation%20Events/Financial-Statement-Analysis.pdf](https://greektrack-fbla-public.s3.amazonaws.com/files/1/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Presentation%20Events/Financial-Statement-Analysis.pdf)"
+                    url: "https://greektrack-fbla-public.s3.amazonaws.com/files/1/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Presentation%20Events/Financial-Statement-Analysis.pdf"
                 }
             ],
             aiPrompts: [
@@ -3120,83 +3120,83 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA Healthcare Administration Competitive Event Guidelines (Official FBLA resource)",
-                    url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Healthcare-Administration.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Healthcare-Administration.pdf)"
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Healthcare-Administration.pdf"
                 },
                 {
                     title: "FBLA Healthcare Administration Event Overview – FBLA.org",
-                    url: "[https://www.fbla.org/competitive-events/healthcare-administration/](https://www.fbla.org/competitive-events/healthcare-administration/)"
+                    url: "https://www.fbla.org/competitive-events/healthcare-administration/"
                 },
                 {
                     title: "FBLA Healthcare Administration Flashcards (65+ terms) – Quizlet",
-                    url: "[https://quizlet.com/24469971/fbla-health-care-administration-test-flash-cards/](https://quizlet.com/24469971/fbla-health-care-administration-test-flash-cards/)"
+                    url: "https://quizlet.com/24469971/fbla-health-care-administration-test-flash-cards/"
                 },
                 {
                     title: "FBLA 2025–2026 Healthcare Administration Flashcards – Quizlet",
-                    url: "[https://quizlet.com/1117945262](https://quizlet.com/1117945262)"
+                    url: "https://quizlet.com/1117945262"
                 },
                 {
                     title: "FBLA Healthcare Administration Study Guide (Complete) – Quizlet",
-                    url: "[https://quizlet.com/267360791/flashcards](https://quizlet.com/267360791/flashcards)"
+                    url: "https://quizlet.com/267360791/flashcards"
                 },
                 {
                     title: "FBLA Healthcare Administration Laws & Legal Rules Flashcards – Quizlet",
-                    url: "[https://quizlet.com/1130529619](https://quizlet.com/1130529619)"
+                    url: "https://quizlet.com/1130529619"
                 },
                 {
                     title: "FBLA Healthcare Administration Managing Office Procedures – Quizlet",
-                    url: "[https://quizlet.com/ca/871451593](https://quizlet.com/ca/871451593)"
+                    url: "https://quizlet.com/ca/871451593"
                 },
                 {
                     title: "FBLA Healthcare Administration Review Guide – Quizlet Study Guide",
-                    url: "[https://quizlet.com/study-guides/fbla-healthcare-administration-review-guide-4a3022cc-1ccd-4ec9-b0f4-161d39b6d966](https://quizlet.com/study-guides/fbla-healthcare-administration-review-guide-4a3022cc-1ccd-4ec9-b0f4-161d39b6d966)"
+                    url: "https://quizlet.com/study-guides/fbla-healthcare-administration-review-guide-4a3022cc-1ccd-4ec9-b0f4-161d39b6d966"
                 },
                 {
                     title: "FBLA Healthcare Administration Flashcards & Quizzes – Brainscape",
-                    url: "[https://www.brainscape.com/subjects/fbla-healthcare-administration](https://www.brainscape.com/subjects/fbla-healthcare-administration)"
+                    url: "https://www.brainscape.com/subjects/fbla-healthcare-administration"
                 },
                 {
                     title: "Medical Office Procedures & Administration Flashcards – Quizlet",
-                    url: "[https://quizlet.com/754376205](https://quizlet.com/754376205)"
+                    url: "https://quizlet.com/754376205"
                 },
                 {
                     title: "Medical Terminology Guide for Medical Administrative Assistants – Northwest Career College",
-                    url: "[https://www.northwestcareercollege.edu/blog/a-guide-to-medical-terminology-for-medical-administrative-assistants/](https://www.northwestcareercollege.edu/blog/a-guide-to-medical-terminology-for-medical-administrative-assistants/)"
+                    url: "https://www.northwestcareercollege.edu/blog/a-guide-to-medical-terminology-for-medical-administrative-assistants/"
                 },
                 {
                     title: "Medical Record (Wikipedia – foundational concept for records management)",
-                    url: "[https://en.wikipedia.org/wiki/Medical_record](https://en.wikipedia.org/wiki/Medical_record)"
+                    url: "https://en.wikipedia.org/wiki/Medical_record"
                 },
                 {
                     title: "Current Procedural Terminology (CPT) – AMA – coding resource",
-                    url: "[https://en.wikipedia.org/wiki/Current_Procedural_Terminology](https://en.wikipedia.org/wiki/Current_Procedural_Terminology)"
+                    url: "https://en.wikipedia.org/wiki/Current_Procedural_Terminology"
                 },
                 {
                     title: "Practice Management (Wikipedia – healthcare administration concept)",
-                    url: "[https://en.wikipedia.org/wiki/Practice_management](https://en.wikipedia.org/wiki/Practice_management)"
+                    url: "https://en.wikipedia.org/wiki/Practice_management"
                 },
                 {
                     title: "American Health Information Management Association (AHIMA)",
-                    url: "[https://en.wikipedia.org/wiki/American_Health_Information_Management_Association](https://en.wikipedia.org/wiki/American_Health_Information_Management_Association)"
+                    url: "https://en.wikipedia.org/wiki/American_Health_Information_Management_Association"
                 },
                 {
                     title: "NHA CMAA Practice Test Flashcards (medical admin practice)",
-                    url: "[https://quizlet.com/509813472/nha-cmaa-practice-test-1-flash-cards/](https://quizlet.com/509813472/nha-cmaa-practice-test-1-flash-cards/)"
+                    url: "https://quizlet.com/509813472/nha-cmaa-practice-test-1-flash-cards/"
                 },
                 {
                     title: "Health Care Administration Exam Questions and Verified Answers – Docsity",
-                    url: "[https://www.docsity.com/en/docs/fbla-health-care-administration-exam-questions-and-verified-answers/13670948/](https://www.docsity.com/en/docs/fbla-health-care-administration-exam-questions-and-verified-answers/13670948/)"
+                    url: "https://www.docsity.com/en/docs/fbla-health-care-administration-exam-questions-and-verified-answers/13670948/"
                 },
                 {
                     title: "FBLA Event – Health Care Administration (Florida FBLA page)",
-                    url: "[https://www.flfbla.org/fbla-event-health-care-administration](https://www.flfbla.org/fbla-event-health-care-administration)"
+                    url: "https://www.flfbla.org/fbla-event-health-care-administration"
                 },
                 {
                     title: "FBLA Healthcare Administration Competencies Doc (Course Hero overview)",
-                    url: "[https://www.coursehero.com/file/78294729/FBLA-Health-Care-Administration-Competenciesdocx/](https://www.coursehero.com/file/78294729/FBLA-Health-Care-Administration-Competenciesdocx/)"
+                    url: "https://www.coursehero.com/file/78294729/FBLA-Health-Care-Administration-Competenciesdocx/"
                 },
                 {
                     title: "FBLA Objective Test Overview (Washington FBLA study overview with Quizlets)",
-                    url: "[https://wafbla.org/competitive-events/](https://wafbla.org/competitive-events/)"
+                    url: "https://wafbla.org/competitive-events/"
                 }
             ],
             aiPrompts: [
@@ -3219,83 +3219,83 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA Hospitality & Event Management Competitive Event Guidelines",
-                    url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Role%20Play%20Events/Hospitality-and-Event-Management.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Role%20Play%20Events/Hospitality-and-Event-Management.pdf)"
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Role%20Play%20Events/Hospitality-and-Event-Management.pdf"
                 },
                 {
                     title: "FBLA Official Event Page — Hospitality & Event Management",
-                    url: "[https://www.fbla.org/competitive-events/hospitality-event-management/](https://www.fbla.org/competitive-events/hospitality-event-management/)"
+                    url: "https://www.fbla.org/competitive-events/hospitality-event-management/"
                 },
                 {
                     title: "FBLA Event Management and Hospitality Flashcards — Quizlet",
-                    url: "[https://quizlet.com/881964730/fbla-event-management-and-hospitality-flash-cards/](https://quizlet.com/881964730/fbla-event-management-and-hospitality-flash-cards/)"
+                    url: "https://quizlet.com/881964730/fbla-event-management-and-hospitality-flash-cards/"
                 },
                 {
                     title: "FBLA Roleplay: Hospitality Management Flashcards — Quizlet",
-                    url: "[https://quizlet.com/549795807/fbla-roleplay-hospitality-management-c-flash-cards/](https://quizlet.com/549795807/fbla-roleplay-hospitality-management-c-flash-cards/)"
+                    url: "https://quizlet.com/549795807/fbla-roleplay-hospitality-management-c-flash-cards/"
                 },
                 {
                     title: "FBLA Hospitality & Event Management Flashcards — Quizlet (41 terms)",
-                    url: "[https://quizlet.com/872551594/fbla-hospitality-and-event-management-flash-cards/](https://quizlet.com/872551594/fbla-hospitality-and-event-management-flash-cards/)"
+                    url: "https://quizlet.com/872551594/fbla-hospitality-and-event-management-flash-cards/"
                 },
                 {
                     title: "FBLA Hospitality & Event Management Short Flashcards — Quizlet",
-                    url: "[https://quizlet.com/872551674/fbla-hospitality-and-event-management-flash-cards/](https://quizlet.com/872551674/fbla-hospitality-and-event-management-flash-cards/)"
+                    url: "https://quizlet.com/872551674/fbla-hospitality-and-event-management-flash-cards/"
                 },
                 {
                     title: "Hospitality & Event Management Studocu Competencies Guide",
-                    url: "[https://www.studocu.com/en-us/document/discovery-canyon-campus-high-school/business-and-leadership/hospitality-and-event-management/116304179](https://www.studocu.com/en-us/document/discovery-canyon-campus-high-school/business-and-leadership/hospitality-and-event-management/116304179)"
+                    url: "https://www.studocu.com/en-us/document/discovery-canyon-campus-high-school/business-and-leadership/hospitality-and-event-management/116304179"
                 },
                 {
                     title: "Practice FBLA Hospitality & Event Management Test",
-                    url: "[https://lohsfbla.com/comps/Hospitality%2B%2526%2BEvent%2BManagement/test](https://lohsfbla.com/comps/Hospitality%2B%2526%2BEvent%2BManagement/test)"
+                    url: "https://lohsfbla.com/comps/Hospitality%2B%2526%2BEvent%2BManagement/test"
                 },
                 {
                     title: "Practice Hospitality & Event Management Quiz & Flashcards",
-                    url: "[https://lohsfbla.com/comps/Hospitality%2B%2526%2BEvent%2BManagement](https://lohsfbla.com/comps/Hospitality%2B%2526%2BEvent%2BManagement)"
+                    url: "https://lohsfbla.com/comps/Hospitality%2B%2526%2BEvent%2BManagement"
                 },
                 {
                     title: "Hospitality & Event Management Overview — Canada FBLA",
-                    url: "[https://fblc.ca/hospitality-and-event-management](https://fblc.ca/hospitality-and-event-management)"
+                    url: "https://fblc.ca/hospitality-and-event-management"
                 },
                 {
                     title: "Hospitality: Meeting and Event Management (Maricopa College overview)",
-                    url: "[https://www.maricopa.edu/degrees-certificates/business-entrepreneurialism-management/hospitality-meeting-event-management-5918-ccl](https://www.maricopa.edu/degrees-certificates/business-entrepreneurialism-management/hospitality-meeting-event-management-5918-ccl)"
+                    url: "https://www.maricopa.edu/degrees-certificates/business-entrepreneurialism-management/hospitality-meeting-event-management-5918-ccl"
                 },
                 {
                     title: "Event Management Courses on Coursera",
-                    url: "[https://www.coursera.org/courses?query=event+management](https://www.coursera.org/courses?query=event+management)"
+                    url: "https://www.coursera.org/courses?query=event+management"
                 },
                 {
                     title: "Hospitality & Event Management Course on Study.com",
-                    url: "[https://study.com/academy/course/event-conference-meeting-management.html](https://study.com/academy/course/event-conference-meeting-management.html)"
+                    url: "https://study.com/academy/course/event-conference-meeting-management.html"
                 },
                 {
                     title: "Event Planning Guide With Checklist (Cvent)",
-                    url: "[https://www.cvent.com/en/blog/events/event-planning-guide](https://www.cvent.com/en/blog/events/event-planning-guide)"
+                    url: "https://www.cvent.com/en/blog/events/event-planning-guide"
                 },
                 {
                     title: "Tourism, Hospitality, and Event Planning Career Guide (Indiana U)",
-                    url: "[https://careerexploration.indiana.edu/career-guides/tourism-hospitality-event-planning.html](https://careerexploration.indiana.edu/career-guides/tourism-hospitality-event-planning.html)"
+                    url: "https://careerexploration.indiana.edu/career-guides/tourism-hospitality-event-planning.html"
                 },
                 {
                     title: "Online Hospitality Courses on edX",
-                    url: "[https://www.edx.org/learn/hospitality](https://www.edx.org/learn/hospitality)"
+                    url: "https://www.edx.org/learn/hospitality"
                 },
                 {
                     title: "FBLA High School Competitive Events List",
-                    url: "[https://www.fbla.org/high-school/competitive-events/](https://www.fbla.org/high-school/competitive-events/)"
+                    url: "https://www.fbla.org/high-school/competitive-events/"
                 },
                 {
                     title: "Hospitality & Event Management Event Overview — FL FBLA",
-                    url: "[https://www.flfbla.org/fbla-event-hospitality-management](https://www.flfbla.org/fbla-event-hospitality-management)"
+                    url: "https://www.flfbla.org/fbla-event-hospitality-management"
                 },
                 {
                     title: "Hospitality & Event Management Event Breakdown — Lynbrook FBLA",
-                    url: "[https://www.lynbrookfbla.com/competition](https://www.lynbrookfbla.com/competition)"
+                    url: "https://www.lynbrookfbla.com/competition"
                 },
                 {
                     title: "Hospitality & Event Management Study Guide (NY State FBLA)",
-                    url: "[https://www.nysfbla.org/wp-content/uploads/2025/07/Study-Materials.pdf](https://www.nysfbla.org/wp-content/uploads/2025/07/Study-Materials.pdf)"
+                    url: "https://www.nysfbla.org/wp-content/uploads/2025/07/Study-Materials.pdf"
                 }
             ],
             aiPrompts: [
@@ -3318,83 +3318,83 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA Official Human Resource Management Event Guidelines",
-                    url: "[https://www.fbla.org/competitive-events/human-resource-management/](https://www.fbla.org/competitive-events/human-resource-management/)"
+                    url: "https://www.fbla.org/competitive-events/human-resource-management/"
                 },
                 {
                     title: "FBLA Human Resource Management Study Guide Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/931741100/2024-fbla-human-resource-management-study-guide-flash-cards/](https://quizlet.com/931741100/2024-fbla-human-resource-management-study-guide-flash-cards/)"
+                    url: "https://quizlet.com/931741100/2024-fbla-human-resource-management-study-guide-flash-cards/"
                 },
                 {
                     title: "FBLA Human Resource Management Test Review Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/779885531/fbla-human-resource-management-test-review-flash-cards/](https://quizlet.com/779885531/fbla-human-resource-management-test-review-flash-cards/)"
+                    url: "https://quizlet.com/779885531/fbla-human-resource-management-test-review-flash-cards/"
                 },
                 {
                     title: "FBLA Human Resource Management Flashcards Set (313 Terms)",
-                    url: "[https://quizlet.com/1123046341](https://quizlet.com/1123046341)"
+                    url: "https://quizlet.com/1123046341"
                 },
                 {
                     title: "FBLA Human Resource Management Flashcards (Alternate Set)",
-                    url: "[https://quizlet.com/275679333/fbla-human-resource-management-flash-cards/](https://quizlet.com/275679333/fbla-human-resource-management-flash-cards/)"
+                    url: "https://quizlet.com/275679333/fbla-human-resource-management-flash-cards/"
                 },
                 {
                     title: "Human Resource Management Exam 1 Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/512811098/human-resource-management-exam-1-chapters-1-4-flash-cards/](https://quizlet.com/512811098/human-resource-management-exam-1-chapters-1-4-flash-cards/)"
+                    url: "https://quizlet.com/512811098/human-resource-management-exam-1-chapters-1-4-flash-cards/"
                 },
                 {
                     title: "Chapters 1–5 HR Study Guide Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/120847046/chapters-1-5-hr-study-guide-flash-cards/](https://quizlet.com/120847046/chapters-1-5-hr-study-guide-flash-cards/)"
+                    url: "https://quizlet.com/120847046/chapters-1-5-hr-study-guide-flash-cards/"
                 },
                 {
                     title: "FBLA Human Resource Management Sample Questions (Quizlet)",
-                    url: "[https://quizlet.com/1019591720/fbla-human-resource-management-sample-questions-flash-cards/](https://quizlet.com/1019591720/fbla-human-resource-management-sample-questions-flash-cards/)"
+                    url: "https://quizlet.com/1019591720/fbla-human-resource-management-sample-questions-flash-cards/"
                 },
                 {
                     title: "High School HRM Objective Test Guide: Key Concepts & Competencies (Studocu)",
-                    url: "[https://www.studocu.com/en-us/document/discovery-canyon-campus-high-school/business-and-leadership/human-resource-management/116304165](https://www.studocu.com/en-us/document/discovery-canyon-campus-high-school/business-and-leadership/human-resource-management/116304165)"
+                    url: "https://www.studocu.com/en-us/document/discovery-canyon-campus-high-school/business-and-leadership/human-resource-management/116304165"
                 },
                 {
                     title: "FBLA Human Resource Management Practice Test (Quiz-Maker)",
-                    url: "[https://www.quiz-maker.com/cp-hs-fbla-hr-challenge](https://www.quiz-maker.com/cp-hs-fbla-hr-challenge)"
+                    url: "https://www.quiz-maker.com/cp-hs-fbla-hr-challenge"
                 },
                 {
                     title: "FBLA Human Resource Management Event Resource Hub",
-                    url: "[https://lohsfbla.com/comps/Human%2BResource%2BManagement](https://lohsfbla.com/comps/Human%2BResource%2BManagement)"
+                    url: "https://lohsfbla.com/comps/Human%2BResource%2BManagement"
                 },
                 {
                     title: "Human Resource Management Objective Test Competencies (FBLA PDF)",
-                    url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Human-Resource-Management.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Human-Resource-Management.pdf)"
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Human-Resource-Management.pdf"
                 },
                 {
                     title: "HR Management MCQs and Planning Guide (Scribd)",
-                    url: "[https://www.scribd.com/document/488859988/MCQs-Unit-1-Human-Resource-Management-and-Planning-pdf](https://www.scribd.com/document/488859988/MCQs-Unit-1-Human-Resource-Management-and-Planning-pdf)"
+                    url: "https://www.scribd.com/document/488859988/MCQs-Unit-1-Human-Resource-Management-and-Planning-pdf"
                 },
                 {
                     title: "Human Resources Management Quiz (HackingHRLab)",
-                    url: "[https://hackinghrlab.io/blogs/human-resources-management-quiz/](https://hackinghrlab.io/blogs/human-resources-management-quiz/)"
+                    url: "https://hackinghrlab.io/blogs/human-resources-management-quiz/"
                 },
                 {
                     title: "FBLA Event Breakdown for Human Resource Management (Florida FBLA)",
-                    url: "[https://www.flfbla.org/fbla-event-human-resource-management](https://www.flfbla.org/fbla-event-human-resource-management)"
+                    url: "https://www.flfbla.org/fbla-event-human-resource-management"
                 },
                 {
                     title: "FBLA Human Resource Management Overview (Florida FBLA)",
-                    url: "[https://www.floridafbla-pbl.com/fbla-event-human-resource-management](https://www.floridafbla-pbl.com/fbla-event-human-resource-management)"
+                    url: "https://www.floridafbla-pbl.com/fbla-event-human-resource-management"
                 },
                 {
                     title: "FBLA Competitive Events Resources Listing (LOHS FBLA)",
-                    url: "[https://lohsfbla.com/comps/](https://lohsfbla.com/comps/)"
+                    url: "https://lohsfbla.com/comps/"
                 },
                 {
                     title: "Human Resource Management Flashcards (Fundamentals Set)",
-                    url: "[https://quizlet.com/473213426/fundamentals-of-human-resource-management-flash-cards/](https://quizlet.com/473213426/fundamentals-of-human-resource-management-flash-cards/)"
+                    url: "https://quizlet.com/473213426/fundamentals-of-human-resource-management-flash-cards/"
                 },
                 {
                     title: "FBLA Competitive Events Flashcards (contextual study)",
-                    url: "[https://quizlet.com/1003708759/fbla-competitive-events-flash-cards/](https://quizlet.com/1003708759/fbla-competitive-events-flash-cards/)"
+                    url: "https://quizlet.com/1003708759/fbla-competitive-events-flash-cards/"
                 },
                 {
                     title: "FBLA Human Resource Management Flashcards (Alternate Practice)",
-                    url: "[https://quizlet.com/841123090/d356-hr-technology-pre-assessment-flash-cards/](https://quizlet.com/841123090/d356-hr-technology-pre-assessment-flash-cards/)"
+                    url: "https://quizlet.com/841123090/d356-hr-technology-pre-assessment-flash-cards/"
                 }
             ],
             aiPrompts: [
@@ -3417,83 +3417,83 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA Event: Impromptu Speaking Overview (Florida FBLA)",
-                    url: "[https://www.flfbla.org/fbla-event-impromptu-speaking](https://www.flfbla.org/fbla-event-impromptu-speaking)"
+                    url: "https://www.flfbla.org/fbla-event-impromptu-speaking"
                 },
                 {
                     title: "FBLA Impromptu Speaking Competitive Event Details (FBLA Official)",
-                    url: "[https://www.fbla.org/competitive-events/impromptu-speaking-high-school/](https://www.fbla.org/competitive-events/impromptu-speaking-high-school/)"
+                    url: "https://www.fbla.org/competitive-events/impromptu-speaking-high-school/"
                 },
                 {
                     title: "2024–25 FBLA Impromptu Speaking Guidelines (PDF)",
-                    url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Presentation%20Events/Impromptu-Speaking.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Presentation%20Events/Impromptu-Speaking.pdf)"
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Presentation%20Events/Impromptu-Speaking.pdf"
                 },
                 {
                     title: "FBLA: Impromptu Speaking Flashcards on Quizlet",
-                    url: "[https://quizlet.com/281705810/fbla-impromptu-speaking-flash-cards/](https://quizlet.com/281705810/fbla-impromptu-speaking-flash-cards/)"
+                    url: "https://quizlet.com/281705810/fbla-impromptu-speaking-flash-cards/"
                 },
                 {
                     title: "FBLA IMPROMPTU SPEECH Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/772602339/fbla-impromptu-speech-flash-cards/](https://quizlet.com/772602339/fbla-impromptu-speech-flash-cards/)"
+                    url: "https://quizlet.com/772602339/fbla-impromptu-speech-flash-cards/"
                 },
                 {
                     title: "Impromptu Speaking (FBLA) Vocabulary Flashcards",
-                    url: "[https://quizlet.com/317645326/impromptu-speaking-fbla-vocabulary-flash-cards/](https://quizlet.com/317645326/impromptu-speaking-fbla-vocabulary-flash-cards/)"
+                    url: "https://quizlet.com/317645326/impromptu-speaking-fbla-vocabulary-flash-cards/"
                 },
                 {
                     title: "FBLA Goals for Impromptu Speaking Flashcards",
-                    url: "[https://quizlet.com/265481113/fbla-goals-for-impromptu-speaking-flash-cards/](https://quizlet.com/265481113/fbla-goals-for-impromptu-speaking-flash-cards/)"
+                    url: "https://quizlet.com/265481113/fbla-goals-for-impromptu-speaking-flash-cards/"
                 },
                 {
                     title: "FBLA Impromptu Flashcards (Additional Set)",
-                    url: "[https://quizlet.com/427453896/fbla-impromptu-flash-cards/](https://quizlet.com/427453896/fbla-impromptu-flash-cards/)"
+                    url: "https://quizlet.com/427453896/fbla-impromptu-flash-cards/"
                 },
                 {
                     title: "Impromptu Speaking Sample Topics (Nebraska FBLA)",
-                    url: "[https://nebraskafbla.org/chapter-resources/resources-ce_impromspkgtopicsamples/](https://nebraskafbla.org/chapter-resources/resources-ce_impromspkgtopicsamples/)"
+                    url: "https://nebraskafbla.org/chapter-resources/resources-ce_impromspkgtopicsamples/"
                 },
                 {
                     title: "Impromptu Speaking Resource (Toastmasters International)",
-                    url: "[https://www.toastmasters.org/resources/impromptu-speaking](https://www.toastmasters.org/resources/impromptu-speaking)"
+                    url: "https://www.toastmasters.org/resources/impromptu-speaking"
                 },
                 {
                     title: "Impromptu Starter Kit (Speech & Debate.org PDF)",
-                    url: "[https://www.speechanddebate.org/wp-content/uploads/Impromptu-Starter-Kit.pdf](https://www.speechanddebate.org/wp-content/uploads/Impromptu-Starter-Kit.pdf)"
+                    url: "https://www.speechanddebate.org/wp-content/uploads/Impromptu-Starter-Kit.pdf"
                 },
                 {
                     title: "Impromptu Speaking Tips - Training Associates Blog",
-                    url: "[https://thetrainingassociates.com/impromptu-speaking-tips/](https://thetrainingassociates.com/impromptu-speaking-tips/)"
+                    url: "https://thetrainingassociates.com/impromptu-speaking-tips/"
                 },
                 {
                     title: "Tips for Effective Impromptu Speaking (UW‑La Crosse PDF)",
-                    url: "[https://www.uwlax.edu/globalassets/offices-services/tutoring--learning-center/public-speaking-tutors/new-folder/psc-handout-impromptu-tips.pdf](https://www.uwlax.edu/globalassets/offices-services/tutoring--learning-center/public-speaking-tutors/new-folder/psc-handout-impromptu-tips.pdf)"
+                    url: "https://www.uwlax.edu/globalassets/offices-services/tutoring--learning-center/public-speaking-tutors/new-folder/psc-handout-impromptu-tips.pdf"
                 },
                 {
                     title: "Impromptu Speaking: The Framework That Makes You Sound Prepared",
-                    url: "[https://winningpresentations.com/impromptu-speaking/](https://winningpresentations.com/impromptu-speaking/)"
+                    url: "https://winningpresentations.com/impromptu-speaking/"
                 },
                 {
                     title: "10 Tips for Improving Your Public Speaking Skills (Harvard DCE)",
-                    url: "[https://professional.dce.harvard.edu/blog/10-tips-for-improving-your-public-speaking-skills/](https://professional.dce.harvard.edu/blog/10-tips-for-improving-your-public-speaking-skills/)"
+                    url: "https://professional.dce.harvard.edu/blog/10-tips-for-improving-your-public-speaking-skills/"
                 },
                 {
                     title: "Writing Center Resources for Public Speaking (Amherst College)",
-                    url: "[https://www.amherst.edu/academiclife/support/writingcenter/public-speaking/resources-for-public-speaking](https://www.amherst.edu/academiclife/support/writingcenter/public-speaking/resources-for-public-speaking)"
+                    url: "https://www.amherst.edu/academiclife/support/writingcenter/public-speaking/resources-for-public-speaking"
                 },
                 {
                     title: "Wikipedia: Impromptu Speaking",
-                    url: "[https://en.wikipedia.org/wiki/Impromptu_speaking](https://en.wikipedia.org/wiki/Impromptu_speaking)"
+                    url: "https://en.wikipedia.org/wiki/Impromptu_speaking"
                 },
                 {
                     title: "Wikipedia: Toastmasters International",
-                    url: "[https://en.wikipedia.org/wiki/Toastmasters_International](https://en.wikipedia.org/wiki/Toastmasters_International)"
+                    url: "https://en.wikipedia.org/wiki/Toastmasters_International"
                 },
                 {
                     title: "Wikipedia: Speaker's Triangle (Public Speaking Technique)",
-                    url: "[https://en.wikipedia.org/wiki/Speaker's_triangle](https://en.wikipedia.org/wiki/Speaker's_triangle)"
+                    url: "https://en.wikipedia.org/wiki/Speaker's_triangle"
                 },
                 {
                     title: "FBLA Competitive Events Flashcards Including Impromptu Speaking",
-                    url: "[https://quizlet.com/480834737/fbla-competitive-events-flash-cards/](https://quizlet.com/480834737/fbla-competitive-events-flash-cards/)"
+                    url: "https://quizlet.com/480834737/fbla-competitive-events-flash-cards/"
                 }
             ],
             aiPrompts: [
@@ -3516,83 +3516,83 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA Insurance & Risk Management Competitive Event Guidelines",
-                    url: "[https://www.fbla.org/competitive-events/insurance-risk-management/](https://www.fbla.org/competitive-events/insurance-risk-management/)"
+                    url: "https://www.fbla.org/competitive-events/insurance-risk-management/"
                 },
                 {
                     title: "Florida FBLA Insurance & Risk Management Event Overview and Competencies",
-                    url: "[https://www.flfbla.org/fbla-event-insurance-risk-management](https://www.flfbla.org/fbla-event-insurance-risk-management)"
+                    url: "https://www.flfbla.org/fbla-event-insurance-risk-management"
                 },
                 {
                     title: "Objective Test Guidelines for Insurance & Risk Management (PDF)",
-                    url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Insurance-and-Risk-Management.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Insurance-and-Risk-Management.pdf)"
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Insurance-and-Risk-Management.pdf"
                 },
                 {
                     title: "FBLA Insurance & Risk Management Practice Test (LOHS FBLA)",
-                    url: "[https://lohsfbla.com/comps/Insurance%2B%26%2BRisk%2BManagement/test](https://lohsfbla.com/comps/Insurance%2B%26%2BRisk%2BManagement/test)"
+                    url: "https://lohsfbla.com/comps/Insurance%2B%26%2BRisk%2BManagement/test"
                 },
                 {
                     title: "Investopedia – What Is Insurance?",
-                    url: "[https://www.investopedia.com/terms/i/insurance.asp](https://www.investopedia.com/terms/i/insurance.asp)"
+                    url: "https://www.investopedia.com/terms/i/insurance.asp"
                 },
                 {
                     title: "Investopedia – Understanding Insurance Coverage Types",
-                    url: "[https://www.investopedia.com/terms/i/insurance-coverage.asp](https://www.investopedia.com/terms/i/insurance-coverage.asp)"
+                    url: "https://www.investopedia.com/terms/i/insurance-coverage.asp"
                 },
                 {
                     title: "Investopedia – What Is Risk Management in Finance?",
-                    url: "[https://www.investopedia.com/terms/r/riskmanagement.asp](https://www.investopedia.com/terms/r/riskmanagement.asp)"
+                    url: "https://www.investopedia.com/terms/r/riskmanagement.asp"
                 },
                 {
                     title: "Achievable – Managing Risks in Insurance and Risk Management",
-                    url: "[https://app.achievable.me/study/insurance-life-health/learn/general-insurance-concepts-managing-risks](https://app.achievable.me/study/insurance-life-health/learn/general-insurance-concepts-managing-risks)"
+                    url: "https://app.achievable.me/study/insurance-life-health/learn/general-insurance-concepts-managing-risks"
                 },
                 {
                     title: "Quizlet – FBLA Insurance & Risk Management Flash Cards (49 terms)",
-                    url: "[https://quizlet.com/59316876/fbla-insurance-risk-management-flash-cards/](https://quizlet.com/59316876/fbla-insurance-risk-management-flash-cards/)"
+                    url: "https://quizlet.com/59316876/fbla-insurance-risk-management-flash-cards/"
                 },
                 {
                     title: "Quizlet – FBLA Insurance and Risk Management Flash Cards (72 terms)",
-                    url: "[https://quizlet.com/264705801/fbla-insurance-and-risk-management-flash-cards/](https://quizlet.com/264705801/fbla-insurance-and-risk-management-flash-cards/)"
+                    url: "https://quizlet.com/264705801/fbla-insurance-and-risk-management-flash-cards/"
                 },
                 {
                     title: "Quizlet – Comprehensive FBLA Insurance & Risk Management Set (446 terms)",
-                    url: "[https://quizlet.com/1131856673/fbla-insurance-risk-management-flash-cards/](https://quizlet.com/1131856673/fbla-insurance-risk-management-flash-cards/)"
+                    url: "https://quizlet.com/1131856673/fbla-insurance-risk-management-flash-cards/"
                 },
                 {
                     title: "Quizlet – Insurance and Risk Management FBLA Flash Cards (82 terms)",
-                    url: "[https://quizlet.com/551920026/insurance-and-risk-management-fbla-flash-cards/](https://quizlet.com/551920026/insurance-and-risk-management-fbla-flash-cards/)"
+                    url: "https://quizlet.com/551920026/insurance-and-risk-management-fbla-flash-cards/"
                 },
                 {
                     title: "Quizlet – Principles of Risk Management and Insurance Flashcards",
-                    url: "[https://quizlet.com/66938338/principles-of-risk-management-and-insurance-exam-1-flash-cards/](https://quizlet.com/66938338/principles-of-risk-management-and-insurance-exam-1-flash-cards/)"
+                    url: "https://quizlet.com/66938338/principles-of-risk-management-and-insurance-exam-1-flash-cards/"
                 },
                 {
                     title: "Quizlet – Risk Management and Insurance Ch. 1 Flash Cards",
-                    url: "[https://quizlet.com/91940324/principles-of-risk-management-and-insurance-chapter-1-flash-cards/](https://quizlet.com/91940324/principles-of-risk-management-and-insurance-chapter-1-flash-cards/)"
+                    url: "https://quizlet.com/91940324/principles-of-risk-management-and-insurance-chapter-1-flash-cards/"
                 },
                 {
                     title: "Studocu – Risk Management & Insurance Study Guide",
-                    url: "[https://www.studocu.com/en-us/document/university-of-north-georgia/economics-decision-making/risk-management-insurance-ch-16-exam-study-guide/141644111](https://www.studocu.com/en-us/document/university-of-north-georgia/economics-decision-making/risk-management-insurance-ch-16-exam-study-guide/141644111)"
+                    url: "https://www.studocu.com/en-us/document/university-of-north-georgia/economics-decision-making/risk-management-insurance-ch-16-exam-study-guide/141644111"
                 },
                 {
                     title: "FBLA Resources – Objective Test Insurance & Risk Management Listing",
-                    url: "[https://lohsfbla.com/comps/](https://lohsfbla.com/comps/)"
+                    url: "https://lohsfbla.com/comps/"
                 },
                 {
                     title: "FBLA Washington Competitive Events – Insurance & Risk Management Quizlet Sets",
-                    url: "[https://wafbla.org/competitive-events/](https://wafbla.org/competitive-events/)"
+                    url: "https://wafbla.org/competitive-events/"
                 },
                 {
                     title: "FBLA Insurance & Risk Management Site (Google Sites)",
-                    url: "[https://sites.google.com/mhrd.org/fbla-resources/Objective-Test/individual-event/Insurance-and-Risk-Management](https://sites.google.com/mhrd.org/fbla-resources/Objective-Test/individual-event/Insurance-and-Risk-Management)"
+                    url: "https://sites.google.com/mhrd.org/fbla-resources/Objective-Test/individual-event/Insurance-and-Risk-Management"
                 },
                 {
                     title: "Stuvia – FBLA Insurance & Risk Management Questions and Answers",
-                    url: "[https://www.stuvia.com/doc/7906648/fbla-insurance-en-risk-management-questions-and-answers](https://www.stuvia.com/doc/7906648/fbla-insurance-en-risk-management-questions-and-answers)"
+                    url: "https://www.stuvia.com/doc/7906648/fbla-insurance-en-risk-management-questions-and-answers"
                 },
                 {
                     title: "Stuvia – FBLA Insurance & Risk Management Practice Solution Manual",
-                    url: "[https://www.stuvia.com/en-us/doc/7176610/fbla-insurance-en-risk-management-practice-solution-manual-fully-solved-latest-update-2025-already-passed](https://www.stuvia.com/en-us/doc/7176610/fbla-insurance-en-risk-management-practice-solution-manual-fully-solved-latest-update-2025-already-passed)"
+                    url: "https://www.stuvia.com/en-us/doc/7176610/fbla-insurance-en-risk-management-practice-solution-manual-fully-solved-latest-update-2025-already-passed"
                 }
             ],
             aiPrompts: [
@@ -3713,83 +3713,83 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA Job Interview Competitive Event Guidelines (2025‑26)",
-                    url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Presentation%20Events/Job-Interview.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Presentation%20Events/Job-Interview.pdf)"
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Presentation%20Events/Job-Interview.pdf"
                 },
                 {
                     title: "FBLA Job Interview Event Overview (Florida FBLA)",
-                    url: "[https://www.flfbla.org/fbla-event-job-interview](https://www.flfbla.org/fbla-event-job-interview)"
+                    url: "https://www.flfbla.org/fbla-event-job-interview"
                 },
                 {
                     title: "U.S. Department of Labor Interview Tips",
-                    url: "[https://www.dol.gov/general/jobs/interview-tips](https://www.dol.gov/general/jobs/interview-tips)"
+                    url: "https://www.dol.gov/general/jobs/interview-tips"
                 },
                 {
                     title: "Indeed: How to Make a Great Impression in a Job Interview",
-                    url: "[https://www.indeed.com/career-advice/interviewing/job-interview-tips-how-to-make-a-great-impression](https://www.indeed.com/career-advice/interviewing/job-interview-tips-how-to-make-a-great-impression)"
+                    url: "https://www.indeed.com/career-advice/interviewing/job-interview-tips-how-to-make-a-great-impression"
                 },
                 {
                     title: "Sample Interview Questions (PDF) – University of Arizona",
-                    url: "[https://service.sbs.arizona.edu/sites/default/files/2024-04/Sample%20Interview%20Questions.pdf](https://service.sbs.arizona.edu/sites/default/files/2024-04/Sample%20Interview%20Questions.pdf)"
+                    url: "https://service.sbs.arizona.edu/sites/default/files/2024-04/Sample%20Interview%20Questions.pdf"
                 },
                 {
                     title: "Interviewing Skills Module (PDF)",
-                    url: "[https://ioer.ilsharedlearning.org/ContentDocs/Personal/223/91abe00f-0dd0-49b5-90ba-d4185677d347/Unit_8_-_Interviewing_Skills.pdf](https://ioer.ilsharedlearning.org/ContentDocs/Personal/223/91abe00f-0dd0-49b5-90ba-d4185677d347/Unit_8_-_Interviewing_Skills.pdf)"
+                    url: "https://ioer.ilsharedlearning.org/ContentDocs/Personal/223/91abe00f-0dd0-49b5-90ba-d4185677d347/Unit_8_-_Interviewing_Skills.pdf"
                 },
                 {
                     title: "STAR Interview Technique (Wikipedia)",
-                    url: "[https://en.wikipedia.org/wiki/Situation%2C_task%2C_action%2C_result](https://en.wikipedia.org/wiki/Situation%2C_task%2C_action%2C_result)"
+                    url: "https://en.wikipedia.org/wiki/Situation%2C_task%2C_action%2C_result"
                 },
                 {
                     title: "Free Interview Templates – Template.net",
-                    url: "[https://www.template.net/interview/](https://www.template.net/interview/)"
+                    url: "https://www.template.net/interview/"
                 },
                 {
                     title: "Job Interview Questions and Answers (Career Guide PDF)",
-                    url: "[https://mumanfoundation.org/documents/careeroptions/co_doc_85bab.pdf](https://mumanfoundation.org/documents/careeroptions/co_doc_85bab.pdf)"
+                    url: "https://mumanfoundation.org/documents/careeroptions/co_doc_85bab.pdf"
                 },
                 {
                     title: "Interview Success Strategies – UNT Career Center",
-                    url: "[https://careercenter.unt.edu/resources/interview-success-strategies/](https://careercenter.unt.edu/resources/interview-success-strategies/)"
+                    url: "https://careercenter.unt.edu/resources/interview-success-strategies/"
                 },
                 {
                     title: "Preparing for an Interview – University of Idaho Career Services",
-                    url: "[https://www.uidaho.edu/career-services/career-skills-resources/interview-prep](https://www.uidaho.edu/career-services/career-skills-resources/interview-prep)"
+                    url: "https://www.uidaho.edu/career-services/career-skills-resources/interview-prep"
                 },
                 {
                     title: "Preparing for an Interview – CU Boulder Career Advising",
-                    url: "[https://ce.colorado.edu/advising-services/career-advising/interview-preparation](https://ce.colorado.edu/advising-services/career-advising/interview-preparation)"
+                    url: "https://ce.colorado.edu/advising-services/career-advising/interview-preparation"
                 },
                 {
                     title: "Mock Interview (Wikipedia)",
-                    url: "[https://en.wikipedia.org/wiki/Mock_interview](https://en.wikipedia.org/wiki/Mock_interview)"
+                    url: "https://en.wikipedia.org/wiki/Mock_interview"
                 },
                 {
                     title: "FBLA Job Interview Flashcards (Quizlet Set 1)",
-                    url: "[https://quizlet.com/1115853641](https://quizlet.com/1115853641)"
+                    url: "https://quizlet.com/1115853641"
                 },
                 {
                     title: "Job Interview FBLA Flashcards (Quizlet Set 2)",
-                    url: "[https://quizlet.com/648751882](https://quizlet.com/648751882)"
+                    url: "https://quizlet.com/648751882"
                 },
                 {
                     title: "FBLA Competitive Events Flashcards (Interview Focus)",
-                    url: "[https://quizlet.com/104268025](https://quizlet.com/104268025)"
+                    url: "https://quizlet.com/104268025"
                 },
                 {
                     title: "FBLA Job Interview Flashcards (Alternate Set)",
-                    url: "[https://quizlet.com/131579486](https://quizlet.com/131579486)"
+                    url: "https://quizlet.com/131579486"
                 },
                 {
                     title: "FBLA Competitive Events Flashcards (General Interview)",
-                    url: "[https://quizlet.com/480834737](https://quizlet.com/480834737)"
+                    url: "https://quizlet.com/480834737"
                 },
                 {
                     title: "FBLA Competitive Events Flashcards (Interview Event Info)",
-                    url: "[https://quizlet.com/991125032](https://quizlet.com/991125032)"
+                    url: "https://quizlet.com/991125032"
                 },
                 {
                     title: "FBLA Competitive Events Flashcards (Additional)",
-                    url: "[https://quizlet.com/413186417](https://quizlet.com/413186417)"
+                    url: "https://quizlet.com/413186417"
                 }
             ],
             aiPrompts: [
@@ -3812,51 +3812,51 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA Competitive Event Guidelines: Journalism (official PDF)",
-                    url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Journalism.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Journalism.pdf)"
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Journalism.pdf"
                 },
                 {
                     title: "FBLA Event Overview: Journalism – Florida FBLA",
-                    url: "[https://www.flfbla.org/fbla-event-journalism](https://www.flfbla.org/fbla-event-journalism)"
+                    url: "https://www.flfbla.org/fbla-event-journalism"
                 },
                 {
                     title: "FBLA Journalism Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/193184213/fbla-journalism-test-flash-cards/](https://quizlet.com/193184213/fbla-journalism-test-flash-cards/)"
+                    url: "https://quizlet.com/193184213/fbla-journalism-test-flash-cards/"
                 },
                 {
                     title: "FBLA Test‑ Journalism Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/782268591/fbla-test-journalism-flash-cards/](https://quizlet.com/782268591/fbla-test-journalism-flash-cards/)"
+                    url: "https://quizlet.com/782268591/fbla-test-journalism-flash-cards/"
                 },
                 {
                     title: "FBLA Journalism Practice Test – Quiz‑Maker",
-                    url: "[https://take.quiz-maker.com/cp-hs-fbla-journalism-challenge](https://take.quiz-maker.com/cp-hs-fbla-journalism-challenge)"
+                    url: "https://take.quiz-maker.com/cp-hs-fbla-journalism-challenge"
                 },
                 {
                     title: "FBLA Journalism Practice (LOHS FBLA site)",
-                    url: "[https://lohsfbla.com/comps/Journalism](https://lohsfbla.com/comps/Journalism)"
+                    url: "https://lohsfbla.com/comps/Journalism"
                 },
                 {
                     title: "FBLA – Journalism Practice Test (Bizybear)",
-                    url: "[https://bizybear.app/comps/Journalism/test](https://bizybear.app/comps/Journalism/test)"
+                    url: "https://bizybear.app/comps/Journalism/test"
                 },
                 {
                     title: "Journalism Terminology Quiz (Quizizz)",
-                    url: "[https://wayground.com/admin/quiz/670fdd880ed8bc032e6538cf/journalism-terminology-quiz](https://wayground.com/admin/quiz/670fdd880ed8bc032e6538cf/journalism-terminology-quiz)"
+                    url: "https://wayground.com/admin/quiz/670fdd880ed8bc032e6538cf/journalism-terminology-quiz"
                 },
                 {
                     title: "Associated Press Stylebook (official reference)",
-                    url: "[https://www.apstylebook.com/](https://www.apstylebook.com/)"
+                    url: "https://www.apstylebook.com/"
                 },
                 {
                     title: "AP Style Basics – Journalist’s Resource summary",
-                    url: "[https://journalistsresource.org/home/ap-style-basics/](https://journalistsresource.org/home/ap-style-basics/)"
+                    url: "https://journalistsresource.org/home/ap-style-basics/"
                 },
                 {
                     title: "AP Style ‘Cheat Sheet’ for student journalists",
-                    url: "[https://wjea.org/wp-content/uploads/2014/02/WJEA-AP-Style-Cheat-Sheet.pdf](https://wjea.org/wp-content/uploads/2014/02/WJEA-AP-Style-Cheat-Sheet.pdf)"
+                    url: "https://wjea.org/wp-content/uploads/2014/02/WJEA-AP-Style-Cheat-Sheet.pdf"
                 },
                 {
                     title: "NYU Journalism Handbook for Students",
-                    url: "[https://journalism.nyu.edu/about-us/resources/ethics-handbook-for-students/nyu-journalism-handbook-for-students/](https://journalism.nyu.edu/about-us/resources/ethics-handbook-for-students/nyu-journalism-handbook-for-students/)"
+                    url: "https://journalism.nyu.edu/about-us/resources/ethics-handbook-for-students/nyu-journalism-handbook-for-students/"
                 },
                 {
                     title: "Inverted Pyramid (journalism) – Encyclopedia entry",
@@ -3864,31 +3864,31 @@ export const FBLAResources: FBLAResourceEntry[] = [
                 },
                 {
                     title: "Five Ws (journalism basics) – Encyclopedia entry",
-                    url: "[https://en.wikipedia.org/wiki/Five_Ws](https://en.wikipedia.org/wiki/Five_Ws)"
+                    url: "https://en.wikipedia.org/wiki/Five_Ws"
                 },
                 {
                     title: "Media Ethics – Purdue OWL",
-                    url: "[https://owl.purdue.edu/owl/subject_specific_writing/journalism_and_journalistic_writing/media_ethics.html](https://owl.purdue.edu/owl/subject_specific_writing/journalism_and_journalistic_writing/media_ethics.html)"
+                    url: "https://owl.purdue.edu/owl/subject_specific_writing/journalism_and_journalistic_writing/media_ethics.html"
                 },
                 {
                     title: "The Role of Ethics in News Journalism",
-                    url: "[https://www.wgu.edu/blog/the-role-of-ethics-in-news-journalism2407.html](https://www.wgu.edu/blog/the-role-of-ethics-in-news-journalism2407.html)"
+                    url: "https://www.wgu.edu/blog/the-role-of-ethics-in-news-journalism2407.html"
                 },
                 {
                     title: "Journalism Ethics and Responsibility Lesson Plan (UT Austin PDF)",
-                    url: "[https://journalism.utexas.edu/sites/default/files/sites/journalism.utexas.edu/files/attachments/asne/Lesson_Plans_2012.pdf](https://journalism.utexas.edu/sites/default/files/sites/journalism.utexas.edu/files/attachments/asne/Lesson_Plans_2012.pdf)"
+                    url: "https://journalism.utexas.edu/sites/default/files/sites/journalism.utexas.edu/files/attachments/asne/Lesson_Plans_2012.pdf"
                 },
                 {
                     title: "Open Textbook – Journalism & Media Studies",
-                    url: "[https://open.umn.edu/opentextbooks/subjects/journalism-media-studies-communications](https://open.umn.edu/opentextbooks/subjects/journalism-media-studies-communications)"
+                    url: "https://open.umn.edu/opentextbooks/subjects/journalism-media-studies-communications"
                 },
                 {
                     title: "Introduction to Journalism & Newswriting PDF",
-                    url: "[https://cwi.pressbooks.pub/introductiontojournalismandnewswriting/open/download?type=pdf](https://cwi.pressbooks.pub/introductiontojournalismandnewswriting/open/download?type=pdf)"
+                    url: "https://cwi.pressbooks.pub/introductiontojournalismandnewswriting/open/download?type=pdf"
                 },
                 {
                     title: "Objective Test Resources – Cumberland Valley FBLA list",
-                    url: "[https://cvfbla.org/objective_tests](https://cvfbla.org/objective_tests)"
+                    url: "https://cvfbla.org/objective_tests"
                 }
             ],
             aiPrompts: [
@@ -3967,83 +3967,83 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA National Marketing Competitive Event Guidelines",
-                    url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Role%20Play%20Events/Marketing.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Role%20Play%20Events/Marketing.pdf)"
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Role%20Play%20Events/Marketing.pdf"
                 },
                 {
                     title: "FBLA Official Marketing Event Page",
-                    url: "[https://www.fbla.org/competitive-event/marketing/](https://www.fbla.org/competitive-event/marketing/)"
+                    url: "https://www.fbla.org/competitive-event/marketing/"
                 },
                 {
                     title: "FBLA Marketing Practice Test (Quiz‑Maker)",
-                    url: "[https://www.quiz-maker.com/cp-hs-fbla-marketing-mastery](https://www.quiz-maker.com/cp-hs-fbla-marketing-mastery)"
+                    url: "https://www.quiz-maker.com/cp-hs-fbla-marketing-mastery"
                 },
                 {
                     title: "FBLA Introduction to Marketing Concepts Practice Test (BizyBear)",
-                    url: "[https://bizybear.app/comps/Introduction%2Bto%2BMarketing%2BConcepts/test](https://bizybear.app/comps/Introduction%2Bto%2BMarketing%2BConcepts/test)"
+                    url: "https://bizybear.app/comps/Introduction%2Bto%2BMarketing%2BConcepts/test"
                 },
                 {
                     title: "Coursera Marketing Fundamentals Courses",
-                    url: "[https://www.coursera.org/courses?query=marketing+fundamentals](https://www.coursera.org/courses?query=marketing+fundamentals)"
+                    url: "https://www.coursera.org/courses?query=marketing+fundamentals"
                 },
                 {
                     title: "Salesforce Marketing Strategy Guide",
-                    url: "[https://www.salesforce.com/marketing/strategy/](https://www.salesforce.com/marketing/strategy/)"
+                    url: "https://www.salesforce.com/marketing/strategy/"
                 },
                 {
                     title: "LinkedIn Learning Marketing Courses",
-                    url: "[https://www.linkedin.com/learning/topics/marketing](https://www.linkedin.com/learning/topics/marketing)"
+                    url: "https://www.linkedin.com/learning/topics/marketing"
                 },
                 {
                     title: "AMA Marketing Essentials Training",
-                    url: "[https://www.amanet.org/fundamentals-of-marketing-your-action-plan-for-success/](https://www.amanet.org/fundamentals-of-marketing-your-action-plan-for-success/)"
+                    url: "https://www.amanet.org/fundamentals-of-marketing-your-action-plan-for-success/"
                 },
                 {
                     title: "uCertify Marketing 101 Course Overview",
-                    url: "[https://www.ucertify.com/p/principle-of-marketing.html](https://www.ucertify.com/p/principle-of-marketing.html)"
+                    url: "https://www.ucertify.com/p/principle-of-marketing.html"
                 },
                 {
                     title: "Marketing Role Play Sample – Studocu",
-                    url: "[https://www.studocu.com/en-us/document/adlai-e-stevenson-high-school/business/marketing-role-play-sample-for-competition-maximized-space-solutions/132212389](https://www.studocu.com/en-us/document/adlai-e-stevenson-high-school/business/marketing-role-play-sample-for-competition-maximized-space-solutions/132212389)"
+                    url: "https://www.studocu.com/en-us/document/adlai-e-stevenson-high-school/business/marketing-role-play-sample-for-competition-maximized-space-solutions/132212389"
                 },
                 {
                     title: "World of Marketing Standard 1 Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/524208704/world-of-marketing-standard-1-flash-cards/](https://quizlet.com/524208704/world-of-marketing-standard-1-flash-cards/)"
+                    url: "https://quizlet.com/524208704/world-of-marketing-standard-1-flash-cards/"
                 },
                 {
                     title: "Marketing Role Play Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/859924235/marketing-role-play-flash-cards/](https://quizlet.com/859924235/marketing-role-play-flash-cards/)"
+                    url: "https://quizlet.com/859924235/marketing-role-play-flash-cards/"
                 },
                 {
                     title: "Marketing Strategies – Role Play Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/477421167/marketing-strategies-role-play-know-flash-cards/](https://quizlet.com/477421167/marketing-strategies-role-play-know-flash-cards/)"
+                    url: "https://quizlet.com/477421167/marketing-strategies-role-play-know-flash-cards/"
                 },
                 {
                     title: "FBLA Marketing Study Guide Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/178389930/fbla-marketing-study-guide-flash-cards/](https://quizlet.com/178389930/fbla-marketing-study-guide-flash-cards/)"
+                    url: "https://quizlet.com/178389930/fbla-marketing-study-guide-flash-cards/"
                 },
                 {
                     title: "FBLA Marketing Flashcards (Quizlet 94 terms)",
-                    url: "[https://quizlet.com/79010858/fbla-marketing-flash-cards/](https://quizlet.com/79010858/fbla-marketing-flash-cards/)"
+                    url: "https://quizlet.com/79010858/fbla-marketing-flash-cards/"
                 },
                 {
                     title: "FBLA Marketing Flashcards (Quizlet 170 terms)",
-                    url: "[https://quizlet.com/485875081/fbla-marketing-flash-cards/](https://quizlet.com/485875081/fbla-marketing-flash-cards/)"
+                    url: "https://quizlet.com/485875081/fbla-marketing-flash-cards/"
                 },
                 {
                     title: "FBLA Marketing Test Vocabulary Flashcards",
-                    url: "[https://www.goconqr.com/flashcard/38381716/fbla-marketing-test-vocabulary](https://www.goconqr.com/flashcard/38381716/fbla-marketing-test-vocabulary)"
+                    url: "https://www.goconqr.com/flashcard/38381716/fbla-marketing-test-vocabulary"
                 },
                 {
                     title: "Marketing Fundamentals Course List – Coursera",
-                    url: "[https://www.coursera.org/courses?query=marketing+fundamentals](https://www.coursera.org/courses?query=marketing+fundamentals)"
+                    url: "https://www.coursera.org/courses?query=marketing+fundamentals"
                 },
                 {
                     title: "Udemy Free Marketing Strategy Tutorials",
-                    url: "[https://www.udemy.com/topic/marketing-strategy/free/?srsltid=AfmBOoqs38NfXia6RSNuNzeRe8RC4UF3DchYC8WXfIiINMaRsyI3WubF](https://www.udemy.com/topic/marketing-strategy/free/?srsltid=AfmBOoqs38NfXia6RSNuNzeRe8RC4UF3DchYC8WXfIiINMaRsyI3WubF)"
+                    url: "https://www.udemy.com/topic/marketing-strategy/free/?srsltid=AfmBOoqs38NfXia6RSNuNzeRe8RC4UF3DchYC8WXfIiINMaRsyI3WubF"
                 },
                 {
                     title: "Quizlet – DECA Marketing Roleplay Flashcards",
-                    url: "[https://quizlet.com/524717853/deca-marketing-roleplay-flash-cards/](https://quizlet.com/524717853/deca-marketing-roleplay-flash-cards/)"
+                    url: "https://quizlet.com/524717853/deca-marketing-roleplay-flash-cards/"
                 }
             ],
             aiPrompts: [
@@ -4164,83 +4164,83 @@ export const FBLAResources: FBLAResourceEntry[] = [
             links: [
                 {
                     title: "FBLA National Network Design Event Overview",
-                    url: "[https://www.fbla.org/competitive-events/network-design/](https://www.fbla.org/competitive-events/network-design/)"
+                    url: "https://www.fbla.org/competitive-events/network-design/"
                 },
                 {
                     title: "2025‑2026 FBLA Network Design Competitive Event Guidelines (PDF)",
-                    url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Role%20Play%20Events/Network-Design.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Role%20Play%20Events/Network-Design.pdf)"
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Role%20Play%20Events/Network-Design.pdf"
                 },
                 {
                     title: "FBLA Network Design Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/127551553/fbla-network-design-flash-cards/](https://quizlet.com/127551553/fbla-network-design-flash-cards/)"
+                    url: "https://quizlet.com/127551553/fbla-network-design-flash-cards/"
                 },
                 {
                     title: "FBLA Network Design Flashcards Set 2 (Quizlet)",
-                    url: "[https://quizlet.com/1086912410/network-design-fbla-flash-cards/](https://quizlet.com/1086912410/network-design-fbla-flash-cards/)"
+                    url: "https://quizlet.com/1086912410/network-design-fbla-flash-cards/"
                 },
                 {
                     title: "FBLA Network Design Flashcards Set 3 (Quizlet)",
-                    url: "[https://quizlet.com/643816718/fbla-network-design-flash-cards/](https://quizlet.com/643816718/fbla-network-design-flash-cards/)"
+                    url: "https://quizlet.com/643816718/fbla-network-design-flash-cards/"
                 },
                 {
                     title: "FBLA Network Design Flashcards Set 4 (Quizlet)",
-                    url: "[https://quizlet.com/411773037/fbla-network-design-flash-cards/](https://quizlet.com/411773037/fbla-network-design-flash-cards/)"
+                    url: "https://quizlet.com/411773037/fbla-network-design-flash-cards/"
                 },
                 {
                     title: "FBLA Network Design Case Study Flashcards (Quizlet)",
-                    url: "[https://quizlet.com/573847258/fbla-network-design-case-study-flash-cards/](https://quizlet.com/573847258/fbla-network-design-case-study-flash-cards/)"
+                    url: "https://quizlet.com/573847258/fbla-network-design-case-study-flash-cards/"
                 },
                 {
                     title: "Networking Fundamentals Study Guide – Webopedia",
-                    url: "[https://www.webopedia.com/reference/network-fundamentals-study-guide/](https://www.webopedia.com/reference/network-fundamentals-study-guide/)"
+                    url: "https://www.webopedia.com/reference/network-fundamentals-study-guide/"
                 },
                 {
                     title: "Cisco Networking Fundamentals PDF (OSI, Devices, WAN/LAN)",
-                    url: "[https://www.cisco.com/c/dam/global/fi_fi/assets/docs/SMB_University_120307_Networking_Fundamentals.pdf](https://www.cisco.com/c/dam/global/fi_fi/assets/docs/SMB_University_120307_Networking_Fundamentals.pdf)"
+                    url: "https://www.cisco.com/c/dam/global/fi_fi/assets/docs/SMB_University_120307_Networking_Fundamentals.pdf"
                 },
                 {
                     title: "Cisco Networking Basics Overview",
-                    url: "[https://www.cisco.com/site/us/en/learn/topics/small-business/networking-basics.html](https://www.cisco.com/site/us/en/learn/topics/small-business/networking-basics.html)"
+                    url: "https://www.cisco.com/site/us/en/learn/topics/small-business/networking-basics.html"
                 },
                 {
                     title: "Computer Network Tutorials – GeeksforGeeks",
-                    url: "[https://www.geeksforgeeks.org/computer-networks/computer-network-tutorials/](https://www.geeksforgeeks.org/computer-networks/computer-network-tutorials/)"
+                    url: "https://www.geeksforgeeks.org/computer-networks/computer-network-tutorials/"
                 },
                 {
                     title: "Introduction to Networking and OSI Model Overview (Quizlet)",
-                    url: "[https://quizlet.com/study-guides/introduction-to-networking-and-osi-model-overview-9fce36b3-e958-462e-bcb0-997b7301d9c3](https://quizlet.com/study-guides/introduction-to-networking-and-osi-model-overview-9fce36b3-e958-462e-bcb0-997b7301d9c3)"
+                    url: "https://quizlet.com/study-guides/introduction-to-networking-and-osi-model-overview-9fce36b3-e958-462e-bcb0-997b7301d9c3"
                 },
                 {
                     title: "Cisco Networking Academy – Free Networking Courses",
-                    url: "[https://www.cisco.com/site/us/en/learn/training-certifications/training/netacad/index.html](https://www.cisco.com/site/us/en/learn/training-certifications/training/netacad/index.html)"
+                    url: "https://www.cisco.com/site/us/en/learn/training-certifications/training/netacad/index.html"
                 },
                 {
                     title: "Computer Network Diagram – Explanation (Wikipedia)",
-                    url: "[https://en.wikipedia.org/wiki/Computer_network_diagram](https://en.wikipedia.org/wiki/Computer_network_diagram)"
+                    url: "https://en.wikipedia.org/wiki/Computer_network_diagram"
                 },
                 {
                     title: "Cisco Packet Tracer – Network Simulation Tool (Wikipedia)",
-                    url: "[https://en.wikipedia.org/wiki/Packet_Tracers](https://en.wikipedia.org/wiki/Packet_Tracers)"
+                    url: "https://en.wikipedia.org/wiki/Packet_Tracers"
                 },
                 {
                     title: "Network Design Fundamentals Explained | Vaia",
-                    url: "[https://www.vaia.com/en-us/explanations/business-studies/business-data-analytics/network-design/](https://www.vaia.com/en-us/explanations/business-studies/business-data-analytics/network-design/)"
+                    url: "https://www.vaia.com/en-us/explanations/business-studies/business-data-analytics/network-design/"
                 },
                 {
                     title: "FBLA Network Design Practice Test (LOHSFBLA)",
-                    url: "[https://lohsfbla.com/comps/Network%2BDesign/test](https://lohsfbla.com/comps/Network%2BDesign/test)"
+                    url: "https://lohsfbla.com/comps/Network%2BDesign/test"
                 },
                 {
                     title: "FBLA Event – Network Design (Florida FBLA Info)",
-                    url: "[https://www.flfbla.org/fbla-event-network-design](https://www.flfbla.org/fbla-event-network-design)"
+                    url: "https://www.flfbla.org/fbla-event-network-design"
                 },
                 {
                     title: "Network Design Study Guide – New York State FBLA PDF",
-                    url: "[https://www.nysfbla.org/wp-content/uploads/2025/07/Study-Materials.pdf](https://www.nysfbla.org/wp-content/uploads/2025/07/Study-Materials.pdf)"
+                    url: "https://www.nysfbla.org/wp-content/uploads/2025/07/Study-Materials.pdf"
                 },
                 {
                     title: "FBLA Resources – Network Design Description (Google Sites)",
-                    url: "[https://sites.google.com/mhrd.org/fbla-resources/Role-Play-Events/Individual-or-Team/Network-Design](https://sites.google.com/mhrd.org/fbla-resources/Role-Play-Events/Individual-or-Team/Network-Design)"
+                    url: "https://sites.google.com/mhrd.org/fbla-resources/Role-Play-Events/Individual-or-Team/Network-Design"
                 }
             ],
             aiPrompts: [
@@ -4259,300 +4259,1807 @@ export const FBLAResources: FBLAResourceEntry[] = [
     {
         id: "networking-infrastructures-objective-test",
         resources: {
-title: "networking-infrastructures-objective-test Resources",
-links: [
-{
-title: "Official FBLA Networking Infrastructures Event Details",
-url: "[https://www.fbla.org/competitive-events/networking-infrastructures/](https://www.fbla.org/competitive-events/networking-infrastructures/)"
-},
-{
-title: "FBLA Networking Infrastructures Competitive Event Guidelines (2025–26)",
-url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Networking-Infrastructures.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Networking-Infrastructures.pdf)"
-},
-{
-title: "FBLA Networking Infrastructures Overview and Competencies",
-url: "[https://sites.google.com/mhrd.org/fbla-resources/Objective-Test/individual-event/Networking-Infrastructures](https://sites.google.com/mhrd.org/fbla-resources/Objective-Test/individual-event/Networking-Infrastructures)"
-},
-{
-title: "Flashcards: FBLA Networking Infrastructures (Quizlet)",
-url: "[https://quizlet.com/657068366/flashcards](https://quizlet.com/657068366/flashcards)"
-},
-{
-title: "FBLA Networking Infrastructures Competencies Flashcards (Quizlet)",
-url: "[https://quizlet.com/584560583/fbla-networking-infrastructures-competencies-flash-cards](https://quizlet.com/584560583/fbla-networking-infrastructures-competencies-flash-cards)"
-},
-{
-title: "FBLA Networking Infrastructures D, E, F Flashcards (Quizlet)",
-url: "[https://quizlet.com/765450153/fbla-networking-infrastructures-def-flash-cards](https://quizlet.com/765450153/fbla-networking-infrastructures-def-flash-cards)"
-},
-{
-title: "FBLA Networking Infrastructure Flashcards (Quizlet)",
-url: "[https://quizlet.com/675199010/fbla-networking-infrastructure-flash-cards](https://quizlet.com/675199010/fbla-networking-infrastructure-flash-cards)"
-},
-{
-title: "Computer Network Tutorial (GeeksforGeeks)",
-url: "[https://www.geeksforgeeks.org/computer-networks/computer-network-tutorials/](https://www.geeksforgeeks.org/computer-networks/computer-network-tutorials/)"
-},
-{
-title: "Networking Basics: What You Need To Know (Cisco)",
-url: "[https://www.cisco.com/site/us/en/learn/topics/small-business/networking-basics.html](https://www.cisco.com/site/us/en/learn/topics/small-business/networking-basics.html)"
-},
-{
-title: "Fundamentals of Computer Networking (Microsoft Learn)",
-url: "[https://learn.microsoft.com/en-us/training/modules/network-fundamentals/](https://learn.microsoft.com/en-us/training/modules/network-fundamentals/)"
-},
-{
-title: "Basics of Computer Networking (GeeksforGeeks)",
-url: "[https://www.geeksforgeeks.org/computer-networks/basics-computer-networking/](https://www.geeksforgeeks.org/computer-networks/basics-computer-networking/)"
-},
-{
-title: "Networking Fundamentals Explained (Medium Guide)",
-url: "[https://medium.com/@mohamedirhirallah/networking-fundamentals-everything-you-need-to-know-from-interfaces-to-osi-layers-7e43d48401fc](https://medium.com/@mohamedirhirallah/networking-fundamentals-everything-you-need-to-know-from-interfaces-to-osi-layers-7e43d48401fc)"
-},
-{
-title: "FREE Network Fundamentals Online Training (Cybrary)",
-url: "[https://www.cybrary.it/course/network-fundamentals](https://www.cybrary.it/course/network-fundamentals)"
-},
-{
-title: "Network Fundamentals Workbook (howtonetwork.com)",
-url: "[https://www.howtonetwork.com/network-design-workbook/networking-fundamentals/](https://www.howtonetwork.com/network-design-workbook/networking-fundamentals/)"
-},
-{
-title: "Packet Tracer Network Simulation (Wikipedia)",
-url: "[https://en.wikipedia.org/wiki/Packet_Tracer](https://en.wikipedia.org/wiki/Packet_Tracer)"
-},
-{
-title: "VLAN Overview (Wikipedia)",
-url: "[https://en.wikipedia.org/wiki/VLAN](https://en.wikipedia.org/wiki/VLAN)"
-},
-{
-title: "Spanning Tree Protocol Explained (Wikipedia)",
-url: "[https://en.wikipedia.org/wiki/Spanning_Tree_Protocol](https://en.wikipedia.org/wiki/Spanning_Tree_Protocol)"
-},
-{
-title: "FBLA Networking Infrastructures Quizlet Search Results",
-url: "[https://quizlet.com/search?q=fbla+networking+infrastructures](https://quizlet.com/search?q=fbla+networking+infrastructures)"
-},
-{
-title: "Quizlet Sets for Networking Infrastructure FBLA Topics",
-url: "[https://quizlet.com/search?q=fbla+networking+infrastructure+objective+test](https://quizlet.com/search?q=fbla+networking+infrastructure+objective+test)"
-},
-{
-title: "Quizlet Study Sets for Networking Infrastructure Key Terms",
-url: "[https://quizlet.com/search?q=fbla+network+infrastructure+terms](https://quizlet.com/search?q=fbla+network+infrastructure+terms)"
-}
-],
-aiPrompts: [
-{
-title: "Full-Length Practice Test: Networking Infrastructures Objective",
-prompt: "Create a 50-question multiple-choice practice test covering all major topics in the FBLA Networking Infrastructures Objective Test, including network basics (OSI model, protocols, IP addressing), network hardware and connectivity (routers, switches, cabling types), network topologies and architectures (LAN, WAN, star, mesh), network security (threats, firewalls, encryption, authentication), and common protocols (TCP/IP, DHCP, DNS). Provide answer choices and a separate answer key."
-},
-{
-title: "Adaptive Study Coach: Networking Infrastructures Weakness Finder",
-prompt: "Based on a student's incorrect answers from a sample Networking Infrastructures practice test, generate an adaptive study plan that identifies weak areas (e.g., OSI layer functions, network security measures, network device roles) and provides tailored explanations, targeted practice questions, and mini quizzes to reinforce concepts."
-}
-]
-},
+            title: "networking-infrastructures-objective-test Resources",
+            links: [
+                {
+                    title: "Official FBLA Networking Infrastructures Event Details",
+                    url: "https://www.fbla.org/competitive-events/networking-infrastructures/"
+                },
+                {
+                    title: "FBLA Networking Infrastructures Competitive Event Guidelines (2025–26)",
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Networking-Infrastructures.pdf"
+                },
+                {
+                    title: "FBLA Networking Infrastructures Overview and Competencies",
+                    url: "https://sites.google.com/mhrd.org/fbla-resources/Objective-Test/individual-event/Networking-Infrastructures"
+                },
+                {
+                    title: "Flashcards: FBLA Networking Infrastructures (Quizlet)",
+                    url: "https://quizlet.com/657068366/flashcards"
+                },
+                {
+                    title: "FBLA Networking Infrastructures Competencies Flashcards (Quizlet)",
+                    url: "https://quizlet.com/584560583/fbla-networking-infrastructures-competencies-flash-cards"
+                },
+                {
+                    title: "FBLA Networking Infrastructures D, E, F Flashcards (Quizlet)",
+                    url: "https://quizlet.com/765450153/fbla-networking-infrastructures-def-flash-cards"
+                },
+                {
+                    title: "FBLA Networking Infrastructure Flashcards (Quizlet)",
+                    url: "https://quizlet.com/675199010/fbla-networking-infrastructure-flash-cards"
+                },
+                {
+                    title: "Computer Network Tutorial (GeeksforGeeks)",
+                    url: "https://www.geeksforgeeks.org/computer-networks/computer-network-tutorials/"
+                },
+                {
+                    title: "Networking Basics: What You Need To Know (Cisco)",
+                    url: "https://www.cisco.com/site/us/en/learn/topics/small-business/networking-basics.html"
+                },
+                {
+                    title: "Fundamentals of Computer Networking (Microsoft Learn)",
+                    url: "https://learn.microsoft.com/en-us/training/modules/network-fundamentals/"
+                },
+                {
+                    title: "Basics of Computer Networking (GeeksforGeeks)",
+                    url: "https://www.geeksforgeeks.org/computer-networks/basics-computer-networking/"
+                },
+                {
+                    title: "Networking Fundamentals Explained (Medium Guide)",
+                    url: "https://medium.com/@mohamedirhirallah/networking-fundamentals-everything-you-need-to-know-from-interfaces-to-osi-layers-7e43d48401fc"
+                },
+                {
+                    title: "FREE Network Fundamentals Online Training (Cybrary)",
+                    url: "https://www.cybrary.it/course/network-fundamentals"
+                },
+                {
+                    title: "Network Fundamentals Workbook (howtonetwork.com)",
+                    url: "https://www.howtonetwork.com/network-design-workbook/networking-fundamentals/"
+                },
+                {
+                    title: "Packet Tracer Network Simulation (Wikipedia)",
+                    url: "https://en.wikipedia.org/wiki/Packet_Tracer"
+                },
+                {
+                    title: "VLAN Overview (Wikipedia)",
+                    url: "https://en.wikipedia.org/wiki/VLAN"
+                },
+                {
+                    title: "Spanning Tree Protocol Explained (Wikipedia)",
+                    url: "https://en.wikipedia.org/wiki/Spanning_Tree_Protocol"
+                },
+                {
+                    title: "FBLA Networking Infrastructures Quizlet Search Results",
+                    url: "https://quizlet.com/search?q=fbla+networking+infrastructures"
+                },
+                {
+                    title: "Quizlet Sets for Networking Infrastructure FBLA Topics",
+                    url: "https://quizlet.com/search?q=fbla+networking+infrastructure+objective+test"
+                },
+                {
+                    title: "Quizlet Study Sets for Networking Infrastructure Key Terms",
+                    url: "https://quizlet.com/search?q=fbla+network+infrastructure+terms"
+                }
+            ],
+            aiPrompts: [
+                {
+                    title: "Full-Length Practice Test: Networking Infrastructures Objective",
+                    prompt: "Create a 50-question multiple-choice practice test covering all major topics in the FBLA Networking Infrastructures Objective Test, including network basics (OSI model, protocols, IP addressing), network hardware and connectivity (routers, switches, cabling types), network topologies and architectures (LAN, WAN, star, mesh), network security (threats, firewalls, encryption, authentication), and common protocols (TCP/IP, DHCP, DNS). Provide answer choices and a separate answer key."
+                },
+                {
+                    title: "Adaptive Study Coach: Networking Infrastructures Weakness Finder",
+                    prompt: "Based on a student's incorrect answers from a sample Networking Infrastructures practice test, generate an adaptive study plan that identifies weak areas (e.g., OSI layer functions, network security measures, network device roles) and provides tailored explanations, targeted practice questions, and mini quizzes to reinforce concepts."
+                }
+            ]
+        },
 
     },
     {
         id: "organizational-leadership-objective-test",
         resources: {
-title: "organizational-leadership-objective-test Resources",
+            title: "organizational-leadership-objective-test Resources",
+            links: [
+                {
+                    title: "FBLA Organizational Leadership Competitive Event Guidelines",
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Organizational-Leadership.pdf"
+                },
+                {
+                    title: "FBLA Official Organizational Leadership Event Description",
+                    url: "https://www.fbla.org/competitive-events/organizational-leadership/"
+                },
+                {
+                    title: "FBLA 2025 Organizational Leadership Flashcards (123 terms) | Quizlet",
+                    url: "https://quizlet.com/1028650861"
+                },
+                {
+                    title: "FBLA Organizational Leadership Flashcards (200 cards) | Quizlet",
+                    url: "https://quizlet.com/186894545/fbla-organizational-leadership-flash-cards//"
+                },
+                {
+                    title: "FBLA Organizational Leadership Flashcards (67 terms) | Quizlet",
+                    url: "https://quizlet.com/357585980/fbla-organizational-leadership-flash-cards//"
+                },
+                {
+                    title: "FBLA Organizational Leadership Flashcards (83 terms) | Quizlet",
+                    url: "https://quizlet.com/560052322/fbla-organizational-leadership-flash-cards//"
+                },
+                {
+                    title: "Organizational Leadership FBLA Flashcards | Brainscape",
+                    url: "https://www.brainscape.com/flashcards/organizational-leadership-fbla-17552934/packs/22504138"
+                },
+                {
+                    title: "FBLA Organizational Leadership Practice Page",
+                    url: "https://lohsfbla.com/comps/Organizational%2BLeadership"
+                },
+                {
+                    title: "Leadership Theories and Frameworks Explained (Leadership Basics)",
+                    url: "https://thecompletemedic.com/leadership/leadership-theories"
+                },
+                {
+                    title: "The 6 Most Common Leadership Styles & How to Find Yours",
+                    url: "https://www.imd.org/blog/leadership/leadership-styles/"
+                },
+                {
+                    title: "Leader–Member Exchange Theory (LMX)",
+                    url: "https://en.wikipedia.org/wiki/Leader%E2%80%93member_exchange_theory"
+                },
+                {
+                    title: "Full Range Leadership Model Overview",
+                    url: "https://en.wikipedia.org/wiki/Full_range_leadership_model"
+                },
+                {
+                    title: "Functional Leadership Model Explained",
+                    url: "https://en.wikipedia.org/wiki/Functional_leadership_model"
+                },
+                {
+                    title: "Multifactor Leadership Questionnaire (MLQ) Assessment Info",
+                    url: "https://en.wikipedia.org/wiki/Multifactor_Leadership_Questionnaire"
+                },
+                {
+                    title: "Michigan Studies of Leadership Summary",
+                    url: "https://en.wikipedia.org/wiki/Michigan_Studies_of_Leadership"
+                },
+                {
+                    title: "Leadership Theories & Styles Guide",
+                    url: "https://www.wgu.edu/blog/leadership-theories-styles2004.html"
+                },
+                {
+                    title: "Leadership Models That Can Define Your Style (USAHS)",
+                    url: "https://www.usa.edu/blog/leadership-models/"
+                },
+                {
+                    title: "Organizational Leadership Event Guide (Pafbla.org PDF)",
+                    url: "https://www.pafbla.org/downloads/17-18_Web_Files/17-18_Competitive_Events_PDFs/Organizational_Leadership.pdf"
+                },
+                {
+                    title: "FBLA Organizational Leadership Questions & Answers Study Doc",
+                    url: "https://www.stuvia.com/en-us/doc/9400387/fbla-organizational-leadership-questions-en-answers"
+                },
+                {
+                    title: "Leadership in Education: Recent e-books and Resources",
+                    url: "https://guides.library.stanford.edu/leadership_in_ed/recent_ebooks"
+                }
+            ],
+            aiPrompts: [
+                {
+                    title: "Full-Length Practice Test: Organizational Leadership",
+                    prompt: "Generate a 50-question multiple-choice practice test specifically for the FBLA Organizational Leadership Objective Test based on official competencies (leadership concepts, managerial roles, motivation theories, communication skills, team leadership, ethical leadership, conflict management, transformational vs transactional leadership, power & politics, coaching, servant leadership, diversity inclusion) with answer key and short explanations tied to real-world examples."
+                },
+                {
+                    title: "Adaptive Leadership Weakness Diagnostic & Coaching Prompt",
+                    prompt: "Analyze my performance on an Organizational Leadership practice quiz (provide answers and explanations). Identify my weakest topics (e.g., networking, strategic leadership, motivation theories). Then create a customized study plan with targeted explanations, real-world examples, mnemonics, and follow-up questions to strengthen those areas for the FBLA Objective Test."
+                }
+            ]
+        },
+
+    },
+    {
+        id: "parliamentary-procedure-role-play",
+        resources: {
+            title: "parliamentary-procedure-role-play Resources",
+            links: [
+                {
+                    title: "FBLA Official Parliamentary Procedure Event Details",
+                    url: "https://www.fbla.org/competitive-events/parliamentary-procedure/"
+                },
+                {
+                    title: "Florida FBLA Parliamentary Procedure Event Guide (Objective Test + Role Play)",
+                    url: "https://www.flfbla.org/fbla-event-parliamentary-procedure"
+                },
+                {
+                    title: "2025–2026 FBLA Competitive Events Guidelines – Parliamentary Procedure PDF",
+                    url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Role%20Play%20Events/Parliamentary-Procedure.pdf"
+                },
+                {
+                    title: "Robert’s Rules of Order Official Site (Primary Parliamentary Procedure Authority)",
+                    url: "https://robertsrules.com/"
+                },
+                {
+                    title: "Robert’s Rules of Order – Simplified PDF (Cornell Assembly Guide)",
+                    url: "https://assembly.cornell.edu/sites/default/files/roberts_rules_simplified.pdf"
+                },
+                {
+                    title: "Robert’s Rules of Order Online (RulesOnline.com)",
+                    url: "https://www.rulesonline.com/"
+                },
+                {
+                    title: "Parliamentary Procedure Overview – Norwich University Guide",
+                    url: "https://guides.norwich.edu/faculty-services/parliamentary"
+                },
+                {
+                    title: "Parliamentary Procedure: A Brief Guide (MRSC)",
+                    url: "https://mrsc.org/explore-topics/public-meetings/procedures/parliamentary-procedure"
+                },
+                {
+                    title: "Parliamentary Procedure & Robert’s Rules – NASC Adviser Resources",
+                    url: "https://www.natstuco.org/adviser-resource-center/council-operations/parliamentary-procedure-roberts-rules/"
+                },
+                {
+                    title: "The Standard Code of Parliamentary Procedure (Wikipedia)",
+                    url: "https://en.wikipedia.org/wiki/The_Standard_Code_of_Parliamentary_Procedure"
+                },
+                {
+                    title: "Demeter’s Manual of Parliamentary Law and Procedure (Wikipedia)",
+                    url: "https://en.wikipedia.org/wiki/Demeter%27s_Manual_of_Parliamentary_Law_and_Procedure"
+                },
+                {
+                    title: "Parliamentary Procedure (General Concept – Wikipedia)",
+                    url: "https://en.wikipedia.org/wiki/Parliamentary_procedure"
+                },
+                {
+                    title: "American Institute of Parliamentarians (Professional Org Wiki)",
+                    url: "https://en.wikipedia.org/wiki/American_Institute_of_Parliamentarians"
+                },
+                {
+                    title: "FBLA Parliamentary Procedure Flashcards – 60 Terms (Quizlet)",
+                    url: "https://quizlet.com/452521903/parliamentary-procedure-fbla-flash-cards/"
+                },
+                {
+                    title: "FBLA (Parliamentary Procedure) Flashcards – 175 Terms (Quizlet)",
+                    url: "https://quizlet.com/754404134/fbla-parliamentary-procedure-flash-cards/"
+                },
+                {
+                    title: "FBLA Parliamentary Procedure Flashcards – 75 Terms (Quizlet)",
+                    url: "https://quizlet.com/79706105/fbla-parliamentary-procedure-flash-cards/"
+                },
+                {
+                    title: "FBLA Parliamentary Procedure Flashcards – 69 Terms (Quizlet)",
+                    url: "https://quizlet.com/1128851053/fbla-parliamentary-procedure-flash-cards//"
+                },
+                {
+                    title: "FBLA Parliamentary Procedures Test Flashcards (Quizlet)",
+                    url: "https://quizlet.com/283734548/fbla-parliamentary-procedures-test-flash-cards/"
+                },
+                {
+                    title: "FBLA Introduction to Parliamentary Procedure Flashcards (Quizlet)",
+                    url: "https://quizlet.com/392100252/fbla-introduction-to-parliamentary-procedure-flash-cards/"
+                },
+                {
+                    title: "FBLA Parliamentary Procedure Practice/Test Resource (LOHS FBLA Portal)",
+                    url: "https://lohsfbla.com/comps/Parliamentary%2BProcedure/test"
+                }
+            ],
+            aiPrompts: [
+                {
+                    title: "Full-Length Practice Test Prompt",
+                    prompt: "Create a 30-question multiple-choice practice exam for FBLA Parliamentary Procedure Role Play based on Robert’s Rules of Order (Newly Revised) and FBLA bylaws. Include questions covering motions (main, subsidiary, privileged, incidental), order of business, proper voting procedures, quorum, officer roles, and simulated scenario questions similar to role play situations. Provide an answer key at the end."
+                },
+                {
+                    title: "Adaptive Coaching Prompt",
+                    prompt: "I’m struggling most with recognizing which motions take precedence and handling parliamentary scenarios under time pressure. Generate an adaptive coaching session focused on parliamentary procedure priority of motions and role-play meeting scenarios. Start by asking what specific motion types the user finds confusing, assess their current understanding, and then provide tailored examples, explanations, and practice scenarios to strengthen their weaknesses."
+                }
+            ]
+        },
+
+    },
+    {
+        id: "personal-finance-objective-test",
+        resources: {
+        title: "personal-finance-objective-test Resources",
+        links: [
+            {
+                title: "FBLA Personal Finance Event Details and Guidelines",
+                url: "https://www.fbla.org/competitive-events/personal-finance/"
+            },
+            {
+                title: "Florida FBLA Personal Finance Objective Test Competencies",
+                url: "https://www.flfbla.org/fbla-event-personal-finance"
+            },
+            {
+                title: "FBLA Personal Finance Study Guide Flashcards (Quizlet)",
+                url: "https://quizlet.com/657464095/fbla-competitive-event-personal-finance-study-guide-flash-cards/"
+            },
+            {
+                title: "FBLA Personal Finance Flashcards (Quizlet set)",
+                url: "https://quizlet.com/36978136/fbla-personal-finance-study-guide-flash-cards/"
+            },
+            {
+                title: "FBLA Personal Finance Flashcards (alternate set)",
+                url: "https://quizlet.com/198328665/fbla-personal-finance-flash-cards/"
+            },
+            {
+                title: "FBLA Personal Finance Flashcards 2019 (Quizlet)",
+                url: "https://quizlet.com/370751802/fbla-personal-finance-2019-flash-cards/"
+            },
+            {
+                title: "FBLA Personal Finance Folder (multiple Quizlet sets)",
+                url: "https://quizlet.com/towilliams117/folders/fbla-personal-finance"
+            },
+            {
+                title: "FBLA Personal Finance Flashcards (additional set)",
+                url: "https://quizlet.com/198372511/fbla-personal-finance-flash-cards/"
+            },
+            {
+                title: "FBLA Personal Finance Study Guide Questions (Quizlet)",
+                url: "https://quizlet.com/376464672/fbla-personal-finance-study-guide-questions-flash-cards/"
+            },
+            {
+                title: "Next Gen Personal Finance (NGPF) Free Curriculum",
+                url: "https://www.ngpf.org/curriculum/"
+            },
+            {
+                title: "Khan Academy Financial Literacy Course",
+                url: "https://www.khanacademy.org/college-careers-more/financial-literacy"
+            },
+            {
+                title: "InCharge Financial Literacy and Personal Finance Materials",
+                url: "https://www.incharge.org/financial-literacy/"
+            },
+            {
+                title: "Banzai Free Personal Finance Interactive Education",
+                url: "https://banzai.org/"
+            },
+            {
+                title: "Everfi Financial Literacy for High School Students",
+                url: "https://everfi.com/courses/k-12/financial-literacy-high-school/"
+            },
+            {
+                title: "OCC Financial Literacy Resource Directory (U.S. Government)",
+                url: "https://www.occ.gov/topics/consumers-and-communities/community-affairs/resource-directories/financial-literacy/index-financial-literacy-resource-directory.html"
+            },
+            {
+                title: "10 Online Resources for Student Financial Literacy (TeenLife)",
+                url: "https://www.teenlife.com/blog/10-online-resources-student-financial-literacy/"
+            },
+            {
+                title: "Financial Education Resources for High School (WA DFI)",
+                url: "https://dfi.wa.gov/financial-education/financial-education-resources-high-school"
+            },
+            {
+                title: "Personal Finance Information by Topic (WA State DFI)",
+                url: "https://dfi.wa.gov/financial-education/personal-finance-information-topic"
+            },
+            {
+                title: "FBLA Official Personal Finance Sample Items (FBLA Connect PDF)",
+                url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Personal-Finance.pdf"
+            },
+            {
+                title: "FBLA Personal Finance Study Guide PDF Overview",
+                url: "https://tracker.freedompass.org/filedownload.ashx/papersCollection/8DMxLn/FblaPersonalFinanceStudyGuide.pdf"
+            }
+        ],
+        aiPrompts: [
+            {
+                title: "Full-Length Personal Finance Objective Test Practice",
+                prompt: "Generate a 40-question multiple-choice practice test tailored to the FBLA Personal Finance Objective Test covering budgeting and saving, credit and debt management, banking and financial services, investing basics, taxes and income, insurance and risk management, financial planning, and consumer rights. Provide four answer choices per question, label the correct answer, and include brief explanations for why the correct answer is right."
+            },
+            {
+                title: "Adaptive Coaching for Personal Finance Weak Areas",
+                prompt: "Assess my strengths and weaknesses in personal finance concepts such as budgeting, credit scores, investing, insurance, and tax calculations. Then generate a customized study plan with targeted practice questions and explanations designed to improve my weak topics, adjusting the difficulty based on my responses."
+            }
+        ],}
+    
+        
+    },
+    {
+        id: "project-management-objective-test",
+        resources: {
+title: "project-management-objective-test Resources",
 links: [
 {
-title: "FBLA Organizational Leadership Competitive Event Guidelines",
-url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Organizational-Leadership.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Organizational-Leadership.pdf)"
+title: "FBLA Project Management Competitive Event Overview",
+url: "https://www.fbla.org/competitive-event/project-management/"
 },
 {
-title: "FBLA Official Organizational Leadership Event Description",
-url: "[https://www.fbla.org/competitive-events/organizational-leadership/](https://www.fbla.org/competitive-events/organizational-leadership/)"
+title: "2025‑2026 FBLA Project Management Objective Test Guidelines (official PDF)",
+url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Project-Management.pdf"
 },
 {
-title: "FBLA 2025 Organizational Leadership Flashcards (123 terms) | Quizlet",
-url: "[https://quizlet.com/1028650861](https://quizlet.com/1028650861)"
+title: "Fundamentals of Project Planning and Management (Coursera course)",
+url: "https://www.coursera.org/learn/uva-darden-projects101"
 },
 {
-title: "FBLA Organizational Leadership Flashcards (200 cards) | Quizlet",
-url: "[https://quizlet.com/186894545/fbla-organizational-leadership-flash-cards//](https://quizlet.com/186894545/fbla-organizational-leadership-flash-cards//)"
+title: "Project Management FBLA Flashcards (Quizlet)",
+url: "https://quizlet.com/413776127/project-management-fbla-flash-cards/"
 },
 {
-title: "FBLA Organizational Leadership Flashcards (67 terms) | Quizlet",
-url: "[https://quizlet.com/357585980/fbla-organizational-leadership-flash-cards//](https://quizlet.com/357585980/fbla-organizational-leadership-flash-cards//)"
+title: "Project Management FBLA Flashcards Set (Quizlet alternative set)",
+url: "https://quizlet.com/1120336180"
 },
 {
-title: "FBLA Organizational Leadership Flashcards (83 terms) | Quizlet",
-url: "[https://quizlet.com/560052322/fbla-organizational-leadership-flash-cards//](https://quizlet.com/560052322/fbla-organizational-leadership-flash-cards//)"
+title: "Project Management Chapter 3 Flashcards (Quizlet)",
+url: "https://quizlet.com/310379528/project-management-chapter-3-flash-cards/"
 },
 {
-title: "Organizational Leadership FBLA Flashcards | Brainscape",
-url: "[https://www.brainscape.com/flashcards/organizational-leadership-fbla-17552934/packs/22504138](https://www.brainscape.com/flashcards/organizational-leadership-fbla-17552934/packs/22504138)"
+title: "PM Fundamentals Flashcards & Quizzes (Brainscape)",
+url: "https://www.brainscape.com/subjects/project-management-fundamentals"
 },
 {
-title: "FBLA Organizational Leadership Practice Page",
-url: "[https://lohsfbla.com/comps/Organizational%2BLeadership](https://lohsfbla.com/comps/Organizational%2BLeadership)"
+title: "Project Management Basics Guide: Concepts, Methods & Tools",
+url: "https://productive.io/blog/project-management-basics/"
 },
 {
-title: "Leadership Theories and Frameworks Explained (Leadership Basics)",
-url: "[https://thecompletemedic.com/leadership/leadership-theories](https://thecompletemedic.com/leadership/leadership-theories)"
+title: "Project Management Basics - A Step‑by‑Step Guide for Beginners",
+url: "https://prothoughtssolutions.com/blog/project-management-basics/"
 },
 {
-title: "The 6 Most Common Leadership Styles & How to Find Yours",
-url: "[https://www.imd.org/blog/leadership/leadership-styles/](https://www.imd.org/blog/leadership/leadership-styles/)"
+title: "Identifying and Managing Project Risk (Wikipedia overview)",
+url: "https://en.wikipedia.org/wiki/Identifying_and_Managing_Project_Risk"
 },
 {
-title: "Leader–Member Exchange Theory (LMX)",
-url: "[https://en.wikipedia.org/wiki/Leader%E2%80%93member_exchange_theory](https://en.wikipedia.org/wiki/Leader%E2%80%93member_exchange_theory)"
+title: "Program Evaluation and Review Technique (PERT) Overview",
+url: "https://en.wikipedia.org/wiki/Program_evaluation_and_review_technique"
 },
 {
-title: "Full Range Leadership Model Overview",
-url: "[https://en.wikipedia.org/wiki/Full_range_leadership_model](https://en.wikipedia.org/wiki/Full_range_leadership_model)"
+title: "Project Team Builder Simulation Tool (Wikipedia)",
+url: "https://en.wikipedia.org/wiki/Project_team_builder"
 },
 {
-title: "Functional Leadership Model Explained",
-url: "[https://en.wikipedia.org/wiki/Functional_leadership_model](https://en.wikipedia.org/wiki/Functional_leadership_model)"
+title: "Learn PMP Fundamentals: Complete Step‑By‑Step Guide (YouTube)",
+url: "https://www.youtube.com/watch?v=xLic1vXPgpc"
 },
 {
-title: "Multifactor Leadership Questionnaire (MLQ) Assessment Info",
-url: "[https://en.wikipedia.org/wiki/Multifactor_Leadership_Questionnaire](https://en.wikipedia.org/wiki/Multifactor_Leadership_Questionnaire)"
+title: "Project Management Full Course 2026 (YouTube)",
+url: "https://www.youtube.com/watch?v=3W4aAcwLbrk"
 },
 {
-title: "Michigan Studies of Leadership Summary",
-url: "[https://en.wikipedia.org/wiki/Michigan_Studies_of_Leadership](https://en.wikipedia.org/wiki/Michigan_Studies_of_Leadership)"
+title: "FBLA Objective Tests Resource Overview (includes Project Management tips)",
+url: "https://cvfbla.org/objective_tests"
 },
 {
-title: "Leadership Theories & Styles Guide",
-url: "[https://www.wgu.edu/blog/leadership-theories-styles2004.html](https://www.wgu.edu/blog/leadership-theories-styles2004.html)"
+title: "FBLA Competitive Events Flashcards (general FBLA context)",
+url: "https://quizlet.com/1003708759/fbla-competitive-events-flash-cards/"
 },
 {
-title: "Leadership Models That Can Define Your Style (USAHS)",
-url: "[https://www.usa.edu/blog/leadership-models/](https://www.usa.edu/blog/leadership-models/)"
+title: "Lean Construction & Project Management Techniques Flashcards",
+url: "https://quizlet.com/1089946824/lean-construction-waste-reduction-and-project-management-techniques-flash-cards/"
 },
 {
-title: "Organizational Leadership Event Guide (Pafbla.org PDF)",
-url: "[https://www.pafbla.org/downloads/17-18_Web_Files/17-18_Competitive_Events_PDFs/Organizational_Leadership.pdf](https://www.pafbla.org/downloads/17-18_Web_Files/17-18_Competitive_Events_PDFs/Organizational_Leadership.pdf)"
+title: "494 Quiz 1 Project Management Flashcards (Quizlet)",
+url: "https://quizlet.com/414236555/494-quiz-1-flash-cards/"
 },
 {
-title: "FBLA Organizational Leadership Questions & Answers Study Doc",
-url: "[https://www.stuvia.com/en-us/doc/9400387/fbla-organizational-leadership-questions-en-answers](https://www.stuvia.com/en-us/doc/9400387/fbla-organizational-leadership-questions-en-answers)"
+title: "SCMT 3613 Test 1 Flashcards (Project Management related)",
+url: "https://quizlet.com/568630442/scmt-3613-test-1-flash-cards/"
 },
 {
-title: "Leadership in Education: Recent e-books and Resources",
-url: "[https://guides.library.stanford.edu/leadership_in_ed/recent_ebooks](https://guides.library.stanford.edu/leadership_in_ed/recent_ebooks)"
+title: "Midterm Project Management Flashcards (Quizlet)",
+url: "https://quizlet.com/377360700/midterm-flash-cards/"
 }
 ],
 aiPrompts: [
 {
-title: "Full-Length Practice Test: Organizational Leadership",
-prompt: "Generate a 50-question multiple-choice practice test specifically for the FBLA Organizational Leadership Objective Test based on official competencies (leadership concepts, managerial roles, motivation theories, communication skills, team leadership, ethical leadership, conflict management, transformational vs transactional leadership, power & politics, coaching, servant leadership, diversity inclusion) with answer key and short explanations tied to real-world examples."
+title: "Full‑Length Practice Test for FBLA Project Management",
+prompt: "Generate a 40‑question multiple‑choice practice test for the FBLA Project Management Objective Test. Cover topics like project initiation, planning, scheduling, budgeting, risk management, stakeholder communication, work breakdown structures, monitoring and controlling projects, and project closure. Provide four answer choices (A–D) per question and include an answer key with explanations for each."
 },
 {
-title: "Adaptive Leadership Weakness Diagnostic & Coaching Prompt",
-prompt: "Analyze my performance on an Organizational Leadership practice quiz (provide answers and explanations). Identify my weakest topics (e.g., networking, strategic leadership, motivation theories). Then create a customized study plan with targeted explanations, real-world examples, mnemonics, and follow-up questions to strengthen those areas for the FBLA Objective Test."
+title: "Adaptive Weakness‑Based Coaching Prompt",
+prompt: "Identify which project management knowledge areas a student is weakest in (initiation, planning, execution, monitoring/control, or closure) and generate a customized study plan. For each weak area, provide targeted flashcards, example questions, concise explanations of key concepts (like risk management processes, budgeting methods, and scheduling techniques), and mini‑quizzes to reinforce learning specific to FBLA Project Management objective test objectives."
 }
 ]
 },
 
     },
     {
-        id: "parliamentary-procedure-role-play",
+        id: "public-administration-and-management-objective-test",
         resources: {
-title: "parliamentary-procedure-role-play Resources",
+title: "public-administration-and-management-objective-test Resources",
 links: [
 {
-title: "FBLA Official Parliamentary Procedure Event Details",
-url: "[https://www.fbla.org/competitive-events/parliamentary-procedure/](https://www.fbla.org/competitive-events/parliamentary-procedure/)"
+title: "FBLA Public Administration & Management Competitive Event Details",
+url: "https://www.fbla.org/competitive-events/public-administration-management/"
 },
 {
-title: "Florida FBLA Parliamentary Procedure Event Guide (Objective Test + Role Play)",
-url: "[https://www.flfbla.org/fbla-event-parliamentary-procedure](https://www.flfbla.org/fbla-event-parliamentary-procedure)"
+title: "Public Administration & Management FBLA Objective Test Example Questions (Quizlet)",
+url: "https://quizlet.com/test-questions/public-administration-%26-management-%7C-ne-fbla-61b203b1-2e7a-4830-8a23-015f488fc3f8"
 },
 {
-title: "2025–2026 FBLA Competitive Events Guidelines – Parliamentary Procedure PDF",
-url: "[https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Role%20Play%20Events/Parliamentary-Procedure.pdf](https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Role%20Play%20Events/Parliamentary-Procedure.pdf)"
+title: "FBLA Public Administration & Management Study Guide (Quizlet Key Concepts)",
+url: "https://quizlet.com/study-guides/fbla-public-administration-management-key-concepts-and-sample-questions-d034dfd4-2415-4ff0-9218-a0f1e7247df0"
 },
 {
-title: "Robert’s Rules of Order Official Site (Primary Parliamentary Procedure Authority)",
-url: "[https://robertsrules.com/](https://robertsrules.com/)"
+title: "FBLA Public Admin and Policy Review Flashcards",
+url: "https://quizlet.com/1124115710/fbla-public-admin-and-policy-review-flash-cards/"
 },
 {
-title: "Robert’s Rules of Order – Simplified PDF (Cornell Assembly Guide)",
-url: "[https://assembly.cornell.edu/sites/default/files/roberts_rules_simplified.pdf](https://assembly.cornell.edu/sites/default/files/roberts_rules_simplified.pdf)"
+title: "Public Administration: The Essentials (Open Textbook)",
+url: "https://open.umn.edu/opentextbooks/textbooks/1558"
 },
 {
-title: "Robert’s Rules of Order Online (RulesOnline.com)",
-url: "[https://www.rulesonline.com/](https://www.rulesonline.com/)"
+title: "Public Administration Explained – Wikipedia Overview",
+url: "https://en.wikipedia.org/wiki/Public_administration"
 },
 {
-title: "Parliamentary Procedure Overview – Norwich University Guide",
-url: "[https://guides.norwich.edu/faculty-services/parliamentary](https://guides.norwich.edu/faculty-services/parliamentary)"
+title: "POSDCORB – Organizational Management in Public Admin",
+url: "https://en.wikipedia.org/wiki/POSDCORB"
 },
 {
-title: "Parliamentary Procedure: A Brief Guide (MRSC)",
-url: "[https://mrsc.org/explore-topics/public-meetings/procedures/parliamentary-procedure](https://mrsc.org/explore-topics/public-meetings/procedures/parliamentary-procedure)"
+title: "Policy Analysis Basics – Wikipedia",
+url: "https://en.wikipedia.org/wiki/Policy_analysis"
 },
 {
-title: "Parliamentary Procedure & Robert’s Rules – NASC Adviser Resources",
-url: "[https://www.natstuco.org/adviser-resource-center/council-operations/parliamentary-procedure-roberts-rules/](https://www.natstuco.org/adviser-resource-center/council-operations/parliamentary-procedure-roberts-rules/)"
+title: "Government Performance and Results Act (GPRA)",
+url: "https://en.wikipedia.org/wiki/Government_Performance_and_Results_Act"
 },
 {
-title: "The Standard Code of Parliamentary Procedure (Wikipedia)",
-url: "[https://en.wikipedia.org/wiki/The_Standard_Code_of_Parliamentary_Procedure](https://en.wikipedia.org/wiki/The_Standard_Code_of_Parliamentary_Procedure)"
+title: "Administrative Behavior by Herbert Simon (Decision Making in Public Admin)",
+url: "https://en.wikipedia.org/wiki/Administrative_Behavior"
 },
 {
-title: "Demeter’s Manual of Parliamentary Law and Procedure (Wikipedia)",
-url: "[https://en.wikipedia.org/wiki/Demeter%27s_Manual_of_Parliamentary_Law_and_Procedure](https://en.wikipedia.org/wiki/Demeter%27s_Manual_of_Parliamentary_Law_and_Procedure)"
+title: "Public Administration Test Bank Insights (Study Resource Overview)",
+url: "https://www.scribd.com/document/980220874/Public-Administration-Understanding-Management-Politics-and-Law-in-the-Public-Sector-8th-Edition-by-David-H-Rosenbloom-Test-Bank"
 },
 {
-title: "Parliamentary Procedure (General Concept – Wikipedia)",
-url: "[https://en.wikipedia.org/wiki/Parliamentary_procedure](https://en.wikipedia.org/wiki/Parliamentary_procedure)"
+title: "Public Human Resources Management Content (Pressbooks)",
+url: "https://uark.pressbooks.pub/publicadmin/chapter/economic-policy/"
 },
 {
-title: "American Institute of Parliamentarians (Professional Org Wiki)",
-url: "[https://en.wikipedia.org/wiki/American_Institute_of_Parliamentarians](https://en.wikipedia.org/wiki/American_Institute_of_Parliamentarians)"
+title: "Coursera Public Administration & Policy Courses",
+url: "https://www.coursera.org/courses?query=public+administration"
 },
 {
-title: "FBLA Parliamentary Procedure Flashcards – 60 Terms (Quizlet)",
-url: "[https://quizlet.com/452521903/parliamentary-procedure-fbla-flash-cards/](https://quizlet.com/452521903/parliamentary-procedure-fbla-flash-cards/)"
+title: "Public Administration & Management Event Overview (Florida FBLA)",
+url: "https://www.flfbla.org/fbla-event-public-administration-and-management"
 },
 {
-title: "FBLA (Parliamentary Procedure) Flashcards – 175 Terms (Quizlet)",
-url: "[https://quizlet.com/754404134/fbla-parliamentary-procedure-flash-cards/](https://quizlet.com/754404134/fbla-parliamentary-procedure-flash-cards/)"
+title: "FBLA Competitive Events Listing Including Public Administration & Management",
+url: "https://www.fbla.org/high-school/competitive-events/"
 },
 {
-title: "FBLA Parliamentary Procedure Flashcards – 75 Terms (Quizlet)",
-url: "[https://quizlet.com/79706105/fbla-parliamentary-procedure-flash-cards/](https://quizlet.com/79706105/fbla-parliamentary-procedure-flash-cards/)"
+title: "NE FBLA Public Administration Test Practice (Quizlet)",
+url: "https://quizlet.com/test-questions/public-administration-%26-management-%257C-ne-fbla-61b203b1-2e7a-4830-8a23-015f488fc3f8"
 },
 {
-title: "FBLA Parliamentary Procedure Flashcards – 69 Terms (Quizlet)",
-url: "[https://quizlet.com/1128851053/fbla-parliamentary-procedure-flash-cards//](https://quizlet.com/1128851053/fbla-parliamentary-procedure-flash-cards//)"
+title: "FBLA Public Policy & Advocacy Flashcards (relevant for public policy topics)",
+url: "https://quizlet.com/855993263/fbla-public-policy-advocacy-flash-cards/"
 },
 {
-title: "FBLA Parliamentary Procedures Test Flashcards (Quizlet)",
-url: "[https://quizlet.com/283734548/fbla-parliamentary-procedures-test-flash-cards/](https://quizlet.com/283734548/fbla-parliamentary-procedures-test-flash-cards/)"
+title: "FBLA Ultimate Study Guide Flashcards (general competitive prep)",
+url: "https://quizlet.com/788496308/fbla-ultimate-study-guide-flash-cards/"
 },
 {
-title: "FBLA Introduction to Parliamentary Procedure Flashcards (Quizlet)",
-url: "[https://quizlet.com/392100252/fbla-introduction-to-parliamentary-procedure-flash-cards/](https://quizlet.com/392100252/fbla-introduction-to-parliamentary-procedure-flash-cards/)"
+title: "Public Admin and Policy Sample Quizlet Set 2",
+url: "https://quizlet.com/1124115710/fbla-public-admin-and-policy-review-flash-cards/"
 },
 {
-title: "FBLA Parliamentary Procedure Practice/Test Resource (LOHS FBLA Portal)",
-url: "[https://lohsfbla.com/comps/Parliamentary%2BProcedure/test](https://lohsfbla.com/comps/Parliamentary%2BProcedure/test)"
+title: "Public Administration – PSC Exam Resource Overview",
+url: "https://exam.pscnotes.com/public-administration/"
 }
 ],
 aiPrompts: [
 {
-title: "Full-Length Practice Test Prompt",
-prompt: "Create a 30-question multiple-choice practice exam for FBLA Parliamentary Procedure Role Play based on Robert’s Rules of Order (Newly Revised) and FBLA bylaws. Include questions covering motions (main, subsidiary, privileged, incidental), order of business, proper voting procedures, quorum, officer roles, and simulated scenario questions similar to role play situations. Provide an answer key at the end."
+title: "Full-Length FBLA Public Administration & Management Practice Test",
+prompt: "Create a 30-question multiple-choice practice test for Public Administration & Management Objective Test covering public finance, budgeting, public policy lifecycle, organizational management, ethics, human resources in the public sector, and governance principles. Provide answer choices (A–D) and correct answers at the end."
 },
 {
-title: "Adaptive Coaching Prompt",
-prompt: "I’m struggling most with recognizing which motions take precedence and handling parliamentary scenarios under time pressure. Generate an adaptive coaching session focused on parliamentary procedure priority of motions and role-play meeting scenarios. Start by asking what specific motion types the user finds confusing, assess their current understanding, and then provide tailored examples, explanations, and practice scenarios to strengthen their weaknesses."
+title: "Adaptive Coaching Prompt for Public Administration Weaknesses",
+prompt: "Act as a study coach for Public Administration & Management Objective Test. Analyze my answers to 10 sample questions I provide, identify topics I struggle with (e.g., public budgeting, policy design, ethics, organizational control), and generate a customized study plan with explanations and targeted flashcards for each weak area."
 }
 ]
 },
 
-    }
+    },
+    {
+        id: "public-service-announcement-presentation",
+        resources: {
+title: "public-service-announcement-presentation Resources",
+links: [
+{
+title: "FBLA Official Public Service Announcement Event Guidelines",
+url: "https://www.fbla.org/competitive-events/public-service-announcement/"
+},
+{
+title: "2025–2026 FBLA Public Service Announcement Competitive Events Guidelines PDF",
+url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Presentation%20Events/Public-Service-Announcement.pdf"
+},
+{
+title: "Public Service Announcement Flashcards on Quizlet (basic PSA terms)",
+url: "https://quizlet.com/718205972/public-service-announcement-flash-cards/"
+},
+{
+title: "Creating a Public Service Advertisement Flashcards on Quizlet",
+url: "https://quizlet.com/507445220/creating-a-public-service-advertisement-flash-cards/"
+},
+{
+title: "FBLA PSA Presentation Flashcards on Quizlet",
+url: "https://quizlet.com/982275149/fbla-psa-presentation-flash-cards/"
+},
+{
+title: "Public Service Announcements Flashcards on Quizlet (general terms)",
+url: "https://quizlet.com/404804872/public-service-announcements-flash-cards/"
+},
+{
+title: "Public Service Announcements – UNM Center for Rural Health Communication Toolkit",
+url: "https://ruralhealth.und.edu/communication/public-service"
+},
+{
+title: "SEL: Public Service Announcement Lesson and Activity Guide",
+url: "https://www.learningtogive.org/resources/sel-public-service-announcement"
+},
+{
+title: "How to Create a Public Service Announcement (Purdue Global Writing Center)",
+url: "https://purdueglobalwriting.center/creating-a-public-service-announcement/"
+},
+{
+title: "Tips for Creating Effective Public Service Announcements (Cision PSA Best Practices)",
+url: "https://www.cision.ca/resources/tip-sheets/psa-bestpractices/"
+},
+{
+title: "SAMHSA Tips for Creating Your Own Video PSA (PDF)",
+url: "https://www.samhsa.gov/sites/default/files/programs-practitioners/npw-tips-video-psa-creation.pdf"
+},
+{
+title: "Public Service Announcements: A How-To Guide for Teachers",
+url: "https://www.teachwriting.org/blog/2018/4/11/public-service-announcements-a-how-to-guide-for-teachers"
+},
+{
+title: "Adobe Education: PSA Creation Teaching Resource",
+url: "https://edex.adobe.com/teaching-resources/psa-create-a-public-service-announcement"
+},
+{
+title: "Storyboard That: PSAs for Students – Examples and Ideas",
+url: "https://www.storyboardthat.com/articles/e/public-service-announcements"
+},
+{
+title: "Practice FBLA Public Service Announcement Materials (Lohsfbla)",
+url: "https://lohsfbla.com/comps/Public%2BService%2BAnnouncement"
+},
+{
+title: "FBLA Public Service Announcement Project Example on Powtoon",
+url: "https://www.powtoon.com/online-presentation/cBy3LzzxsIz/fbla-public-service-announcement-project/"
+},
+{
+title: "FBLA Public Service Announcement Presentation Example (YouTube)",
+url: "https://www.youtube.com/watch?v=nBRucSqc3P8"
+},
+{
+title: "FBLA 2020 Public Service Announcement Presentation – Nationals (YouTube)",
+url: "https://www.youtube.com/watch?v=S0ecQZTKFQw"
+},
+{
+title: "FBLA Public Service Announcement by Minaam Baseer (Prezi Example)",
+url: "https://prezi.com/vrtvd8l0k_if/fbla-public-service-announcement/"
+},
+{
+title: "FBLA PSA Presentation by Eric Chavez (Prezi Example)",
+url: "https://prezi.com/p/eibxivn7xyco/fbla-psa-presentation/"
+}
+],
+aiPrompts: [
+{
+title: "Full-Length Multiple-Choice Practice Test: PSA Presentation",
+prompt: "Create a 30-question multiple-choice practice test for FBLA public-service-announcement-presentation covering topic selection, research strategy, script and storyboard design, persuasive messaging, audience analysis, visual and audio elements, call-to-action formulation, and interpretation of competitive guidelines. Include 4 answer options per question and an answer key at the end."
+},
+{
+title: "Adaptive Coaching Prompt for PSA Weakness Areas",
+prompt: "Analyze my draft PSA presentation script and outline what areas need improvement based on FBLA guidelines (clarity of objective, strength of call to action, audience targeting, and evidence use). Provide targeted coaching tips and examples to strengthen my messaging and presentation delivery."
+}
+]
+},
+
+    },
+    {
+        id: "public-speaking-presentation",
+        resources: {
+        title: "public-speaking-presentation Resources",
+        links: [
+            { title: "FBLA Public Speaking Competitive Event Guidelines (High School)", url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%vents/Presentation%20Events/Public-Speaking.pdf" },
+            { title: "FBLA Introduction to Public Speaking Event Overview", url: "https://www.fbla.org/competitive-events/introduction-to-public-speaking/" },
+            { title: "FBLA Public Speaking (General Competitive Event)", url: "https://www.fbla.org/competitive-events/public-speaking-high-school/" },
+            { title: "Public Speaking Resource Guide – Amherst College", url: "https://www.amherst.edu/academiclife/support/writingcenter/public-speaking/resources-for-public-speaking/speech-structure" },
+            { title: "10 Tips for Improving Your Public Speaking Skills - Harvard DCE", url: "https://professional.dce.harvard.edu/blog/10-tips-for-improving-your-public-speaking-skills/" },
+            { title: "University of North Carolina – Giving Effective Presentations", url: "https://learningcenter.unc.edu/tips-and-tools/giving-effective-presentations/" },
+            { title: "Speech Delivery Practice Tips – UNR Writing & Speaking Center", url: "https://www.unr.edu/writing-speaking-center/writing-speaking-resources/speech-delivery" },
+            { title: "Speaker's Triangle Public Speaking Technique (Wikipedia)", url: "https://en.wikipedia.org/wiki/Speaker%27s_triangle" },
+            { title: "Monroe's Motivated Sequence (Wikipedia)", url: "https://en.wikipedia.org/wiki/Monroe%27s_motivated_sequence" },
+            { title: "Zone of Interaction (Communication Concept)", url: "https://en.wikipedia.org/wiki/Zone_of_interaction" },
+            { title: "Toastmasters International Public Speaking Organization", url: "https://www.toastmasters.org" },
+            { title: "FBLA: Impromptu Speaking Flashcards | Quizlet", url: "https://quizlet.com/281705810/fbla-impromptu-speaking-flash-cards/" },
+            { title: "Public Speaking: Presentation Aids Flashcards | Quizlet", url: "https://quizlet.com/580523695/ospf-advanced-do-i-know-this-flash-cards/" },
+            { title: "FBLA Word Processing Study Guide – Public Speaking Aids | Quizlet", url: "https://quizlet.com/711552944/tableau-practice-exam-flash-cards/" },
+            { title: "COM 101 Public Speaking Flashcards | Quizlet", url: "https://quizlet.com/970024044/com-101-midterm-flash-cards/" },
+            { title: "Public Speaking (Google Pages FBLA Resources)", url: "https://sites.google.com/mhrd.org/fbla-resources/Presentation-Events/Individual/Public-Speaking" },
+            { title: "FBLA Event Public Speaking (Florida FBLA)", url: "https://www.flfbla.org/event-public-speaking" },
+            { title: "Exploring Public Speaking Event – FBLA", url: "https://www.fbla.org/competitive-events/exploring-public-speaking/" },
+            { title: "Public Speaking Focus on Structure and Delivery (Hamilton College)", url: "https://www.hamilton.edu/academics/centers/oralcommunication/guides/tips-for-effective-delivery" },
+            { title: "Public Speaking Strategy & Techniques (UCumberlands Blog)", url: "https://www.ucumberlands.edu/blog/mastering-the-art-of-public-speaking" }
+        ],
+        aiPrompts: [
+            {
+                title: "Full-Length Public Speaking Practice Test (20 Questions)",
+                prompt: "Create a 20-question multiple-choice practice test tailored to FBLA Public Speaking Presentation competitors. Cover these topics: speech organization (intro, body, conclusion), types of speech delivery (extemporaneous, impromptu), persuasive frameworks like Monroe’s Motivated Sequence, delivery skills (eye contact, vocal variety, body language), and handling Q&A segments. Provide correct answers and brief explanations for each question."
+            },
+            {
+                title: "Weakness-Based Public Speaking Coaching Prompt",
+                prompt: "Analyze my speech draft and performance weaknesses. I will provide my speech text and a short description of the areas I struggle with (e.g., pacing, organization, eye contact). Generate a personalized coaching plan with targeted exercises, specific tips for improvement, and practice drills. Include techniques from competitive public speaking (like structured outlines, delivery pacing, and confidence-building) tailored to enhance my weakest areas."
+            }
+        ]
+    },
+    },
+    {
+        id: "real-estate-objective-test",
+        resources: {
+title: "real‑estate‑objective‑test Resources",
+links: [
+{
+title: "FBLA Real Estate Competitive Event Guidelines (2025‑2026)",
+url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Real‑Estate.pdf"
+},
+{
+title: "FBLA Official Real Estate Event Overview & Rules",
+url: "https://www.fbla.org/competitive-events/real-estate/"
+},
+{
+title: "Real Estate FBLA Objective Test Flashcards (51 terms) — Quizlet",
+url: "https://quizlet.com/1121838260"
+},
+{
+title: "FBLA Real Estate Test Flashcards (50 Qs) — Quizlet",
+url: "https://quizlet.com/1083558824"
+},
+{
+title: "FBLA Real Estate Flashcards (57 terms) — Quizlet",
+url: "https://quizlet.com/1095843671"
+},
+{
+title: "FBLA Real Estate Comprehensive Flashcards — Quizlet",
+url: "https://quizlet.com/1113622055"
+},
+{
+title: "Real Estate Vocabulary Guide — USRealtyTraining.com",
+url: "https://www.usrealtytraining.com/blogs/real‑estate‑vocabulary"
+},
+{
+title: "Real Estate: Definition & Types — Investopedia",
+url: "https://www.investopedia.com/terms/r/realestate.asp"
+},
+{
+title: "Real Property vs. Real Estate Explained — Investopedia",
+url: "https://www.investopedia.com/ask/answers/100214/what-difference-between-real‑estate‑and‑real‑property.asp"
+},
+{
+title: "Real Estate Practice Exam Questions (free randomized set)",
+url: "https://realestatelicensewizard.com/real‑estate‑practice‑exam/"
+},
+{
+title: "Pearson VUE Real Estate Practice Tests (Paid Pro Prep)",
+url: "https://www.pearsonvue.com/us/en/practicetests/realestate.html"
+},
+{
+title: "Real Estate Fundamentals Quiz — Quiz‑Maker.com",
+url: "https://www.quiz‑maker.com/cp‑uni‑fundamentals‑real‑estate‑quiz"
+},
+{
+title: "Real Estate Quiz Flashcards & Quizzes — Brainscape",
+url: "https://www.brainscape.com/subjects/real‑estate‑quiz"
+},
+{
+title: "Real Estate Business Flashcards & Skill Sets — Brainscape",
+url: "https://www.brainscape.com/subjects/the‑real‑estate‑business"
+},
+{
+title: "FBLA Real Estate Practice Flashcards (Quizlet)",
+url: "https://quizlet.com/551387479"
+},
+{
+title: "Real Estate Vocabulary for PSI Exam — Quizlet",
+url: "https://quizlet.com/285918295"
+},
+{
+title: "FBLA Real Estate Terms Flashcards — Quizlet",
+url: "https://quizlet.com/1083558824/flashcards"
+},
+{
+title: "FBLA Real Estate Term Set — Quizlet",
+url: "https://quizlet.com/1121838260/flashcards"
+},
+{
+title: "FBLA Real Estate Mixed‑Topic Flashcards — Quizlet",
+url: "https://quizlet.com/1113622055/flashcards"
+},
+{
+title: "FBLA Real Estate Latest Flashcards (57 terms) — Quizlet",
+url: "https://quizlet.com/1095843671/flashcards"
+}
+],
+aiPrompts: [
+{
+title: "Full‑Length FBLA Real Estate Objective Test Practice (50 Questions)",
+prompt: "Create a 50‑question multiple‑choice practice test covering key FBLA real estate objective topics such as real vs personal property, valuation approaches, agency relationships, licensing, Fair Housing laws, deeds and title transfers, financing basics, transaction process, ethics in real estate, types of property, market analysis, investment basics, and closing procedures. Include 4 options per question with answers at the end."
+},
+{
+title: "Adaptive Real Estate Objective Test Coach",
+prompt: "Act as an adaptive study coach for the FBLA real estate objective test. Ask the student which topic they’re weakest in (for example: property law, financing/mortgages, appraisal and valuation, agency relationships, or Fair Housing). Then generate short explanations, targeted practice questions, and examples based on that topic until mastery is demonstrated. Reference official FBLA objectives from the 2025‑2026 study guide."
+}
+]
+},
+
+    },
+    {
+        id: "retail-management-objective-test",
+        resources: {
+title: "retail-management-objective-test Resources",
+links: [
+{
+title: "2025‑2026 FBLA Retail Management Competitive Event Study Guide",
+url: "https://connect.fbla.org/headquarters/files/Collegiate%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Retail-Management.pdf"
+},
+{
+title: "FBLA Retail Management Event Overview (Florida FBLA)",
+url: "https://www.flfbla.org/event-retail-management"
+},
+{
+title: "FBLA High School Retail Management Competitive Event Details",
+url: "https://www.fbla.org/high-school/competitive-events/"
+},
+{
+title: "FBLA Retail Management Key Concepts and Strategies Flashcards (Quizlet)",
+url: "https://quizlet.com/1127770301/fbla-retail-management-key-concepts-and-strategies-for-competition-flash-cards/"
+},
+{
+title: "FBLA Retail Management Flashcards (Quizlet set 1)",
+url: "https://quizlet.com/1121071512/fbla-retail-management-flash-cards/"
+},
+{
+title: "FBLA Retail Management Review Flashcards (Quizlet set 2)",
+url: "https://quizlet.com/601753547/fbla-retail-management-review-flash-cards/"
+},
+{
+title: "FBLA Retail Management Test Flashcards (Quizlet)",
+url: "https://quizlet.com/1104997092/fbla-retail-management-test-flash-cards/"
+},
+{
+title: "FBLA Retail Management Prep Flashcards (Quizlet)",
+url: "https://quizlet.com/1115732838/retail-management-fbla-prep-flash-cards/"
+},
+{
+title: "Retail Management Study Guide Flashcards (Quizlet)",
+url: "https://quizlet.com/321372149/retail-management-study-guide-exam-1-flash-cards/"
+},
+{
+title: "Retail Inventory Management Basics (NetSuite article)",
+url: "https://www.netsuite.com/portal/resource/articles/inventory-management/retail-inventory-management.shtml"
+},
+{
+title: "Retail Management Fundamentals (Studocu Notes)",
+url: "https://www.studocu.com/en-us/subject/business/sales/retail-management/845"
+},
+{
+title: "Core Principles of Retail Management (Hospitality Institute)",
+url: "https://hospitality.institute/bha308/core-principles-retail-management-guide/"
+},
+{
+title: "Retail Management Strategies for Business Growth",
+url: "https://timeclockwizard.com/business/retail-management"
+},
+{
+title: "Best Retail Courses & Certificates (Coursera – overview)",
+url: "https://www.coursera.org/courses?query=retail"
+},
+{
+title: "Retail Management & Strategy Exam Flashcards (Quizlet)",
+url: "https://quizlet.com/672933023/retail-management-strategy-exam-1-flash-cards/"
+},
+{
+title: "Retail Merchandising & Inventory Key Terms (Quizlet)",
+url: "https://quizlet.com/1103933298"
+},
+{
+title: "Retail Management Flashcards – Basics (Quizlet)",
+url: "https://quizlet.com/66764384/retail-management-flash-cards/"
+},
+{
+title: "FBLA Retail Management Key Concepts Study Guide (Quizlet Study Guide)",
+url: "https://quizlet.com/study-guides/fbla-retail-management-key-concepts-and-strategies-for-compe-7d93ba29-0b37-49df-96e-63ec2a5e4d1e"
+},
+{
+title: "FBLA Retail Management Exam 1 Practice (Quizlet)",
+url: "https://quizlet.com/120257231/retail-management-test-1-flash-cards/"
+},
+{
+title: "FBLA Retail Management Flashcards (another Quizlet set)",
+url: "https://quizlet.com/1095923376"
+}
+],
+aiPrompts: [
+{
+title: "Retail Management Objective Test Full Practice Exam",
+prompt: "Generate a 40‑question multiple‑choice practice test specifically for FBLA Retail Management Objective Test covering key areas like retail functions, inventory control, customer service techniques, merchandising strategies, pricing approaches (e.g., EDLP), the retail mix, retail technologies (RFID, POS), financial operations, and store location decisions."
+},
+{
+title: "Retail Management Weakness Drill and Coaching Prompt",
+prompt: "Identify the areas you’re least confident in within retail management topics (such as customer analytics, inventory management, merchandising, pricing strategies, or retail technologies). Then create a detailed coaching session using real definitions, examples, and mini‑quizzes to strengthen understanding in those weak areas."
+}
+]
+},
+
+    },
+    {
+        id: "sales-presentation",
+        resources: {
+title: "sales-presentation Resources",
+links: [
+{
+title: "FBLA Sales Presentation Competitive Event Guidelines",
+url: "https://www.fbla.org/competitive-events/sales-presentation/"
+},
+{
+title: "2025‑26 FBLA Sales Presentation Event Rules PDF",
+url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Presentation%20Events/Sales-Presentation.pdf"
+},
+{
+title: "16 Sales Presentation Techniques & Tips for Success (Indeed)",
+url: "https://www.indeed.com/career-advice/career-development/sales-presentation-techniques"
+},
+{
+title: "13 Tips for Perfect Sales Presentations (Zendesk Blog)",
+url: "https://www.zendesk.com/blog/13-tips-perfect-sales-presentation/"
+},
+{
+title: "Sales Presentation Training Tips & Methods to Deliver Winning Pitches",
+url: "https://www.paperflite.com/blogs/sales-presentation-training"
+},
+{
+title: "How to Complete a Sales Presentation Quiz & Worksheet (Study.com)",
+url: "https://study.com/academy/practice/quiz-worksheet-how-to-complete-a-sales-presentation.html"
+},
+{
+title: "Basic Sales Training Presentation (Slideshare)",
+url: "https://www.slideshare.net/slideshow/basic-sales-training/4987040"
+},
+{
+title: "Competitive Events Video Series – Sales Presentation (Georgia FBLA)",
+url: "https://georgiafbla.org/competitive-events-video-series-3-sales-presentation/"
+},
+{
+title: "FBLA Intro to Marketing: Selling & Merchandising (Quizlet)",
+url: "https://quizlet.com/1056500260/fbla-intro-to-marketing-concepts-selling-and-merchandising-flash-cards/"
+},
+{
+title: "FBLA Sales Presentation Flashcards (Quizlet set 1)",
+url: "https://quizlet.com/852106842/fbla-sales-presentation-flash-cards/"
+},
+{
+title: "FBLA Sales Presentation Flashcards (Quizlet set 2)",
+url: "https://quizlet.com/283917777/fbla-sales-presentation-flash-cards/"
+},
+{
+title: "Chapter 7: Effective Sales Presentation Flashcards (Quizlet)",
+url: "https://quizlet.com/336690066/chapter-7-effective-sales-presentation-flash-cards/"
+},
+{
+title: "Foundations of Selling Flashcards (Quizlet)",
+url: "https://quizlet.com/906604867/fbla-foundations-of-selling-flash-cards/"
+},
+{
+title: "Selling Process Flashcards (Quizlet)",
+url: "https://quizlet.com/744708532/selling-process-flash-cards/"
+},
+{
+title: "Professional Selling Sales Presentation Strategies (Quizlet)",
+url: "https://quizlet.com/887762127/professional-selling-01-ch5-sales-presentation-strategies-flash-cards/"
+},
+{
+title: "Approaching the Customer with Adaptive Selling (Quizlet)",
+url: "https://quizlet.com/381636034/ch-10-approaching-the-customer-with-adaptive-selling-flash-cards/"
+},
+{
+title: "FBLA Marketing Flashcards (supporting sales content)",
+url: "https://quizlet.com/484353824/fbla-marketing-flash-cards/"
+},
+{
+title: "FBLA MARKETING Flashcards (Quizlet)",
+url: "https://quizlet.com/246742693/fbla-marketing-flash-cards/"
+},
+{
+title: "Sales Presentation Overview (Wikipedia)",
+url: "https://en.wikipedia.org/wiki/Sales_presentation"
+},
+{
+title: "FBLA Presentation Resources & Case Studies (CVFBLA)",
+url: "https://cvfbla.org/presentation_events"
+}
+],
+aiPrompts: [
+{
+title: "Full-Length Sales Presentation Practice Test",
+prompt: "Create a 30‑question multiple‑choice practice test based on FBLA Sales Presentation topics. Include questions on selling process steps (prospecting, approach, presentation, objection handling, closing), buyer types, presentation techniques, product positioning, handling judge questions, and professional communication. Provide answer choices A–D and an answer key at the end."
+},
+{
+title: "Adaptive Coaching for Sales Presentation Weaknesses",
+prompt: "Analyze the user’s weakest areas in sales presentation (e.g., engaging judges, closing the sale, slide design, product demonstration). Provide adaptive coaching with targeted exercises, example scripts, real‑world sales tips, and strategies to improve each weak area, using FBLA judging criteria as a framework."
+}
+]
+},
+
+    },
+    {
+        id: "securities-and-investments-objective-test",
+        resources: {
+title: "securities-and-investments-objective-test Resources",
+links: [
+{
+title: "FBLA Securities & Investments Competitive Event Official Guide",
+url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Objective%20Tests/Securities-and-Investments.pdf"
+},
+{
+title: "FBLA Securities & Investments Event Overview – FBLA.org",
+url: "https://www.fbla.org/competitive-event/securities-investments/"
+},
+{
+title: "Investing Basics – FINRA (Stocks, Bonds, Funds)",
+url: "https://www.finra.org/investors/investing/investing-basics"
+},
+{
+title: "Investing: An Introduction – Investopedia",
+url: "https://www.investopedia.com/articles/basics/11/3-s-simple-investing.asp"
+},
+{
+title: "Types of Investments – Investopedia",
+url: "https://www.investopedia.com/terms/i/investing.asp"
+},
+{
+title: "Investing in Mutual Funds – Investopedia",
+url: "https://www.investopedia.com/terms/m/mutualfund.asp"
+},
+{
+title: "SEC Investor Publications – Basics of Savings & Investing",
+url: "https://www.sec.gov/investor/pubs/investop.htm"
+},
+{
+title: "Diversification (Finance) – Wikipedia",
+url: "[https://en.wikipedia.org/wiki/Diversification_(finance)](https://en.wikipedia.org/wiki/Diversification_%28finance%29)"
+},
+{
+title: "Modern Portfolio Theory – Wikipedia",
+url: "https://en.wikipedia.org/wiki/Modern_portfolio_theory"
+},
+{
+title: "Rebalancing Investments – Wikipedia",
+url: "https://en.wikipedia.org/wiki/Rebalancing_investments"
+},
+{
+title: "FBLA Securities & Investments Flashcards (Quizlet set 1)",
+url: "https://quizlet.com/105790048/fbla-securities-and-investments-flash-cards/"
+},
+{
+title: "FBLA Securities & Investments Flashcards (Quizlet set 2)",
+url: "https://quizlet.com/338720327/fbla-securities-and-investments-questions-flash-cards/"
+},
+{
+title: "FBLA Securities & Investments Flashcards (Quizlet set 3)",
+url: "https://quizlet.com/256728914/fbla-securities-and-investments-flash-cards/"
+},
+{
+title: "FBLA Securities & Investments Flashcards (Quizlet set 4)",
+url: "https://quizlet.com/197458882/fbla-securities-and-investments-flash-cards/"
+},
+{
+title: "FBLA Securities & Investments Flashcards (Quizlet set 5)",
+url: "https://quizlet.com/563288614/fbla-securities-and-investments-flash-cards/"
+},
+{
+title: "FBLA Study Guide — Securities & Investments (Quizlet)",
+url: "https://quizlet.com/1115095869"
+},
+{
+title: "FBLA Securities & Investments Flashcards (Quizlet set 6)",
+url: "https://quizlet.com/891404558/fbla-securities-and-investments-flash-cards/"
+},
+{
+title: "Investing Basics Online Guide (Maine.gov)",
+url: "https://www.maine.gov/pfr/securities/investing_basics.htm"
+},
+{
+title: "FBLA Securities and Investments Practice Test (LOHSFBLA.com)",
+url: "https://lohsfbla.com/comps/Securities%2B%26%2BInvestments/test"
+},
+{
+title: "FBLA Competitive Event Resources (LOHSFBLA.com)",
+url: "https://lohsfbla.com/comps/"
+}
+],
+aiPrompts: [
+{
+title: "Full-Length FBLA Securities & Investments Practice Test (40 Questions)",
+prompt: "Create a 40-question multiple-choice practice test covering key topics in the FBLA Securities & Investments Objective Test, including investment fundamentals, risk and return, types of securities (stocks, bonds, mutual funds), portfolio diversification, financial markets, basic regulation, taxation, and investment products. Provide four answer options for each question and include an answer key at the end."
+},
+{
+title: "Adaptive Securities & Investments Coaching Prompt",
+prompt: "Evaluate my knowledge on FBLA Securities & Investments exam topics by asking tailored questions with explanations based on my weaknesses. Begin by asking a question on investment fundamentals; if I get it wrong, provide targeted explanations and follow-up questions until I demonstrate understanding. Continue adaptively through concepts like risk/return tradeoff, mutual funds, bonds, stock market basics, and diversification."
+}
+]
+},
+
+    },
+    {
+        id: "social-media-strategies-presentation",
+        resources: {
+title: "social-media-strategies-presentation Resources",
+links: [
+{
+title: "FBLA Social Media Strategies Event Official Guidelines",
+url: "https://www.fbla.org/competitive-events/social-media-strategies/"
+},
+{
+title: "FBLA Social Media Strategies Flashcards (Quizlet)",
+url: "https://quizlet.com/1001195182"
+},
+{
+title: "Intro to Social Media Strategies FBLA Script Flashcards (Quizlet)",
+url: "https://quizlet.com/792480645"
+},
+{
+title: "Social Media Campaign for FBLA Flashcards (Quizlet)",
+url: "https://quizlet.com/459639963"
+},
+{
+title: "Social Media Strategies Final Exam Flashcards (Quizlet)",
+url: "https://quizlet.com/206911063"
+},
+{
+title: "FBLA Intro to Social Media Marketing Flashcards (Quizlet)",
+url: "https://quizlet.com/776668309"
+},
+{
+title: "Introduction to Social Media Strategy Event (FBLA)",
+url: "https://www.fbla.org/competitive-events/introduction-to-social-media-strategy/"
+},
+{
+title: "2023–2024 FBLA Social Media Strategies Presentation on Prezi",
+url: "https://prezi.com/p/hgqnvfimsywk/2023-2024-fbla-social-media-strategies-presentation/"
+},
+{
+title: "Comprehensive Social Media Marketing Strategy Guide – Hootsuite",
+url: "https://blog.hootsuite.com/social-media-marketing-strategy/"
+},
+{
+title: "Social Media Content Calendar Guide – Dotdigital",
+url: "https://dotdigital.com/blog/marketing-content-calendar-guide/"
+},
+{
+title: "8 Steps to Build a Successful Social Media Strategy – AMA",
+url: "https://www.ama.org/marketing-news/social-media-marketing-strategy/"
+},
+{
+title: "Social Media Marketing Strategies: Complete 2025 Guide – Adobe",
+url: "https://www.adobe.com/express/learn/blog/social-media-marketing-strategies"
+},
+{
+title: "Guide to Creating a Social Media Calendar – Sprout Social",
+url: "https://sproutsocial.com/insights/social-media-calendar/"
+},
+{
+title: "Social Media Marketing Resources & Tips – Sprout Social",
+url: "https://sproutsocial.com/insights/social-media-marketing-resources/"
+},
+{
+title: "Social Media Marketing Playbook 2025 – Smart Insights",
+url: "https://www.smartinsights.com/guides/social-media-marketing-playbook-2025/"
+},
+{
+title: "Introduction to Social Media Strategy – FBLA Resources (Google)",
+url: "https://sites.google.com/mhrd.org/fbla-resources/Presentation-Events/9th-10th-Grade-Only/Individual-or-Team/Introduction-to-Social-Media-Strategy"
+},
+{
+title: "FBLA Event Social Media Campaign Overview – Florida FBLA",
+url: "https://www.flfbla.org/fbla-event-social-media-campaign"
+},
+{
+title: "2025–2026 Social Media Strategies Competitive Guidelines PDF",
+url: "https://www.middletonfbla.com/wp-content/uploads/2025/09/Social-Media-Strategies_Guidelines25-26.pdf"
+},
+{
+title: "Competitive Events Guidelines Including Social Media Strategies – Oregon FBLA",
+url: "https://oregonfbla.org/wp-content/uploads/2025/01/Competitive-Event-Study-Guide-.pdf"
+},
+{
+title: "FBLA Introduction to Social Media Strategy Event Details",
+url: "https://www.fbla.org/competitive-events/introduction-to-social-media-strategy/"
+}
+],
+aiPrompts: [
+{
+title: "Practice Test — Social Media Strategies Presentation (30 Questions)",
+prompt: "Generate a 30-question FBLA-style multiple-choice practice test focused on Social Media Strategies Presentation. Include scenarios about setting SMART goals, choosing platforms, defining target audiences, creating content calendars, using analytics to measure engagement, developing cohesive campaigns, ethical considerations in social media, storytelling & influencer use, scheduling content, and sample post mockups. Provide correct answers and brief explanations for each question."
+},
+{
+title: "Adaptive Coaching Prompt for Social Media Strategies Weaknesses",
+prompt: "Identify my weaknesses in Social Media Strategies Presentation topics — including SMART objective setting, content calendar creation, audience targeting, platform selection, analytics interpretation, sample post development, and presentation delivery. Then generate a customized coaching plan with targeted practice exercises, example critiques, and mini quizzes to strengthen my weak areas and prepare me for high-level competition."
+}
+]
+},
+
+    },
+    {
+        id: "sports-and-entertainment-management-role-play",
+        resources: {
+title: "sports-and-entertainment-management-role-play Resources",
+links: [
+{
+title: "FBLA Sports & Entertainment Management Official Event Information",
+url: "https://www.fbla.org/competitive-events/sports-entertainment-management/"
+},
+{
+title: "FBLA Sports and Entertainment Management 2025–2026 Competitive Event Guidelines PDF",
+url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Role%20Play%20Events/Sports-and-Entertainment-Management.pdf%20"
+},
+{
+title: "FBLA Sports & Entertainment Management Flashcards (144 terms) on Quizlet",
+url: "https://quizlet.com/744830491/fbla-sports-and-entertainment-management-flash-cards/"
+},
+{
+title: "FBLA Sports & Entertainment Management Practice Test Flashcards (100 terms)",
+url: "https://quizlet.com/1109166694/fbla-sports-and-entertainment-management-practice-test-flash-cards/"
+},
+{
+title: "FBLA Sports & Entertainment Management Flashcards (50 terms) on Quizlet",
+url: "https://quizlet.com/151625114/fbla-sports-entertainment-management-flash-cards/"
+},
+{
+title: "Sports & Entertainment Management Key Terms (63 terms) Quizlet",
+url: "https://quizlet.com/112997308/fbla-sports-and-entertainment-management-key-terms-flash-cards/"
+},
+{
+title: "FBLA SEM Careers Flashcards on Quizlet",
+url: "https://quizlet.com/1009411668/fbla-sem-careers-flash-cards/"
+},
+{
+title: "LOC Guide to Sports Marketing & Management Industry Resources",
+url: "https://guides.loc.gov/sports-industry/sports-managing-marketing"
+},
+{
+title: "Brescia University Open Educational Resources for Sport Management",
+url: "https://libguides.brescia.edu/c.php?g=739858&p=7539201"
+},
+{
+title: "Sports Enterprise Management Resources Guide – University of Washington",
+url: "https://guides.lib.uw.edu/c.php?g=973558&p=7037684"
+},
+{
+title: "Sport and Athletic Management Online Resources – NU.edu",
+url: "https://resources.nu.edu/sportmanagement/online_resources"
+},
+{
+title: "Sport Management Open Educational Resources – UCC Library Guides",
+url: "https://libguides.ucc.edu/sport-mgmt/OER"
+},
+{
+title: "Sports Management Courses on Coursera",
+url: "https://www.coursera.org/courses?query=sports+management"
+},
+{
+title: "10 Useful Resources for Sports Management Students",
+url: "https://sportsmanagementdegrees.net/10-useful-resources-for-sports-management-students/"
+},
+{
+title: "Understanding the Role of Sponsorships in Sports",
+url: "https://online.uwp.edu/degrees/business/professional-programs/ms-sport-management/role-of-sponsorships-in-sports/"
+},
+{
+title: "Planning and Execution in Sports Event Management",
+url: "https://www.lindenwood.edu/blog/planning-and-execution-in-sports-event-management/"
+}
+],
+aiPrompts: [
+{
+title: "Full-Length Practice Test for Sports & Entertainment Management",
+prompt: "Create a 30-question multiple-choice practice test covering key sports-and-entertainment-management topics such as marketing functions, event planning logistics, sponsorship strategies, pricing strategies, facility management, sports law basics, and role play scenario decision-making. Provide four answer choices per question and include an answer key with brief explanations."
+},
+{
+title: "Adaptive Coaching for Role Play Weaknesses",
+prompt: "Given my performance in a sports-and-entertainment-management practice test, identify the areas where I struggled (e.g., marketing mix, budgeting, sponsorship evaluation). Then generate tailored coaching and practice questions that focus on those weaknesses, including example role play scenarios and explanations of best response strategies."
+}
+]
+},
+
+    },
+    {
+        id: "supply-chain-management-presentation",
+        resources: {
+title: "supply-chain-management-presentation Resources",
+links: [
+{
+title: "FBLA Supply Chain Management Event Official Guidelines",
+url: "https://www.fbla.org/competitive-events/supply-chain-management/"
+},
+{
+title: "2025‑2026 FBLA Supply Chain Management Presentation Guidelines (PDF)",
+url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Presentation%20Events/Supply‑Chain‑Management.pdf"
+},
+{
+title: "FBLA – Supply Chain Management Flashcards (Quizlet Set)",
+url: "https://quizlet.com/993678854/fbla-supply-chain-management-flash-cards/"
+},
+{
+title: "FBLA Supply Chain Management Flashcards (Extended Set)",
+url: "https://quizlet.com/893837465/fbla-supply-chain-management-supply-chain-management-fbla-flash-cards/"
+},
+{
+title: "Supply Chain Study Guide Flashcards (Quizlet)",
+url: "https://quizlet.com/136249655/supply-chain-study-guide-flash-cards/"
+},
+{
+title: "Supply Chain Management Overview – SupplyChainToday",
+url: "https://www.supplychaintoday.com/supply-chain-management/"
+},
+{
+title: "Smartsheet – 50 Educational Resources in Global Supply Chain",
+url: "https://www.smartsheet.com/top-global-supply-chain-management-training"
+},
+{
+title: "Institute for Supply Management (Professional Org)",
+url: "https://en.wikipedia.org/wiki/Institute_for_Supply_Management"
+},
+{
+title: "Singapore Institute of Purchasing and Materials Management",
+url: "https://en.wikipedia.org/wiki/Singapore_Institute_of_Purchasing_and_Materials_Management"
+},
+{
+title: "Kraljic Matrix – Supply Chain Strategy Tool",
+url: "https://en.wikipedia.org/wiki/Kraljic_matrix"
+},
+{
+title: "Collaborative Planning, Forecasting, and Replenishment (CPFR)",
+url: "https://en.wikipedia.org/wiki/Collaborative_planning%2C_forecasting%2C_and_replenishment"
+},
+{
+title: "Bullwhip Effect in Supply Chains",
+url: "https://en.wikipedia.org/wiki/Bullwhip_effect"
+},
+{
+title: "Value‑Stream Mapping Explained",
+url: "https://en.wikipedia.org/wiki/Value-stream_mapping"
+},
+{
+title: "International Journal of Physical Distribution & Logistics Management",
+url: "https://en.wikipedia.org/wiki/International_Journal_of_Physical_Distribution_%26_Logistics_Management"
+},
+{
+title: "Journal of Supply Chain Management, Logistics and Procurement",
+url: "https://henrystewartpublications.com/journal/journal-of-supply-chain-management-logistics-and-procurement/"
+},
+{
+title: "The Importance of Supply Chain Management in Logistics",
+url: "https://www.apu.apus.edu/area-of-study/business-and-management/resources/the-importance-of-supply-chain-management-in-logistics/"
+},
+{
+title: "Top Concepts in Supply Chain Management (Fiveable Guide)",
+url: "https://fiveable.me/lists/key-supply-chain-management-concepts"
+},
+{
+title: "Supply Chain Management Templates & PPT Resources",
+url: "https://flevy.com/topic/supply-chain-management/question/understanding-supply-chain-management-scm-key-concepts-explained"
+},
+{
+title: "Introduction to Supply Chain Management (FBLA Related)",
+url: "https://www.fbla.org/competitive-events/introduction-to-supply-chain-management/"
+},
+{
+title: "FBLA High School Competitive Events Listing (Including SCM)",
+url: "https://www.fbla.org/high-school/competitive-events/"
+}
+],
+aiPrompts: [
+{
+title: "Full‑Length Multiple‑Choice Practice Test Prompt",
+prompt: "Create a 30‑question multiple‑choice practice test focused on supply chain management presentation topics. Include questions about logistics, procurement, inventory control, distribution strategies, demand forecasting, supply chain ethics, Kraljic matrix applications, bullwhip effect scenarios, collaborative planning, value stream mapping, and case‑based questions where competitors choose the best supply chain solution. Provide answer choices and correct answers with brief explanations."
+},
+{
+title: "Adaptive Coaching Prompt for Weak Areas",
+prompt: "I need an adaptive coaching session for FBLA supply chain management presentation prep. Ask me questions to identify where I'm weakest (e.g., logistics, forecasting, procurement, inventory control, distribution networks, supply chain terminology). After each answer I give, adjust follow‑up questions to target my misunderstandings and explain key concepts in clear terms to strengthen my knowledge."
+}
+]
+},
+
+    },
+    {
+        id: "technology-support-and-services-role-play",
+        resources: {
+title: "technology-support-and-services-role-play Resources",
+links: [
+{
+title: "FBLA Technology Support & Services Official Guidelines",
+url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Role%20Play%20Events/Technology-Support-and-Services.pdf"
+},
+{
+title: "FBLA Event – Technology Support & Services Overview (Florida FBLA)",
+url: "https://www.flfbla.org/fbla-event-help-desk"
+},
+{
+title: "Technical Support Fundamentals (Google IT Support Professional Certificate on Coursera)",
+url: "https://www.coursera.org/lecture/technical-support-fundamentals/interview-role-play-customer-service-QUexD"
+},
+{
+title: "Introduction to Technical Support (IBM IT Support Certificate on Coursera)",
+url: "https://www.coursera.org/learn/introduction-to-technical-support"
+},
+{
+title: "Technical Support Essential Skills – Educator Resources",
+url: "https://remc.org/educator-resources/technical-support-essential-skills/"
+},
+{
+title: "Virtual Help Desk – Wikipedia",
+url: "https://en.wikipedia.org/wiki/Virtual_help_desk"
+},
+{
+title: "IT Support Basics: Help Desk Training Overview (Scribd)",
+url: "https://www.scribd.com/document/940192814/Module1-IT-Support-Basics"
+},
+{
+title: "How Tech Support Roleplay Can Improve Your Training Program",
+url: "https://www.exec.com/learn/tech-support-role-play"
+},
+{
+title: "Role-Playing in Support Training: Handle Tough Calls",
+url: "https://www.techclass.com/resources/learning-and-development-articles/role-playing-for-support-training-practice-handling-tough-situations"
+},
+{
+title: "Tech Support Troubleshooters Role‑Play Activities (DEAP PDF)",
+url: "https://deapcomp.org/wp-content/uploads/2025/05/2-pager_-Perseverance_RolePLayActivities.pdf"
+},
+{
+title: "FBLA Technology Support & Services Flashcards – Quizlet",
+url: "https://quizlet.com/1111873262/fbla-technology-support-services-flash-cards/"
+},
+{
+title: "FBLA Help Desk Terms Flashcards – Quizlet",
+url: "https://quizlet.com/64650470/fbla-help-desk-terms-flash-cards/"
+},
+{
+title: "FBLA Help Desk Sample Questions – Quizlet",
+url: "https://quizlet.com/448313507/fbla-help-desk-sample-questions-flash-cards/"
+},
+{
+title: "FBLA Help Desk Problems & Solutions – Quizlet",
+url: "https://quizlet.com/677840737/fbla-help-desk-problems-and-solutions-scenarios-flash-cards/"
+},
+{
+title: "FBLA Help Desk Practice Flashcards – Quizlet",
+url: "https://quizlet.com/183154720/fbla-help-desk-practice-flash-cards/"
+},
+{
+title: "FBLA Help Desk Flashcards (Support Center Concepts) – Quizlet",
+url: "https://quizlet.com/742010979/fbla-help-desk-flash-cards/"
+},
+{
+title: "FBLA Intro to Information Technology Flashcards – Quizlet (supplement)",
+url: "https://quizlet.com/150535762/fbla-intro-to-information-technology-study-guide-flash-cards/"
+},
+{
+title: "25 Customer Service Role‑Play Scenarios (General Training)",
+url: "https://academyocean.com/blog/post/25-customer-service-role-play-scenarios"
+},
+{
+title: "13 Customer Service Role‑Play Scenarios (Training Examples)",
+url: "https://www.ispringsolutions.com/blog/role-playing-scenarios-for-customer-service-training"
+},
+{
+title: "ESL Tech Support Role Play Scenarios (Printable Resource)",
+url: "https://www.twinkl.com/resource/esl-tech-support-role-play-adults-b1-b2-t-1733901184"
+}
+],
+aiPrompts: [
+{
+title: "Technology Support & Services Role Play Practice Test",
+prompt: "Create a 30‑question multiple‑choice practice test on Technology Support & Services role play for FBLA covering help desk operations, technical troubleshooting, customer service communication, service level agreements (SLAs), ticketing best practices, escalation procedures, and role scenario decision‑making. Provide correct answers and brief explanations for each question."
+},
+{
+title: "Adaptive Coaching for FBLA Tech Support & Services",
+prompt: "I want you to act as an FBLA Technology Support & Services role‑play coach. Ask me questions to assess weaknesses in my technical support skills (like communication clarity, empathy, troubleshooting steps, escalation knowledge, and problem documentation). After each response I give, provide actionable feedback and tailored follow‑up questions or scenarios to help me improve in specific areas."
+}
+]
+},
+
+    },
+    {
+        id: "visual-design-presentation",
+        resources: {
+title: "visual-design-presentation Resources",
+links: [
+{
+title: "FBLA Visual Design Competitive Event Official Guidelines (2025‑2026)",
+url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Presentation%20Events/Visual-Design.pdf"
+},
+{
+title: "Visual Design Event Details – FBLA Official",
+url: "https://www.fbla.org/competitive-events/visual-design/"
+},
+{
+title: "Visual Presentations: Types, Design Principles & Expert Tips",
+url: "https://chroniclehq.com/blog/visual-presentations-tips-types-design-principles"
+},
+{
+title: "Design Principles for Engaging Presentations (Fiveable Study Guide)",
+url: "https://fiveable.me/data-visualization/unit-16/designing-effective-slide-presentations/study-guide/8aoGw7dxlW2RFypp"
+},
+{
+title: "Designing Visual Aids (University of Waterloo Teaching Tip Sheet)",
+url: "https://uwaterloo.ca/centre-for-teaching-excellence/catalogs/tip-sheets/designing-visual-aids"
+},
+{
+title: "Visual Design Principles for Presentations (VirtualTrainings)",
+url: "https://www.virtualtrainings.com/product/Visual-Design-Principles-for-Presentations-54453.html"
+},
+{
+title: "Fundamental Principles of Visual Graphic Design (SlideShare)",
+url: "https://www.slideshare.net/slideshow/fundamental-principles-of-visual-graphic-design-pptx/282239961"
+},
+{
+title: "Evidence‑Based Presentation Design Practices (UC San Diego)",
+url: "https://multimedia.ucsd.edu/best-practices/presentation-design.html"
+},
+{
+title: "Design Principles for Presentations (Wisconsin DesignLab Handout)",
+url: "https://designlab.wisc.edu/wp-content/uploads/sites/548/2021/10/Design-Principles-for-Presentations_CA-100_Handout_F21.pdf"
+},
+{
+title: "Slide Design Principles – UC Santa Cruz Professional Development",
+url: "https://graduate.ucsc.edu/professional-development/resources/slide-design-principles/"
+},
+{
+title: "The Golden Rules of Presentation Design",
+url: "https://blog.thenounproject.com/the-golden-rules-of-presentation-design/"
+},
+{
+title: "Design Principles (Wikipedia – Visual Design Concepts)",
+url: "https://en.wikipedia.org/wiki/Design_principles"
+},
+{
+title: "Visual Hierarchy (Wikipedia – Design Technique)",
+url: "https://en.wikipedia.org/wiki/Visual_hierarchy"
+},
+{
+title: "Principles of Grouping (Gestalt Laws of Perception)",
+url: "https://en.wikipedia.org/wiki/Principles_of_grouping"
+},
+{
+title: "Designing Effective Presentations – UMich PowerPoint Design Tips",
+url: "https://guides.lib.umich.edu/c.php?g=283149&p=1886379"
+},
+{
+title: "FBLA UX Design Flashcards (Visual Design Principles)",
+url: "https://quizlet.com/881933064/fbla-ux-design-flash-cards/"
+},
+{
+title: "FBLA UX Design Flashcards (Design Basics)",
+url: "https://quizlet.com/762125166/fbla-ux-design-flash-cards/"
+},
+{
+title: "FBLA Study Guide – Graphic Design Tools & Terms",
+url: "https://quizlet.com/452527842/fbla-study-guide-graphic-design-flash-cards/"
+},
+{
+title: "FBLA Graphic Design Presentation STATES Flashcards",
+url: "https://quizlet.com/742706392/fbla-graphic-design-presentation-states-flash-cards/"
+},
+{
+title: "UX Design FBLA Flashcards – Presentations",
+url: "https://quizlet.com/878298191/ux-design-fbla-2024-flash-cards/"
+}
+],
+aiPrompts: [
+{
+title: "Visual Design Presentation Practice Test",
+prompt: "Create a 30‑question multiple‑choice practice test focused on the Visual Design presentation event for FBLA. Cover areas such as visual hierarchy, slide layout principles, use of color and typography, visual storytelling, effective data visualization, presentation delivery techniques, and common judge questions. Include answer choices, correct answers, and brief explanations for each question."
+},
+{
+title: "Adaptive Coaching for Visual Design Presentation",
+prompt: "Act as my FBLA Visual Design presentation coach. Ask me detailed questions to uncover weaknesses in my understanding of visual design principles, slide composition, storytelling, audience engagement, and judge Q&A readiness. After each response, give specific feedback, improvement tips, and a follow‑up scenario or question to build mastery in my weakest areas."
+}
+]
+},
+
+    },
+    {
+        id: "website-coding-and-development-presentation",
+        resources: {
+title: "website-coding-and-development-presentation Resources",
+links: [
+{
+title: "FBLA Website Coding & Development Competitive Event Official Guidelines",
+url: "https://connect.fbla.org/headquarters/files/High%20School%20Competitive%20Events%20Resources/Individual%20Guidelines/Presentation%20Events/Website-Coding--Development.pdf"
+},
+{
+title: "FBLA Event – Website Coding & Development Overview",
+url: "https://www.fbla.org/competitive-events/website-coding-development/"
+},
+{
+title: "Learn Web Development Tutorials – MDN Web Docs",
+url: "https://developer.mozilla.org/en-US/docs/MDN/Tutorials"
+},
+{
+title: "HTML: Structuring Content with HTML – MDN Web Docs",
+url: "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content"
+},
+{
+title: "Learn Web Development | MDN Web Docs Structured Path",
+url: "https://developer.mozilla.org/en-US/docs/Learn_web_development"
+},
+{
+title: "CodeHS Web Design Resource Hub",
+url: "https://codehs.com/curriculum/web-design"
+},
+{
+title: "CodePen Online Web Development Playground",
+url: "https://codepen.io"
+},
+{
+title: "HTML: HyperText Markup Language – MDN Web Docs",
+url: "https://developer.mozilla.org/en-US/docs/Web/HTML"
+},
+{
+title: "Introduction to HTML – Beginner Guide (Alternative MDN Mirror)",
+url: "https://mdn2.netlify.app/en-us/docs/learn/html/introduction_to_html/"
+},
+{
+title: "Web development fundamentals resource – Wayground interactive quiz",
+url: "https://wayground.com/admin/video-quiz/66f67d1865ded9c5032eddd2/web-development-technologies-and-concepts"
+},
+{
+title: "FBLA Computer Science & Coding Vocab Flashcards – Quizlet",
+url: "https://quizlet.com/324809852/fbla-computer-science-and-coding-vocab-flash-cards/"
+},
+{
+title: "FBLA Flashcards – Web Development & Programming Terms",
+url: "https://quizlet.com/433958951/fbla-flash-cards/"
+},
+{
+title: "FBLA Competitive Events Overview Study Guide (includes Website Coding)",
+url: "https://quizlet.com/study-guides/fbla-competitive-events-overview-b979a286-d2b2-4ce6-9cc1-491da1a663b1"
+},
+{
+title: "FBLA Nationals Competition Flashcards (Web Dev & Presentation Concepts)",
+url: "https://quizlet.com/597944447/fbla-nationals-competition-flash-cards/"
+},
+{
+title: "W3Schools HTML Tutorial",
+url: "https://www.w3schools.com/html/"
+},
+{
+title: "W3Schools CSS Tutorial",
+url: "https://www.w3schools.com/css/"
+},
+{
+title: "W3Schools JavaScript Tutorial",
+url: "https://www.w3schools.com/js/"
+},
+{
+title: "Stack Overflow Documentation for Web Development",
+url: "https://stackoverflow.com/documentation/web-development"
+},
+{
+title: "Mozilla Developer Network Documentation Overview (Wikipedia)",
+url: "https://en.wikipedia.org/wiki/MDN_Web_Docs"
+},
+{
+title: "GitHub Guides – Introduction to HTML",
+url: "https://guides.github.com/features/mastering-markdown/"
+}
+],
+aiPrompts: [
+{
+title: "Website Coding & Development Presentation Practice Test",
+prompt: "Create a 30‑question multiple‑choice practice test for the FBLA Website Coding & Development presentation event. Include questions on HTML structure, CSS styling, JavaScript functionality, backend vs frontend concepts, web forms, accessibility best practices, HTTP basics, responsive design, deployment considerations, and judge Q&A preparation. Provide options, correct answers, and concise explanations for each."
+},
+{
+title: "Adaptive Coaching for Website Coding & Development",
+prompt: "Act as an FBLA Website Coding & Development coach. Ask me questions to diagnose weaknesses in my understanding of web technologies (e.g., HTML, CSS, JavaScript), project architecture, code optimization, debugging techniques, and presentation delivery. After each response, offer specific feedback, tailored exercises, and follow‑up scenarios to help me strengthen my technical skills and presentation confidence."
+}
+]
+},
+
+    },
+    {
+        id: "website-design-presentation",
+        resources: {
+title: "website-design-presentation Resources",
+links: [
+{
+title: "FBLA Website Design Competitive Event Official Event Page",
+url: "https://www.fbla.org/competitive-events/website-design/"
+},
+{
+title: "FL FBLA Website Design Event Overview & Rules",
+url: "https://www.flfbla.org/fbla-event-web-site-design"
+},
+{
+title: "Exploring Website Design – FBLA Event (Middle School)",
+url: "https://www.fbla.org/competitive-events/exploring-website-design/"
+},
+{
+title: "Web.dev Learn Responsive Design",
+url: "https://web.dev/learn/design"
+},
+{
+title: "Web Design Tools and Tutorials – SNHU Library Guide",
+url: "https://libguides.snhu.edu/c.php?g=1069925&p=9520022"
+},
+{
+title: "Figma Design Basics: UI/UX & Website Principles",
+url: "https://www.figma.com/resource-library/design-basics/"
+},
+{
+title: "Responsive Web Design (Wikipedia)",
+url: "https://en.wikipedia.org/wiki/Responsive_web_design"
+},
+{
+title: "Website Wireframe Overview (Wikipedia)",
+url: "https://en.wikipedia.org/wiki/Website_wireframe"
+},
+{
+title: "CSS Zen Garden: Design Inspiration",
+url: "http://www.csszengarden.com/"
+},
+{
+title: "Smashing Magazine – Web Design Insights & Best Practices",
+url: "https://www.smashingmagazine.com/"
+},
+{
+title: "A List Apart – Web Standards & Design Articles",
+url: "https://www.alistapart.com"
+},
+{
+title: "Responsive Web Design Guidelines & Tutorials – Smashing Magazine",
+url: "https://www.smashingmagazine.com/2012/07/responsive-web-design-guidelines-tutorials/"
+},
+{
+title: "UX Design- FBLA 2024 Flashcards (Quizlet)",
+url: "https://quizlet.com/878298191/ux-design-fbla-2024-flash-cards/"
+},
+{
+title: "FBLA - UX Design Flashcards (Quizlet)",
+url: "https://quizlet.com/762125166/fbla-ux-design-flash-cards/"
+},
+{
+title: "FBLA Website Design Flashcards (Quizlet)",
+url: "https://quizlet.com/673588615/fbla-website-design-flash-cards"
+},
+{
+title: "FBLA speech 2023 Website Design Flashcards (Quizlet)",
+url: "https://quizlet.com/785011274/fbla-speech-2023-website-design-flash-cards"
+},
+{
+title: "FBLA UX Design Flashcards – Accessibility & Navigation Terms (Quizlet)",
+url: "https://quizlet.com/789461724/fbla-ux-design-flash-cards"
+},
+{
+title: "FBLA Competitive Events Flashcards Including Website Design Context",
+url: "https://quizlet.com/480834737/fbla-competitive-events-flash-cards"
+},
+{
+title: "Web Design Tutorial – W3Schools HTML Basics",
+url: "https://www.w3schools.com/html/html_webpage_layout.asp"
+},
+{
+title: "W3Schools CSS Tutorial – Style Your Website",
+url: "https://www.w3schools.com/css/"
+}
+],
+aiPrompts: [
+{
+title: "Website Design Presentation Practice Test",
+prompt: "Create a 30‑question multiple‑choice practice test tailored for the FBLA Website Design presentation event. Include questions covering web design principles (visual hierarchy, responsive design, accessibility, navigation), UX/UI concepts, effective use of color and typography, wireframe and prototype importance, judge Q&A practice topics, and terminology relevant to creating engaging and usable websites. Provide answer choices, correct answers, and concise explanations."
+},
+{
+title: "Adaptive Coaching for Website Design Presentation",
+prompt: "Act as an FBLA Website Design coach. Ask me diagnostic questions to identify weaknesses in my website design understanding, including UX principles, responsive layouts, presentation flow, design justification, site organization, and accessibility standards. After each answer, give tailored feedback, concrete improvement tips, and specific exercises to build mastery in my weakest areas."
+}
+]
+},
+
+    },
 ];
 
 export const getFBLAResourceById = (id: string): FBLAResourceEntry | undefined => {
