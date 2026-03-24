@@ -30,6 +30,7 @@ export default function PracticeTestPage({
 }) {
     // All state declarations - MUST be before any conditional rendering
     const [practiceTestGroup, setPracticeTestGroup] = useState<PracticeTestGroup | null>(null);
+    const [hasResolvedPracticeTests, setHasResolvedPracticeTests] = useState<boolean>(false);
     const [curQuestionIndex, setCurQuestionIndex] = useState<number>(0);
     const [rightNums, setRightNums] = useState<number>(0);
     const [wrongNums, setWrongNums] = useState<number>(0);
@@ -72,9 +73,8 @@ export default function PracticeTestPage({
     useEffect(() => {
         const foundId: string = findAllSetFromSet(set).id;
         const found = allFBLAPracticeTests.find(t => t.id === foundId);
-        if (found) {
-            setPracticeTestGroup(found);
-        }
+        setPracticeTestGroup(found ?? null);
+        setHasResolvedPracticeTests(true);
     }, [set]);
 
     // Calculate derived values safely
@@ -272,7 +272,7 @@ Start now with Question 1 of 100.`;
     };
 
     // Loading state - check after all hooks are defined
-    if (!practiceTestGroup) {
+    if (!hasResolvedPracticeTests) {
         return (
             <section className="w-full h-[85vh] flex items-center justify-center bg-[#111827] light:bg-white text-white light:text-slate-900">
                 <div className="text-center">
@@ -285,15 +285,24 @@ Start now with Question 1 of 100.`;
         );
     }
 
+    if (!practiceTestGroup) {
+        return (
+            <section className="w-full h-[85vh] flex items-center justify-center bg-[#111827] light:bg-white text-white light:text-slate-900">
+                <div className="text-center px-6">
+                    <p className="text-lg font-semibold">Oh there are no practice tests here right now.</p>
+                    <p className="text-sm text-muted-foreground mt-2">Check back later for new practice tests for this set.</p>
+                </div>
+            </section>
+        );
+    }
+
     // Guard: ensure test data is loaded
     if (!currentTest || !currentQuestion || totalQuestions === 0) {
         return (
             <section className="w-full h-[85vh] flex items-center justify-center bg-[#111827] light:bg-white text-white light:text-slate-900">
-                <div className="text-center">
-                    <div className="inline-block p-4 rounded-full bg-[#2ED4C4]/10 light:bg-[#2ED4C4]/5 mb-4">
-                        <div className="animate-spin h-8 w-8 border-2 border-[#2ED4C4] border-t-transparent rounded-full"></div>
-                    </div>
-                    <p className="text-muted-foreground">Preparing test...</p>
+                <div className="text-center px-6">
+                    <p className="text-lg font-semibold">Oh there are no practice tests here right now.</p>
+                    <p className="text-sm text-muted-foreground mt-2">Check back later for new practice tests for this set.</p>
                 </div>
             </section>
         );
