@@ -16,7 +16,25 @@ export const MultipleChoiceWithAudioAPESPANOLanguageAndCulture: AllSetsInterface
     }
 }
 
+export const FreeResponseWrittenEmailAPESPANOLanguageAndCulture: AllSetsInterface = {
+    id: "ap-esp-free-response-written-email",
+    set: {
+        title: "AP Spanish Language and Culture Free Response Written Email",
+        vocab: []
+    }
+}
+
+export const FreeResponseWrittenEssayAPESPANOLanguageAndCulture: AllSetsInterface = {
+    id: "ap-esp-free-response-written-essay",
+    set: {
+        title: "AP Spanish Language and Culture Free Response Written Essay",
+        vocab: []
+    }
+}
+
 export const AllAPESPLists = [
     MultipleChoiceAPESPANOLanguageAndCulture,
-    MultipleChoiceWithAudioAPESPANOLanguageAndCulture
+    MultipleChoiceWithAudioAPESPANOLanguageAndCulture,
+    FreeResponseWrittenEmailAPESPANOLanguageAndCulture,
+    FreeResponseWrittenEssayAPESPANOLanguageAndCulture
 ]

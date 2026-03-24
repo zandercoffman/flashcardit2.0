@@ -89,7 +89,9 @@ export const AllLists: List[] = [
         shortNamePerSet: "AP Spanish",
         sets: [
             "ap-esp-multiple-choice",
-            "ap-esp-multiple-choice-with-audio"
+            "ap-esp-multiple-choice-with-audio",
+            "ap-esp-free-response-written-essay",
+            "ap-esp-free-response-written-email"
         ]
     }
 ]
