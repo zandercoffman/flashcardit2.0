@@ -78,7 +78,6 @@ export default function PracticeTestPage({
     }, [set]);
 
     // Calculate derived values safely
-    const setId = useMemo(() => findAllSetFromSet(set).id, [set]);
     const currentTest = useMemo(() => practiceTestGroup?.tests?.[0] ?? null, [practiceTestGroup]);
     const currentQuestion = useMemo(() => currentTest?.questions?.[curQuestionIndex] ?? null, [currentTest, curQuestionIndex]);
     const totalQuestions = currentTest?.questions?.length ?? 0;
@@ -91,35 +90,25 @@ export default function PracticeTestPage({
     }, [timeLeftSeconds]);
 
     const customPrompt = useMemo(() => {
-        const sourceUrl = `${window.location.origin}/api/json/${setId}`;
-        return `Create a full custom multiple-choice practice test for the flashcard set "${set.title}".
+        return `You are my personal FBLA Quiz Master for "${set.title}".
 
-First, fetch the flashcards from this URL using a GET request:
-${sourceUrl}
+Run this as an interactive study guide session in chat.
 
-Requirements:
-- Generate 30 multiple-choice questions.
-- 4 answer choices per question.
-- Return valid JSON only using this shape:
-{
-    "title": "${set.title} Custom Test",
-    "questions": [
-        {
-            "id": "string",
-            "question": "string",
-            "options": ["string", "string", "string", "string"],
-            "correctAnswerIndex": 0,
-            "explanation": "string",
-            "difficulty": "easy | medium | hard",
-            "category": "string"
-        }
-    ]
-}
-- Distribute difficulty roughly 30% easy, 45% medium, 25% hard.
-- Make options plausible and avoid obvious distractors.
-- Keep explanations concise and helpful.
-- Do not include markdown, code fences, or extra commentary.`;
-    }, [set.title, setId]);
+Rules:
+- Give me 100 total multiple-choice questions.
+- Ask only 1 question at a time.
+- Each question must have 4 answer choices labeled A, B, C, and D.
+- Wait for my answer before revealing the correct answer.
+- After I answer, explain why the correct answer is right in 1-2 sentences.
+- Track my score, question count, and weak topics as we go.
+- Adapt difficulty based on my performance.
+- If I miss a concept repeatedly, briefly reteach it, then give a similar follow-up question.
+- Keep the tone motivating, direct, and coach-like.
+- Do not ask me to import, upload, fetch, or provide files.
+- Do not return JSON, code blocks, or setup instructions.
+
+Start now with Question 1 of 100.`;
+    }, [set.title]);
 
     const launchAi = async (assistant: Assistant) => {
         const encoded = encodeURIComponent(customPrompt);

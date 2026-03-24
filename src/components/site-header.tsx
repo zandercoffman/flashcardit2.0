@@ -198,14 +198,14 @@ export function SiteHeader({
                       </div>
                     </SelectItem>
 
-                    <SelectItem value="buddyguess">
+                   {/** <SelectItem value="buddyguess">
                       <div className="flex justify-start items-center gap-4 ">
                         <Handshake className="size-4 lg:size-6" />
                         <div className=" w-full">
                           <h4 className="text-xl md:text-base font-semibold">Buddy Guess</h4>
                         </div>
                       </div>
-                    </SelectItem>
+                    </SelectItem> */}
 
                     <SelectItem value="matching">
                       <div className="flex justify-start items-center gap-4 ">

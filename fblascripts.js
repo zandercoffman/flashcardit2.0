@@ -231,12 +231,17 @@ Now generate all flashcards for FBLA ${title}. Output ONLY the flashcard tuples,
 `
 }
 
-const getBasicObjectiveTestPrompt = (title, batchNumber = 4) => {
-    return `
-You are generating a portion of a realistic FBLA ${title} Objective Test.
+const getBasicObjectiveTestPrompt = (title, chunkNumber = 1) => {
+    const startQuestion = (chunkNumber - 1) * 25 + 1
+    const endQuestion = Math.min(startQuestion + 24, 100)
 
-This is batch ${batchNumber} of 4. Each batch must contain EXACTLY 25 unique multiple-choice questions.
-Across all 4 batches, there will be 100 total questions with no duplicates.
+    return `
+You are generating a realistic FBLA ${title} Practice Test.
+
+The full practice test has 100 total multiple-choice questions.
+You are generating 25 questions at a time.
+For this run, generate questions ${startQuestion}-${endQuestion}.
+All questions must be unique across the full 100-question test.
 
 ==== OUTPUT FORMAT (STRICT) ====
 Return ONLY a single JavaScript object matching this TypeScript interface:
@@ -258,17 +263,17 @@ Return ONLY a single JavaScript object matching this TypeScript interface:
 
 - Do NOT include markdown, comments, or extra text.
 - Output must be directly parseable JSON/JavaScript.
-- The "title" must be "FBLA ${title} Practice Test - Batch ${batchNumber}".
+- The "title" must be "FBLA ${title} Practice Test".
 - Generate exactly 25 questions.
 
 ==== FIELD RULES ====
-- id: must be globally unique across batches
-  - Use format: "q${batchNumber}_1" → "q${batchNumber}_25"
+- id: must be globally unique across the full 100-question test
+    - Use format: "q${startQuestion}" → "q${endQuestion}"
 - question: clear, professional multiple-choice question
 - options: exactly 4 answer choices (NO "A.", "B.", etc.)
 - correctAnswerIndex: number from 0–3 matching the correct option
 - explanation: 1–2 sentence explanation
-- difficulty distribution per batch:
+- difficulty distribution per 25-question chunk:
   - 6 easy
   - 13 medium
   - 6 hard
@@ -276,7 +281,7 @@ Return ONLY a single JavaScript object matching this TypeScript interface:
 
 ==== CONTENT REQUIREMENTS ====
 - Use realistic FBLA ${title} topics and standards
-- Cover a wide range of subtopics across batches
+- Cover a wide range of subtopics across the full test
 - Include:
   - Definitions and fundamentals
   - Applied business scenarios
@@ -292,10 +297,10 @@ Return ONLY a single JavaScript object matching this TypeScript interface:
 - Keep questions aligned with FBLA exam style
 
 ==== IMPORTANT ====
-This batch must introduce NEW questions that would not overlap with other batches.
-Assume other batches will cover different angles of the same topic.
+This 25-question chunk must introduce NEW questions that do not overlap with the rest of the test.
+Assume other chunks cover different angles of the same topic.
 
-Now generate batch ${batchNumber}.
+Now generate questions ${startQuestion}-${endQuestion}.
 Output ONLY the JavaScript object.
     `
 }
