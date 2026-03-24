@@ -286,24 +286,180 @@ Start now with Question 1 of 100.`;
     }
 
     if (!practiceTestGroup) {
+        const activeAi = aiOptions.find(option => option.value === selectedAssistant);
         return (
             <section className="w-full h-[85vh] flex items-center justify-center bg-[#111827] light:bg-white text-white light:text-slate-900">
                 <div className="text-center px-6">
-                    <p className="text-lg font-semibold">Oh there are no practice tests here right now.</p>
+                    <p className="text-lg font-semibold">There are no practice tests here right now, check back later. In the mean time, why not make your own practice test?</p>
                     <p className="text-sm text-muted-foreground mt-2">Check back later for new practice tests for this set.</p>
                 </div>
+
+                <div className="relative w-full min-h-[68vh] text-white light:text-slate-900 overflow-hidden">
+                <Card className="relative max-w-2xl w-[92vw] flex flex-row gap-2  z-10 h-[20vh] mx-auto overflow-hidden border border-[#C084FC]/35 bg-gradient-to-br from-[#4C1D95]/95 via-[#7C3AED]/88 to-[#F97316]/86 backdrop-blur-xl rounded-[30px] p-0 shadow-[0_18px_60px_rgba(76,29,149,0.5)]">
+                    <div className="absolute -top-14 -right-12 h-36 w-36 rounded-full bg-[#A855F7]/25 blur-3xl" />
+                    <div className="absolute -bottom-16 -left-12 h-40 w-40 rounded-full bg-[#FB923C]/25 blur-3xl" />
+                    <div className="relative flex flex-row gap-2 p-3.5 md:p-4 space-y-3">
+                        <div className="space-y-1 my-1 mx-1">
+                            <p className="text-[11px] tracking-[0.2em] uppercase text-[#A7F7EF]">Custom generator</p>
+                            <p className="text-base md:text-xl font-semibold text-white leading-snug">
+                                Create your own practice test with AI
+                            </p>
+                            <p className="text-[12px] md:text-sm text-white/85">
+                                Pick an assistant and launch with your prebuilt prompt for the {set.title}.
+                            </p>
+                        </div>
+
+                        <div className="rounded-2xl border border-white/20 bg-black/20 p-2 md:p-2.5 space-y-2">
+                            <p className="text-[11px] uppercase tracking-[0.18em] text-white/70">Choose assistant (auto-opens)</p>
+                            <Select
+                                value={selectedAssistant}
+                                onValueChange={(value) => {
+                                    const assistant = value as Assistant;
+                                    setSelectedAssistant(assistant);
+                                    void launchAi(assistant);
+                                }}
+                            >
+                                <SelectTrigger className="h-10 w-full !text-white color-white rounded-xl border-white/25 bg-white/10 text-white focus:ring-[#C084FC]">
+                                    <SelectValue placeholder="Select and launch AI" className="text-white color-white" />
+                                </SelectTrigger>
+                                <SelectContent className="rounded-xl border-white/15 bg-[#34155F] text-white">
+                                    {aiOptions.map((assistant) => (
+                                        <SelectItem key={assistant.value} value={assistant.value} className="focus:bg-white/10 focus:text-white">
+                                            {assistant.label}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+
+                        </div>
+
+
+                    </div>
+                </Card>
+
+                <Card className="relative z-10 max-w-2xl w-[92vw] mx-auto mt-4 border border-[#2ED4C4]/30 light:border-slate-300 bg-[#111827]/70 light:bg-white/90 backdrop-blur-xl rounded-3xl p-6 md:p-7">
+                    <div className="space-y-4">
+                        <div>
+                            <h2 className="text-2xl md:text-3xl font-bold mb-1">{set.title} Practice Test</h2>
+                            <p className="text-muted-foreground">{totalQuestions} questions • {Math.ceil(totalQuestions / 2)} minutes</p>
+                            <p className="text-xs text-muted-foreground mt-1">Fixed quiz time limit: 60 minutes</p>
+                        </div>
+                        <div className="space-y-3 p-4 rounded-lg bg-white/5 light:bg-slate-100 border border-white/10 light:border-slate-300">
+                            <div className="flex items-start gap-2">
+                                <div className="p-2 rounded-full bg-[#2ED4C4]/20">
+                                    <div className="w-2 h-2 rounded-full bg-[#2ED4C4]" />
+                                </div>
+                                <div>
+                                    <p className="font-medium">Multiple Choice Format</p>
+                                    <p className="text-sm text-muted-foreground">Select one answer per question</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-2">
+                                <div className="p-2 rounded-full bg-[#806BFF]/20">
+                                    <div className="w-2 h-2 rounded-full bg-[#806BFF]" />
+                                </div>
+                                <div>
+                                    <p className="font-medium">Cannot Change Answers</p>
+                                    <p className="text-sm text-muted-foreground">Review your selection before confirming</p>
+                                </div>
+                            </div>
+                        </div>
+                        <Button onClick={handleStartQuiz} className="w-full bg-gradient-to-r from-[#2ED4C4] to-[#806BFF] text-white hover:opacity-90 h-12 text-lg">
+                            Start Test
+                        </Button>
+                    </div>
+                </Card>
+            </div>
             </section>
         );
     }
 
     // Guard: ensure test data is loaded
     if (!currentTest || !currentQuestion || totalQuestions === 0) {
+        const activeAi = aiOptions.find(option => option.value === selectedAssistant);
         return (
             <section className="w-full h-[85vh] flex items-center justify-center bg-[#111827] light:bg-white text-white light:text-slate-900">
                 <div className="text-center px-6">
-                    <p className="text-lg font-semibold">Oh there are no practice tests here right now.</p>
+                    <p className="text-lg font-semibold">There are no practice tests here right now, check back later. In the mean time, why not make your own practice test?</p>
                     <p className="text-sm text-muted-foreground mt-2">Check back later for new practice tests for this set.</p>
                 </div>
+
+                <div className="relative w-full min-h-[68vh] text-white light:text-slate-900 overflow-hidden">
+                <Card className="relative max-w-2xl w-[92vw] flex flex-row gap-2  z-10 h-[20vh] mx-auto overflow-hidden border border-[#C084FC]/35 bg-gradient-to-br from-[#4C1D95]/95 via-[#7C3AED]/88 to-[#F97316]/86 backdrop-blur-xl rounded-[30px] p-0 shadow-[0_18px_60px_rgba(76,29,149,0.5)]">
+                    <div className="absolute -top-14 -right-12 h-36 w-36 rounded-full bg-[#A855F7]/25 blur-3xl" />
+                    <div className="absolute -bottom-16 -left-12 h-40 w-40 rounded-full bg-[#FB923C]/25 blur-3xl" />
+                    <div className="relative flex flex-row gap-2 p-3.5 md:p-4 space-y-3">
+                        <div className="space-y-1 my-1 mx-1">
+                            <p className="text-[11px] tracking-[0.2em] uppercase text-[#A7F7EF]">Custom generator</p>
+                            <p className="text-base md:text-xl font-semibold text-white leading-snug">
+                                Create your own practice test with AI
+                            </p>
+                            <p className="text-[12px] md:text-sm text-white/85">
+                                Pick an assistant and launch with your prebuilt prompt for the {set.title}.
+                            </p>
+                        </div>
+
+                        <div className="rounded-2xl border border-white/20 bg-black/20 p-2 md:p-2.5 space-y-2">
+                            <p className="text-[11px] uppercase tracking-[0.18em] text-white/70">Choose assistant (auto-opens)</p>
+                            <Select
+                                value={selectedAssistant}
+                                onValueChange={(value) => {
+                                    const assistant = value as Assistant;
+                                    setSelectedAssistant(assistant);
+                                    void launchAi(assistant);
+                                }}
+                            >
+                                <SelectTrigger className="h-10 w-full !text-white color-white rounded-xl border-white/25 bg-white/10 text-white focus:ring-[#C084FC]">
+                                    <SelectValue placeholder="Select and launch AI" className="text-white color-white" />
+                                </SelectTrigger>
+                                <SelectContent className="rounded-xl border-white/15 bg-[#34155F] text-white">
+                                    {aiOptions.map((assistant) => (
+                                        <SelectItem key={assistant.value} value={assistant.value} className="focus:bg-white/10 focus:text-white">
+                                            {assistant.label}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+
+                        </div>
+
+
+                    </div>
+                </Card>
+
+                <Card className="relative z-10 max-w-2xl w-[92vw] mx-auto mt-4 border border-[#2ED4C4]/30 light:border-slate-300 bg-[#111827]/70 light:bg-white/90 backdrop-blur-xl rounded-3xl p-6 md:p-7">
+                    <div className="space-y-4">
+                        <div>
+                            <h2 className="text-2xl md:text-3xl font-bold mb-1">{set.title} Practice Test</h2>
+                            <p className="text-muted-foreground">{totalQuestions} questions • {Math.ceil(totalQuestions / 2)} minutes</p>
+                            <p className="text-xs text-muted-foreground mt-1">Fixed quiz time limit: 60 minutes</p>
+                        </div>
+                        <div className="space-y-3 p-4 rounded-lg bg-white/5 light:bg-slate-100 border border-white/10 light:border-slate-300">
+                            <div className="flex items-start gap-2">
+                                <div className="p-2 rounded-full bg-[#2ED4C4]/20">
+                                    <div className="w-2 h-2 rounded-full bg-[#2ED4C4]" />
+                                </div>
+                                <div>
+                                    <p className="font-medium">Multiple Choice Format</p>
+                                    <p className="text-sm text-muted-foreground">Select one answer per question</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-2">
+                                <div className="p-2 rounded-full bg-[#806BFF]/20">
+                                    <div className="w-2 h-2 rounded-full bg-[#806BFF]" />
+                                </div>
+                                <div>
+                                    <p className="font-medium">Cannot Change Answers</p>
+                                    <p className="text-sm text-muted-foreground">Review your selection before confirming</p>
+                                </div>
+                            </div>
+                        </div>
+                        <Button onClick={handleStartQuiz} className="w-full bg-gradient-to-r from-[#2ED4C4] to-[#806BFF] text-white hover:opacity-90 h-12 text-lg">
+                            Start Test
+                        </Button>
+                    </div>
+                </Card>
+            </div>
             </section>
         );
     }
