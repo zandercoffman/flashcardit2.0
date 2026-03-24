@@ -1,4 +1,5 @@
 import { allFBLAPracticeTests } from "./practiceTests/FBLAPracticeTests";
+import { AllAPESPLists } from "./subsets/APSpanishPractice";
 import { AllESP1Sets } from "./subsets/ESP1";
 import { FBLA_SETS } from "./subsets/FBLA";
 import { itw1011, itw12, itw1213, itw1415, itw1617, itw18epilogue, itw345, itw67, itw89, itwvocab, itwvocab2 } from "./subsets/ITW";
@@ -2129,6 +2130,7 @@ export const AllSets: AllSetsInterface[] = [
             ]
         }
     },
+    ...AllAPESPLists
 ]
 
 export const allPracticeTests: PracticeTestGroup[] = [

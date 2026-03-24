@@ -1,4 +1,4 @@
-import { Briefcase, LucideIcon } from "lucide-react";
+import { Briefcase, Languages, LucideIcon } from "lucide-react";
 
 export interface List {
     id: string;
@@ -79,6 +79,17 @@ export const AllLists: List[] = [
             "visual-design-presentation",
             "website-coding-and-development-presentation",
             "website-design-presentation",
+        ]
+    },
+    {
+        id: "ap-esp",
+        title: "AP Spanish Language and Culture",
+        description: "A comprehensive study guide for the AP Spanish Language and Culture exam, covering all the key topics and skills needed to succeed on the test.",
+        icon: Languages,
+        shortNamePerSet: "AP Spanish",
+        sets: [
+            "ap-esp-multiple-choice",
+            "ap-esp-multiple-choice-with-audio"
         ]
     }
 ]
