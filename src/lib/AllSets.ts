@@ -51,7 +51,7 @@ export type Resources = {
     aiPrompts: ResourceAIPrompts;
 };
 
-export type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | "matching" | "aichat" | "resources" | "practicetest" | null;
+export type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | "matching" | "aichat" | "resources" | "practicetest" | "custommode" | null;
 
 export interface AllSetsInterface { id: string, set: Set }
 

@@ -91,7 +91,9 @@ export const AllLists: List[] = [
             "ap-esp-multiple-choice",
             "ap-esp-multiple-choice-with-audio",
             "ap-esp-free-response-written-essay",
-            "ap-esp-free-response-written-email"
+            "ap-esp-free-response-written-email",
+            "ap-esp-presentational-speaking",
+            "ap-esp-interpersonal-speaking"
         ]
     }
 ]

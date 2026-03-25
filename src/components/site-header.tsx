@@ -62,6 +62,8 @@ import { Badge } from "./ui/badge"
 import { getShortNameForSet, getShortNameFromSetFromId, isSetInAnyList, isSetInList } from "@/lib/AllLists"
 import { AllSets } from "@/lib/AllSets"
 import SetQrShare from "./SetQrShare"
+import { AllCustomModes } from "@/lib/customModes/interface"
+import { darkenHexColor, lightenHexColor } from "@/lib/color"
 
 
 export function SiteHeader({
@@ -91,6 +93,8 @@ export function SiteHeader({
 
   const [voices, setVoices] = useState<any>([]);
 
+  
+
   useEffect(() => {
     const loadVoices = () => {
       const synthVoices = window.speechSynthesis.getVoices();
@@ -117,6 +121,8 @@ export function SiteHeader({
   const currentSetId = currentSet
     ? AllSets.find((setObj) => setObj.set.title === currentSet.title)?.id
     : undefined;
+
+    const matchedCustomMode = AllCustomModes.find((m) => m.id === currentSetId)
 
 
   return (
@@ -147,8 +153,43 @@ export function SiteHeader({
                       </div>
                     </SelectItem>
 
+                    {matchedCustomMode && (() => {
+                      const ModeIcon = matchedCustomMode.miniShowcaseIcon
+                      return (
+                        <SelectItem
+                          value="custommode"
+                          className="group scale-[95%] hover:scale-[100%] transition-all relative my-2 overflow-hidden rounded-4xl border-2 px-3 py-4 shadow-[0_2px_30px_rgba(0,0,0,0.18)] backdrop-blur-md transition hover:translate-y-[-1px] hover:shadow-[0_5px_30px_rgba(0,0,0,0.22)]"
+                          style={{
+                            backgroundColor: matchedCustomMode.miniShowcaseColor,
+                            color: matchedCustomMode.miniShowcaseTextColor,
+                            backgroundImage:
+                              "linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.04))",
+                            backdropFilter: "blur(14px)",
+                            WebkitBackdropFilter: "blur(14px)",
+                            borderStyle: "solid",
+                            borderWidth: "2px",
+                            borderColor: darkenHexColor(matchedCustomMode.miniShowcaseColor, 0.2)
+                          }}
+                        >
+                          <div className="pointer-events-none absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.18),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(255,255,255,0.12),transparent_25%)]" />
+                          <div className="relative flex justify-start items-center translate-x-[3px] gap-4">
+                            <ModeIcon
+                              className={`size-4 lg:size-6 color-[${matchedCustomMode.miniShowcaseTextColor}]`}
+                            />
+                            <div className=" w-full">
+                              <h4 className="text-xl md:text-base font-semibold flex flex-col ">
+                                {matchedCustomMode.miniShowcaseText}
+                                
+                              </h4> for
+                              <Badge variant={"outline"} className="gradient-border-badge ml-1">{getShortNameFromSetFromId(currentSetId ?? "")}</Badge>
+                            </div>
+                          </div>
+                        </SelectItem>
+                      )
+                    })()}
+
                     {
-                      currentSetId !== undefined && isSetInAnyList(currentSetId) && <SelectItem value="practicetest">
+                      !matchedCustomMode && currentSetId !== undefined && isSetInAnyList(currentSetId) && <SelectItem value="practicetest">
                         <div className="flex justify-start items-center gap-4 ">
                           <Library className="size-4 lg:size-6" />
                           <div className=" w-full">
@@ -168,6 +209,8 @@ export function SiteHeader({
                         </div>
                       </SelectItem>
                     }
+
+                    
 
                     <SelectItem value="studyplan">
                       <div className="flex justify-start items-center gap-4 ">
@@ -198,7 +241,7 @@ export function SiteHeader({
                       </div>
                     </SelectItem>
 
-                   {/** <SelectItem value="buddyguess">
+                    {/** <SelectItem value="buddyguess">
                       <div className="flex justify-start items-center gap-4 ">
                         <Handshake className="size-4 lg:size-6" />
                         <div className=" w-full">

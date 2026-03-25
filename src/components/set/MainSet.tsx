@@ -8,11 +8,12 @@ import StudyMode from "./StudyMode";
 import MainBomba from "../bomba/MainBomba";
 import StudyPlan from "../studyplan/StudyPlan";
 
-import { mode } from "@/lib/AllSets" 
+import { AllSets, mode } from "@/lib/AllSets" 
 import Matching from "../matching/page";
 import AIChatPage from "../AIChat/page";
 import ResourcesPage from "../resources/page";
 import PracticeTestPage from "../listStuff/practiceTest/page";
+import { AllCustomModes } from "@/lib/customModes/interface";
 
 interface Set {
     title: string;
@@ -72,10 +73,32 @@ export default function MainSet({
             return <ResourcesPage set={currentSet}/>
         case "practicetest":
             return <PracticeTestPage set={currentSet}/>
+        case "custommode":
+            return <CustomMode set={currentSet} />
 
     }
 
     return <>
         <p>Something went wrong</p>
     </>
+}
+
+function CustomMode({
+    set
+}: {
+    set: Set
+}) {
+
+    const id = AllSets.find(s => s.set.title === set.title)?.id || "unknown-set";
+    const foundMode = AllCustomModes.find(mode => mode.id === id);
+
+    if (foundMode) {
+        const Component = foundMode.component;
+        return <Component />
+    }
+
+    return (<div>
+        This is a custom mode for {set.title}
+    </div>
+    )
 }

@@ -32,9 +32,27 @@ export const FreeResponseWrittenEssayAPESPANOLanguageAndCulture: AllSetsInterfac
     }
 }
 
+export const InterpersonalSpeakingAPESPANOLanguageAndCulture: AllSetsInterface = {
+    id: "ap-esp-interpersonal-speaking",
+    set: {
+        title: "AP Spanish Language and Culture Interpersonal Speaking",
+        vocab: []
+    }
+}
+
+export const PresentationalSpeakingAPESPANOLanguageAndCulture: AllSetsInterface = {
+    id: "ap-esp-presentational-speaking",
+    set: {
+        title: "AP Spanish Language and Culture Presentational Speaking",
+        vocab: []
+    }
+}
+
 export const AllAPESPLists = [
     MultipleChoiceAPESPANOLanguageAndCulture,
     MultipleChoiceWithAudioAPESPANOLanguageAndCulture,
     FreeResponseWrittenEmailAPESPANOLanguageAndCulture,
-    FreeResponseWrittenEssayAPESPANOLanguageAndCulture
+    FreeResponseWrittenEssayAPESPANOLanguageAndCulture,
+    InterpersonalSpeakingAPESPANOLanguageAndCulture,
+    PresentationalSpeakingAPESPANOLanguageAndCulture
 ]
