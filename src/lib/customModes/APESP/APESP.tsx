@@ -23,10 +23,6 @@ function FreeResponseWrittenEmailModeComponent() {
     return <div>AP Spanish Language and Culture Free Response Written Email</div>;
 }
 
-function FreeResponseWrittenEssayModeComponent() {
-    return <div>AP Spanish Language and Culture Free Response Written Essay</div>;
-}
-
 function InterpersonalSpeakingModeComponent() {
     return <div>AP Spanish Language and Culture Interpersonal Speaking</div>;
 }

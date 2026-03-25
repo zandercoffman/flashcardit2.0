@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { puter } from "@heyputer/puter.js";
+import Image from "next/image";
 import {
   Badge,
 } from "@/components/ui/badge";
@@ -31,6 +32,13 @@ import {
 } from "lucide-react";
 
 type TimingMode = "timed" | "untimed";
+type ModelLike = { id?: string; name?: string };
+type ChatContentPart = string | { text?: string | null } | null | undefined;
+type ChatResponseLike = {
+  message?: { content?: string | ChatContentPart[] };
+  choices?: Array<{ message?: { content?: string } }>;
+};
+type SpeechToTextResponse = string | { text?: string | null };
 
 const DEFAULT_READING_SECONDS = 15 * 60;
 const DEFAULT_WRITING_SECONDS = 40 * 60;
@@ -87,13 +95,14 @@ export default function APESPArgEssay() {
   const loadModels = useCallback(async () => {
     if (!isClient || !signedIn) return;
     try {
-      const list = await puter.ai.listModels();
+      const list = (await puter.ai.listModels()) as ModelLike[];
       const names = list
-        .map((m: any) => m?.id || m?.name)
-        .filter(Boolean);
+        .map((m) => m?.id || m?.name)
+        .filter((name): name is string => Boolean(name));
       if (names.length) {
+        const firstModel = names[0];
         setModels(names);
-        if (!names.includes(chatModel)) setChatModel(names[0]);
+        if (firstModel && !names.includes(chatModel)) setChatModel(firstModel);
       }
     } catch {
       // silent; fall back to defaults
@@ -176,8 +185,8 @@ export default function APESPArgEssay() {
       }
       setSignedIn(true);
       return true;
-    } catch (err: any) {
-      const msg = String(err?.message || "");
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err ?? "");
       if (/popup|blocked/i.test(msg)) {
         toast.error("Sign-in popup was blocked. Enable popups for this site and try again.");
       } else {
@@ -198,12 +207,12 @@ export default function APESPArgEssay() {
     }
   };
 
-  const extractChatText = (resp: any) => {
+  const extractChatText = (resp: ChatResponseLike | null | undefined) => {
     if (!resp) return "";
     if (typeof resp.message?.content === "string") return resp.message.content;
     if (Array.isArray(resp.message?.content))
       return resp.message.content
-        .map((c: any) => (typeof c === "string" ? c : c?.text || ""))
+        .map((c) => (typeof c === "string" ? c : c?.text || ""))
         .join("\n");
     if (resp.choices?.[0]?.message?.content) return resp.choices[0].message.content;
     return "";
@@ -217,9 +226,9 @@ export default function APESPArgEssay() {
     try {
       const prompt = `Topic: ${topic}. Level: ${difficulty}. Generate a written source (journalistic article) of 250-300 words in Spanish with data and multiple arguments for an AP Spanish Language & Culture argumentative essay.`;
       const resp = await puter.ai.chat(prompt, { model: chatModel });
-      const text = extractChatText(resp) || "Could not generate the article.";
+      const text = extractChatText(resp as ChatResponseLike) || "Could not generate the article.";
       setArticleText(text);
-    } catch (err: any) {
+    } catch {
       toast.error("Error generating article.");
     } finally {
       setArticleLoading(false);
@@ -239,7 +248,7 @@ export default function APESPArgEssay() {
       });
       const src = (img as HTMLImageElement)?.src;
       if (src) setImageSrc(src);
-    } catch (err) {
+    } catch {
       toast.error("Error generating visual resource.");
     } finally {
       setImageLoading(false);
@@ -260,7 +269,7 @@ export default function APESPArgEssay() {
       });
       const src = (audioEl as HTMLAudioElement)?.src;
       if (src) setAudioSrc(src);
-    } catch (err) {
+    } catch {
       toast.error("Error generating audio.");
     } finally {
       setAudioLoading(false);
@@ -286,9 +295,9 @@ export default function APESPArgEssay() {
     try {
       const prompt = `Topic: ${topic}. Generate a brief outline (thesis + 3 points with specific evidence citing the sources) for the AP argumentative essay.`;
       const resp = await puter.ai.chat(prompt, { model: chatModel });
-      const text = extractChatText(resp);
+      const text = extractChatText(resp as ChatResponseLike);
       if (text) setEssay((prev) => `${prev}\n\n---\nSuggested outline:\n${text}`);
-    } catch (err) {
+    } catch {
       toast.error("Could not generate the outline.");
     } finally {
       setOutlineLoading(false);
@@ -306,9 +315,9 @@ export default function APESPArgEssay() {
     try {
       const prompt = `Review grammar, coherence, and cohesion of the following essay (Spanish). Return concise bullet-point suggestions:\n\n${essay}`;
       const resp = await puter.ai.chat(prompt, { model: chatModel });
-      const text = extractChatText(resp);
+      const text = extractChatText(resp as ChatResponseLike);
       if (text) setEssay((prev) => `${prev}\n\n---\nReview:\n${text}`);
-    } catch (err) {
+    } catch {
       toast.error("Could not review the text.");
     } finally {
       setGrammarLoading(false);
@@ -326,13 +335,13 @@ export default function APESPArgEssay() {
     try {
       const prompt = `Evaluate this essay using the AP Spanish Language and Culture Presentational Writing rubric (0-5). Return format: Score: X/5 \\n Feedback: • ...\n\nAvailable sources:\n${articleText}\n\nEssay:\n${essay}`;
       const resp = await puter.ai.chat(prompt, { model: chatModel });
-      const text = extractChatText(resp);
+      const text = extractChatText(resp as ChatResponseLike);
       const match = text.match(/score\\s*[:\\-]?\\s*(\\d(?:\\.\\d)?)/i);
       const value = match ? Number(match[1]) : NaN;
       setScore({ value: isNaN(value) ? 0 : value, feedback: text });
       setLocked(true);
       clearTimer();
-    } catch (err) {
+    } catch {
       toast.error("Could not score the essay.");
     } finally {
       setScoringLoading(false);
@@ -372,10 +381,10 @@ export default function APESPArgEssay() {
     if (!sessionReady) return;
     setTranscribeLoading(true);
     try {
-      const resp = await puter.ai.speech2txt(audioFile, { model: "whisper-1" });
-      const text = typeof resp === "string" ? resp : (resp as any)?.text || "";
+      const resp = (await puter.ai.speech2txt(audioFile, { model: "whisper-1" })) as SpeechToTextResponse;
+      const text = typeof resp === "string" ? resp : (resp.text ?? "");
       setAudioTranscript(text);
-    } catch (err) {
+    } catch {
       toast.error("Could not transcribe the audio.");
     } finally {
       setTranscribeLoading(false);
@@ -439,7 +448,14 @@ export default function APESPArgEssay() {
             {imageLoading ? (
               <Spinner className="w-6 h-6" />
             ) : imageSrc ? (
-              <img src={imageSrc} alt="Visual source" className="object-contain w-full h-full" />
+              <Image
+                src={imageSrc}
+                alt="Visual source"
+                width={1200}
+                height={900}
+                unoptimized
+                className="object-contain w-full h-full"
+              />
             ) : (
               <p className="text-sm text-muted-foreground">Upload or generate a visual resource.</p>
             )}
