@@ -471,7 +471,7 @@ function MainScreen({
   return (
     <div className={`flex flex-1 flex-col ${CurrentPage !== "Notes" && "md:p-5 pt-2"}`}>
       {CurrentPage === "set" && selected !== null && pastSets[selected] ? (
-        <MainSet mode={currentMode} currentSet={pastSets[selected]} extra={extra} />
+        <MainSet mode={currentMode} currentSet={pastSets[selected]} setMode={setMode} extra={extra} />
       ) : CurrentPage === "upload" ? <Create addSet={addSet} /> :
         CurrentPage === "helper" ? <HelperPage /> :
           CurrentPage === "Notes".toLowerCase() ? <NoteDocumentTaker /> :

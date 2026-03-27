@@ -1,4 +1,5 @@
 import FlashcardHolder from "./FlashcardHolder";
+import { mode } from "@/lib/AllSets";
 
 interface Set {
     title: string;
@@ -7,12 +8,14 @@ interface Set {
 
 export default function StudyMode({
     currentSet,
+    setMode,
 }: {
     currentSet: Set,
+    setMode: (mode: mode) => void,
 }) {
     return <>
     
     
-        <FlashcardHolder set={currentSet} />
+        <FlashcardHolder set={currentSet} setMode={setMode} />
     </>
 }

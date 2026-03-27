@@ -27,7 +27,7 @@ export function AnimatedCircularProgressBar({
 
   return (
     <div
-      className={cn("relative size-40 text-2xl font-semibold", className)}
+      className={cn("relative size-40 text-md font-semibold", className)}
       style={
         {
           "--circle-size": "100px",
@@ -105,7 +105,7 @@ export function AnimatedCircularProgressBar({
         data-current-value={currentPercent}
         className="duration-[var(--transition-length)] delay-[var(--delay)] absolute inset-0 m-auto size-fit ease-linear animate-in fade-in"
       >
-        {showValue ? value : currentPercent}
+        {showValue ? value : `${currentPercent}%`}
       </span>
     </div>
   );

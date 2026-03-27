@@ -137,8 +137,8 @@ export function SiteHeader({
           currentPage == "set" && !isMobile && <>
             <div className="flex flex-row gap-2">
               <Select value={currentMode || "normal"} onValueChange={setCurrentMode}>
-                <SelectTrigger className="py-6 flex flex-row items-center justify-center overflow-hidden w-full rounded-3xl bg-background/50 hover:bg-background/70 transition-colors">
-                  <SelectValue placeholder="Select a mode" className="flex !flex-row" />
+                <SelectTrigger className="py-6  flex flex-row items-center pr-2 justify-center overflow-hidden w-full rounded-3xl bg-background/50 hover:bg-background/70 transition-colors">
+                  <SelectValue placeholder="Select a mode" className="flex !flex-row " />
                 </SelectTrigger>
                 <SelectContent className="rounded-xl translate-y-[3rem] px-2 bg-background/95 backdrop-blur-xl border"  >
                   <SelectGroup >

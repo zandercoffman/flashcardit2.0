@@ -29,10 +29,12 @@ interface Flashcard {
 export default function MainSet({
     mode,
     currentSet,
+    setMode,
     extra
 }: {
     mode: mode,
     currentSet: Set,
+    setMode: (mode: mode) => void,
     extra: {
         curStudyPathN: number,
         setCurStudyPathN: Dispatch<SetStateAction<number>>
@@ -54,7 +56,7 @@ export default function MainSet({
 
     switch (mode) {
         case "normal":
-            return <StudyMode currentSet={currentSet}/>
+            return <StudyMode currentSet={currentSet} setMode={setMode}/>
         case "quiz":
             return <QuizMode currentSet={currentSet}/>
         case "speakit":

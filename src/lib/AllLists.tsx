@@ -1,4 +1,6 @@
-import { Briefcase, Languages, LucideIcon } from "lucide-react";
+import { ArrowBigLeft, Briefcase, Goal, Languages, LucideIcon } from "lucide-react";
+import { CustomMessageForFlashcardSet } from "./AllSets";
+import { Button } from "@/components/ui/button";
 
 export interface List {
     id: string;
@@ -119,3 +121,15 @@ export const getShortNameFromSetFromId = (setId: string): string => {
     return list ? list.shortNamePerSet : ""
 }
 
+
+export const AllCustomMessagesForFlashcardSets: CustomMessageForFlashcardSet[] = [
+    {
+        setId: "ap-esp-free-response-written-essay",
+        message: () => {
+            return <p className="bg-[#fbae25] w-[42vw] flex flex-row items-center justify-center text-white font-semibold shadow-xl p-4 px-auto rounded-4xl text-center mx-auto" >
+                ¿Estás buscando la prueba del ensayo escrito? ¡Ven aquí!
+                <Button className="ml-2 rounded-full text-black" variant={"secondary"} ><Goal/>Vamonos</Button>
+            </p>
+        }
+    }
+]

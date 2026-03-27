@@ -1,3 +1,4 @@
+import { ComponentType } from "react";
 import { allFBLAPracticeTests } from "./practiceTests/FBLAPracticeTests";
 import { AllAPESPLists } from "./subsets/APSpanishPractice";
 import { AllESP1Sets } from "./subsets/ESP1";
@@ -6,10 +7,7 @@ import { itw1011, itw12, itw1213, itw1415, itw1617, itw18epilogue, itw345, itw67
 import { tcitr1017, tcitr14, tcitr1826, tcitr59 } from "./subsets/TCITR";
 import { tnofd12, tnofd34, tnofd56, tnofd79, tnofdpreface, tnofdx1, tnofdx2, tnofdxi1, tnofdxi2 } from "./subsets/TNOFD";
 
-export interface Set {
-    title: string;
-    vocab: [string, string][];
-}
+
 
 
 export interface PracticeTest {
@@ -53,7 +51,17 @@ export type Resources = {
 
 export type mode = "normal" | "quiz" | "speakit" | "picturematch" | "bomba" | "studyplan" | "matching" | "aichat" | "resources" | "practicetest" | "custommode" | null;
 
+export interface Set {
+    title: string;
+    vocab: [string, string][];
+}
+
 export interface AllSetsInterface { id: string, set: Set }
+
+export interface CustomMessageForFlashcardSet {
+    setId: string;
+    message: ComponentType;
+}
 
 export const AllSets: AllSetsInterface[] = [
     {

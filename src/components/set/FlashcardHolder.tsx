@@ -29,13 +29,21 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { cn } from "@/lib/utils"
+import { AllCustomMessagesForFlashcardSets } from "@/lib/AllLists"
+import { AllSets, mode } from "@/lib/AllSets"
 
 interface Set {
   title: string
   vocab: [string, string][] // Array of tuples with two strings
 }
 
-export default function FlashcardHolder({ set }: { set: Set }) {
+export default function FlashcardHolder({
+  set,
+  setMode,
+}: {
+  set: Set
+  setMode: (mode: mode) => void
+}) {
   const { toggleSidebar, isMobile, state } = useSidebar()
   const [api, setApi] = useState<CarouselApi>()
   const conjugator = useMemo(() => {
@@ -332,6 +340,18 @@ export default function FlashcardHolder({ set }: { set: Set }) {
               pressedShowAllWords || (pressShowConjugation && isVerb) ? "select-none" : "",
             )}
           >
+            {(() => {
+              const matchedMessage = AllCustomMessagesForFlashcardSets?.find(
+                (msg) => AllSets.find((s) => s.id === msg.setId)?.set.title === set.title,
+              )?.message
+
+              if (!matchedMessage) return null
+
+              const MessageComponent = matchedMessage
+              return <Button onClick={() => setMode("custommode")} className="!bg-transparent translate-y-[-3vh] cursor-pointer w-[42vw] mx-auto mb-2 !border-none">
+                <MessageComponent />
+              </Button>
+            })()}
             <div className="relative">
               <Carousel
                 className={cn(
