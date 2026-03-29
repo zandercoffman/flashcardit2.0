@@ -718,7 +718,7 @@ Return your evaluation in this exact structure:
                     <div className="rounded-2xl border border-[#fbae25]/40 bg-white p-3">
                         <p className="text-sm font-semibold text-[#7a4a00]">Step 1: Enter your topic</p>
                         <p className="text-xs text-[#7a4a00]/80 mb-2">
-                            Example: "Should schools limit AI use for homework?"
+                            Example: &quot;Should schools limit AI use for homework?&quot;
                         </p>
                         <Textarea
                             value={customTopicIdea}
@@ -935,7 +935,7 @@ Return your evaluation in this exact structure:
                                 Buen trabajo terminando el flujo completo de ensayo al estilo AP. Sigue practicando y tu argumentación seguirá fortaleciéndose.
                             </p>
                             {completionQuote && (
-                                <p className="max-w-2xl text-base italic text-muted-foreground">"{completionQuote}"</p>
+                                <p className="max-w-2xl text-base italic text-muted-foreground">&ldquo;{completionQuote}&rdquo;</p>
                             )}
                         </div>
                     )}
@@ -1069,7 +1069,7 @@ Return your evaluation in this exact structure:
                                 Buen trabajo terminando el flujo completo de ensayo al estilo AP. Sigue practicando y tu argumentación seguirá fortaleciéndose.
                             </p>
                             {completionQuote && (
-                                <p className="max-w-2xl text-base italic text-muted-foreground">"{completionQuote}"</p>
+                                <p className="max-w-2xl text-base italic text-muted-foreground">&ldquo;{completionQuote}&rdquo;</p>
                             )}
                             <div className="mt-2 flex flex-wrap gap-2 justify-center">
                                 <Button variant="outline" className="rounded-full" onClick={resetToHome}>
