@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { CustomMode } from "../interface";
 import APESPArgEssay from "./APESPArgEssay";
+import APESPEssay from "./APESPEmail";
 
 function MultipleChoiceModeComponent() {
     return <div>AP Spanish Language and Culture Multiple Choice</div>;
@@ -17,10 +18,6 @@ function MultipleChoiceModeComponent() {
 
 function MultipleChoiceWithAudioModeComponent() {
     return <div>AP Spanish Language and Culture Multiple Choice with Audio</div>;
-}
-
-function FreeResponseWrittenEmailModeComponent() {
-    return <div>AP Spanish Language and Culture Free Response Written Email</div>;
 }
 
 function InterpersonalSpeakingModeComponent() {
@@ -57,7 +54,7 @@ export const APESPModes: CustomMode[] = [
         miniShowcaseText: "Written Email",
         miniShowcaseTextColor: "text-white",
         miniShowcaseIcon: Mail,
-        component: FreeResponseWrittenEmailModeComponent
+        component: APESPEssay
     },
     {
         title: "AP Spanish Language and Culture Free Response Written Essay",

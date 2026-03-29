@@ -131,7 +131,7 @@ export function SiteHeader({
         <SidebarTrigger className="-ml-1 text-lg hover:bg-accent rounded-md transition-colors" onClick={() => setIsExpandedSidebar(!isExpandedSidebar)} />
         {!isMobile && <MusicButton setCurrentVideo={setCurrentVideo} />}
         {!isMobile && <ClockButton />}
-        {!isMobile && currentSet && <ChatGPTButton currentSet={currentSet} />}
+        {!isMobile && currentSet && currentMode !== "custommode" && <ChatGPTButton currentSet={currentSet} />}
 
         {
           currentPage == "set" && !isMobile && <>
@@ -320,7 +320,7 @@ export function SiteHeader({
             isMobile && currentPage == "set" && currentSet && <SetQrShare setId={currentSetId} setTitle={currentSet.title} compact triggerClassName="rounded-lg" />
           }
           {
-            isMobile && currentPage == "set" && currentSet && <ChatGPTButton currentSet={currentSet} />
+            isMobile && currentPage == "set" && currentMode !== "custommode" && currentSet && <ChatGPTButton currentSet={currentSet} />
           }
           {
             isMobile && currentPage == "set" && (

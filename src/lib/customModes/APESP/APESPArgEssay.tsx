@@ -566,7 +566,7 @@ Return your evaluation in this exact structure:
 
   const tabs = [
     {
-      title: "📰 Print Source",
+      title: "📰 (A) Print Source",
       value: "product",
       content: (
         <Card
@@ -584,7 +584,7 @@ Return your evaluation in this exact structure:
     },
 
     {
-      title: "📊 Visual Source",
+      title: "📊 (B) Visual Source",
       value: "playground",
       content: (
         <Card
@@ -596,8 +596,8 @@ Return your evaluation in this exact structure:
             {chosenMode === "digital" && (
               <h1 className="text-2xl font-bold mb-4">📊 Tu pregunta: {chosenTopic?.title}</h1>
             )}
-            <p className="mx-auto mb-3 w-fit rounded-full border border-[#fbae25]/50 bg-[#fbae25]/20 px-4 py-1 text-center text-sm font-semibold text-[#7a4a00]">
-              Cuidado: Algunas de las imágenes quizás no sean perfectamente claras. Obtenga lo que puedas de ellas, pero no te frustres si no entiendes cada detalle.
+            <p className="mx-auto mb-3 w-fit rounded-full border border-[#fbae25]/50 bg-[#fbae25]/20 px-4 py-1 text-center text-xs font-semibold text-[#7a4a00]">
+              Cuidado: Algunas de las imágenes quizás no sean perfectamente claras. Obtenga lo que puedas de ellas, pero no te frustres si no entiendes cada detalle. Las imágenes son creados por Google Gemini.
             </p>
             <Image className="rounded-xl mx-auto" src={chosenTopic?.visualSourcePath || ""} alt="Visual source" width={500} height={500} />
           </ScrollArea>
@@ -607,7 +607,7 @@ Return your evaluation in this exact structure:
     },
 
     {
-      title: "🎧 Audio Source",
+      title: "🎧 (C) Audio Source",
       value: "services",
       content: (
         <Card
@@ -655,7 +655,7 @@ Return your evaluation in this exact structure:
         <p className="text-xs font-semibold uppercase tracking-[0.26em] text-neutral-500">
           AP Spanish Language and Culture
         </p>
-        <h1 className="ml-[6vw] text-center w-full flex flex-row gap-2 text-balance text-3xl font-black leading-tight text-neutral-900 sm:text-4xl md:text-5xl">
+        <h1 className="ml-[6vw] text-center w-full flex flex-row gap-2 text-balance text-3xl font-black leading-tight text-neutral-900 dark:text-white sm:text-4xl md:text-5xl">
           Practice a Standout
           <span className="block bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 bg-clip-text text-transparent">
             Argumentative Essay
@@ -699,7 +699,7 @@ Return your evaluation in this exact structure:
                       <ShinyButton onClick={() => {
                         setChosenMode("digital");
                         setChosenTopic(material);
-                      }} className="bg-white">Start Writing Digitally</ShinyButton>
+                      }} className="bg-white text-black">Start Writing Digitally</ShinyButton>
                     </CardAction>
                   </CardHeader>
                 </Card>
@@ -868,7 +868,7 @@ Return your evaluation in this exact structure:
       </div>
       {
         (chosenMode === "digital") ? <div className="w-1/2 h-[60vh] flex flex-col gap-2">
-          <div className="flex rounded-4xl items-center gap-3 border border-[#806BFF]/30 light:border-[#806BFF]/40 bg-[#0F1424] light:bg-slate-50 px-5 py-4">
+          <div className="flex flex-row rounded-4xl items-center gap-3 border border-[#806BFF]/30 light:border-[#806BFF]/40 bg-[#0F1424] light:bg-slate-50 px-5 py-4">
             <AnimatedCircularProgressBar
               max={perQuestionTime}
               value={currentTime}
@@ -883,7 +883,7 @@ Return your evaluation in this exact structure:
               <p className="text-lg font-semibold">{Math.floor(currentTime / 60)}:{String(currentTime % 60).padStart(2, "0")}</p>
             </div>
             <div className="ml-auto text-right">
-              <p className="text-xs text-muted-foreground">Current Phase</p>
+              <p className="text-xs text-muted-foreground ">Current Phase</p>
               <p className="text-lg font-semibold">
                 {phase === "reading" ? "Reading Sources" : phase === "writing" ? "Writing Essay" : "Time Complete"}
               </p>
@@ -894,8 +894,8 @@ Return your evaluation in this exact structure:
 
                   if (phase === "reading") {
                     setPhase("writing");
-                    setCurrentTime(40 * 60);
-                    setPerQuestionTime(40 * 60);
+                    setCurrentTime(40 * 60); // 40 minutes * 60 seconds
+                    setPerQuestionTime(40 * 60); // 40 minutes * 60 seconds
                   } else if (phase === "writing") {
                     setPhase("done");
                     setCurrentTime(0);
@@ -940,6 +940,8 @@ Return your evaluation in this exact structure:
             )}
           </div>
           }
+
+          
           
           <div id="essay-section" className="flex flex-col rounded-4xl items-center gap-3 border border-[#806BFF]/30 light:border-[#806BFF]/40 bg-[#0F1424] light:bg-slate-50 px-5 py-4">
             <div className="flex flex-row gap-2 w-full">
@@ -991,6 +993,17 @@ Return your evaluation in this exact structure:
               )
             }
           </div>
+
+          {phase === "done" && (
+            <div className="mt-12 flex flex-wrap gap-2 justify-end">
+                <Button variant="outline" className="rounded-full" onClick={resetToHome}>
+                  Go Back to Home Screen
+                </Button>
+                <Button className="rounded-full" onClick={retryCurrentPrompt}>
+                  Try Again
+                </Button>
+              </div>
+          )}
         </div> : (chosenMode === "physical") && <div className="w-1/2 h-[60vh] flex flex-col gap-2">
           <div className="flex rounded-[3rem] items-center gap-3 border border-[#806BFF]/30 light:border-[#806BFF]/40 bg-[#0F1424] light:bg-slate-50 px-5 py-4">
             <div className="mx-auto flex flex-col text-center mt-4">
