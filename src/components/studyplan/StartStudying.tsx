@@ -26,6 +26,7 @@ export function StartStudying({
     setCurStudyPathN: Dispatch<SetStateAction<number>>
 }) {
     const [isDialogOpen, setIsDialogOpen] = useState(true);
+    const noopSetMode = () => {};
 
     const handleNextStep = () => {
         if (curStudyPathN < steps.length - 1) {
@@ -36,13 +37,13 @@ export function StartStudying({
     const renderStepContent = () => {
         switch (curStudyPathN) {
             case 0:
-                return <FlashcardHolder set={{ title: "Study Path", vocab: cards }} />;
+                return <FlashcardHolder set={{ title: "Study Path", vocab: cards }} setMode={noopSetMode} />;
             case 1:
                 return <QuizMode currentSet={{ title: "Study Path", vocab: cards }} />;
             case 2:
                 return <Matching currentSet={{ title: "Study Path", vocab: cards }} />;
             default:
-                return <FlashcardHolder set={{ title: "Study Path", vocab: cards }} />;
+                return <FlashcardHolder set={{ title: "Study Path", vocab: cards }} setMode={noopSetMode} />;
         }
     }
 
