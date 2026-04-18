@@ -487,7 +487,7 @@ function ListScreen({ currentList }: { currentList: List }) {
   return (
     <ScrollArea className="p-4 h-[90vh] md:p-8 w-full mx-auto flex flex-col">
       <div className="flex flex-row gap-6 mb-8 w-[95%] mx-auto">
-        <Icon size={64} className="my-auto"/>
+        <Icon width={64} height={64} className="my-auto"/>
         <div className="flex flex-col">
           <h1 className="text-2xl font-bold mb-4">{currentList.title}</h1>
           <p className="mb-6">{currentList.description}</p>

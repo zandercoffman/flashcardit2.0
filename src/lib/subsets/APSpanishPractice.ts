@@ -20,7 +20,55 @@ export const FreeResponseWrittenEmailAPESPANOLanguageAndCulture: AllSetsInterfac
     id: "ap-esp-free-response-written-email",
     set: {
         title: "AP Spanish Language and Culture Free Response Written Email",
-        vocab: []
+        vocab: [
+      // Format & Prompt Control
+      ["Read Audience First", "Identify who is writing and who receives the email before drafting your response."],
+      ["Match Register", "Use formal or informal language based on the relationship in the prompt."],
+      ["Address All Tasks", "Respond to every bullet in the prompt so you do not lose content points."],
+      ["Keep Purpose Clear", "State your purpose early so your response is focused and easy to follow."],
+      ["Use Subject Context", "Reference the original topic naturally to show full understanding of the situation."],
+      ["Stay On Topic", "Avoid unrelated details; every sentence should support the email task."],
+      ["Opening Greeting", "Begin with an appropriate greeting such as 'Estimado senor' or 'Hola Ana'."],
+      ["Professional Closing", "End with a fitting closing like 'Atentamente' or 'Saludos cordiales'."],
+      ["Sign Your Name", "Include a name at the end to complete the email format."],
+      ["Paragraph Balance", "Use short, clear paragraphs instead of one large block of text."],
+
+      // Content Quality
+      ["Direct Answers", "Answer each question directly before adding extra explanation."],
+      ["Add Helpful Detail", "Include one or two concrete details for each prompt point."],
+      ["Ask Follow-Up Question", "Ask at least one relevant question to keep the exchange interactive."],
+      ["Show Politeness", "Use courteous phrases such as 'gracias por su mensaje' when appropriate."],
+      ["Show Initiative", "Offer a suggestion, plan, or next step instead of only reacting."],
+      ["Use Time Markers", "Use words like 'ayer', 'hoy', and 'la proxima semana' to clarify timing."],
+      ["Use Reasons", "Explain why using connectors like 'porque' and 'ya que'."],
+      ["Be Specific", "Prefer exact details over vague statements like 'es muy bueno'."],
+      ["Avoid Repetition", "Do not repeat the same idea with different words just to add length."],
+      ["Natural Tone", "Write like a real message, not a memorized script."],
+
+      // Language Control
+      ["Verb Tense Accuracy", "Choose present, past, or future tenses that match the situation in the prompt."],
+      ["Subjunctive Moments", "Use subjunctive where needed after expressions of doubt, emotion, or recommendation."],
+      ["Agreement Check", "Verify noun-adjective and subject-verb agreement before finishing."],
+      ["Pronoun Clarity", "Make sure each pronoun clearly refers to the right person or thing."],
+      ["Connector Variety", "Use transitions like 'ademas', 'sin embargo', and 'por eso' for better flow."],
+      ["Avoid Literal Translation", "Do not translate word for word from English; choose natural Spanish phrasing."],
+      ["Accent Marks", "Include accent marks on common words to avoid preventable errors."],
+      ["Question Punctuation", "Use opening and closing question marks for all questions."],
+      ["Sentence Variety", "Mix simple and complex sentences to show control of language."],
+      ["Precise Vocabulary", "Use specific words related to school, travel, family, or events as needed."],
+
+      // High-Scoring Moves
+      ["Reference Original Email", "Briefly refer to what the sender said to show comprehension."],
+      ["Respond Then Expand", "Answer first, then add one supporting detail or example."],
+      ["Use Softening Phrases", "Use phrases like 'me gustaria' or 'seria mejor' for polite suggestions."],
+      ["Include Invitation", "Invite a reply with a question or request for confirmation."],
+      ["Confirm Logistics", "Mention date, time, place, or materials when the task involves planning."],
+      ["Cultural Awareness", "Use culturally appropriate tone and references for Spanish-speaking contexts."],
+      ["Keep It Concise", "Aim for enough depth without unnecessary filler sentences."],
+      ["Proofread Endings", "Recheck verb endings because they are common point-losing mistakes."],
+      ["Final Read Aloud", "Silently read your response once to catch awkward phrasing and missing words."],
+      ["Complete Every Bullet", "Before submitting, quickly verify each task bullet is clearly covered."]
+        ]
     }
 }
 

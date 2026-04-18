@@ -1,12 +1,40 @@
-import { ArrowBigLeft, Briefcase, Goal, Languages, LucideIcon } from "lucide-react";
+import { Briefcase, Goal, Languages } from "lucide-react";
+import { ComponentType, SVGProps } from "react";
 import { CustomMessageForFlashcardSet } from "./AllSets";
 import { Button } from "@/components/ui/button";
+
+const HosaLogoIcon = (props: SVGProps<SVGSVGElement>) => {
+    return (
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+            <circle cx="32" cy="32" r="30" fill="currentColor" opacity="0.12" />
+            <circle cx="32" cy="32" r="24" stroke="currentColor" strokeWidth="2.5" />
+            <path
+                d="M20 22L32 16L44 22V31C44 40.2 38.8 46.9 32 50C25.2 46.9 20 40.2 20 31V22Z"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinejoin="round"
+            />
+            <text
+                x="32"
+                y="34"
+                textAnchor="middle"
+                fill="currentColor"
+                fontSize="9"
+                fontWeight="700"
+                fontFamily="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+                letterSpacing="0.8"
+            >
+                HOSA
+            </text>
+        </svg>
+    )
+}
 
 export interface List {
     id: string;
     title: string;
     description: string;
-    icon: LucideIcon;
+    icon: ComponentType<SVGProps<SVGSVGElement>>;
     shortNamePerSet: string;
     sets: string[] // Array of set IDs
 }
@@ -15,7 +43,7 @@ export const AllLists: List[] = [
     {
         id: "fbla",
         title: "FBLA Roleplay + Presentation + Objective Tests Study Guide",
-        description: "A comprehensive study guide for FBLA competitions, including roleplay scenarios, presentation tips, and objective test questions inspired by the given study guide on the rubric.",
+        description: "A comprehensive study guide for FBLA competitions, including roleplay scenarios, presentation tips, and objective test questions inspired by the given study guide on the rubric. Disclaimer: This content is unofficial and is not endorsed, sponsored, or affiliated with FBLA. Any limited use of copyrighted references is claimed under fair use for educational and noncommercial practice. These sets were created using AI.",
         icon: Briefcase,
         shortNamePerSet: "FBLA",
         sets: [
@@ -86,7 +114,7 @@ export const AllLists: List[] = [
     {
         id: "ap-esp",
         title: "AP Spanish Language and Culture",
-        description: "A comprehensive study guide for the AP Spanish Language and Culture exam, covering all the key topics and skills needed to succeed on the test.",
+        description: "A comprehensive study guide for AP Spanish Language and Culture practice. Disclaimer: This content is unofficial and is not endorsed, sponsored, or affiliated with the College Board or the AP Program. These AP sets are practice-format materials only and are designed to simulate what the real AP exam can feel like for study purposes; they do not provide official AP exam credit or outcomes. Any limited use of referenced exam-style structure is claimed under fair use for educational and noncommercial practice. These sets were created using AI.",
         icon: Languages,
         shortNamePerSet: "AP Spanish",
         sets: [
@@ -96,6 +124,16 @@ export const AllLists: List[] = [
             "ap-esp-free-response-written-email",
             "ap-esp-presentational-speaking",
             "ap-esp-interpersonal-speaking"
+        ]
+    },
+    {
+        id: "hosa",
+        title: "HOSA Roleplay + Presentation + Objective Tests Study Guide",
+        description: "A comprehensive study guide for HOSA competitions, including roleplay scenarios, presentation tips, and objective test questions inspired by the given study guide on the rubric. Disclaimer: This content is unofficial and is not endorsed, sponsored, or affiliated with HOSA. Any limited use of copyrighted references is claimed under fair use for educational and noncommercial practice. These sets were created using AI.",
+        icon: HosaLogoIcon,
+        shortNamePerSet: "HOSA",
+        sets: [
+            "hosa-emergency-medical-technician"
         ]
     }
 ]
@@ -128,7 +166,16 @@ export const AllCustomMessagesForFlashcardSets: CustomMessageForFlashcardSet[] =
         message: () => {
             return <p className="bg-[#fbae25] w-[42vw] flex flex-row items-center justify-center text-white font-semibold shadow-xl p-4 px-auto rounded-4xl text-center mx-auto" >
                 ¿Estás buscando la prueba del ensayo escrito? ¡Ven aquí!
-                <Button className="ml-2 rounded-full text-black" variant={"secondary"} ><Goal/>Vamonos</Button>
+                <Button className="ml-2 rounded-full text-white light:text-black" variant={"secondary"} ><Goal/>Vamonos</Button>
+            </p>
+        }
+    },
+    {
+        setId: "ap-esp-free-response-written-email",
+        message: () => {
+            return <p className="bg-[#fbae25] w-[42vw] flex flex-row items-center justify-center text-white font-semibold shadow-xl p-4 px-auto rounded-4xl text-center mx-auto" >
+                ¿Estás buscando la prueba del correo escrito? ¡Ven aquí!
+                <Button className="ml-2 rounded-full text-white light:text-black" variant={"secondary"} ><Goal/>Vamonos</Button>
             </p>
         }
     }

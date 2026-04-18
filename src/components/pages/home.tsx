@@ -344,6 +344,8 @@ export default function HomePage({ pastSets, hasShownLoading, allSets, addSet, s
                                     )
                                 })}
                             </div>
+ <motion.h3 className="text-xl font-semibold text-foreground">Description</motion.h3>
+                            <p> {chosenList && chosenList.description}</p>
 
                             <div className="flex items-center justify-between">
                                 <motion.h3 className="text-2xl font-semibold text-foreground">{chosenList ? "Sets in this list" : "All Sets"}</motion.h3>
@@ -357,6 +359,8 @@ export default function HomePage({ pastSets, hasShownLoading, allSets, addSet, s
                                     </Button>
                                 )}
                             </div>
+
+                           
 
                             <motion.div
                                 layout
