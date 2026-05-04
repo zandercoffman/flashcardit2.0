@@ -218,7 +218,7 @@ export default function HomePage({ pastSets, hasShownLoading, allSets, addSet, s
                                 <span className="animate-ping mr-4 inline-flex size-2 my-auto rounded-full bg-sky-400 opacity-75"></span>
                                 Just loaded {foundSet}
                             </h2>}
-                            {hasShownLoading && foundSet == "" && <h2 className=" relative flex text-center text-sm text-gray-200 opacity-50 mt-2">
+                            {hasShownLoading && foundSet == "" && <h2 className=" relative flex text-center text-sm dark:text-gray-200 opacity-50 mt-2">
                                 Swipe to the left and right to switch tabs.
                             </h2>}
                         </div>

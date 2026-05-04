@@ -123,7 +123,8 @@ export const AllLists: List[] = [
             "ap-esp-free-response-written-essay",
             "ap-esp-free-response-written-email",
             "ap-esp-presentational-speaking",
-            "ap-esp-interpersonal-speaking"
+            "ap-esp-interpersonal-speaking",
+            "ap-esp-rayos-ideas"
         ]
     },
     {

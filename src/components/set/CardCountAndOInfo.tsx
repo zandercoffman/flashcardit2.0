@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { Globe, List, Sparkles, X } from "lucide-react"
+import { Dice1, Dice6Icon, Globe, List, Sparkles, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
@@ -77,6 +77,19 @@ export default function NavigationMenuFlashcardSet({
         <div className={isMobile ? "flex flex-col items-center gap-2 w-full" : "flex flex-row gap-2"}>
           <h3 className="my-auto">{current}/{showTotal}</h3>
           <Separator orientation="vertical" className="my-auto !w-[1px] !h-[20px]" />
+          <Button
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                const randomIndex = Math.floor(Math.random() * set.vocab.length);
+                onWordClick?.(randomIndex)
+              }}
+              className="gap-2 cursor-pointer rounded-full !px-[12px]"
+            >
+              <Dice6Icon className="h-4 w-4" />
+              Randomize
+            </Button>
+            <Separator orientation="vertical" className="my-auto !w-[1px] !h-[20px]" />
           <section className={isMobile ? "flex flex-col sm:flex-row items-center gap-2" : "flex flex-row gap-2"}>
             <Button
               variant="outline"
@@ -87,7 +100,7 @@ export default function NavigationMenuFlashcardSet({
               className="gap-2 cursor-pointer rounded-full !px-[12px]"
             >
               <List className="h-4 w-4" />
-              {showWordList ? "Hide" : "Show"} All Cards {isMobile ? "" : `(${showTotal})`}
+              Cards {isMobile ? "" : `(${showTotal})`}
             </Button>
 
             {

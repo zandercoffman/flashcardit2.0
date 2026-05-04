@@ -11,6 +11,7 @@ import {
 import { CustomMode } from "../interface";
 import APESPArgEssay from "./APESPArgEssay";
 import APESPEssay from "./APESPEmail";
+import APESPConvo from "./APESPConvo";
 
 function MultipleChoiceModeComponent() {
     return <div>AP Spanish Language and Culture Multiple Choice</div>;
@@ -21,7 +22,7 @@ function MultipleChoiceWithAudioModeComponent() {
 }
 
 function InterpersonalSpeakingModeComponent() {
-    return <div>AP Spanish Language and Culture Interpersonal Speaking</div>;
+    return <APESPConvo/>;
 }
 
 function PresentationalSpeakingModeComponent() {
