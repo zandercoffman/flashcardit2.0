@@ -112,6 +112,42 @@ export const AllLists: List[] = [
         ]
     },
     {
+        id: "esp1",
+        title: "Spanish 1 Flashcard Sets",
+        description: "Spanish 1 vocabulary flashcard sets for class review and practice.",
+        icon: Languages,
+        shortNamePerSet: "ESP 1",
+        sets: [
+            "esp-vocab-6a-mi-casa-es-su-casa",
+            "esp-vocab-6b-mi-casa-es-su-casa",
+            "esp-vocab-5a-la-rutina-y-la-diversion",
+            "esp-vocab-5b-la-rutina-y-la-diversion",
+            "esp-vocab-7a-los-pasatiempos",
+            "esp-vocab-7b-los-pasatiempos",
+            "esp-vocab-1a",
+            "esp-vocab-1b",
+            "esp-vocab-2a",
+            "esp-vocab-2b",
+            "esp-vocab-3a",
+            "esp-vocab-3b",
+        ]
+    },
+    {
+        id: "esp2",
+        title: "Spanish 2 Flashcard Sets",
+        description: "Spanish 2 vocabulary flashcard sets for class review and practice.",
+        icon: Languages,
+        shortNamePerSet: "ESP 2",
+        sets: [
+            "spa2-vocab-1a-la-tecnologia",
+            "spa2-vocab-2a-la-rutina-diaria-y-el-cuerpo",
+            "spa2-vocab-3-en-el-restaurante",
+            "spa2-vocab-4a-mi-ninez",
+            "spa2-vocab-de-compras",
+            "spa2-vocab-7a-en-las-noticias-y-los-programas-de-television",
+        ]
+    },
+    {
         id: "ap-esp",
         title: "AP Spanish Language and Culture",
         description: "A comprehensive study guide for AP Spanish Language and Culture practice. Disclaimer: This content is unofficial and is not endorsed, sponsored, or affiliated with the College Board or the AP Program. These AP sets are practice-format materials only and are designed to simulate what the real AP exam can feel like for study purposes; they do not provide official AP exam credit or outcomes. Any limited use of referenced exam-style structure is claimed under fair use for educational and noncommercial practice. These sets were created using AI.",

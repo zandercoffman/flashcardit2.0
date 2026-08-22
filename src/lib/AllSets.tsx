@@ -7,6 +7,7 @@ import { itw1011, itw12, itw1213, itw1415, itw1617, itw18epilogue, itw345, itw67
 import { tcitr1017, tcitr14, tcitr1826, tcitr59 } from "./subsets/TCITR";
 import { tnofd12, tnofd34, tnofd56, tnofd79, tnofdpreface, tnofdx1, tnofdx2, tnofdxi1, tnofdxi2 } from "./subsets/TNOFD";
 import { AllHOSASets } from "./subsets/HOSA";
+import { AllSPA2 } from "./subsets/SPA2";
 
 
 
@@ -2061,6 +2062,7 @@ export const AllSets: AllSetsInterface[] = [
     itwvocab2,
     ...FBLA_SETS,
     ...AllESP1Sets,
+    ...AllSPA2,
     {
         id: "ap-tema-6-vocabulario",
         set: {
