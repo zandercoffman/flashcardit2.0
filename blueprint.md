@@ -1,52 +1,43 @@
 ## Overview
 
-This application is a versatile study tool that allows users to create, manage, and study flashcard sets. It offers multiple ways to create sets, including AI generation, file uploads, and manual creation. The application also includes various study modes to enhance the learning experience.
+Flashcardit is a multi-mode study app where users create sets, review with flashcards/quizzes/games, and manage study workflows from one dashboard.
 
 ## Features & Design
 
 ### Core Features
 
-*   **Flashcard Creation:**
-    *   **AI Generation:** Users can generate flashcard sets by providing text to an AI assistant and pasting the output into the application.
-    *   **File Upload:** Users can upload existing flashcard sets in JSON format.
-    *   **Manual Creation:** Users can manually create flashcard sets by entering terms and definitions directly into the application.
-*   **Study Modes:**
-    *   **Spaced Repetition (FSRS):** The application uses the FSRS (Free Spaced Repetition Scheduler) algorithm to optimize learning and long-term memory retention.
-    *   **Games:** The application includes engaging games like 'Bomba' to make learning more interactive.
-    *   **Flashcards:** Users can create and review classic flashcards.
-    *   **Quizzes:** Users can take quizzes to test their knowledge and track their progress.
-    *   **Study Path Mode:** A personalized study plan that tracks user progress. (In Progress)
-*   **User Interface:**
-    *   Modern, responsive design with a clean and intuitive layout.
-    *   Includes a dark mode.
-    *   Features a dashboard to display user's current and premade study sets.
-    *   Utilizes a variety of UI components for a rich user experience, including cards, dialogs, buttons, and more.
-*   **Premade Sets:** A collection of premade flashcard sets are available for users to add to their collection.
+- Flashcard set creation from AI-assisted workflows and manual editing.
+- Local set storage and fast set launch from the sidebar and dashboard.
+- Multiple study experiences: flashcards, quiz, matching, speak-it, study path, and list-specific extensions.
+- Export and sharing helpers (JSON/PDF/QR) and integrated notes/resources areas.
 
-### Design & Styling
+### UX Direction
 
-*   **Aesthetics:** The application uses a modern design with a focus on visual balance, clean spacing, and polished styles.
-*   **Color Palette:** A vibrant color palette is used to create an energetic look and feel.
-*   **Typography:** Expressive typography is used to create a clear visual hierarchy.
-*   **Iconography:** Icons are used to enhance understanding and navigation.
-*   **Interactivity:** Interactive elements feature a "glow" effect and shadows to create a sense of depth.
+- Mobile-first layout behavior with polished spacing and readable typography.
+- Clear action hierarchy (primary actions surfaced first, supportive actions nearby).
+- Progressive workflows with immediate validation and actionable error states.
 
-## Current Task: Modernize Helper Page
+## Current Task: UX, AI Workflow, Manual Creation, MCP Readiness
 
 ### Plan
 
-1.  Redesign the `helper.tsx` page to be more modern and user-friendly.
-2.  Update the `blueprint.md` to reflect the changes.
-3.  Run the linter to ensure code quality.
-4.  Deploy the application.
+1. Upgrade the Create page into two obvious paths: AI creation and manual creation.
+2. Improve AI copy/open/paste workflow with auto-validation, preview, and draft persistence.
+3. Build a polished manual editor with add/edit/delete/reorder/preview/save actions.
+4. Fix key responsive issues in shared screens (create/list/flashcard readability).
+5. Add MCP readiness scaffolding and document practical architecture constraints.
+6. Validate with lint/build and security checks.
 
 ### Steps Implemented
 
-1.  **Redesigned `src/components/pages/helper.tsx`:** Modernized the helper page with a card-based layout, unique icons, and a clear, step-by-step instructional guide to improve user experience.
-2.  **Updated `blueprint.md`:** Updated the blueprint to reflect the changes made to the `helper.tsx` page.
-
-## Recent Changes
-
-### Bug Fixes
-
-*   **Initial Set Loading:** Fixed an issue where study sets were not loaded into the navigation sidebar on the initial page load. The code was modified to load sets from local storage earlier in the component lifecycle, eliminating the loading delay.
+1. Rebuilt `src/components/pages/Create.tsx` with clear creation method selection (AI vs manual), mobile-first layout, and stronger visual flow.
+2. Implemented a full AI handoff workflow with prompt generation, copy/open assistant actions, source text import, autosaved drafts, paste detection, robust JSON validation, and live set preview.
+3. Added a full manual flashcard editor (set title, card add/edit/delete/reorder, live preview, and save).
+4. Improved responsiveness in key shared UI surfaces:
+   - `src/app/page.tsx` main content/list screen spacing and card sizing.
+   - `src/components/set/Flashcard.tsx` flashcard dimensions/text scaling for mobile and desktop readability.
+   - `src/components/app-sidebar.tsx` logo/header sizing polish for smaller screens.
+5. Added MCP preparation (without breaking existing behavior):
+   - `src/lib/mcp/readiness.ts` documents constraints and next architecture steps.
+   - `src/app/api/mcp/route.ts` exposes secure readiness endpoint + blocked mutation scaffold.
+   - `.idx/mcp.json` now configures Firebase MCP server wiring for development tooling.

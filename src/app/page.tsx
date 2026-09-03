@@ -469,7 +469,7 @@ function MainScreen({
   initialListId?: string;
 }) {
   return (
-    <div className={`flex flex-1 flex-col ${CurrentPage !== "Notes" && "md:p-5 pt-2"}`}>
+    <div className={`flex flex-1 flex-col ${CurrentPage !== "Notes" ? "px-2 pb-4 pt-2 sm:px-4 md:p-5" : ""}`}>
       {CurrentPage === "set" && selected !== null && pastSets[selected] ? (
         <MainSet mode={currentMode} currentSet={pastSets[selected]} setMode={setMode} extra={extra} />
       ) : CurrentPage === "upload" ? <Create addSet={addSet} /> :
@@ -485,28 +485,29 @@ function MainScreen({
 function ListScreen({ currentList }: { currentList: List }) {
   const Icon = currentList.icon;
   return (
-    <ScrollArea className="p-4 h-[90vh] md:p-8 w-full mx-auto flex flex-col">
-      <div className="flex flex-row gap-6 mb-8 w-[95%] mx-auto">
-        <Icon width={64} height={64} className="my-auto"/>
+    <ScrollArea className="h-[calc(100svh-8rem)] w-full">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-3 py-4 sm:px-5 md:py-8">
+      <div className="flex flex-col gap-4 rounded-2xl border bg-card/50 p-4 sm:flex-row sm:items-center sm:gap-6">
+        <Icon width={56} height={56} className="shrink-0"/>
         <div className="flex flex-col">
-          <h1 className="text-2xl font-bold mb-4">{currentList.title}</h1>
-          <p className="mb-6">{currentList.description}</p>
+          <h1 className="text-2xl font-bold sm:text-3xl">{currentList.title}</h1>
+          <p className="mt-2 text-sm text-muted-foreground sm:text-base">{currentList.description}</p>
         </div>
       </div>
-      <div className="gap-2 w-full h-full w-[95%] mx-auto flex flex-col">
+      <div className="flex h-full w-full flex-col gap-3">
         {currentList.sets.map((setRef) => {
           const foundSet = AllSets.find(set => set.id === setRef);
           if (!foundSet) return null;
           const length = foundSet.set.vocab.length;
 
           return (
-            <div key={setRef} className="w-full flex flex-row justify-between p-4 rounded-lg shadow hover:shadow-lg transition">
-              <h2 className="text-xl flex flex-row gap-2 font-semibold my-auto">
+            <div key={setRef} className="flex w-full flex-col gap-3 rounded-xl border bg-card p-4 shadow-sm transition hover:shadow-md sm:flex-row sm:items-center sm:justify-between">
+              <h2 className="flex flex-wrap items-center gap-2 text-lg font-semibold sm:text-xl">
                 {foundSet.set.title}
                 <Badge variant={"outline"}>{length} {length > 1 ? "items" : "item"}</Badge>
               </h2>
               <Button
-                className="mt-2 px-6 py-2 rounded-xl cursor-pointer"
+                className="w-full rounded-xl px-6 py-2 sm:mt-0 sm:w-auto"
                 onClick={async () => {
                   // Logic to add set to pastSets and navigate to it
                 }}
@@ -516,6 +517,7 @@ function ListScreen({ currentList }: { currentList: List }) {
             </div>
           );
         })}
+      </div>
       </div>
     </ScrollArea>
   );

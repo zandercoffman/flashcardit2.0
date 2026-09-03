@@ -14,9 +14,9 @@ FlashCard It 2.0 is a comprehensive study tool designed to enhance learning thro
 ## ✨ Key Features
 
 ### 📚 **Flashcard Creation & Management**
-- **AI Generation**: Generate flashcard sets using AI by providing text content
+- **AI Workflow**: Guided external-AI flow (Generate → Copy Prompt → Open AI → Paste JSON → Validate → Save)
 - **File Upload**: Import existing flashcard sets in JSON format
-- **Manual Creation**: Create custom flashcards with term-definition pairs
+- **Manual Creation**: Full editor with add/edit/delete/reorder/preview before save
 - **Pre-made Sets**: Access a library of pre-made flashcard sets on various topics
 - **Set Organization**: Organize flashcards into study sets with easy navigation
 
@@ -229,6 +229,12 @@ flashcardit2.0/
 - **@ai-sdk/groq** - Groq AI integration
 - **@ai-sdk/react** - React AI components
 - **@google/generative-ai** - Google AI integration
+
+## 🔌 MCP Readiness
+
+- MCP is currently **prepared but not fully enabled** for flashcard mutations.
+- `GET /api/mcp` returns readiness details and required architecture steps.
+- `POST /api/mcp` is authorization-gated and intentionally returns `501` until server-side user storage, secure auth scopes, and document ingestion are implemented.
 
 ### Speech & Media
 - **Web Speech API** - Voice recognition (Speak It mode)
