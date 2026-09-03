@@ -1,20 +1,106 @@
 "use client"
-import { ReactElement, useState } from "react"
-import { FileUpload } from "../aceternity/file-upload"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Button } from "../ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Copy, CheckCircle2, AlertCircle, Sparkles, FileJson, UploadIcon, Pencil } from "lucide-react"
+
+import { useEffect, useMemo, useState } from "react"
+import { AlertCircle, ArrowDown, ArrowUp, Bot, CheckCircle2, Copy, ExternalLink, FileText, Plus, Trash2, WandSparkles } from "lucide-react"
 import { toast } from "sonner"
-import { ScrollArea } from "../ui/scroll-area"
-import Image from "next/image"
+
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Textarea } from "@/components/ui/textarea"
 
 interface Set {
   title: string
   vocab: [string, string][]
+}
+
+type Assistant = "chatgpt" | "claude" | "gemini" | "copilot" | "perplexity" | "grok"
+type CreateMethod = "ai" | "manual"
+
+type ManualCard = {
+  id: string
+  front: string
+  back: string
+}
+
+const AI_DRAFT_KEY = "flashcardit:create:ai-draft"
+const MANUAL_DRAFT_KEY = "flashcardit:create:manual-draft"
+
+const assistantLinks: Record<Assistant, string> = {
+  chatgpt: "https://chat.openai.com/",
+  claude: "https://claude.ai/new",
+  gemini: "https://gemini.google.com/",
+  copilot: "https://github.com/copilot",
+  perplexity: "https://www.perplexity.ai/",
+  grok: "https://grok.com/",
+}
+
+function newManualCard(): ManualCard {
+  return {
+    id: crypto.randomUUID(),
+    front: "",
+    back: "",
+  }
+}
+
+function sanitizeTuple(value: unknown): [string, string] | null {
+  if (!Array.isArray(value) || value.length !== 2) return null
+  const [front, back] = value
+  if (typeof front !== "string" || typeof back !== "string") return null
+  if (!front.trim() || !back.trim()) return null
+  return [front.trim(), back.trim()]
+}
+
+function parseSetFromJson(raw: string): { set?: Set; error?: string } {
+  if (!raw.trim()) {
+    return { error: "Paste your AI response to continue." }
+  }
+
+  const firstBrace = raw.indexOf("{")
+  const lastBrace = raw.lastIndexOf("}")
+
+  if (firstBrace === -1 || lastBrace === -1 || lastBrace <= firstBrace) {
+    return { error: "Could not find valid JSON. Make sure it starts with { and ends with }." }
+  }
+
+  const jsonSlice = raw.slice(firstBrace, lastBrace + 1)
+
+  try {
+    const parsed = JSON.parse(jsonSlice)
+    const candidate: Set | undefined = parsed?.set ?? parsed
+
+    if (!candidate || typeof candidate !== "object") {
+      return { error: "JSON is missing a valid set object." }
+    }
+
+    if (typeof candidate.title !== "string" || !candidate.title.trim()) {
+      return { error: "Set title must be a non-empty string." }
+    }
+
+    if (!Array.isArray(candidate.vocab) || candidate.vocab.length === 0) {
+      return { error: "Set vocab must be a non-empty array of [question, answer] pairs." }
+    }
+
+    const cleanedVocab = candidate.vocab
+      .map((entry) => sanitizeTuple(entry))
+      .filter((entry): entry is [string, string] => Boolean(entry))
+
+    if (!cleanedVocab.length) {
+      return { error: "No valid flashcards were found. Each card must be [front, back]." }
+    }
+
+    return {
+      set: {
+        title: candidate.title.trim(),
+        vocab: cleanedVocab,
+      },
+    }
+  } catch {
+    return { error: "Invalid JSON. Copy the full object from the AI response and try again." }
+  }
 }
 
 export default function Create({
@@ -22,233 +108,611 @@ export default function Create({
 }: {
   addSet: (set: Set, isAutomatic: boolean) => Promise<number>
 }) {
-  const [thisStep, setStep] = useState<number>(0);
-  const [promptCopied, setPromptCopied] = useState<boolean>(false);
-  const [jsonInput, setJsonInput] = useState<string>("");
-  const [jsonError, setJsonError] = useState<string>("");
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [createMethod, setCreateMethod] = useState<CreateMethod>("ai")
 
-  const chatGptPrompt = `Create a flashcard set based on the text and/or files I provide. Use this exact TypeScript structure:
-interface Set {
-  title: string;
-  vocab: [string, string][];
+  const [assistant, setAssistant] = useState<Assistant>("chatgpt")
+  const [topic, setTopic] = useState("")
+  const [notes, setNotes] = useState("")
+  const [customPrompt, setCustomPrompt] = useState("")
+
+  const [promptCopied, setPromptCopied] = useState(false)
+  const [jsonInput, setJsonInput] = useState("")
+  const [jsonError, setJsonError] = useState("")
+  const [isSubmittingAiSet, setIsSubmittingAiSet] = useState(false)
+  const [pasteDetected, setPasteDetected] = useState(false)
+
+  const [manualTitle, setManualTitle] = useState("")
+  const [manualCards, setManualCards] = useState<ManualCard[]>([newManualCard()])
+  const [manualPreviewIndex, setManualPreviewIndex] = useState(0)
+  const [isSavingManual, setIsSavingManual] = useState(false)
+
+  useEffect(() => {
+    try {
+      const savedAi = localStorage.getItem(AI_DRAFT_KEY)
+      if (savedAi) {
+        const parsed = JSON.parse(savedAi) as {
+          assistant?: Assistant
+          topic?: string
+          notes?: string
+          customPrompt?: string
+          jsonInput?: string
+        }
+
+        if (parsed.assistant && assistantLinks[parsed.assistant]) setAssistant(parsed.assistant)
+        setTopic(parsed.topic ?? "")
+        setNotes(parsed.notes ?? "")
+        setCustomPrompt(parsed.customPrompt ?? "")
+        setJsonInput(parsed.jsonInput ?? "")
+      }
+
+      const savedManual = localStorage.getItem(MANUAL_DRAFT_KEY)
+      if (savedManual) {
+        const parsed = JSON.parse(savedManual) as {
+          manualTitle?: string
+          cards?: ManualCard[]
+        }
+
+        const cleanedCards = Array.isArray(parsed.cards)
+          ? parsed.cards
+              .map((card) => ({
+                id: typeof card.id === "string" && card.id ? card.id : crypto.randomUUID(),
+                front: typeof card.front === "string" ? card.front : "",
+                back: typeof card.back === "string" ? card.back : "",
+              }))
+          : []
+
+        setManualTitle(parsed.manualTitle ?? "")
+        setManualCards(cleanedCards.length ? cleanedCards : [newManualCard()])
+      }
+    } catch {
+      // ignore broken draft data
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem(
+      AI_DRAFT_KEY,
+      JSON.stringify({ assistant, topic, notes, customPrompt, jsonInput }),
+    )
+  }, [assistant, topic, notes, customPrompt, jsonInput])
+
+  useEffect(() => {
+    localStorage.setItem(MANUAL_DRAFT_KEY, JSON.stringify({ manualTitle, cards: manualCards }))
+  }, [manualTitle, manualCards])
+
+  const promptForExternalAi = useMemo(() => {
+    const topicLine = topic.trim() ? `Topic: ${topic.trim()}` : "Topic: Not provided"
+    const notesLine = notes.trim() ? notes.trim() : "No notes provided."
+    const extraLine = customPrompt.trim() ? customPrompt.trim() : "No extra instructions provided."
+
+    return `Create a high-quality flashcard set for a student based on the material below.
+
+Return ONLY valid JSON in this structure:
+{
+  "set": {
+    "title": "Short Study Set Title",
+    "vocab": [["Question", "Answer"], ["Question", "Answer"]]
+  }
 }
 
-interface AllSetsInterface {
-  id: string;
-  set: Set;
-}
+Rules:
+- Include 8-25 cards unless the material is too short.
+- Keep cards concise and study-friendly.
+- Use clear question/answer phrasing.
+- Do not include markdown, commentary, or code fences.
 
-Instructions:
-1. Read the text I provide below.
-2. Identify key terms and their definitions from the text.
-3. Create a clear, concise title for the flashcard set based on the content.
-4. For each key term, create a tuple [term, definition] in the vocab array.
-5. Return a single JSON object that matches AllSetsInterface exactly.
-6. The id should be a short, unique string.
+Material:
+${topicLine}
 
-Important: Output only the JSON, no explanations, commentary, or formatting outside of the JSON. When the generation has completed, remind the user to copy this JSON back over to their "flashcardit.vercel.app" tab starting from the character { and ending with }.
+Notes/Text:
+${notesLine}
 
-Here is the text to use (and/or) the custom instructions to use:
-`;
+Extra instructions:
+${extraLine}`
+  }, [topic, notes, customPrompt])
 
-  const parseSetFromJson = (raw: string): { set?: Set; error?: string } => {
-    if (!raw.trim()) {
-      return { error: "Please paste the JSON from ChatGPT." };
+  const parsedPreview = useMemo(() => parseSetFromJson(jsonInput), [jsonInput])
+
+  const validManualCards = useMemo(
+    () =>
+      manualCards
+        .map((card) => {
+          const front = card.front.trim()
+          const back = card.back.trim()
+          if (!front || !back) return null
+          return [front, back] as [string, string]
+        })
+        .filter((card): card is [string, string] => Boolean(card)),
+    [manualCards],
+  )
+
+  const addManualCard = () => {
+    setManualCards((prev) => {
+      const next = [...prev, newManualCard()]
+      setManualPreviewIndex(next.length - 1)
+      return next
+    })
+  }
+
+  const updateManualCard = (cardId: string, key: "front" | "back", value: string) => {
+    setManualCards((prev) => prev.map((card) => (card.id === cardId ? { ...card, [key]: value } : card)))
+  }
+
+  const removeManualCard = (cardId: string) => {
+    setManualCards((prev) => {
+      const next = prev.filter((card) => card.id !== cardId)
+      if (!next.length) return [newManualCard()]
+      setManualPreviewIndex((idx) => Math.min(idx, next.length - 1))
+      return next
+    })
+  }
+
+  const moveManualCard = (index: number, direction: "up" | "down") => {
+    setManualCards((prev) => {
+      const target = direction === "up" ? index - 1 : index + 1
+      if (target < 0 || target >= prev.length) return prev
+
+      const next = [...prev]
+      ;[next[index], next[target]] = [next[target], next[index]]
+      setManualPreviewIndex(target)
+      return next
+    })
+  }
+
+  const handleCopyPrompt = async () => {
+    try {
+      await navigator.clipboard.writeText(promptForExternalAi)
+      setPromptCopied(true)
+      setTimeout(() => setPromptCopied(false), 1800)
+      toast.success("Prompt copied")
+    } catch {
+      toast.error("Could not copy prompt. Please copy it manually.")
+    }
+  }
+
+  const openAssistant = () => {
+    window.open(assistantLinks[assistant], "_blank", "noopener,noreferrer")
+    toast.message("Assistant opened in a new tab", {
+      description: "Paste your copied prompt, submit it, then return here and paste the JSON output.",
+    })
+  }
+
+  const handleSourceFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(event.target.files ?? [])
+    if (!files.length) return
+
+    const textFiles = files.filter((file) => file.type.startsWith("text/") || /\.(txt|md|csv|json)$/i.test(file.name))
+    const unsupportedCount = files.length - textFiles.length
+
+    let combinedText = ""
+
+    for (const file of textFiles.slice(0, 4)) {
+      if (file.size > 1_000_000) continue
+      try {
+        const text = await file.text()
+        combinedText += `\n\n[${file.name}]\n${text.slice(0, 6000)}`
+      } catch {
+        // ignore unreadable file
+      }
     }
 
-    const firstBrace = raw.indexOf("{");
-    const lastBrace = raw.lastIndexOf("}");
-    if (firstBrace === -1 || lastBrace === -1 || lastBrace <= firstBrace) {
-      return { error: "Could not find a JSON object. Make sure it starts with { and ends with }." };
+    if (combinedText.trim()) {
+      setNotes((prev) => `${prev}${prev ? "\n\n" : ""}${combinedText.trim()}`)
+      toast.success("Study material added to notes")
     }
 
-    const jsonSlice = raw.slice(firstBrace, lastBrace + 1);
+    if (unsupportedCount > 0) {
+      toast.message("Some files were skipped", {
+        description: "PDF/binary extraction is not built in yet. Paste key excerpts as text for now.",
+      })
+    }
+
+    event.target.value = ""
+  }
+
+  const handleAddAiSet = async () => {
+    const parsed = parseSetFromJson(jsonInput)
+    if (!parsed.set) {
+      setJsonError(parsed.error ?? "Invalid JSON format")
+      return
+    }
+
+    setJsonError("")
+    setIsSubmittingAiSet(true)
 
     try {
-      const parsed = JSON.parse(jsonSlice);
-      const candidate: Set | undefined = parsed?.set ?? parsed;
-
-      if (!candidate || typeof candidate !== "object") {
-        return { error: "JSON is missing a valid Set object." };
-      }
-
-      if (typeof candidate.title !== "string" || !candidate.title.trim()) {
-        return { error: "Set.title must be a non-empty string." };
-      }
-
-      if (!Array.isArray(candidate.vocab) || candidate.vocab.length === 0) {
-        return { error: "Set.vocab must be a non-empty array." };
-      }
-
-      for (const item of candidate.vocab) {
-        if (!Array.isArray(item) || item.length !== 2) {
-          return { error: "Each vocab item must be a [term, definition] pair." };
-        }
-        const [term, definition] = item;
-        if (typeof term !== "string" || typeof definition !== "string") {
-          return { error: "Each vocab pair must contain two strings." };
-        }
-      }
-
-      return { set: { title: candidate.title.trim(), vocab: candidate.vocab } };
+      await addSet(parsed.set, false)
+      toast.success("AI flashcard set saved")
+      setJsonInput("")
+      setPasteDetected(false)
     } catch {
-      return { error: "Invalid JSON. Make sure you copied the full JSON block." };
+      toast.error("Could not save this set. Please try again.")
+    } finally {
+      setIsSubmittingAiSet(false)
     }
-  };
+  }
 
-  const steps: {
-    title: string,
-    description: ReactElement
-    side: ReactElement
-  }[] = [
-      {
-        title: "Step 1: Open ChatGPT with the prompt",
-        description: <>
-          Click the big button to open ChatGPT with everything pre-filled. Then paste your topic or notes and press send.
-        </>,
-        side: (
-          <div className="flex flex-col gap-4 justify-start items-center">
-            <Image className="rounded-3xl shadow-xl" src={"/img/create/chatgpt.png"} alt={"A picture of ChatGPT with a custom prompt to create flashcards."} width={500} height={500} />
-            <div className="flex flex-col gap-3 w-full items-center">
-              <Button
-                className="rounded-3xl border-2 px-12 cursor-pointer bg-white/50 dark:bg-neutral-800/50"
-                variant={"secondary"}
-                onClick={() => {
-                  const link = `https://chat.openai.com/?q=${encodeURIComponent(chatGptPrompt)}`;
-                  window.open(link, "_blank");
-                  setStep(1);
-                }}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="size-4 mb-[0.5] text-foreground transition-colors" viewBox="0 0 24 24"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08-4.778 2.758a.795.795 0 0 0-.393.681zm1.097-2.365 2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5Z" fill="currentColor"></path></svg>
-                Open Prompt In ChatGPT
-              </Button>
-              <Button
-                className="rounded-3xl cursor-pointer px-10"
-                variant={"ghost"}
-                onClick={async () => {
-                  await navigator.clipboard.writeText(chatGptPrompt);
-                  setPromptCopied(true);
-                  setTimeout(() => setPromptCopied(false), 2000);
-                }}
-              >
-                {promptCopied ? "Prompt Copied" : "Copy Prompt"}
-              </Button>
-              <p className="text-xs text-muted-foreground">Tip: If nothing opens, use “Copy Prompt”, then paste into ChatGPT.</p>
-            </div>
-          </div>
-        )
-      },
-      {
-        title: "Step 2: Copy the JSON back here",
-        description: <>In ChatGPT, click “Copy code” on the JSON. Then return to this page and paste it in the box below.</>,
-        side: (
-          <div className="flex flex-col gap-4 justify-start items-center">
-            <Image className="rounded-3xl shadow-xl" src={"/img/create/2.png"} alt={"A picture of ChatGPT with a custom prompt to create flashcards."} width={500} height={500} />
-            <Image className="rounded-3xl shadow-xl" src={"/img/create/2-2.png"} alt={"A picture of ChatGPT with a custom prompt to create flashcards."} width={500} height={500} />
-          </div>
-        )
-      },
-    ]
+  const handleSaveManualSet = async () => {
+    const title = manualTitle.trim()
 
+    if (!title) {
+      toast.error("Please add a set title")
+      return
+    }
 
+    if (!validManualCards.length) {
+      toast.error("Add at least one complete flashcard")
+      return
+    }
 
+    setIsSavingManual(true)
+
+    try {
+      await addSet({ title, vocab: validManualCards }, false)
+      toast.success("Manual flashcard set saved")
+      setManualTitle("")
+      setManualCards([newManualCard()])
+      setManualPreviewIndex(0)
+    } catch {
+      toast.error("Could not save this set. Please try again.")
+    } finally {
+      setIsSavingManual(false)
+    }
+  }
+
+  const manualPreviewCard = manualCards[manualPreviewIndex]
 
   return (
-    <div className="w-full flex gap-6 items-center justify-center h-[80vh] flex-row px-4 py-6">
-      <div className="flex w-[40%] justify-start">
-        {steps[thisStep].side}
-      </div>
-      <ScrollArea className="flex h-[80vh] flex-col items-center justify-center px-auto gap-5 w-[60%]">
-        <div className="w-full rounded-3xl border bg-white/40 dark:bg-neutral-900/40 backdrop-blur-xl shadow-xl px-6 py-5">
-          <h1 className="text-2xl font-semibold">Create flashcards with AI in 2 easy steps</h1>
-          <p className="text-sm text-muted-foreground mt-1">No tech skills needed. Just copy, paste, and you’re done.</p>
-        </div>
-
-        {steps.map((step, idx) => {
-          const isActive = thisStep === idx;
-          return (
-            <div key={idx} className={`mt-2 mb-2 w-full px-4 py-3 flex flex-row gap-4 rounded-3xl items-center border ${isActive ? "bg-white/40 dark:bg-neutral-900/40 backdrop-blur-xl shadow-lg" : "bg-white/20 dark:bg-neutral-900/20"}`}>
-              <div className="size-12 min-w-12 shadow-xl border rounded-full flex items-center justify-center bg-white/50 dark:bg-neutral-800/50">{idx + 1}</div>
-              <div className="flex flex-col gap-1">
-                <h2 className="text-lg font-medium">{step.title}</h2>
-                {isActive && <p className="text-gray-400 text-sm">{step.description}</p>}
-              </div>
+    <ScrollArea className="h-[calc(100svh-8rem)] w-full">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-3 pb-10 pt-4 sm:px-5 lg:px-8">
+        <Card className="rounded-3xl border bg-background/80 shadow-sm backdrop-blur">
+          <CardHeader className="space-y-3 pb-3">
+            <Badge className="w-fit rounded-full px-3 py-1 text-xs" variant="secondary">
+              Create Flashcards
+            </Badge>
+            <div className="space-y-1">
+              <CardTitle className="text-2xl sm:text-3xl">How would you like to create them?</CardTitle>
+              <CardDescription className="text-sm sm:text-base">
+                Choose AI-assisted generation or full manual creation. Both flows autosave your draft locally.
+              </CardDescription>
             </div>
-          );
-        })}
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+              <button
+                type="button"
+                onClick={() => setCreateMethod("ai")}
+                className={`rounded-2xl border p-4 text-left transition ${
+                  createMethod === "ai"
+                    ? "border-violet-400 bg-violet-500/10 ring-1 ring-violet-400"
+                    : "border-border bg-card hover:bg-muted/60"
+                }`}
+              >
+                <div className="flex items-start gap-3">
+                  <WandSparkles className="mt-0.5 size-5 text-violet-500" />
+                  <div>
+                    <p className="font-semibold">Generate with AI</p>
+                    <p className="text-sm text-muted-foreground">Build cards from a topic, notes, or pasted study material.</p>
+                  </div>
+                </div>
+              </button>
 
-        {thisStep === 1 && (
-          <div className="w-full flex flex-col gap-2 rounded-3xl border bg-white/40 dark:bg-neutral-900/40 backdrop-blur-xl shadow-xl px-5 py-4">
-            <h3 className="text-lg font-medium">Paste JSON here</h3>
-            <p className="text-xs text-muted-foreground mt-1">It should match the Set interface: title + vocab pairs.</p>
-            <Textarea
-              className="mt-3 min-h-[160px] rounded-2xl bg-white/50 dark:bg-neutral-800/50"
-              placeholder="Paste the JSON from ChatGPT here..."
-              value={jsonInput}
-              onChange={(e) => {
-                setJsonInput(e.target.value);
-                if (jsonError) setJsonError("");
-              }}
-            />
-            {jsonError && <p className="mt-2 text-sm text-red-400">{jsonError}</p>}
-            <div className="mt-3 flex items-center gap-3">
-              <Button
-                className="rounded-3xl"
-                disabled={isSubmitting}
-                onClick={async () => {
-                  const result = parseSetFromJson(jsonInput);
-                  if (!result.set) {
-                    setJsonError(result.error ?? "Invalid JSON format.");
-                    return;
-                  }
-                  setIsSubmitting(true);
-                  try {
-                    await addSet(result.set, false);
-                    toast.success("Flashcards added!");
-                    setJsonInput("");
-                    setJsonError("");
-                  } catch {
-                    toast.error("Something went wrong. Please try again.");
-                  } finally {
-                    setIsSubmitting(false);
-                  }
-                }}
+              <button
+                type="button"
+                onClick={() => setCreateMethod("manual")}
+                className={`rounded-2xl border p-4 text-left transition ${
+                  createMethod === "manual"
+                    ? "border-sky-400 bg-sky-500/10 ring-1 ring-sky-400"
+                    : "border-border bg-card hover:bg-muted/60"
+                }`}
               >
-                {isSubmitting ? "Adding..." : "Add flashcards"}
-              </Button>
-              <Button
-                variant="outline"
-                className="rounded-3xl"
-                onClick={() => {
-                  setJsonInput("");
-                  setJsonError("");
-                }}
-              >
-                Clear
-              </Button>
+                <div className="flex items-start gap-3">
+                  <FileText className="mt-0.5 size-5 text-sky-500" />
+                  <div>
+                    <p className="font-semibold">Create Manually</p>
+                    <p className="text-sm text-muted-foreground">Write, edit, reorder, preview, and save cards yourself.</p>
+                  </div>
+                </div>
+              </button>
             </div>
+          </CardContent>
+        </Card>
+
+        {createMethod === "ai" ? (
+          <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+            <Card className="rounded-3xl border shadow-sm">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                  <Bot className="size-5" />
+                  1) Prepare your AI prompt
+                </CardTitle>
+                <CardDescription>
+                  Add your material, copy the prompt, then open your AI assistant in a new tab.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  <div className="space-y-2 sm:col-span-2">
+                    <label className="text-sm font-medium">Topic</label>
+                    <Input
+                      placeholder="e.g., Cell respiration"
+                      value={topic}
+                      onChange={(e) => setTopic(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="space-y-2 sm:col-span-2">
+                    <label className="text-sm font-medium">Notes / source text</label>
+                    <Textarea
+                      className="min-h-36"
+                      placeholder="Paste class notes, textbook excerpts, or key ideas..."
+                      value={notes}
+                      onChange={(e) => setNotes(e.target.value)}
+                    />
+                    <div className="flex flex-wrap items-center gap-2">
+                      <Input
+                        type="file"
+                        accept=".txt,.md,.csv,.json,.pdf,text/*"
+                        multiple
+                        onChange={handleSourceFileUpload}
+                        className="max-w-full text-xs sm:max-w-sm"
+                      />
+                      <span className="text-xs text-muted-foreground">Text files import directly. PDF extraction is not built in yet.</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 sm:col-span-2">
+                    <label className="text-sm font-medium">Extra instructions (optional)</label>
+                    <Textarea
+                      className="min-h-20"
+                      placeholder="e.g., prioritize exam vocabulary, include examples"
+                      value={customPrompt}
+                      onChange={(e) => setCustomPrompt(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="space-y-2 sm:col-span-2">
+                    <label className="text-sm font-medium">Assistant</label>
+                    <div className="flex flex-wrap gap-2">
+                      {(Object.keys(assistantLinks) as Assistant[]).map((name) => (
+                        <Button
+                          key={name}
+                          type="button"
+                          variant={assistant === name ? "default" : "outline"}
+                          size="sm"
+                          className="rounded-full"
+                          onClick={() => setAssistant(name)}
+                        >
+                          {name}
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border bg-muted/30 p-3">
+                  <p className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">Prompt preview</p>
+                  <Textarea className="min-h-44 text-xs" readOnly value={promptForExternalAi} />
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <Button type="button" onClick={handleCopyPrompt} className="rounded-full">
+                      {promptCopied ? <CheckCircle2 className="size-4" /> : <Copy className="size-4" />} {promptCopied ? "Copied" : "Copy Prompt"}
+                    </Button>
+                    <Button type="button" variant="outline" onClick={openAssistant} className="rounded-full">
+                      <ExternalLink className="size-4" /> Open {assistant}
+                    </Button>
+                  </div>
+                </div>
+
+                <Alert>
+                  <AlertCircle className="size-4" />
+                  <AlertDescription className="text-xs sm:text-sm">
+                    Flow: Generate → Copy Prompt → Open AI → Paste Response → Auto-validate → Save set.
+                  </AlertDescription>
+                </Alert>
+              </CardContent>
+            </Card>
+
+            <Card className="rounded-3xl border shadow-sm">
+              <CardHeader>
+                <CardTitle className="text-lg sm:text-xl">2) Paste AI output and save</CardTitle>
+                <CardDescription>Paste the JSON response here. We validate it immediately and show a preview.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <Textarea
+                  className="min-h-56"
+                  placeholder='Paste AI JSON here (starts with { and includes "set" + "vocab")'
+                  value={jsonInput}
+                  onPaste={() => {
+                    setPasteDetected(true)
+                    setJsonError("")
+                  }}
+                  onChange={(e) => {
+                    setJsonInput(e.target.value)
+                    setJsonError("")
+                  }}
+                />
+
+                {pasteDetected && !jsonInput.trim() && (
+                  <p className="text-xs text-muted-foreground">Paste detected — waiting for content.</p>
+                )}
+
+                {jsonError && (
+                  <Alert variant="destructive">
+                    <AlertCircle className="size-4" />
+                    <AlertDescription>{jsonError}</AlertDescription>
+                  </Alert>
+                )}
+
+                {jsonInput.trim() && parsedPreview.error && !jsonError && (
+                  <Alert variant="destructive">
+                    <AlertCircle className="size-4" />
+                    <AlertDescription>{parsedPreview.error}</AlertDescription>
+                  </Alert>
+                )}
+
+                {parsedPreview.set && (
+                  <Alert>
+                    <CheckCircle2 className="size-4 text-emerald-500" />
+                    <AlertDescription className="text-sm">
+                      Ready to save: <span className="font-semibold">{parsedPreview.set.title}</span> ({parsedPreview.set.vocab.length} cards)
+                    </AlertDescription>
+                  </Alert>
+                )}
+
+                {parsedPreview.set && (
+                  <div className="rounded-2xl border bg-muted/20 p-3">
+                    <p className="mb-2 text-sm font-medium">Preview</p>
+                    <div className="space-y-2">
+                      {parsedPreview.set.vocab.slice(0, 3).map(([front, back], index) => (
+                        <div key={`${front}-${index}`} className="rounded-xl border bg-background px-3 py-2 text-sm">
+                          <p className="font-medium">Q: {front}</p>
+                          <p className="text-muted-foreground">A: {back}</p>
+                        </div>
+                      ))}
+                    </div>
+                    {parsedPreview.set.vocab.length > 3 && (
+                      <p className="mt-2 text-xs text-muted-foreground">+ {parsedPreview.set.vocab.length - 3} more cards</p>
+                    )}
+                  </div>
+                )}
+
+                <div className="flex flex-wrap gap-2">
+                  <Button type="button" onClick={handleAddAiSet} disabled={isSubmittingAiSet || !jsonInput.trim()} className="rounded-full">
+                    {isSubmittingAiSet ? "Saving..." : "Save AI Flashcards"}
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="rounded-full"
+                    onClick={() => {
+                      setJsonInput("")
+                      setJsonError("")
+                      setPasteDetected(false)
+                    }}
+                  >
+                    Clear
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(0,26rem)]">
+            <Card className="rounded-3xl border shadow-sm">
+              <CardHeader>
+                <CardTitle className="text-lg sm:text-xl">Manual Flashcard Editor</CardTitle>
+                <CardDescription>
+                  Add cards, edit inline, reorder, and save when ready.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Set title</label>
+                  <Input
+                    placeholder="e.g., AP Bio Unit 3 Review"
+                    value={manualTitle}
+                    onChange={(e) => setManualTitle(e.target.value)}
+                  />
+                </div>
+
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <p className="text-sm text-muted-foreground">{validManualCards.length} complete cards</p>
+                  <Button type="button" onClick={addManualCard} size="sm" className="rounded-full">
+                    <Plus className="size-4" /> Add card
+                  </Button>
+                </div>
+
+                <div className="space-y-3">
+                  {manualCards.map((card, index) => (
+                    <div
+                      key={card.id}
+                      className={`rounded-2xl border p-3 transition ${
+                        manualPreviewIndex === index ? "border-primary bg-primary/5" : "bg-card"
+                      }`}
+                    >
+                      <div className="mb-2 flex items-center justify-between">
+                        <button
+                          type="button"
+                          className="text-sm font-medium hover:underline"
+                          onClick={() => setManualPreviewIndex(index)}
+                        >
+                          Card {index + 1}
+                        </button>
+                        <div className="flex items-center gap-1">
+                          <Button type="button" variant="ghost" size="icon" onClick={() => moveManualCard(index, "up")} disabled={index === 0}>
+                            <ArrowUp className="size-4" />
+                          </Button>
+                          <Button type="button" variant="ghost" size="icon" onClick={() => moveManualCard(index, "down")} disabled={index === manualCards.length - 1}>
+                            <ArrowDown className="size-4" />
+                          </Button>
+                          <Button type="button" variant="ghost" size="icon" onClick={() => removeManualCard(card.id)}>
+                            <Trash2 className="size-4 text-red-500" />
+                          </Button>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+                        <Textarea
+                          className="min-h-24"
+                          placeholder="Question / front"
+                          value={card.front}
+                          onChange={(e) => updateManualCard(card.id, "front", e.target.value)}
+                        />
+                        <Textarea
+                          className="min-h-24"
+                          placeholder="Answer / back"
+                          value={card.back}
+                          onChange={(e) => updateManualCard(card.id, "back", e.target.value)}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  <Button type="button" onClick={handleSaveManualSet} disabled={isSavingManual} className="rounded-full">
+                    {isSavingManual ? "Saving..." : "Save Manual Set"}
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="rounded-full"
+                    onClick={() => {
+                      setManualTitle("")
+                      setManualCards([newManualCard()])
+                      setManualPreviewIndex(0)
+                    }}
+                  >
+                    Reset
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="rounded-3xl border shadow-sm xl:sticky xl:top-4 xl:h-fit">
+              <CardHeader>
+                <CardTitle className="text-base">Flashcard Preview</CardTitle>
+                <CardDescription>Review the currently selected card.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                {manualPreviewCard ? (
+                  <div className="space-y-3">
+                    <div className="rounded-2xl border bg-muted/20 p-3">
+                      <p className="mb-1 text-xs uppercase tracking-wide text-muted-foreground">Front</p>
+                      <p className="text-sm sm:text-base">{manualPreviewCard.front.trim() || "(empty)"}</p>
+                    </div>
+                    <div className="rounded-2xl border bg-muted/20 p-3">
+                      <p className="mb-1 text-xs uppercase tracking-wide text-muted-foreground">Back</p>
+                      <p className="text-sm sm:text-base">{manualPreviewCard.back.trim() || "(empty)"}</p>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="text-sm text-muted-foreground">No card selected.</p>
+                )}
+              </CardContent>
+            </Card>
           </div>
         )}
-
-        <div className="flex mt-2 w-full justify-between items-center gap-3">
-          <Button
-            variant="outline"
-            className="rounded-3xl"
-            onClick={() => setStep(Math.max(0, thisStep - 1))}
-            disabled={thisStep === 0}
-          >
-            Back
-          </Button>
-          <Button
-            className="rounded-3xl"
-            onClick={() => setStep(Math.min(steps.length - 1, thisStep + 1))}
-            disabled={thisStep === steps.length - 1}
-          >
-            Next
-          </Button>
-        </div>
-      </ScrollArea>
-    </div>
+      </div>
+    </ScrollArea>
   )
 }
